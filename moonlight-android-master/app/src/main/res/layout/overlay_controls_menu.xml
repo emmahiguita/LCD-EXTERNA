@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="160dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#DD1B1B2F"
+    android:padding="16dp"
+    android:layout_gravity="top|left"
+    android:layout_marginTop="48dp"
+    android:elevation="12dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SMARTDISPLAY"
+        android:textColor="#BB86FC"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp"
+        android:layout_gravity="center_horizontal"/>
+
+    <Button
+        android:id="@+id/btnMenuGamepad"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/bg_glass_button"
+        android:text="🎮 MANDO"
+        android:textColor="#BB86FC"
+        android:textSize="11sp"
+        android:layout_marginBottom="6dp"/>
+
+    <Button
+        android:id="@+id/btnMenuTouchpad"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/bg_glass_button"
+        android:text="🖱 RATÓN"
+        android:textColor="#BB86FC"
+        android:textSize="11sp"
+        android:layout_marginBottom="6dp"/>
+
+    <Button
+        android:id="@+id/btnMenuMultimedia"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/bg_glass_button"
+        android:text="🎵 MULTIMEDIA"
+        android:textColor="#BB86FC"
+        android:textSize="11sp"
+        android:layout_marginBottom="6dp"/>
+
+    <Button
+        android:id="@+id/btnMenuKeyboard"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/bg_glass_button"
+        android:text="⌨ TECLADO"
+        android:textColor="#BB86FC"
+        android:textSize="11sp"
+        android:layout_marginBottom="10dp"/>
+
+    <Button
+        android:id="@+id/btnCloseMenu"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:background="@drawable/bg_glass_button"
+        android:text="✕ CERRAR"
+        android:textColor="#CF6679"
+        android:textSize="11sp"/>
+
+</LinearLayout>

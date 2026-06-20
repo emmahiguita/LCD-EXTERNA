@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+:root {
+  --accent-blue: #3b82f6;
+  --accent-green: #10b981;
+  --accent-amber: #f59e0b;
+  --accent-red: #ef4444;
+}
+
+body {
+  background-color: #080B14;
+  color: white;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* ── Minimalist Panels ── */
+.premium-panel {
+  background-color: #0D1321;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.premium-panel:hover {
+  background-color: #131C31;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* ── Custom Scrollbar ── */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ── Body lock when keyboard is open ── */
+body.keyboard-open {
+  overflow: hidden !important;
+  height: 100vh;
+  position: fixed;
+  width: 100%;
+}
+html.keyboard-open {
+  overflow: hidden !important;
+}

@@ -1,0 +1,167 @@
+/* OptimizedKeyboard.css - Estilos críticos para prevenir desplazamiento de pantalla */
+
+/* ─────────────────────────────────────────────────────────────────────────
+   KEYBOARD FIXED POSITIONING - NEVER TRIGGERS SCROLL
+   ─────────────────────────────────────────────────────────────────────────
+*/
+
+/* Contenedor exterior - fijo al viewport, NO afecta layout */
+.keyboard-outer-container {
+  position: fixed !important;
+  z-index: 50 !important;
+  bottom: 6px !important;
+  left: 0 !important;
+  right: 0 !important;
+  pointer-events: none;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  will-change: transform;
+  contain: layout style paint;
+  /* Asegurar que no interfiera con el scrolling */
+  height: auto;
+  overflow: visible;
+}
+
+/* Contenedor interior - draggable sin afectar scroll */
+.keyboard-inner-container {
+  position: relative;
+  pointer-events: auto;
+  touch-action: none;
+  user-select: none;
+  will-change: transform;
+  contain: layout style paint;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   SCROLL PREVENTION - Cuando el teclado está abierto
+   ─────────────────────────────────────────────────────────────────────────
+*/
+
+/* Prevenir scroll cuando teclado está activo */
+body.keyboard-open {
+  overflow: hidden !important;
+  height: 100vh;
+  position: fixed;
+  width: 100%;
+}
+
+html.keyboard-open {
+  overflow: hidden !important;
+}
+
+/* Asegurar que el elemento touchable no dispara scroll */
+.keyboard-inner-container {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  touch-action: none;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   DRAG STRIP - Manipulación sin scroll
+   ─────────────────────────────────────────────────────────────────────────
+*/
+
+.keyboard-drag-strip {
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+}
+
+.keyboard-drag-strip.dragging {
+  cursor: grabbing;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   KEY BUTTONS - Feedback sin scroll
+   ─────────────────────────────────────────────────────────────────────────
+*/
+
+.keyboard-key-button {
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.keyboard-key-button:active {
+  transform: scale(0.95);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   ANIMATIONS - Suave sin jank
+   ─────────────────────────────────────────────────────────────────────────
+*/
+
+@keyframes keyboard-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes keyboard-fade-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+.keyboard-visible {
+  animation: keyboard-fade-in 0.15s ease-out;
+}
+
+.keyboard-hidden {
+  animation: keyboard-fade-out 0.15s ease-in;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   OPTIMIZATION - GPU acceleration y performance
+   ─────────────────────────────────────────────────────────────────────────
+*/
+
+.keyboard-outer-container {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  perspective: 1000;
+}
+
+/* Evitar layout recalculation */
+.keyboard-key-panel {
+  contain: layout style paint;
+  will-change: auto;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   RESPONSIVE ADJUSTMENTS
+   ─────────────────────────────────────────────────────────────────────────
+*/
+
+/* Landscape mode */
+@media (orientation: landscape) {
+  .keyboard-outer-container {
+    bottom: 4px;
+  }
+}
+
+/* Small devices */
+@media (max-width: 640px) {
+  .keyboard-outer-container {
+    bottom: 2px;
+    left: 2px;
+    right: 2px;
+  }
+}
+

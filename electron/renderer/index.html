@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'">
+  <title>SmartDisplay AI</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ═══ Title Bar (custom for frameless) ═══ -->
+  <header id="titlebar">
+    <div class="titlebar-drag">
+      <span class="titlebar-icon">◆</span>
+      <span class="titlebar-text">SmartDisplay AI</span>
+    </div>
+    <div class="titlebar-actions">
+      <button id="btnMinimize" class="tb-btn" title="Minimizar">─</button>
+      <button id="btnQuit" class="tb-btn tb-close" title="Salir">✕</button>
+    </div>
+  </header>
+
+  <!-- ═══ Main Layout ═══ -->
+  <div id="app">
+
+    <!-- ─── Sidebar ─── -->
+    <aside id="sidebar">
+      <nav>
+        <button class="nav-btn active" data-panel="dashboard">📊 Dashboard</button>
+        <button class="nav-btn" data-panel="devices">📱 Dispositivos</button>
+        <button class="nav-btn" data-panel="stream">🎬 Streaming</button>
+        <button class="nav-btn" data-panel="settings">⚙️ Ajustes</button>
+      </nav>
+      <div id="sidebar-status">
+        <div id="statusIndicator" class="status-dot offline"></div>
+        <span id="statusText">Desconectado</span>
+      </div>
+    </aside>
+
+    <!-- ─── Content ─── -->
+    <main id="content">
+
+      <!-- ── Panel: Dashboard ── -->
+      <section id="panel-dashboard" class="panel active">
+        <h1>Dashboard</h1>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-label">Clientes WebSocket</div>
+            <div class="stat-value" id="statClients">0</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Dispositivo ADB</div>
+            <div class="stat-value" id="statDevice">—</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Stream Activo</div>
+            <div class="stat-value" id="statStream">No</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">IP Local</div>
+            <div class="stat-value" id="statIP">—</div>
+          </div>
+        </div>
+
+        <!-- Token box — selectable, copyable -->
+        <div class="token-box">
+          <label>Token de sesión:</label>
+          <code id="tokenDisplay" title="">—</code>
+          <button id="btnShowToken" class="btn-small" title="Ver token completo">👁</button>
+          <button id="btnCopyToken" class="btn-small">Copiar</button>
+        </div>
+      </section>
+
+      <!-- ── Panel: Dispositivos ── -->
+      <section id="panel-devices" class="panel">
+        <h1>Dispositivos</h1>
+        <div class="toolbar">
+          <button id="btnScanADB" class="btn">🔍 Escanear red</button>
+          <button id="btnRefreshDevices" class="btn">🔄 Refrescar</button>
+        </div>
+        <div id="deviceList" class="device-list">
+          <div class="empty-state">No hay dispositivos conectados.</div>
+        </div>
+      </section>
+
+      <!-- ── Panel: Streaming ── -->
+      <section id="panel-stream" class="panel">
+        <h1>Streaming</h1>
+        <div class="stream-controls">
+          <button id="btnStartStream" class="btn btn-primary">▶ Iniciar Stream</button>
+          <button id="btnStopStream" class="btn btn-danger" disabled>■ Detener</button>
+        </div>
+        <div class="stream-info">
+          <h3>Clientes Conectados</h3>
+          <div id="streamClientList">
+            <div class="empty-state">Sin clientes conectados.</div>
+          </div>
+        </div>
+        <div class="stream-info">
+          <h3>Clipboard Sync</h3>
+          <p class="hint">El portapapeles se sincroniza automáticamente cada 3 segundos.</p>
+        </div>
+      </section>
+
+      <!-- ── Panel: Ajustes ── -->
+      <section id="panel-settings" class="panel">
+        <h1>Ajustes</h1>
+        <div class="setting-group">
+          <label>
+            <input type="checkbox" id="chkAutoStart" checked>
+            Iniciar con Windows
+          </label>
+        </div>
+        <div class="setting-group">
+          <label>
+            <input type="checkbox" id="chkMinToTray" checked>
+            Minimizar a bandeja al cerrar
+          </label>
+        </div>
+        <div class="setting-group">
+          <label>Versión:</label>
+          <span id="appVersion">—</span>
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- ═══ Log Panel — selectable & copyable ═══ -->
+  <footer id="logPanel">
+    <div class="log-header">
+      <span>📋 Log</span>
+      <div class="log-actions">
+        <button id="btnCopyLog" class="btn-tiny">📋 Copiar</button>
+        <button id="btnClearLog" class="btn-tiny">Limpiar</button>
+      </div>
+    </div>
+    <div id="logOutput" class="log-output"></div>
+  </footer>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
