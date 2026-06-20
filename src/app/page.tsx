@@ -2,15 +2,11 @@
 
 import { useEffect, useRef, useState, useCallback } from 'react';
 import {
-  Monitor, Smartphone, KeyRound, Wifi, WifiOff, Settings2,
-  RefreshCw, CheckCircle2, XCircle, AlertCircle,
-  ChevronRight, Loader2, Maximize2, RotateCcw, ZoomIn, ZoomOut,
-  Network, Shield, Radio, Code, Hand, Terminal, Keyboard as KeyboardIcon,
-  LayoutDashboard, Copy, Eye, EyeOff, Cpu, HardDrive, Battery, Thermometer,
-  BatteryCharging, Info, Home, Volume2, VolumeX, Power
+  Monitor, Smartphone, Wifi, Settings2,
+  RefreshCw, XCircle, Loader2, RotateCcw, ZoomIn, ZoomOut,
+  Radio, Terminal, LayoutDashboard, Copy, Eye, EyeOff, Cpu, HardDrive, Hand,
+  Battery, Thermometer, BatteryCharging, Info, Home, Volume2, VolumeX, Power
 } from 'lucide-react';
-import { OptimizedKeyboard } from '@/components/keyboard';
-import type { ModifierState, KeyboardMode } from '@/components/keyboard';
 import { useConnectionSettings, useDeviceRegistry, type ConnectionMode } from '@/hooks';
 import { isMobileNetwork } from '@/lib/ConnectionResolver';
 import { useAdaptiveConnection } from '@/hooks/useAdaptiveConnection';
@@ -72,18 +68,8 @@ export default function SmartDisplayDashboard() {
   const [viewPan, setViewPan]             = useState({ x: 0, y: 0 });
   const [isPanning, setIsPanning]         = useState(false);
   const [log, setLog]                     = useState<string[]>([]);
-  const [dark, setDark]                   = useState(true);
-  const [touchpadMode, setTouchpadMode]   = useState(false);
   const [sessionToken, setSessionToken]   = useState<string>('');
   const [showToken, setShowToken]         = useState(false);
-
-  // Keyboard
-  const [kbOpen, setKbOpen]               = useState(false);
-  const [kbMode, setKbMode]               = useState<KeyboardMode>('text');
-  const [kbShift, setKbShift]             = useState(false);
-  const [kbInput, setKbInput]             = useState('');
-  const [kbFlash, setKbFlash]             = useState<string|null>(null);
-  const [kbMods, setKbMods]               = useState<ModifierState>({ ctrl:false, alt:false, shift:false, win:false });
 
   // Refs
   const videoRef    = useRef<HTMLVideoElement>(null);
@@ -479,19 +465,6 @@ export default function SmartDisplayDashboard() {
     });
   };
 
-  // ── Keyboard handlers ─────────────────────────────────────────────────────
-  const handleKbKey   = useCallback((c: string) => { setKbInput(p => p+c); setKbFlash(c); setTimeout(() => setKbFlash(null), 120); }, []);
-  const handleKbBspc  = useCallback(() => setKbInput(p => p.slice(0,-1)), []);
-  const handleKbSpace = useCallback(() => setKbInput(p => p+' '), []);
-  const handleKbEnter = useCallback(() => {
-    if (!kbInput.trim()) return;
-    runAction('keyevent', 'Enviar texto', { text: kbInput, modifiers: kbMods });
-    setKbInput('');
-    setKbMods({ ctrl:false, alt:false, shift:false, win:false });
-  }, [kbInput, kbMods, runAction]);
-  const handleNavKey = useCallback((keycode: string, description: string) => {
-    runAction('keyevent', description, { keycode, modifiers: kbMods });
-  }, [kbMods, runAction]);
 
   // ─────────────────────────────────────────────────────────────────────────
   // RENDER
@@ -536,45 +509,7 @@ export default function SmartDisplayDashboard() {
               active={activePanel === 'stream'}
               onClick={() => setActivePanel('stream')}
             />
-            <NavItem
-              icon={<KeyboardIcon size={16}/>}
-              label="Teclado NORMAL"
-              active={kbOpen && kbMode !== 'dev'}
-              onClick={() => {
-                if (kbOpen && kbMode !== 'dev') {
-                  setKbOpen(false);
-                } else {
-                  setKbOpen(true);
-                  setKbMode('text');
-                }
-                setActivePanel('stream');
-              }}
-            />
-            <NavItem
-              icon={<Code size={16}/>}
-              label="Teclado DEV"
-              active={kbOpen && kbMode === 'dev'}
-              onClick={() => {
-                if (kbOpen && kbMode === 'dev') {
-                  setKbOpen(false);
-                } else {
-                  setKbOpen(true);
-                  setKbMode('dev');
-                }
-                setActivePanel('stream');
-              }}
-            />
-            <NavItem
-              icon={<Hand size={16}/>}
-              label="Modo Touchpad"
-              active={touchpadMode}
-              onClick={() => {
-                const nextVal = !touchpadMode;
-                setTouchpadMode(nextVal);
-                setActivePanel('stream');
-                addLog(`✓ Modo Touchpad ${nextVal ? 'activado' : 'desactivado'}`);
-              }}
-            />
+
             <NavItem
               icon={<Settings2 size={16}/>}
               label="Configuración"
@@ -613,16 +548,6 @@ export default function SmartDisplayDashboard() {
               )}
             </div>
             <div className="flex items-center gap-2">
-              {touchpadMode && (
-                <span className="px-2.5 py-0.5 rounded bg-[#3B82F6]/10 text-[#3B82F6] text-[10px] font-bold border border-[#3B82F6]/15">
-                  TOUCHPAD ACTIVO
-                </span>
-              )}
-              {kbOpen && (
-                <span className="px-2.5 py-0.5 rounded bg-[#10B981]/10 text-[#10B981] text-[10px] font-bold border border-[#10B981]/15 uppercase">
-                  Teclado: {kbMode}
-                </span>
-              )}
             </div>
           </header>
 
@@ -1280,25 +1205,6 @@ export default function SmartDisplayDashboard() {
           )}
         </div>
       </footer>
-
-      {/* Dev/Normal Keyboard Integration */}
-      <OptimizedKeyboard
-        isOpen={kbOpen}
-        keyboardMode={kbMode}
-        keyboardShift={kbShift}
-        keyboardInput={kbInput}
-        lastKeyFlash={kbFlash}
-        activeModifiers={kbMods}
-        onKeyPress={handleKbKey}
-        onBackspace={handleKbBspc}
-        onSpace={handleKbSpace}
-        onEnter={handleKbEnter}
-        onShiftToggle={() => setKbShift(!kbShift)}
-        onModeChange={setKbMode}
-        onShortcut={handleNavKey}
-        onClose={() => setKbOpen(false)}
-        dark={dark}
-      />
     </div>
   );
 }

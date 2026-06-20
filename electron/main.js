@@ -353,9 +353,54 @@ function startPCScreenStreaming() {
   console.log('[WS] Screen streaming delegated to Sunshine.');
 }
 
-function stopPCScreenStreaming() {}
-
 let inputAgentProcess = null;
+let logcatProc = null;
+
+function startDeviceLogcat(serial) {
+  if (logcatProc) {
+    try { logcatProc.kill(); } catch (_) {}
+    logcatProc = null;
+  }
+  if (!serial) return;
+  console.log(`[Logcat] Iniciando captura de logs para dispositivo: ${serial}`);
+  
+  const filters = [
+    'SmartDisplay:D',
+    'Limelight:I',
+    'NvHTTP:I',
+    'ScreenCaptureService:D',
+    'ShortcutTrampoline:D',
+    'AppView:I',
+    'Game:I',
+    'SmartDisplayReceiver:D',
+    '*:S'
+  ];
+  
+  try {
+    logcatProc = spawn(ADB, ['-s', serial, 'logcat', '-v', 'brief', ...filters]);
+    
+    const readline = require('readline');
+    const rl = readline.createInterface({
+      input: logcatProc.stdout,
+      terminal: false
+    });
+    
+    rl.on('line', (line) => {
+      console.log(`[Móvil] ${line.trim()}`);
+    });
+    
+    logcatProc.on('error', (err) => {
+      console.warn(`[Logcat] Error en proceso: ${err.message}`);
+    });
+    
+    logcatProc.on('close', () => {
+      logcatProc = null;
+    });
+  } catch (err) {
+    console.error(`[Logcat] Falló iniciar: ${err.message}`);
+  }
+}
+
 
 function compileAndStartInputAgent() {
   if (inputAgentProcess) return;
@@ -396,10 +441,12 @@ function compileAndStartInputAgent() {
           ? path.join(wpfDir, 'WindowsBase.dll')
           : 'WindowsBase.dll';
         const cmd = `"${cscPath}" /out:"${agentExePath}" /target:exe /optimize+ /r:"${clientDll}" /r:"${typesDll}" /r:"${baseDll}" "${agentCsPath}"`;
-        execSync(cmd, { stdio: 'ignore' });
+        const output = execSync(cmd, { stdio: 'pipe' });
         console.log('[Agent] Compilación exitosa del agente nativo.');
       } catch (err) {
         console.error('[Agent] Error compilando el agente con csc.exe:', err.message);
+        if (err.stdout) console.error('[Agent] Compiler stdout:\n', err.stdout.toString());
+        if (err.stderr) console.error('[Agent] Compiler stderr:\n', err.stderr.toString());
       }
     } else {
       console.error('[Agent] No se encontró csc.exe en el sistema.');
@@ -579,7 +626,10 @@ function startWebSocketServer() {
             case 'select_device': {
               const prevSerial = selectedSerial;
               selectedSerial = msg.serial || null;
-              if (prevSerial !== selectedSerial && captureProc) captureProc.kill();
+              if (prevSerial !== selectedSerial) {
+                if (captureProc) captureProc.kill();
+                startDeviceLogcat(selectedSerial);
+              }
               break;
             }
             case 'tap':
@@ -1344,6 +1394,7 @@ function setupIPC() {
   });
   ipcMain.handle('select-device', (_e, serial) => {
     selectedSerial = serial || null;
+    startDeviceLogcat(selectedSerial);
     broadcastStatus();
   });
 
@@ -1573,6 +1624,11 @@ async function autoInjectPC(isHeartbeat = false) {
 
     // Use real hostname (e.g. "emma") — Android will merge this with the mDNS-discovered entry
     const finalName = sunshineHostname || os.hostname();
+
+    if (dev && !selectedSerial) {
+      selectedSerial = dev;
+      startDeviceLogcat(dev);
+    }
 
     const out = await adb([
       'shell', 'am', 'broadcast',

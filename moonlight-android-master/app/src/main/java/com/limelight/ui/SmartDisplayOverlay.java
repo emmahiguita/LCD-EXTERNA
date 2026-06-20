@@ -100,7 +100,7 @@ public class SmartDisplayOverlay {
     // Overlay views (launcher)
     private View        overlayLauncherRoot;
     private FrameLayout launcherAnchor;
-    private LinearLayout radialMenu;
+    private ViewGroup   radialMenu;
     private LinearLayout monitorPanel;
     private LinearLayout monitorChipsRow;
     private TextView    menuHandBadge;
@@ -135,6 +135,21 @@ public class SmartDisplayOverlay {
     private boolean fabDragging = false;
     private long    fabDownTime = 0;
     private static final long TAP_THRESHOLD_MS = 200;
+    private long lastFabTapTime = 0;
+    private boolean isFabHiddenTemporarily = false;
+    private boolean fabLongPressed = false;
+    private float fabDownRawX = 0f;
+    private float fabDownRawY = 0f;
+    private final Runnable fabLongPressRunnable = new Runnable() {
+        @Override
+        public void run() {
+            fabLongPressed = true;
+            if (launcherAnchor != null) {
+                launcherAnchor.animate().scaleX(1.15f).scaleY(1.15f).alpha(1.0f).setDuration(150).start();
+            }
+        }
+    };
+
 
     // Zoom state (reported back from Game.java ScaleGestureDetector)
     private float currentZoom = 1.0f;
@@ -192,6 +207,11 @@ public class SmartDisplayOverlay {
         menuZoomBadge   = overlayLauncherRoot.findViewById(R.id.menuZoomBadge);
         menuOrientBadge = overlayLauncherRoot.findViewById(R.id.menuOrientBadge);
 
+        // Set initial reposo opacity to 35%
+        if (launcherAnchor != null) {
+            launcherAnchor.setAlpha(0.35f);
+        }
+
         // FAB drag + tap
         launcherAnchor.setOnTouchListener(this::onFabTouch);
 
@@ -202,24 +222,22 @@ public class SmartDisplayOverlay {
                 .setOnClickListener(v -> { hideRadialMenu(); toggleKeyboard(); });
         overlayLauncherRoot.findViewById(R.id.menuItemMonitors)
                 .setOnClickListener(v -> { hideRadialMenu(); toggleMonitorPanel(); });
-        overlayLauncherRoot.findViewById(R.id.menuItemZoom)
-                .setOnClickListener(v -> { resetZoom(); hideRadialMenu(); });
-        overlayLauncherRoot.findViewById(R.id.menuItemOrientation)
-                .setOnClickListener(v -> cycleOrientation());
         overlayLauncherRoot.findViewById(R.id.menuItemConfig)
                 .setOnClickListener(v -> hideRadialMenu()); // sin pantalla de ajustes aún
+        overlayLauncherRoot.findViewById(R.id.menuItemClose)
+                .setOnClickListener(v -> hideRadialMenu());
 
         // Monitor panel close
         overlayLauncherRoot.findViewById(R.id.btnCloseMonitors)
                 .setOnClickListener(v -> monitorPanel.setVisibility(View.GONE));
 
-        // Build the monitor chips and reflect the saved orientation badge
+        // Build the monitor chips
         populateMonitors();
-        updateOrientationBadge();
 
         // Restore FAB position after layout
         overlayLauncherRoot.post(this::restoreFabPosition);
     }
+
 
     // ══════════════════════════════════════════════════════════════════════════
     // INFLATE & WIRE KEYBOARD
@@ -325,16 +343,23 @@ public class SmartDisplayOverlay {
                 fabTouchOffsetY = e.getRawY() - launcherAnchor.getY();
                 fabDownTime = System.currentTimeMillis();
                 fabDragging = false;
+                fabLongPressed = false;
+                fabDownRawX = e.getRawX();
+                fabDownRawY = e.getRawY();
+                launcherAnchor.postDelayed(fabLongPressRunnable, 500);
+                launcherAnchor.setAlpha(1.0f); // Restores 100% opacity on interaction
                 return true;
 
             case MotionEvent.ACTION_MOVE:
-                float dx = Math.abs(e.getRawX() - (launcherAnchor.getX() + fabTouchOffsetX));
-                float dy = Math.abs(e.getRawY() - (launcherAnchor.getY() + fabTouchOffsetY));
-                if (dx > 8 || dy > 8) {
+                if (!fabLongPressed) {
+                    float dist = (float) Math.hypot(e.getRawX() - fabDownRawX, e.getRawY() - fabDownRawY);
+                    if (dist > 15) {
+                        launcherAnchor.removeCallbacks(fabLongPressRunnable);
+                    }
+                }
+                if (fabLongPressed) {
                     fabDragging = true;
                     hideRadialMenu();
-                }
-                if (fabDragging) {
                     float newX = e.getRawX() - fabTouchOffsetX;
                     float newY = e.getRawY() - fabTouchOffsetY;
                     // Clamp within root bounds
@@ -347,16 +372,47 @@ public class SmartDisplayOverlay {
 
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL:
-                if (!fabDragging && (System.currentTimeMillis() - fabDownTime) < TAP_THRESHOLD_MS) {
-                    toggleRadialMenu();
-                } else if (fabDragging) {
-                    saveFabPosition();
+                launcherAnchor.removeCallbacks(fabLongPressRunnable);
+                launcherAnchor.animate().scaleX(1.0f).scaleY(1.0f).setDuration(150).start();
+                if (fabDragging) {
+                    float currentX = launcherAnchor.getX();
+                    float screenWidth = rootLayout.getWidth();
+                    float fabWidth = launcherAnchor.getWidth();
+                    float leftDist = currentX;
+                    float rightDist = screenWidth - (currentX + fabWidth);
+                    float targetX = (leftDist < rightDist) ? 0 : (screenWidth - fabWidth);
+                    launcherAnchor.animate()
+                            .x(targetX)
+                            .alpha(0.35f)
+                            .setDuration(250)
+                            .withEndAction(this::saveFabPosition)
+                            .start();
+                } else if ((System.currentTimeMillis() - fabDownTime) < TAP_THRESHOLD_MS) {
+                    long now = System.currentTimeMillis();
+                    if (now - lastFabTapTime < 300) { // Double tap
+                        isFabHiddenTemporarily = true;
+                        launcherAnchor.animate().alpha(0.02f).setDuration(200).start();
+                    } else { // Single tap
+                        if (isFabHiddenTemporarily) {
+                            isFabHiddenTemporarily = false;
+                            launcherAnchor.animate().alpha(0.35f).setDuration(200).start();
+                        } else {
+                            toggleRadialMenu();
+                        }
+                    }
+                    lastFabTapTime = now;
+                } else {
+                    if (!radialMenuVisible && !isFabHiddenTemporarily) {
+                        launcherAnchor.animate().alpha(0.35f).setDuration(200).start(); // Fade back to 35%
+                    }
                 }
                 fabDragging = false;
+                fabLongPressed = false;
                 return true;
         }
         return false;
     }
+
 
     private void saveFabPosition() {
         float xRatio = launcherAnchor.getX() / Math.max(1, rootLayout.getWidth()  - launcherAnchor.getWidth());
@@ -380,14 +436,16 @@ public class SmartDisplayOverlay {
             float fabY = launcherAnchor.getY();
             float fabW = launcherAnchor.getWidth();
             float fabH = launcherAnchor.getHeight();
-            float menuW = radialMenu.getWidth() > 0 ? radialMenu.getWidth() : 640;
-            float menuH = radialMenu.getHeight();
+            float menuW = radialMenu.getWidth() > 0 ? radialMenu.getWidth() : 240 * context.getResources().getDisplayMetrics().density;
+            float menuH = radialMenu.getHeight() > 0 ? radialMenu.getHeight() : 240 * context.getResources().getDisplayMetrics().density;
 
-            // Position to the right or left depending on space
-            float x = (fabX + fabW + 8 + menuW < rootLayout.getWidth())
-                    ? fabX + fabW + 8
-                    : fabX - menuW - 8;
-            float y = Math.max(0, Math.min(fabY, rootLayout.getHeight() - menuH - 8));
+            // Center the radial menu on the FAB center
+            float x = fabX + (fabW / 2.0f) - (menuW / 2.0f);
+            float y = fabY + (fabH / 2.0f) - (menuH / 2.0f);
+
+            // Clamp within root bounds
+            x = Math.max(0, Math.min(x, rootLayout.getWidth() - menuW));
+            y = Math.max(0, Math.min(y, rootLayout.getHeight() - menuH));
 
             radialMenu.setX(x);
             radialMenu.setY(y);
@@ -402,20 +460,31 @@ public class SmartDisplayOverlay {
             hideRadialMenu();
         } else {
             positionRadialMenu();
+            
+            // Fade out launcher anchor and set GONE to avoid blocking touches
+            launcherAnchor.animate().alpha(0f).setDuration(120).withEndAction(() -> launcherAnchor.setVisibility(View.GONE)).start();
+
             radialMenu.setVisibility(View.VISIBLE);
             radialMenu.setAlpha(0f);
-            radialMenu.setScaleX(0.8f);
-            radialMenu.setScaleY(0.8f);
-            radialMenu.animate().alpha(1f).scaleX(1f).scaleY(1f).setDuration(150).start();
+            radialMenu.setScaleX(0.85f);
+            radialMenu.setScaleY(0.85f);
+            radialMenu.animate().alpha(1f).scaleX(1f).scaleY(1f).setDuration(180).start();
             radialMenuVisible = true;
         }
     }
 
     private void hideRadialMenu() {
         if (!radialMenuVisible) return;
-        radialMenu.animate().alpha(0f).scaleX(0.8f).scaleY(0.8f).setDuration(120)
+        
+        radialMenu.animate().alpha(0f).scaleX(0.85f).scaleY(0.85f).setDuration(120)
                 .withEndAction(() -> radialMenu.setVisibility(View.GONE))
                 .start();
+
+        // Restore launcher anchor to reposo (35% opacity)
+        launcherAnchor.setVisibility(View.VISIBLE);
+        launcherAnchor.setAlpha(0f);
+        launcherAnchor.animate().alpha(0.35f).setDuration(180).start();
+        
         radialMenuVisible = false;
     }
 
@@ -424,11 +493,32 @@ public class SmartDisplayOverlay {
     // ══════════════════════════════════════════════════════════════════════════
     private void toggleHandMode() {
         handModeEnabled = !handModeEnabled;
-        menuHandBadge.setText(handModeEnabled ? "ON" : "OFF");
-        menuHandBadge.setTextColor(handModeEnabled ? 0xFF03DAC6 : 0xFF777777);
+        if (handModeEnabled) {
+            hideKeyboard();
+            if (monitorPanel != null) {
+                monitorPanel.setVisibility(View.GONE);
+            }
+        }
+        
+        // Dynamic background tint highlight for active state
+        View handButton = overlayLauncherRoot.findViewById(R.id.menuItemHand);
+        if (handButton != null) {
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+                handButton.setBackgroundTintList(android.content.res.ColorStateList.valueOf(
+                        handModeEnabled ? 0x80BB86FC : 0x20FFFFFF));
+            } else {
+                handButton.setBackgroundColor(handModeEnabled ? 0x80BB86FC : 0x20FFFFFF);
+            }
+        }
+
+        if (menuHandBadge != null) {
+            menuHandBadge.setText(handModeEnabled ? "ON" : "OFF");
+            menuHandBadge.setTextColor(handModeEnabled ? 0xFF03DAC6 : 0xFF777777);
+        }
         if (listener != null) listener.onPanModeChanged(handModeEnabled);
         hideRadialMenu();
     }
+
 
     public boolean isHandModeEnabled() { return handModeEnabled; }
 
@@ -440,6 +530,10 @@ public class SmartDisplayOverlay {
     }
 
     private void showKeyboard() {
+        if (handModeEnabled) {
+            android.widget.Toast.makeText(context, "Desactiva el modo movimiento para abrir el teclado", android.widget.Toast.LENGTH_SHORT).show();
+            return;
+        }
         overlayKeyboardRoot.setVisibility(View.VISIBLE);
         overlayKeyboardRoot.setAlpha(0f);
         overlayKeyboardRoot.animate().alpha(1f).setDuration(160).start();
@@ -500,6 +594,10 @@ public class SmartDisplayOverlay {
     // MONITOR PANEL
     // ══════════════════════════════════════════════════════════════════════════
     private void toggleMonitorPanel() {
+        if (handModeEnabled) {
+            android.widget.Toast.makeText(context, "Desactiva el modo movimiento para abrir el panel de monitores", android.widget.Toast.LENGTH_SHORT).show();
+            return;
+        }
         if (monitorPanel.getVisibility() == View.VISIBLE) {
             monitorPanel.setVisibility(View.GONE);
         } else {
@@ -644,34 +742,51 @@ public class SmartDisplayOverlay {
         setStickyKey(R.id.kb_alt,   () -> toggleModifier(2));
         setStickyKey(R.id.kb_shift, () -> toggleModifier(3));
         setStickyKey(R.id.kb_win,   () -> sendKey(VK_LWIN));
-        // Note: kb_chip_ctrl_* shortcut chips belong to devKeyboard and are wired in wireDevKeys() to avoid layout-redundant listeners.
     }
 
-    // ══════════════════════════════════════════════════════════════════════════
-    // WIRE DEV KEYBOARD KEYS
-    // ══════════════════════════════════════════════════════════════════════════
     private void wireDevKeys() {
-        // Modifier row
+        // Section 1: Modifiers
         setStickyKey(R.id.dev_ctrl,  () -> toggleModifier(1));
         setStickyKey(R.id.dev_alt,   () -> toggleModifier(2));
         setStickyKey(R.id.dev_shift, () -> toggleModifier(3));
+        setStickyKey(R.id.dev_win,   () -> sendKey(VK_LWIN));
+        setStickyKey(R.id.dev_fn,    () -> { /* Fn modifier logic if needed, or no-op */ });
         setKeyClick(R.id.dev_tab,    VK_TAB);
         setKeyClick(R.id.dev_esc,    VK_ESCAPE);
-        setStickyKey(R.id.dev_win,   () -> sendKey(VK_LWIN));
+        setKeyClick(R.id.dev_del,    VK_DELETE);
 
-        // F1-F12
+        setSpecialKeyTooltip(R.id.dev_ctrl,  "CTRL: Tecla modificadora. Combina con otras teclas.");
+        setSpecialKeyTooltip(R.id.dev_alt,   "ALT: Tecla modificadora Alt/Option.");
+        setSpecialKeyTooltip(R.id.dev_shift, "SHIFT: Tecla modificadora Mayús.");
+        setSpecialKeyTooltip(R.id.dev_win,   "WIN: Abre el menú de inicio de Windows.");
+        setSpecialKeyTooltip(R.id.dev_fn,    "FN: Tecla de función.");
+        setSpecialKeyTooltip(R.id.dev_tab,    "TAB: Inserta una tabulación.");
+        setSpecialKeyTooltip(R.id.dev_esc,    "ESC: Tecla de escape.");
+        setSpecialKeyTooltip(R.id.dev_del,    "DEL: Suprime el carácter delante del cursor.");
+
+        // Section 2: Navigation
+        setKeyClick(R.id.dev_home,  VK_HOME);
+        setKeyClick(R.id.dev_end,   VK_END);
+        setKeyClick(R.id.dev_pgup,  gfk(0x21)); // VK_PRIOR (Page Up)
+        setKeyClick(R.id.dev_pgdn,  gfk(0x22)); // VK_NEXT (Page Down)
+        setKeyClick(R.id.dev_ins,   gfk(0x2D)); // VK_INSERT
+        setKeyClick(R.id.dev_bspc,  VK_BACK);
+        setKeyClick(R.id.dev_enter, VK_RETURN);
+
+        setSpecialKeyTooltip(R.id.dev_home,  "HOME: Mueve el cursor al inicio de la línea.");
+        setSpecialKeyTooltip(R.id.dev_end,   "END: Mueve el cursor al final de la línea.");
+        setSpecialKeyTooltip(R.id.dev_pgup,  "PAGE UP: Desplaza la página hacia arriba.");
+        setSpecialKeyTooltip(R.id.dev_pgdn,  "PAGE DOWN: Desplaza la página hacia abajo.");
+        setSpecialKeyTooltip(R.id.dev_ins,   "INSERT: Alterna entre el modo insertar y sobreescribir.");
+
+        // Section 3: Functions (F1-F12)
         short[] fKeys = {
-            VK_F1,  VK_F2,
-            VK_F3,  VK_F4,
-            VK_F5,  VK_F6,
-            VK_F7,  VK_F8,
-            VK_F9,  VK_F10,
-            VK_F11, VK_F12
+            VK_F1,  VK_F2,  VK_F3,  VK_F4,  VK_F5,  VK_F6,
+            VK_F7,  VK_F8,  VK_F9,  VK_F10, VK_F11, VK_F12
         };
         int[] fIds = {
-            R.id.dev_f1, R.id.dev_f2, R.id.dev_f3, R.id.dev_f4,
-            R.id.dev_f5, R.id.dev_f6, R.id.dev_f7, R.id.dev_f8,
-            R.id.dev_f9, R.id.dev_f10, R.id.dev_f11, R.id.dev_f12
+            R.id.dev_f1, R.id.dev_f2, R.id.dev_f3, R.id.dev_f4, R.id.dev_f5, R.id.dev_f6,
+            R.id.dev_f7, R.id.dev_f8, R.id.dev_f9, R.id.dev_f10, R.id.dev_f11, R.id.dev_f12
         };
         for (int i = 0; i < fIds.length; i++) {
             final short vk = fKeys[i];
@@ -679,21 +794,36 @@ public class SmartDisplayOverlay {
             if (v != null) v.setOnClickListener(x -> sendKey(vk));
         }
 
-        // Symbol keys — GFE VK codes for punctuation
+        // Section 4: Symbols (Brackets, punctuation, etc.)
         setKeyClick(R.id.dev_brack_open,  gfk(0xDB)); // [
         setKeyClick(R.id.dev_brack_close, gfk(0xDD)); // ]
         setKeyClick(R.id.dev_dot,         gfk(0xBE)); // .
         setKeyClick(R.id.dev_semi,        gfk(0xBA)); // ;
-        // { } ( ) < > require Shift — send as Shift+key combos
-        setShiftedKey(R.id.dev_brace_open,  gfk(0xDB)); // Shift+[ = {
-        setShiftedKey(R.id.dev_brace_close, gfk(0xDD)); // Shift+] = }
-        setShiftedKey(R.id.dev_paren_open,  gfk(0x39)); // Shift+9 = (
-        setShiftedKey(R.id.dev_paren_close, gfk(0x30)); // Shift+0 = )
-        setShiftedKey(R.id.dev_angle_open,  gfk(0xBC)); // Shift+, = <
-        setShiftedKey(R.id.dev_angle_close, gfk(0xBE)); // Shift+. = >
-        setShiftedKey(R.id.dev_colon,       gfk(0xBA)); // Shift+; = :
+        setKeyClick(R.id.dev_colon,       gfk(0xBA)); // Shift+; = : (represented as shifted in setShiftedKey below)
+        
+        // { } ( ) < > require Shift
+        setShiftedKey(R.id.dev_brace_open,  gfk(0xDB)); // {
+        setShiftedKey(R.id.dev_brace_close, gfk(0xDD)); // }
+        setShiftedKey(R.id.dev_paren_open,  gfk(0x39)); // (
+        setShiftedKey(R.id.dev_paren_close, gfk(0x30)); // )
+        setShiftedKey(R.id.dev_angle_open,  gfk(0xBC)); // <
+        setShiftedKey(R.id.dev_angle_close, gfk(0xBE)); // >
+        setShiftedKey(R.id.dev_colon,       gfk(0xBA)); // :
 
-        // Compound operator keys (==, !=, &&, ||, =>): send two presses
+        // New Symbols (Backslash, Pipe, Amp, Star, Percent, Dollar, Hash, At, Tilde, Backtick)
+        setKeyClick(R.id.dev_backslash,   gfk(0xDC)); // \
+        setShiftedKey(R.id.dev_pipe,      gfk(0xDC)); // |
+        setShiftedKey(R.id.dev_amp,       gfk(0x37)); // &
+        setShiftedKey(R.id.dev_star,      gfk(0x38)); // *
+        setShiftedKey(R.id.dev_percent,   gfk(0x35)); // %
+        setShiftedKey(R.id.dev_dollar,    gfk(0x34)); // $
+        setShiftedKey(R.id.dev_hash,      gfk(0x33)); // #
+        setShiftedKey(R.id.dev_at,        gfk(0x32)); // @
+        setShiftedKey(R.id.dev_tilde,     gfk(0xC0)); // ~
+        setKeyClick(R.id.dev_backtick,    gfk(0xC0)); // `
+
+        // Section 5: Operators
+        // ==, !=, &&, ||, =>, <=, >=, ++, --, +=, -=, *=, /=
         View eqeq = overlayKeyboardRoot.findViewById(R.id.dev_eq_eq);
         if (eqeq != null) eqeq.setOnClickListener(x -> { sendKey(gfk(0xBB)); sendKey(gfk(0xBB)); });
         View noteq = overlayKeyboardRoot.findViewById(R.id.dev_not_eq);
@@ -704,22 +834,68 @@ public class SmartDisplayOverlay {
         if (orop != null) orop.setOnClickListener(x -> { sendKeyWithMods(gfk(0xDC), KeyboardPacket.MODIFIER_SHIFT); sendKeyWithMods(gfk(0xDC), KeyboardPacket.MODIFIER_SHIFT); });
         View arrow = overlayKeyboardRoot.findViewById(R.id.dev_arrow);
         if (arrow != null) arrow.setOnClickListener(x -> { sendKey(gfk(0xBB)); sendKeyWithMods(gfk(0xBE), KeyboardPacket.MODIFIER_SHIFT); });
+        View lteq = overlayKeyboardRoot.findViewById(R.id.dev_lt_eq);
+        if (lteq != null) lteq.setOnClickListener(x -> { sendKeyWithMods(gfk(0xBC), KeyboardPacket.MODIFIER_SHIFT); sendKey(gfk(0xBB)); });
+        View gteq = overlayKeyboardRoot.findViewById(R.id.dev_gt_eq);
+        if (gteq != null) gteq.setOnClickListener(x -> { sendKeyWithMods(gfk(0xBE), KeyboardPacket.MODIFIER_SHIFT); sendKey(gfk(0xBB)); });
+        View plpl = overlayKeyboardRoot.findViewById(R.id.dev_plus_plus);
+        if (plpl != null) plpl.setOnClickListener(x -> { sendKeyWithMods(gfk(0xBB), KeyboardPacket.MODIFIER_SHIFT); sendKeyWithMods(gfk(0xBB), KeyboardPacket.MODIFIER_SHIFT); });
+        View mnmr = overlayKeyboardRoot.findViewById(R.id.dev_minus_minus);
+        if (mnmr != null) mnmr.setOnClickListener(x -> { sendKey(gfk(0xBD)); sendKey(gfk(0xBD)); });
+        
+        View pleq = overlayKeyboardRoot.findViewById(R.id.dev_plus_eq);
+        if (pleq != null) pleq.setOnClickListener(x -> { sendKeyWithMods(gfk(0xBB), KeyboardPacket.MODIFIER_SHIFT); sendKey(gfk(0xBB)); });
+        View mneq = overlayKeyboardRoot.findViewById(R.id.dev_minus_eq);
+        if (mneq != null) mneq.setOnClickListener(x -> { sendKey(gfk(0xBD)); sendKey(gfk(0xBB)); });
+        View mteq = overlayKeyboardRoot.findViewById(R.id.dev_star_eq);
+        if (mteq != null) mteq.setOnClickListener(x -> { sendKeyWithMods(gfk(0x38), KeyboardPacket.MODIFIER_SHIFT); sendKey(gfk(0xBB)); });
+        View dveq = overlayKeyboardRoot.findViewById(R.id.dev_slash_eq);
+        if (dveq != null) dveq.setOnClickListener(x -> { sendKey(gfk(0xBF)); sendKey(gfk(0xBB)); });
 
-        // Shortcut chips (DEV tab)
-        setChipShortcut(R.id.kb_chip_ctrl_c, VK_C, KeyboardPacket.MODIFIER_CTRL, "Ctrl+C: Copiar texto seleccionado");
-        setChipShortcut(R.id.kb_chip_ctrl_v, VK_V, KeyboardPacket.MODIFIER_CTRL, "Ctrl+V: Pegar texto del portapapeles");
-        setChipShortcut(R.id.kb_chip_ctrl_x, VK_X, KeyboardPacket.MODIFIER_CTRL, "Ctrl+X: Cortar texto seleccionado");
-        setChipShortcut(R.id.kb_chip_ctrl_z, VK_Z, KeyboardPacket.MODIFIER_CTRL, "Ctrl+Z: Deshacer última acción");
-        setChipShortcut(R.id.kb_chip_ctrl_y, VK_BACK_QUOTE, KeyboardPacket.MODIFIER_CTRL, "Ctrl+`: Abrir/Cerrar terminal integrada");
-        setChipShortcut(R.id.kb_chip_ctrl_s, VK_S, KeyboardPacket.MODIFIER_CTRL, "Ctrl+S: Guardar archivo actual");
-        setChipShortcut(R.id.kb_chip_ctrl_f, VK_F_KEY, KeyboardPacket.MODIFIER_CTRL, "Ctrl+F: Buscar texto en el archivo");
-        setChipShortcut(R.id.kb_chip_ctrl_h, VK_P, (byte)(KeyboardPacket.MODIFIER_CTRL | KeyboardPacket.MODIFIER_SHIFT), "Ctrl+Shift+P: Abrir la paleta de comandos (VS Code)");
-        setChipShortcut(R.id.kb_chip_alt_tab, VK_K, KeyboardPacket.MODIFIER_CTRL, "Ctrl+K: Abrir edición/chat en línea con IA (Cursor)");
+        // Section 6: Shortcut chips (Horizontal scroll)
+        // VS CODE
+        setChipShortcut(R.id.chip_vs_palette, VK_P, (byte)(KeyboardPacket.MODIFIER_CTRL | KeyboardPacket.MODIFIER_SHIFT), "Ctrl+Shift+P: Abre la paleta de comandos de VS Code");
+        setChipShortcut(R.id.chip_vs_files,   VK_P, KeyboardPacket.MODIFIER_CTRL, "Ctrl+P: Buscar archivos en VS Code");
+        setChipShortcut(R.id.chip_vs_sidebar, gfk(0x42), KeyboardPacket.MODIFIER_CTRL, "Ctrl+B: Mostrar/ocultar barra lateral de VS Code");
+        setChipShortcut(R.id.chip_vs_term,    VK_BACK_QUOTE, KeyboardPacket.MODIFIER_CTRL, "Ctrl+`: Abrir/cerrar terminal integrada en VS Code");
+        setChipShortcut(R.id.chip_vs_format,  gfk(0x46), (byte)(KeyboardPacket.MODIFIER_ALT | KeyboardPacket.MODIFIER_SHIFT), "Alt+Shift+F: Formatear documento en VS Code");
+        setChipShortcut(R.id.chip_vs_comment, gfk(0xBF), KeyboardPacket.MODIFIER_CTRL, "Ctrl+/: Comentar/descomentar línea en VS Code");
+        setChipShortcut(R.id.chip_vs_def,     VK_F12, (byte)0, "F12: Ir a la definición de un símbolo en VS Code");
+
+        // ANDROID STUDIO
+        View doubleShift = overlayKeyboardRoot.findViewById(R.id.chip_as_everywhere);
+        if (doubleShift != null) {
+            doubleShift.setOnClickListener(x -> {
+                sendKey(gfk(0x10)); // Shift press 1
+                try { Thread.sleep(80); } catch (InterruptedException e) {}
+                sendKey(gfk(0x10)); // Shift press 2
+            });
+            setSpecialKeyTooltip(R.id.chip_as_everywhere, "Double-Shift: Buscar en todas partes (Android Studio)");
+        }
+        setChipShortcut(R.id.chip_as_class,   gfk(0x4E), KeyboardPacket.MODIFIER_CTRL, "Ctrl+N: Buscar clase en Android Studio");
+        setChipShortcut(R.id.chip_as_recent,  gfk(0x45), KeyboardPacket.MODIFIER_CTRL, "Ctrl+E: Mostrar archivos recientes en Android Studio");
+        setChipShortcut(R.id.chip_as_format,  gfk(0x4C), (byte)(KeyboardPacket.MODIFIER_CTRL | KeyboardPacket.MODIFIER_ALT), "Ctrl+Alt+L: Formatear código en Android Studio");
+
+        // CURSOR AI
+        setChipShortcut(R.id.chip_cur_edit,     VK_K, KeyboardPacket.MODIFIER_CTRL, "Ctrl+K: Abrir edición/chat en línea con IA (Cursor)");
+        setChipShortcut(R.id.chip_cur_chat,     gfk(0x4C), KeyboardPacket.MODIFIER_CTRL, "Ctrl+L: Abrir panel de chat con IA (Cursor)");
+        setChipShortcut(R.id.chip_cur_composer, gfk(0x49), KeyboardPacket.MODIFIER_CTRL, "Ctrl+I: Abrir IA Composer (Cursor)");
+
+        // TERMINAL
+        setChipShortcut(R.id.chip_term_interrupt, VK_C, KeyboardPacket.MODIFIER_CTRL, "Ctrl+C: Interrumpir proceso en terminal / Copiar");
+        setChipShortcut(R.id.chip_term_paste,     VK_V, KeyboardPacket.MODIFIER_CTRL, "Ctrl+V: Pegar en la terminal / Pegar texto");
+        setChipShortcut(R.id.chip_term_cut,       VK_X, KeyboardPacket.MODIFIER_CTRL, "Ctrl+X: Cortar texto");
+        setChipShortcut(R.id.chip_term_undo,      VK_Z, KeyboardPacket.MODIFIER_CTRL, "Ctrl+Z: Deshacer acción");
+        setChipShortcut(R.id.chip_term_history,   gfk(0x52), KeyboardPacket.MODIFIER_CTRL, "Ctrl+R: Buscar comando en historial de la terminal");
+        setChipShortcut(R.id.chip_term_save,      VK_S, KeyboardPacket.MODIFIER_CTRL, "Ctrl+S: Guardar archivo actual");
+
+        // SYSTEM
+        setChipShortcut(R.id.chip_sys_alt_tab,   VK_TAB, KeyboardPacket.MODIFIER_ALT, "Alt+Tab: Cambiar entre ventanas activas");
+        setChipShortcut(R.id.chip_sys_alt_f4,    VK_F4, KeyboardPacket.MODIFIER_ALT, "Alt+F4: Cerrar la ventana actual");
+        setChipShortcut(R.id.chip_sys_tab,       VK_TAB, KeyboardPacket.MODIFIER_CTRL, "Ctrl+Tab: Ir a la siguiente pestaña");
+        setChipShortcut(R.id.chip_sys_tab_prev,  VK_TAB, (byte)(KeyboardPacket.MODIFIER_CTRL | KeyboardPacket.MODIFIER_SHIFT), "Ctrl+Shift+Tab: Ir a la pestaña anterior");
     }
 
-    // ══════════════════════════════════════════════════════════════════════════
-    // WIRE COMPACT BAR KEYS
-    // ══════════════════════════════════════════════════════════════════════════
     private void wireCompactBar() {
         setStickyKey(R.id.compCtrl,  () -> toggleModifier(1));
         setStickyKey(R.id.compAlt,   () -> toggleModifier(2));
@@ -728,7 +904,20 @@ public class SmartDisplayOverlay {
         setKeyClick(R.id.compEsc,    VK_ESCAPE);
         setKeyClick(R.id.compBsp,    VK_BACK);
         setKeyClick(R.id.compEnter,  VK_RETURN);
+        
+        // Expand/Compact toggle
+        View btnExpand = overlayKeyboardRoot.findViewById(R.id.btnKbExpand);
+        if (btnExpand != null) {
+            btnExpand.setOnClickListener(v -> toggleCompact());
+        }
+
+        setSpecialKeyTooltip(R.id.compCtrl,  "CTRL: Tecla modificadora Control.");
+        setSpecialKeyTooltip(R.id.compAlt,   "ALT: Tecla modificadora Alt.");
+        setSpecialKeyTooltip(R.id.compShift, "SHIFT: Tecla modificadora Shift.");
+        setSpecialKeyTooltip(R.id.compTab,   "TAB: Tecla Tabulación.");
+        setSpecialKeyTooltip(R.id.compEsc,   "ESC: Tecla Escape.");
     }
+
 
     // ══════════════════════════════════════════════════════════════════════════
     // UTILITY WIRING METHODS
@@ -769,16 +958,82 @@ public class SmartDisplayOverlay {
         if (vComp != null) vComp.setTextColor(color);
     }
 
+    private void showPremiumTooltip(View anchorView, String text) {
+        TextView tooltipView = new TextView(context);
+        tooltipView.setText(text);
+        tooltipView.setTextSize(12f);
+        tooltipView.setPadding(24, 12, 24, 12);
+        
+        int bgColor;
+        int borderColor;
+        int textColor;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            bgColor = context.getResources().getColor(R.color.tooltip_bg, context.getTheme());
+            borderColor = context.getResources().getColor(R.color.tooltip_border, context.getTheme());
+            textColor = context.getResources().getColor(R.color.overlay_text_primary, context.getTheme());
+        } else {
+            bgColor = context.getResources().getColor(R.color.tooltip_bg);
+            borderColor = context.getResources().getColor(R.color.tooltip_border);
+            textColor = context.getResources().getColor(R.color.overlay_text_primary);
+        }
+        
+        tooltipView.setTextColor(textColor);
+        
+        android.graphics.drawable.GradientDrawable gd = new android.graphics.drawable.GradientDrawable();
+        gd.setColor(bgColor);
+        gd.setCornerRadius(16f);
+        gd.setStroke(2, borderColor);
+        tooltipView.setBackground(gd);
+        
+        final android.widget.PopupWindow popup = new android.widget.PopupWindow(
+                tooltipView,
+                android.view.ViewGroup.LayoutParams.WRAP_CONTENT,
+                android.view.ViewGroup.LayoutParams.WRAP_CONTENT,
+                true
+        );
+        popup.setOutsideTouchable(true);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            popup.setElevation(16f);
+        }
+        
+        tooltipView.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
+        int tooltipHeight = tooltipView.getMeasuredHeight();
+        int tooltipWidth = tooltipView.getMeasuredWidth();
+        
+        int xOffset = (anchorView.getWidth() - tooltipWidth) / 2;
+        int yOffset = -tooltipHeight - anchorView.getHeight() - 12; // Posicionarlo por encima
+        
+        try {
+            popup.showAsDropDown(anchorView, xOffset, yOffset);
+        } catch (Exception e) {
+            // Fallback in case window is not attached yet
+            android.widget.Toast.makeText(context, text, android.widget.Toast.LENGTH_SHORT).show();
+        }
+        
+        anchorView.postDelayed(popup::dismiss, 2500);
+    }
+
     private void setChipShortcut(int viewId, short vkCode, byte extraMods, String description) {
         View v = overlayKeyboardRoot.findViewById(viewId);
         if (v != null) {
             v.setOnClickListener(x -> sendKeyWithMods(vkCode, (byte)(activeMods() | extraMods)));
             v.setOnLongClickListener(x -> {
-                android.widget.Toast.makeText(context, description, android.widget.Toast.LENGTH_SHORT).show();
+                showPremiumTooltip(v, description);
                 return true;
             });
         }
     }
+
+    private void setSpecialKeyTooltip(int viewId, String description) {
+        View v = overlayKeyboardRoot.findViewById(viewId);
+        if (v != null) {
+            v.setOnLongClickListener(x -> {
+                showPremiumTooltip(v, description);
+                return true;
+            });
+        }
+    }
+
 
     /** Sends a key with SHIFT modifier added. */
     private void setShiftedKey(int viewId, short vkCode) {

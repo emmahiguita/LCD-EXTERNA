@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
   overlay_launcher.xml
-  Floating launcher button (◎) + radial menu that appears on top of the stream.
-  Uses FrameLayout so all children float independently.
-  Z-order: stream (SurfaceView) < this overlay < nothing else.
+  Redesigned circular radial launcher and menu for SmartDisplay AI.
+  Uses a FrameLayout to position elements in a radial pattern around a central close button.
 -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/overlayLauncherRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,19 +13,19 @@
     android:focusable="false">
 
     <!-- ═══════════════════════════════════════════════════════════════
-         FLOATING LAUNCHER BUTTON  (draggable anchor)
-         Position is saved in SharedPreferences and restored on rotation.
+         FLOATING LAUNCHER BUTTON (◎)
     ═══════════════════════════════════════════════════════════════ -->
     <FrameLayout
         android:id="@+id/launcherAnchor"
-        android:layout_width="52dp"
-        android:layout_height="52dp"
-        android:elevation="20dp">
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:elevation="20dp"
+        android:alpha="0.35">
 
         <!-- Background circle -->
         <View
-            android:layout_width="52dp"
-            android:layout_height="52dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:background="@drawable/bg_launcher_fab" />
 
         <!-- ◎ icon -->
@@ -35,153 +35,137 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="◎"
-            android:textColor="#E0E0E0"
-            android:textSize="22sp"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
             android:fontFamily="sans-serif-medium" />
     </FrameLayout>
 
     <!-- ═══════════════════════════════════════════════════════════════
-         RADIAL / POPUP MENU  (shown when launcher is tapped)
-         Anchored relative to launcherAnchor at runtime.
-         Starts GONE; toggled in SmartDisplayOverlay.java
+         RADIAL / CIRCULAR MENU (240dp x 240dp)
     ═══════════════════════════════════════════════════════════════ -->
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/radialMenu"
-        android:layout_width="160dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
         android:background="@drawable/bg_radial_menu"
-        android:padding="10dp"
         android:elevation="24dp"
         android:visibility="gone">
 
-        <!-- Header -->
+        <!-- 6. CERRAR (Center / Reference view) -->
+        <ImageButton
+            android:id="@+id/menuItemClose"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_radial_option"
+            android:src="@drawable/ic_close"
+            android:scaleType="centerInside"
+            android:padding="12dp"
+            android:contentDescription="Cerrar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- 1. MOVIMIENTO (Top: Center (120, 120), R=80) -->
+        <ImageButton
+            android:id="@+id/menuItemHand"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_radial_option"
+            android:src="@drawable/ic_movement"
+            android:scaleType="centerInside"
+            android:padding="12dp"
+            android:contentDescription="Movimiento"
+            app:layout_constraintCircle="@id/menuItemClose"
+            app:layout_constraintCircleAngle="0"
+            app:layout_constraintCircleRadius="80dp" />
+
+        <!-- 2. TECLADO (Left: Center (120, 120), R=80) -->
+        <ImageButton
+            android:id="@+id/menuItemKeyboard"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_radial_option"
+            android:src="@drawable/ic_keyboard"
+            android:scaleType="centerInside"
+            android:padding="12dp"
+            android:contentDescription="Teclado"
+            app:layout_constraintCircle="@id/menuItemClose"
+            app:layout_constraintCircleAngle="270"
+            app:layout_constraintCircleRadius="80dp" />
+
+        <!-- 3. MONITORES (Right: Center (120, 120), R=80) -->
+        <ImageButton
+            android:id="@+id/menuItemMonitors"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_radial_option"
+            android:src="@drawable/ic_monitors"
+            android:scaleType="centerInside"
+            android:padding="12dp"
+            android:contentDescription="Monitores"
+            app:layout_constraintCircle="@id/menuItemClose"
+            app:layout_constraintCircleAngle="90"
+            app:layout_constraintCircleRadius="80dp" />
+
+        <!-- 5. AJUSTES (Bottom: Center (120, 120), R=80) -->
+        <ImageButton
+            android:id="@+id/menuItemConfig"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_radial_option"
+            android:src="@drawable/ic_settings"
+            android:scaleType="centerInside"
+            android:padding="12dp"
+            android:contentDescription="Ajustes"
+            app:layout_constraintCircle="@id/menuItemClose"
+            app:layout_constraintCircleAngle="180"
+            app:layout_constraintCircleRadius="80dp" />
+
+        <!-- ═══════════════════════════════════════════════════════════════
+             HIDDEN COMPATIBILITY BADGES
+             These TextViews exist to prevent NPE in existing Java code.
+        ═══════════════════════════════════════════════════════════════ -->
         <TextView
+            android:id="@+id/menuHandBadge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SMARTDISPLAY AI"
-            android:textColor="#BB86FC"
-            android:textSize="10sp"
-            android:textStyle="bold"
-            android:letterSpacing="0.1"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="8dp" />
-
-        <!-- MOVER -->
-        <LinearLayout
-            android:id="@+id/menuItemHand"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:background="@drawable/bg_menu_item_sel"
-            android:padding="8dp"
-            android:layout_marginBottom="2dp">
-            <TextView android:layout_width="20dp" android:layout_height="wrap_content"
-                android:text="✋" android:textSize="15sp" />
-            <TextView android:layout_width="0dp" android:layout_height="wrap_content"
-                android:layout_weight="1" android:layout_marginStart="8dp"
-                android:text="MOVER" android:textColor="#E0E0E0" android:textSize="12sp" />
-            <TextView android:id="@+id/menuHandBadge"
-                android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="OFF" android:textColor="#777" android:textSize="9sp" />
-        </LinearLayout>
-
-        <!-- TECLADO -->
-        <LinearLayout
-            android:id="@+id/menuItemKeyboard"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:background="@drawable/bg_menu_item"
-            android:padding="8dp"
-            android:layout_marginBottom="2dp">
-            <TextView android:layout_width="20dp" android:layout_height="wrap_content"
-                android:text="⌨" android:textSize="15sp" />
-            <TextView android:layout_width="0dp" android:layout_height="wrap_content"
-                android:layout_weight="1" android:layout_marginStart="8dp"
-                android:text="TECLADO" android:textColor="#E0E0E0" android:textSize="12sp" />
-        </LinearLayout>
-
-        <!-- MONITORES -->
-        <LinearLayout
-            android:id="@+id/menuItemMonitors"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:background="@drawable/bg_menu_item"
-            android:padding="8dp"
-            android:layout_marginBottom="2dp">
-            <TextView android:layout_width="20dp" android:layout_height="wrap_content"
-                android:text="🖥" android:textSize="15sp" />
-            <TextView android:layout_width="0dp" android:layout_height="wrap_content"
-                android:layout_weight="1" android:layout_marginStart="8dp"
-                android:text="MONITORES" android:textColor="#E0E0E0" android:textSize="12sp" />
-        </LinearLayout>
-
-        <!-- ZOOM -->
-        <LinearLayout
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/menuZoomBadge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/menuOrientBadge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <TextView
             android:id="@+id/menuItemZoom"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:background="@drawable/bg_menu_item"
-            android:padding="8dp"
-            android:layout_marginBottom="2dp">
-            <TextView android:layout_width="20dp" android:layout_height="wrap_content"
-                android:text="🔍" android:textSize="15sp" />
-            <TextView android:layout_width="0dp" android:layout_height="wrap_content"
-                android:layout_weight="1" android:layout_marginStart="8dp"
-                android:text="ZOOM" android:textColor="#E0E0E0" android:textSize="12sp" />
-            <TextView android:id="@+id/menuZoomBadge"
-                android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="100%" android:textColor="#BB86FC" android:textSize="9sp" />
-        </LinearLayout>
-
-        <!-- ORIENTACIÓN -->
-        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <TextView
             android:id="@+id/menuItemOrientation"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:background="@drawable/bg_menu_item"
-            android:padding="8dp"
-            android:layout_marginBottom="2dp">
-            <TextView android:layout_width="20dp" android:layout_height="wrap_content"
-                android:text="🔄" android:textSize="15sp" />
-            <TextView android:layout_width="0dp" android:layout_height="wrap_content"
-                android:layout_weight="1" android:layout_marginStart="8dp"
-                android:text="ORIENTACIÓN" android:textColor="#E0E0E0" android:textSize="12sp" />
-            <TextView android:id="@+id/menuOrientBadge"
-                android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="AUTO" android:textColor="#BB86FC" android:textSize="9sp" />
-        </LinearLayout>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- CONFIG -->
-        <LinearLayout
-            android:id="@+id/menuItemConfig"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:background="@drawable/bg_menu_item"
-            android:padding="8dp">
-            <TextView android:layout_width="20dp" android:layout_height="wrap_content"
-                android:text="⚙" android:textSize="15sp" />
-            <TextView android:layout_width="0dp" android:layout_height="wrap_content"
-                android:layout_weight="1" android:layout_marginStart="8dp"
-                android:text="CONFIG" android:textColor="#E0E0E0" android:textSize="12sp" />
-        </LinearLayout>
-
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!-- ═══════════════════════════════════════════════════════════════
-         MONITOR SELECTOR PANEL  (shown from menuItemMonitors)
-         Starts GONE
+         MONITOR SELECTOR PANEL
     ═══════════════════════════════════════════════════════════════ -->
     <LinearLayout
         android:id="@+id/monitorPanel"
@@ -201,13 +185,20 @@
             android:gravity="center_vertical"
             android:layout_marginBottom="10dp">
             <TextView
-                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="🖥  MONITORES"
-                android:textColor="#BB86FC" android:textSize="13sp" android:textStyle="bold" />
-            <TextView android:id="@+id/btnCloseMonitors"
-                android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="✕" android:textColor="#CF6679" android:textSize="18sp"
+                android:textColor="#BB86FC"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/btnCloseMonitors"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="✕"
+                android:textColor="#CF6679"
+                android:textSize="18sp"
                 android:padding="4dp" />
         </LinearLayout>
 

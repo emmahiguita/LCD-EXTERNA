@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Paleta Modo Oscuro -->
+    <color name="overlay_background">#D9080B14</color> <!-- Azul oscuro profundo translúcido -->
+    <color name="overlay_panel">#FF0B0F1E</color>
+    <color name="overlay_accent">#FF2563EB</color>
+    <color name="overlay_accent_secondary">#FF3B82F6</color>
+    <color name="overlay_text_primary">#FFE5E7EB</color> <!-- Texto claro -->
+    <color name="overlay_text_secondary">#FF9CA3AF</color>
+    <color name="overlay_border">#14FFFFFF</color> <!-- Borde claro sutil -->
+    <color name="tooltip_bg">#FF2C2445</color>
+    <color name="tooltip_border">#FFBB86FC</color>
+</resources>

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  overlay_keyboard.xml  (Professional DEV Keyboard - REDESIGNED)
+  overlay_keyboard.xml (Professional DEV Keyboard - REDESIGNED)
   ─────────────────────────────────────────────────────────────────
   • Anchored to bottom of screen (layout_gravity="bottom").
   • Two tabs: NORMAL (QWERTY) and DEV (modifiers + symbols + shortcuts).
-  • Drag handle on top bar allows repositioning vertically.
+  • Drag handle on top bar allows repositioning vertically/horizontally.
   • Compact mode collapses to a single input bar.
-  • NEVER overlaps center content permanently — keyboard is dismissible.
   ─────────────────────────────────────────────────────────────────
 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -146,11 +145,17 @@
             android:text="Tab" style="@style/KeyChip" android:id="@+id/compTab" />
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
             android:text="Esc" style="@style/KeyChip" android:id="@+id/compEsc" />
+        
         <View android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1" />
+        
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
             android:text="⌫" style="@style/KeyChip" android:id="@+id/compBsp" />
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
             android:text="↵" style="@style/KeyChipAccent" android:id="@+id/compEnter" />
+        
+        <!-- Expand Button (using same toggle ID) -->
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="⊞" style="@style/KeyChipAccent" android:id="@+id/btnKbExpand" />
     </LinearLayout>
 
     <!-- ══════════════════════════════════════════════════════════════
@@ -231,7 +236,7 @@
     </LinearLayout>
 
     <!-- ══════════════════════════════════════════════════════════════
-         DEV KEYBOARD TAB
+         DEV KEYBOARD TAB (Classified into clean sections)
     ══════════════════════════════════════════════════════════════ -->
     <LinearLayout
         android:id="@+id/devKeyboard"
@@ -240,17 +245,30 @@
         android:orientation="vertical"
         android:visibility="gone">
 
-        <!-- Row 1: Modifier keys -->
+        <!-- SECTION 1: MODIFIERS -->
         <LinearLayout style="@style/KeyRow">
             <Button android:id="@+id/dev_ctrl"  style="@style/DevModKey" android:text="CTRL"  android:layout_weight="1" />
             <Button android:id="@+id/dev_alt"   style="@style/DevModKey" android:text="ALT"   android:layout_weight="1" />
             <Button android:id="@+id/dev_shift" style="@style/DevModKey" android:text="SHIFT" android:layout_weight="1" />
+            <Button android:id="@+id/dev_win"   style="@style/DevModKey" android:text="WIN"   android:layout_weight="1" />
+            <Button android:id="@+id/dev_fn"    style="@style/DevModKey" android:text="FN"    android:layout_weight="1" />
             <Button android:id="@+id/dev_tab"   style="@style/DevModKey" android:text="TAB"   android:layout_weight="1" />
             <Button android:id="@+id/dev_esc"   style="@style/DevModKey" android:text="ESC"   android:layout_weight="1" />
-            <Button android:id="@+id/dev_win"   style="@style/DevModKey" android:text="WIN"   android:layout_weight="1" />
+            <Button android:id="@+id/dev_del"   style="@style/DevModKey" android:text="DEL"   android:layout_weight="1" />
         </LinearLayout>
 
-        <!-- Row 2: F1–F6 -->
+        <!-- SECTION 2: NAVIGATION & BASIC CONTROL -->
+        <LinearLayout style="@style/KeyRow">
+            <Button android:id="@+id/dev_home"  style="@style/KeyboardKey" android:text="Home"  android:layout_weight="1" android:textSize="11sp" />
+            <Button android:id="@+id/dev_end"   style="@style/KeyboardKey" android:text="End"   android:layout_weight="1" android:textSize="11sp" />
+            <Button android:id="@+id/dev_pgup"  style="@style/KeyboardKey" android:text="PgUp"  android:layout_weight="1" android:textSize="11sp" />
+            <Button android:id="@+id/dev_pgdn"  style="@style/KeyboardKey" android:text="PgDn"  android:layout_weight="1" android:textSize="11sp" />
+            <Button android:id="@+id/dev_ins"   style="@style/KeyboardKey" android:text="Ins"   android:layout_weight="1" android:textSize="11sp" />
+            <Button android:id="@+id/dev_bspc"  style="@style/KeyboardKeyAccent" android:text="⌫"  android:layout_weight="1.2" />
+            <Button android:id="@+id/dev_enter" style="@style/KeyboardKeyAccent" android:text="↵"  android:layout_weight="1.2" />
+        </LinearLayout>
+
+        <!-- SECTION 3: FUNCTIONS (F1–F6) -->
         <LinearLayout style="@style/KeyRow">
             <Button android:id="@+id/dev_f1" style="@style/DevFnKey" android:text="F1"  android:layout_weight="1" />
             <Button android:id="@+id/dev_f2" style="@style/DevFnKey" android:text="F2"  android:layout_weight="1" />
@@ -260,7 +278,7 @@
             <Button android:id="@+id/dev_f6" style="@style/DevFnKey" android:text="F6"  android:layout_weight="1" />
         </LinearLayout>
 
-        <!-- Row 3: F7–F12 -->
+        <!-- SECTION 3: FUNCTIONS (F7–F12) -->
         <LinearLayout style="@style/KeyRow">
             <Button android:id="@+id/dev_f7"  style="@style/DevFnKey" android:text="F7"  android:layout_weight="1" />
             <Button android:id="@+id/dev_f8"  style="@style/DevFnKey" android:text="F8"  android:layout_weight="1" />
@@ -270,7 +288,7 @@
             <Button android:id="@+id/dev_f12" style="@style/DevFnKey" android:text="F12" android:layout_weight="1" />
         </LinearLayout>
 
-        <!-- Row 4: Code symbols -->
+        <!-- SECTION 4: SYMBOLS (Row 1) -->
         <LinearLayout style="@style/KeyRow">
             <Button android:id="@+id/dev_brace_open"  style="@style/DevSymKey" android:text="{" android:layout_weight="1" />
             <Button android:id="@+id/dev_brace_close" style="@style/DevSymKey" android:text="}" android:layout_weight="1" />
@@ -280,39 +298,100 @@
             <Button android:id="@+id/dev_paren_close" style="@style/DevSymKey" android:text=")" android:layout_weight="1" />
             <Button android:id="@+id/dev_angle_open"  style="@style/DevSymKey" android:text="&lt;" android:layout_weight="1" />
             <Button android:id="@+id/dev_angle_close" style="@style/DevSymKey" android:text=">"  android:layout_weight="1" />
+            <Button android:id="@+id/dev_backslash"   style="@style/DevSymKey" android:text="\\" android:layout_weight="1" />
         </LinearLayout>
 
-        <!-- Row 5: Operators -->
+        <!-- SECTION 4: SYMBOLS (Row 2) -->
         <LinearLayout style="@style/KeyRow">
-            <Button android:id="@+id/dev_eq_eq"   style="@style/DevSymKey" android:text="=="  android:layout_weight="1" />
-            <Button android:id="@+id/dev_not_eq"  style="@style/DevSymKey" android:text="!="  android:layout_weight="1" />
-            <Button android:id="@+id/dev_and"     style="@style/DevSymKey" android:text="&amp;&amp;" android:layout_weight="1" />
-            <Button android:id="@+id/dev_or"      style="@style/DevSymKey" android:text="||"  android:layout_weight="1" />
-            <Button android:id="@+id/dev_arrow"   style="@style/DevSymKey" android:text="=>"  android:layout_weight="1" />
-            <Button android:id="@+id/dev_dot"     style="@style/DevSymKey" android:text="."   android:layout_weight="1" />
-            <Button android:id="@+id/dev_semi"    style="@style/DevSymKey" android:text=";"   android:layout_weight="1" />
-            <Button android:id="@+id/dev_colon"   style="@style/DevSymKey" android:text=":"   android:layout_weight="1" />
+            <Button android:id="@+id/dev_pipe"      style="@style/DevSymKey" android:text="|" android:layout_weight="1" />
+            <Button android:id="@+id/dev_amp"       style="@style/DevSymKey" android:text="&amp;" android:layout_weight="1" />
+            <Button android:id="@+id/dev_star"      style="@style/DevSymKey" android:text="*" android:layout_weight="1" />
+            <Button android:id="@+id/dev_percent"   style="@style/DevSymKey" android:text="%" android:layout_weight="1" />
+            <Button android:id="@+id/dev_dollar"    style="@style/DevSymKey" android:text="$" android:layout_weight="1" />
+            <Button android:id="@+id/dev_hash"      style="@style/DevSymKey" android:text="#" android:layout_weight="1" />
+            <Button android:id="@+id/dev_at"        style="@style/DevSymKey" android:text="@" android:layout_weight="1" />
+            <Button android:id="@+id/dev_tilde"     style="@style/DevSymKey" android:text="~" android:layout_weight="1" />
+            <Button android:id="@+id/dev_backtick"  style="@style/DevSymKey" android:text="`" android:layout_weight="1" />
         </LinearLayout>
 
-        <!-- Row 6: Shortcut chips -->
-        <LinearLayout
+        <!-- SECTION 5: OPERATORS -->
+        <LinearLayout style="@style/KeyRow">
+            <Button android:id="@+id/dev_eq_eq"       style="@style/DevSymKey" android:text="=="  android:layout_weight="1" android:textSize="11sp" />
+            <Button android:id="@+id/dev_not_eq"      style="@style/DevSymKey" android:text="!="  android:layout_weight="1" android:textSize="11sp" />
+            <Button android:id="@+id/dev_and"         style="@style/DevSymKey" android:text="&amp;&amp;" android:layout_weight="1" android:textSize="11sp" />
+            <Button android:id="@+id/dev_or"          style="@style/DevSymKey" android:text="||"  android:layout_weight="1" android:textSize="11sp" />
+            <Button android:id="@+id/dev_arrow"       style="@style/DevSymKey" android:text="=>"  android:layout_weight="1" android:textSize="11sp" />
+            <Button android:id="@+id/dev_lt_eq"       style="@style/DevSymKey" android:text="&lt;=" android:layout_weight="1" android:textSize="11sp" />
+            <Button android:id="@+id/dev_gt_eq"       style="@style/DevSymKey" android:text=">="  android:layout_weight="1" android:textSize="11sp" />
+            <Button android:id="@+id/dev_plus_plus"   style="@style/DevSymKey" android:text="++"  android:layout_weight="1" android:textSize="11sp" />
+            <Button android:id="@+id/dev_minus_minus" style="@style/DevSymKey" android:text="--"  android:layout_weight="1" android:textSize="11sp" />
+        </LinearLayout>
+
+        <!-- SECTION 5: ASSIGNMENT OPERATORS -->
+        <LinearLayout style="@style/KeyRow">
+            <Button android:id="@+id/dev_plus_eq"  style="@style/DevSymKey" android:text="+="  android:layout_weight="1" />
+            <Button android:id="@+id/dev_minus_eq" style="@style/DevSymKey" android:text="-="  android:layout_weight="1" />
+            <Button android:id="@+id/dev_star_eq"  style="@style/DevSymKey" android:text="*="  android:layout_weight="1" />
+            <Button android:id="@+id/dev_slash_eq" style="@style/DevSymKey" android:text="/="  android:layout_weight="1" />
+            <Button android:id="@+id/dev_dot"      style="@style/DevSymKey" android:text="."   android:layout_weight="0.8" />
+            <Button android:id="@+id/dev_semi"     style="@style/DevSymKey" android:text=";"   android:layout_weight="0.8" />
+            <Button android:id="@+id/dev_colon"    style="@style/DevSymKey" android:text=":"   android:layout_weight="0.8" />
+        </LinearLayout>
+
+        <!-- SECTION 6: HORIZONTAL SCROLL FOR PROFESSIONAL SHUTCUTS -->
+        <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginTop="4dp"
             android:paddingBottom="2dp"
-            android:gravity="center">
+            android:scrollbars="none">
 
-            <Button android:id="@+id/kb_chip_ctrl_c" style="@style/KeyboardChip" android:text="Ctrl+C" />
-            <Button android:id="@+id/kb_chip_ctrl_v" style="@style/KeyboardChip" android:text="Ctrl+V" />
-            <Button android:id="@+id/kb_chip_ctrl_x" style="@style/KeyboardChip" android:text="Ctrl+X" />
-            <Button android:id="@+id/kb_chip_ctrl_z" style="@style/KeyboardChip" android:text="Ctrl+Z" />
-            <Button android:id="@+id/kb_chip_ctrl_y" style="@style/KeyboardChip" android:text="Ctrl+`" />
-            <Button android:id="@+id/kb_chip_ctrl_s" style="@style/KeyboardChip" android:text="Ctrl+S" />
-            <Button android:id="@+id/kb_chip_ctrl_f" style="@style/KeyboardChip" android:text="Ctrl+F" />
-            <Button android:id="@+id/kb_chip_ctrl_h" style="@style/KeyboardChip" android:text="Ctrl+Sh+P" />
-            <Button android:id="@+id/kb_chip_alt_tab" style="@style/KeyboardChip" android:text="Ctrl+K" />
-        </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp">
+
+                <!-- VS Code Shortcuts -->
+                <Button android:id="@+id/chip_vs_palette" style="@style/KeyboardChip" android:text="Ctrl+Sh+P (Palette)" />
+                <Button android:id="@+id/chip_vs_files"   style="@style/KeyboardChip" android:text="Ctrl+P (Files)" />
+                <Button android:id="@+id/chip_vs_sidebar" style="@style/KeyboardChip" android:text="Ctrl+B (Sidebar)" />
+                <Button android:id="@+id/chip_vs_term"    style="@style/KeyboardChip" android:text="Ctrl+` (Terminal)" />
+                <Button android:id="@+id/chip_vs_format"  style="@style/KeyboardChip" android:text="Alt+Sh+F (Format)" />
+                <Button android:id="@+id/chip_vs_comment" style="@style/KeyboardChip" android:text="Ctrl+/ (Comment)" />
+                <Button android:id="@+id/chip_vs_def"     style="@style/KeyboardChip" android:text="F12 (Go Def)" />
+
+                <!-- Android Studio Shortcuts -->
+                <Button android:id="@+id/chip_as_everywhere" style="@style/KeyboardChip" android:text="Double-Shift" />
+                <Button android:id="@+id/chip_as_class"      style="@style/KeyboardChip" android:text="Ctrl+N (Go Class)" />
+                <Button android:id="@+id/chip_as_recent"     style="@style/KeyboardChip" android:text="Ctrl+E (Recents)" />
+                <Button android:id="@+id/chip_as_format"     style="@style/KeyboardChip" android:text="Ctrl+Alt+L (Format)" />
+
+                <!-- Cursor AI Shortcuts -->
+                <Button android:id="@+id/chip_cur_edit"      style="@style/KeyboardChip" android:text="Ctrl+K (AI Edit)" />
+                <Button android:id="@+id/chip_cur_chat"      style="@style/KeyboardChip" android:text="Ctrl+L (AI Chat)" />
+                <Button android:id="@+id/chip_cur_composer"  style="@style/KeyboardChip" android:text="Ctrl+I (AI Composer)" />
+
+                <!-- Terminal Shortcuts -->
+                <Button android:id="@+id/chip_term_interrupt" style="@style/KeyboardChip" android:text="Ctrl+C (Interrupt)" />
+                <Button android:id="@+id/chip_term_paste"     style="@style/KeyboardChip" android:text="Ctrl+V (Paste)" />
+                <Button android:id="@+id/chip_term_cut"       style="@style/KeyboardChip" android:text="Ctrl+X (Cut)" />
+                <Button android:id="@+id/chip_term_undo"      style="@style/KeyboardChip" android:text="Ctrl+Z (Undo)" />
+                <Button android:id="@+id/chip_term_history"   style="@style/KeyboardChip" android:text="Ctrl+R (History)" />
+                <Button android:id="@+id/chip_term_save"      style="@style/KeyboardChip" android:text="Ctrl+S (Save)" />
+
+                <!-- System Shortcuts -->
+                <Button android:id="@+id/chip_sys_alt_tab"   style="@style/KeyboardChip" android:text="Alt+Tab (Switch)" />
+                <Button android:id="@+id/chip_sys_alt_f4"    style="@style/KeyboardChip" android:text="Alt+F4 (Close)" />
+                <Button android:id="@+id/chip_sys_tab"       style="@style/KeyboardChip" android:text="Ctrl+Tab (Next)" />
+                <Button android:id="@+id/chip_sys_tab_prev"  style="@style/KeyboardChip" android:text="Ctrl+Sh+Tab (Prev)" />
+
+
+
+            </LinearLayout>
+        </HorizontalScrollView>
     </LinearLayout>
 
 </LinearLayout>

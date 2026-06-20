@@ -91,12 +91,60 @@ public class StreamView extends SurfaceView {
                 });
     }
 
+    private final android.os.Handler tapHandler = new android.os.Handler(android.os.Looper.getMainLooper());
+    private int tapCount = 0;
+    private long lastTapTime = 0;
+    private float lastTapX = 0f;
+    private float lastTapY = 0f;
+    private final Runnable tapRunnable = new Runnable() {
+        @Override
+        public void run() {
+            if (tapCount == 2) {
+                resetPanZoom();
+            }
+            tapCount = 0;
+        }
+    };
+
+    private void performTripleTapZoom(float touchX, float touchY) {
+        curScale = 1.0f;
+        curTransX = (getWidth() / 2.0f) - touchX;
+        curTransY = (getHeight() / 2.0f) - touchY;
+        clampTranslation();
+        applyTransform();
+        if (panZoomListener != null) {
+            panZoomListener.onZoomChanged(curScale);
+        }
+    }
+
     /**
      * Handle a touch event as pan + pinch-zoom on the video surface.
      * Called by Game.java ONLY while "MOVER" (hand) mode is enabled, so it never
      * interferes with normal touch-to-mouse input. Always consumes the event.
      */
     public boolean handlePanZoomTouch(MotionEvent event) {
+        if (event.getActionMasked() == MotionEvent.ACTION_DOWN) {
+            long now = System.currentTimeMillis();
+            if (now - lastTapTime < 300) {
+                tapCount++;
+            } else {
+                tapCount = 1;
+            }
+            lastTapTime = now;
+            lastTapX = event.getX();
+            lastTapY = event.getY();
+
+            tapHandler.removeCallbacks(tapRunnable);
+
+            if (tapCount == 3) {
+                performTripleTapZoom(lastTapX, lastTapY);
+                tapCount = 0;
+                return true;
+            } else {
+                tapHandler.postDelayed(tapRunnable, 250);
+            }
+        }
+
         ensureScaleDetector();
         scaleDetector.onTouchEvent(event);
 
@@ -127,6 +175,7 @@ public class StreamView extends SurfaceView {
         }
         return true;
     }
+
 
     /** Average position of active pointers, optionally skipping one (a finger lifting). */
     private float[] computeFocus(MotionEvent event, int skipIndex) {
