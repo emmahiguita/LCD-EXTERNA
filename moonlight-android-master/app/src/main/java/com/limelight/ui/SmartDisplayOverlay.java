@@ -145,6 +145,7 @@ public class SmartDisplayOverlay {
     // Keyboard drag state
     private float kbTouchOffsetX, kbTouchOffsetY;
     private boolean kbDragging = false;
+    private ScaleGestureDetector scaleGestureDetector;
 
     // Callbacks into Game.java for actions the overlay cannot perform by itself.
     public interface Listener {
@@ -297,6 +298,18 @@ public class SmartDisplayOverlay {
         if (topBar != null) {
             topBar.setOnTouchListener(this::onKeyboardTouch);
         }
+
+        // Initialize two-finger pinch-to-zoom detector for keyboard scaling
+        scaleGestureDetector = new ScaleGestureDetector(context, new ScaleGestureDetector.SimpleOnScaleGestureListener() {
+            @Override
+            public boolean onScale(ScaleGestureDetector detector) {
+                oneHandedState = 0; // Reset one-handed mode on manual scaling
+                keyboardScale *= detector.getScaleFactor();
+                keyboardScale = Math.max(0.4f, Math.min(1.2f, keyboardScale));
+                applyOneHandedMode();
+                return true;
+            }
+        });
 
         // Apply scale and position at startup
         applyOneHandedMode();
@@ -860,6 +873,14 @@ public class SmartDisplayOverlay {
     }
 
     private boolean onKeyboardTouch(View v, MotionEvent e) {
+        if (scaleGestureDetector != null) {
+            scaleGestureDetector.onTouchEvent(e);
+            if (scaleGestureDetector.isInProgress()) {
+                kbDragging = false;
+                return true;
+            }
+        }
+
         // If touch is on a clickable child of the top bar, let the child handle it
         View topBar = overlayKeyboardRoot.findViewById(R.id.keyboardTopBar);
         if (v == topBar && topBar instanceof ViewGroup) {

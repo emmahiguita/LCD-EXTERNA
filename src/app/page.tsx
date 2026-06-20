@@ -7,7 +7,7 @@ import {
   ChevronRight, Loader2, Maximize2, RotateCcw, ZoomIn, ZoomOut,
   Network, Shield, Radio, Code, Hand, Terminal, Keyboard as KeyboardIcon,
   LayoutDashboard, Copy, Eye, EyeOff, Cpu, HardDrive, Battery, Thermometer,
-  BatteryCharging, Info
+  BatteryCharging, Info, Home, Volume2, VolumeX, Power
 } from 'lucide-react';
 import { OptimizedKeyboard } from '@/components/keyboard';
 import type { ModifierState, KeyboardMode } from '@/components/keyboard';
@@ -877,71 +877,142 @@ export default function SmartDisplayDashboard() {
                       </div>
 
                       {/* Quick Actions Grid */}
-                      <div className="space-y-3">
-                        <h3 className="text-xs font-bold uppercase tracking-wider text-white/60">Acciones Rápidas</h3>
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                          <button 
-                            onClick={launchStream}
-                            className="p-3 rounded-xl border border-[#3B82F6]/25 bg-[#3B82F6]/10 text-[#3B82F6] hover:bg-[#3B82F6]/20 transition-all font-semibold text-xs flex flex-col items-center justify-center gap-2 shadow-lg"
-                          >
-                            <Radio size={16} />
-                            <span>Proyectar Pantalla</span>
-                          </button>
-                          
-                          <button 
-                            onClick={() => runAction('open_screen', 'Espejo scrcpy')}
-                            className="p-3 rounded-xl border border-white/5 bg-[#0D1321] text-white/80 hover:bg-[#131C31] hover:text-white transition-all font-semibold text-xs flex flex-col items-center justify-center gap-2"
-                          >
-                            <Monitor size={16} />
-                            <span>Espejo scrcpy</span>
-                          </button>
+                      <div className="space-y-5">
+                        {/* Section: Multimedia and Projection */}
+                        <div className="space-y-2">
+                          <h3 className="text-[10px] font-bold uppercase tracking-wider text-white/40">Proyección y Multimedia</h3>
+                          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                            <button 
+                              onClick={launchStream}
+                              className="p-3 rounded-xl border border-[#3B82F6]/25 bg-[#3B82F6]/10 text-[#3B82F6] hover:bg-[#3B82F6]/20 transition-all font-semibold text-xs flex flex-col items-center justify-center gap-2 shadow-lg"
+                            >
+                              <Radio size={16} />
+                              <span>Proyectar Pantalla</span>
+                            </button>
+                            
+                            <button 
+                              onClick={() => runAction('open_screen', 'Espejo scrcpy')}
+                              className="p-3 rounded-xl border border-white/5 bg-[#0D1321] text-white/80 hover:bg-[#131C31] hover:text-white transition-all font-semibold text-xs flex flex-col items-center justify-center gap-2"
+                            >
+                              <Monitor size={16} />
+                              <span>Espejo scrcpy</span>
+                            </button>
 
-                          <button 
-                            onClick={() => runAction('enable_wifi', 'Habilitar Wi-Fi')}
-                            className="p-3 rounded-xl border border-white/5 bg-[#0D1321] text-white/80 hover:bg-[#131C31] hover:text-white transition-all font-semibold text-xs flex flex-col items-center justify-center gap-2"
-                          >
-                            <Wifi size={16} />
-                            <span>Activar Wi-Fi</span>
-                          </button>
+                            <button 
+                              onClick={async () => {
+                                const nextRec = !recording;
+                                setRecording(nextRec);
+                                await runAction(nextRec ? 'start_record' : 'stop_record', nextRec ? 'Iniciar Grabación' : 'Detener Grabación');
+                              }}
+                              className={`p-3 rounded-xl border transition-all font-semibold text-xs flex flex-col items-center justify-center gap-2
+                                ${recording 
+                                  ? 'border-red-500/30 bg-red-500/10 text-red-400 animate-pulse' 
+                                  : 'border-white/5 bg-[#0D1321] text-white/80 hover:bg-[#131C31] hover:text-white'}`}
+                            >
+                              <Monitor size={16} />
+                              <span>{recording ? 'Detener Grabación' : 'Grabar Pantalla'}</span>
+                            </button>
 
-                          <button 
-                            onClick={() => runAction('screenshot', 'Tomar Captura')}
-                            className="p-3 rounded-xl border border-white/5 bg-[#0D1321] text-white/80 hover:bg-[#131C31] hover:text-white transition-all font-semibold text-xs flex flex-col items-center justify-center gap-2"
-                          >
-                            <Monitor size={16} />
-                            <span>Tomar Captura</span>
-                          </button>
+                            <button 
+                              onClick={() => runAction('screenshot', 'Tomar Captura')}
+                              className="p-3 rounded-xl border border-white/5 bg-[#0D1321] text-white/80 hover:bg-[#131C31] hover:text-white transition-all font-semibold text-xs flex flex-col items-center justify-center gap-2"
+                            >
+                              <Monitor size={16} />
+                              <span>Tomar Captura</span>
+                            </button>
+                          </div>
+                        </div>
 
-                          <button 
-                            onClick={async () => {
-                              const nextRec = !recording;
-                              setRecording(nextRec);
-                              await runAction(nextRec ? 'start_record' : 'stop_record', nextRec ? 'Iniciar Grabación' : 'Detener Grabación');
-                            }}
-                            className={`p-3 rounded-xl border transition-all font-semibold text-xs flex flex-col items-center justify-center gap-2
-                              ${recording 
-                                ? 'border-red-500/30 bg-red-500/10 text-red-400 animate-pulse' 
-                                : 'border-white/5 bg-[#0D1321] text-white/80 hover:bg-[#131C31] hover:text-white'}`}
-                          >
-                            <Monitor size={16} />
-                            <span>{recording ? 'Detener Grabación' : 'Grabar Pantalla'}</span>
-                          </button>
+                        {/* Section: Device Control */}
+                        <div className="space-y-2">
+                          <h3 className="text-[10px] font-bold uppercase tracking-wider text-white/40">Navegación y Audio</h3>
+                          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                            <button 
+                              onClick={() => runAction('keyevent', 'Enviar Inicio (Home)', { keycode: 3 })}
+                              className="p-3 rounded-xl border border-white/5 bg-[#0D1321] text-white/80 hover:bg-[#131C31] hover:text-white transition-all font-semibold text-xs flex flex-col items-center justify-center gap-2"
+                            >
+                              <Home size={16} />
+                              <span>Inicio (Home)</span>
+                            </button>
 
-                          <button 
-                            onClick={() => runAction('restart_adb', 'Reiniciar ADB')}
-                            className="p-3 rounded-xl border border-white/5 bg-[#0D1321] text-white/80 hover:bg-[#131C31] hover:text-white transition-all font-semibold text-xs flex flex-col items-center justify-center gap-2"
-                          >
-                            <RefreshCw size={16} />
-                            <span>Reiniciar ADB</span>
-                          </button>
+                            <button 
+                              onClick={() => runAction('keyevent', 'Enviar Atrás', { keycode: 4 })}
+                              className="p-3 rounded-xl border border-white/5 bg-[#0D1321] text-white/80 hover:bg-[#131C31] hover:text-white transition-all font-semibold text-xs flex flex-col items-center justify-center gap-2"
+                            >
+                              <RefreshCw size={16} className="-scale-x-100" />
+                              <span>Atrás</span>
+                            </button>
 
-                          <button 
-                            onClick={() => runAction('power_off', 'Apagar Celular')}
-                            className="p-3 rounded-xl border border-red-500/15 bg-red-500/5 text-red-400/80 hover:bg-red-500/15 hover:text-red-400 transition-all font-semibold text-xs flex flex-col items-center justify-center gap-2"
-                          >
-                            <XCircle size={16} />
-                            <span>Apagar Celular</span>
-                          </button>
+                            <button 
+                              onClick={() => runAction('keyevent', 'Subir Volumen', { keycode: 24 })}
+                              className="p-3 rounded-xl border border-white/5 bg-[#0D1321] text-white/80 hover:bg-[#131C31] hover:text-white transition-all font-semibold text-xs flex flex-col items-center justify-center gap-2"
+                            >
+                              <Volume2 size={16} />
+                              <span>Subir Volumen</span>
+                            </button>
+
+                            <button 
+                              onClick={() => runAction('keyevent', 'Bajar Volumen', { keycode: 25 })}
+                              className="p-3 rounded-xl border border-white/5 bg-[#0D1321] text-white/80 hover:bg-[#131C31] hover:text-white transition-all font-semibold text-xs flex flex-col items-center justify-center gap-2"
+                            >
+                              <VolumeX size={16} />
+                              <span>Bajar Volumen</span>
+                            </button>
+                          </div>
+                        </div>
+
+                        {/* Section: System and Power */}
+                        <div className="space-y-2">
+                          <h3 className="text-[10px] font-bold uppercase tracking-wider text-white/40">Mantenimiento y Energía</h3>
+                          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                            <button 
+                              onClick={() => runAction('enable_wifi', 'Habilitar Wi-Fi')}
+                              className="p-3 rounded-xl border border-white/5 bg-[#0D1321] text-white/80 hover:bg-[#131C31] hover:text-white transition-all font-semibold text-xs flex flex-col items-center justify-center gap-2"
+                            >
+                              <Wifi size={16} />
+                              <span>Activar Wi-Fi</span>
+                            </button>
+
+                            <button 
+                              onClick={() => runAction('restart_adb', 'Reiniciar ADB')}
+                              className="p-3 rounded-xl border border-white/5 bg-[#0D1321] text-white/80 hover:bg-[#131C31] hover:text-white transition-all font-semibold text-xs flex flex-col items-center justify-center gap-2"
+                            >
+                              <RefreshCw size={16} />
+                              <span>Reiniciar ADB</span>
+                            </button>
+
+                            <button 
+                              onClick={() => runAction('reboot', 'Reiniciar Dispositivo')}
+                              className="p-3 rounded-xl border border-white/5 bg-[#0D1321] text-white/80 hover:bg-[#131C31] hover:text-white transition-all font-semibold text-xs flex flex-col items-center justify-center gap-2"
+                            >
+                              <Power size={16} className="text-amber-400/80" />
+                              <span>Reiniciar Sistema</span>
+                            </button>
+
+                            <button 
+                              onClick={() => runAction('power_off', 'Apagar Celular')}
+                              className="p-3 rounded-xl border border-red-500/15 bg-red-500/5 text-red-400/80 hover:bg-red-500/15 hover:text-red-400 transition-all font-semibold text-xs flex flex-col items-center justify-center gap-2"
+                            >
+                              <XCircle size={16} />
+                              <span>Apagar Celular</span>
+                            </button>
+
+                            <button 
+                              onClick={() => runAction('reboot_bootloader', 'Reiniciar en Bootloader')}
+                              className="p-3 rounded-xl border border-white/5 bg-[#0D1321] text-white/60 hover:bg-[#131C31] hover:text-white transition-all font-semibold text-[10px] flex flex-col items-center justify-center gap-1.5"
+                            >
+                              <Cpu size={14} />
+                              <span>Reboot Bootloader</span>
+                            </button>
+
+                            <button 
+                              onClick={() => runAction('reboot_recovery', 'Reiniciar en Recovery')}
+                              className="p-3 rounded-xl border border-white/5 bg-[#0D1321] text-white/60 hover:bg-[#131C31] hover:text-white transition-all font-semibold text-[10px] flex flex-col items-center justify-center gap-1.5"
+                            >
+                              <HardDrive size={14} />
+                              <span>Reboot Recovery</span>
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </>

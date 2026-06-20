@@ -121,4 +121,24 @@ export class AdbService {
   public static async autoDetect(serial: string): Promise<ActionResponse> {
     return this.executeAction('auto_detect', serial);
   }
+
+  /**
+   * Reboots the connected device.
+   */
+  public static async reboot(serial: string | null, mode: 'system' | 'bootloader' | 'recovery' = 'system'): Promise<ActionResponse> {
+    const actionMap = {
+      system: 'reboot',
+      bootloader: 'reboot_bootloader',
+      recovery: 'reboot_recovery',
+    };
+    return this.executeAction(actionMap[mode], serial);
+  }
+
+  /**
+   * Sends a raw keyevent to the device.
+   */
+  public static async sendKeyEvent(serial: string | null, keycode: number): Promise<ActionResponse> {
+    return this.executeAction('keyevent', serial, null, { keycode });
+  }
 }
+
