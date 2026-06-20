@@ -392,7 +392,10 @@ function compileAndStartInputAgent() {
         const typesDll = fs.existsSync(path.join(wpfDir, 'UIAutomationTypes.dll'))
           ? path.join(wpfDir, 'UIAutomationTypes.dll')
           : 'UIAutomationTypes.dll';
-        const cmd = `"${cscPath}" /out:"${agentExePath}" /target:exe /optimize+ /r:"${clientDll}" /r:"${typesDll}" "${agentCsPath}"`;
+        const baseDll = fs.existsSync(path.join(wpfDir, 'WindowsBase.dll'))
+          ? path.join(wpfDir, 'WindowsBase.dll')
+          : 'WindowsBase.dll';
+        const cmd = `"${cscPath}" /out:"${agentExePath}" /target:exe /optimize+ /r:"${clientDll}" /r:"${typesDll}" /r:"${baseDll}" "${agentCsPath}"`;
         execSync(cmd, { stdio: 'ignore' });
         console.log('[Agent] Compilación exitosa del agente nativo.');
       } catch (err) {
