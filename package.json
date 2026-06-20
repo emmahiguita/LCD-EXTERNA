@@ -6,9 +6,9 @@
   "main": "electron/main.js",
   "scripts": {
     "start": "electron .",
-    "dev": "next build && electron .",
+    "dev": "node scripts/clean_api.js && next build && node scripts/fix_paths.js && electron .",
     "build:apk": "node scripts/build_only.js",
-    "build": "next build",
+    "build": "node scripts/clean_api.js && next build && node scripts/fix_paths.js",
     "auto-sync": "node scripts/legacy/scratch_auto_sync.js",
     "test-conn": "node scripts/legacy/test_connection.js",
     "install:moonlight": "node scripts/legacy/scratch_install_moonlight.js",

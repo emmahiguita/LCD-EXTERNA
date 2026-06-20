@@ -4,6 +4,13 @@ import { useEffect, useRef, useState } from 'react';
 import { Smartphone, Monitor, MousePointer, Keyboard, Settings, RefreshCw, Command, Play, Power, Volume2, Sparkles } from 'lucide-react';
 import { useConnectionSettings } from '@/hooks';
 
+const getApiUrl = (path: string) => {
+  if (typeof window !== 'undefined' && window.location.protocol === 'file:') {
+    return `http://localhost:3001${path}`;
+  }
+  return path;
+};
+
 export default function MobileDisplayReceiver() {
   const [connected, setConnected] = useState(false);
   const wsRef = useRef<WebSocket | null>(null);
@@ -21,7 +28,7 @@ export default function MobileDisplayReceiver() {
     if (!pin.trim()) return;
     setPairingStatus('Enlazando...');
     try {
-      const res = await fetch('/api/actions', {
+      const res = await fetch(getApiUrl('/api/actions'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ action: 'pair_pin', pin })

@@ -596,33 +596,15 @@ public class Game extends Activity implements SurfaceHolder.Callback,
                 applyOrientationMode(mode);
             }
 
-            private int currentVirtualDesktop = 0;
-
             @Override
             public void onMonitorSelected(int index) {
-                // SmartDisplay AI: Send virtual desktop switching keys relative to current index
-                int diff = index - currentVirtualDesktop;
-                if (diff > 0) {
-                    for (int i = 0; i < diff; i++) {
-                        sendVirtualDesktopKey(true);
-                        try { Thread.sleep(150); } catch (InterruptedException e) {}
-                    }
-                } else if (diff < 0) {
-                    for (int i = 0; i < -diff; i++) {
-                        sendVirtualDesktopKey(false);
-                        try { Thread.sleep(150); } catch (InterruptedException e) {}
-                    }
-                }
-                currentVirtualDesktop = index;
-                android.util.Log.i("SmartDisplay", "Virtual desktop switched to: " + (index + 1));
-            }
-
-            private void sendVirtualDesktopKey(boolean right) {
+                // SmartDisplay AI: Send Win + [Number] to focus/open the application at taskbar position (1, 2, 3)
                 if (conn == null) return;
-                short vkCode = right ? (short) 0x8027 : (short) 0x8025; // VK_RIGHT (0x27), VK_LEFT (0x25)
-                byte modifiers = (byte) (com.limelight.nvstream.input.KeyboardPacket.MODIFIER_CTRL | com.limelight.nvstream.input.KeyboardPacket.MODIFIER_META);
+                short vkCode = (short) ((0x80 << 8) | (0x31 + index)); // 0x31 is '1', 0x32 is '2', 0x33 is '3'
+                byte modifiers = com.limelight.nvstream.input.KeyboardPacket.MODIFIER_META; // Win key
                 conn.sendKeyboardInput(vkCode, com.limelight.nvstream.input.KeyboardPacket.KEY_DOWN, modifiers, (byte) 0);
-                conn.sendKeyboardInput(vkCode, com.limelight.nvstream.input.KeyboardPacket.KEY_UP, modifiers, (byte) 0);
+                conn.sendKeyboardInput(vkCode, com.limelight.nvstream.input.KeyboardPacket.KEY_UP,   modifiers, (byte) 0);
+                android.util.Log.i("SmartDisplay", "Focused app at position: " + (index + 1));
             }
         });
     }

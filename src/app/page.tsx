@@ -11,9 +11,10 @@ import {
 } from 'lucide-react';
 import { OptimizedKeyboard } from '@/components/keyboard';
 import type { ModifierState, KeyboardMode } from '@/components/keyboard';
-import { useConnectionSettings, useDeviceRegistry, useConnectionManager, registerGlobalSend, unregisterGlobalSend, type ConnectionMode } from '@/hooks';
+import { useConnectionSettings, useDeviceRegistry, type ConnectionMode } from '@/hooks';
 import { isMobileNetwork } from '@/lib/ConnectionResolver';
 import { useAdaptiveConnection } from '@/hooks/useAdaptiveConnection';
+import { AdbService } from '@/lib/AdbService';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Types
@@ -36,6 +37,7 @@ type DeviceData = {
   state?: string;
   ip?: string;
 };
+
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Main Dashboard
@@ -144,13 +146,6 @@ export default function SmartDisplayDashboard() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [adaptiveState.connected, adaptiveState.transport, connSettings.config.tailscaleIp]);
 
-  // Register the global send function
-  useEffect(() => {
-    registerGlobalSend(adaptiveSend);
-    return () => {
-      unregisterGlobalSend();
-    };
-  }, [adaptiveSend]);
 
   // Handle JMuxer initialization when video panel is mounted
   useEffect(() => {
@@ -308,16 +303,11 @@ export default function SmartDisplayDashboard() {
     }
 
     addLog(`Ejecutando: ${desc}...`);
-    try {
-      const r = await fetch('/api/actions', {
-        method: 'POST',
-        body: JSON.stringify({ action, ip: deviceIP, serial: activeSerial, ...extraBody }),
-        headers: { 'Content-Type': 'application/json' },
-      });
-      const d = await r.json();
-      addLog(d.success ? `✓ ${d.message || desc}` : `✗ ${d.error}`);
-    } catch (err) {
-      addLog('✗ Error de conexión con API');
+    const d = await AdbService.executeAction(action, activeSerial, deviceIP, extraBody);
+    if (d.success) {
+      addLog(`✓ ${d.message || desc}`);
+    } else {
+      addLog(`✗ ${d.error || 'Error'}`);
     }
   }, [deviceIP, activeSerial, addLog]);
 
@@ -364,16 +354,14 @@ export default function SmartDisplayDashboard() {
       }
 
       const serialToUse = forcedSerial !== undefined ? forcedSerial : activeSerial;
-      const serialParam = serialToUse ? `?serial=${encodeURIComponent(serialToUse)}` : '';
-      const r = await fetch(`/api/device${serialParam}`);
-      const resData = await r.json();
+      const resData = await AdbService.fetchDevices(serialToUse || undefined);
 
       if (resData.connected && resData.devices) {
         setDevicesList(resData.devices);
         const d = resData.activeDevice;
         if (d) {
           setDevice(d);
-          if (!activeSerial) setActiveSerial(d.serial);
+          if (!activeSerial) setActiveSerial(d.serial || null);
           if (d.ip) {
             setDeviceIP(d.ip);
             if (deviceIP !== d.ip) addLog(`Dispositivo detectado: ${d.ip}`);
@@ -410,12 +398,7 @@ export default function SmartDisplayDashboard() {
     setPairingStatus('sending');
     setPairingMsg('Enviando PIN a Sunshine…');
     try {
-      const r = await fetch('/api/actions', {
-        method: 'POST',
-        body: JSON.stringify({ action: 'pair_pin', pin: pairingPin }),
-        headers: { 'Content-Type': 'application/json' },
-      });
-      const d = await r.json();
+      const d = await AdbService.pairPin(pairingPin);
       if (d.success) {
         setPairingStatus('ok');
         setPairingMsg('✓ PIN enviado — acepta en Sunshine si se requiere');
@@ -437,12 +420,7 @@ export default function SmartDisplayDashboard() {
   const launchStream = useCallback(async () => {
     addLog('Solicitando proyección automática de la pantalla del PC...');
     try {
-      const r = await fetch('/api/actions', {
-        method: 'POST',
-        body: JSON.stringify({ action: 'launch_stream' }),
-        headers: { 'Content-Type': 'application/json' },
-      });
-      const d = await r.json();
+      const d = await AdbService.launchStream();
       if (d.success) {
         addLog('✓ Proyección de pantalla iniciada en el celular');
       } else {
@@ -457,11 +435,7 @@ export default function SmartDisplayDashboard() {
     if (activeSerial) {
       const injectPc = async () => {
         try {
-          await fetch('/api/actions', {
-            method: 'POST',
-            body: JSON.stringify({ action: 'auto_detect', serial: activeSerial }),
-            headers: { 'Content-Type': 'application/json' },
-          });
+          await AdbService.autoDetect(activeSerial);
         } catch (_) {}
       };
       injectPc();
@@ -669,7 +643,7 @@ export default function SmartDisplayDashboard() {
                 {/* Stats Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                   {/* WebSocket Clients */}
-                  <div className="p-4 rounded-xl border border-white/5 bg-[#0D1321] flex flex-col justify-between h-28 shadow-lg">
+                  <div className="p-4 rounded-xl border border-white/5 bg-[#0D1321] flex flex-col justify-between h-28 shadow-lg glow-card hover-scale">
                     <div className="flex items-center justify-between text-white/40 text-[10px] uppercase font-bold tracking-wider">
                       <span>Clientes WebSocket</span>
                       <Radio size={14} className="text-cyan-400" />
@@ -681,7 +655,7 @@ export default function SmartDisplayDashboard() {
                   </div>
 
                   {/* Connected ADB Device */}
-                  <div className="p-4 rounded-xl border border-white/5 bg-[#0D1321] flex flex-col justify-between h-28 shadow-lg">
+                  <div className="p-4 rounded-xl border border-white/5 bg-[#0D1321] flex flex-col justify-between h-28 shadow-lg glow-card hover-scale">
                     <div className="flex items-center justify-between text-white/40 text-[10px] uppercase font-bold tracking-wider">
                       <span>Dispositivo ADB</span>
                       <Smartphone size={14} className="text-emerald-400" />
@@ -697,7 +671,7 @@ export default function SmartDisplayDashboard() {
                   </div>
 
                   {/* Stream Active */}
-                  <div className="p-4 rounded-xl border border-white/5 bg-[#0D1321] flex flex-col justify-between h-28 shadow-lg">
+                  <div className="p-4 rounded-xl border border-white/5 bg-[#0D1321] flex flex-col justify-between h-28 shadow-lg glow-card hover-scale">
                     <div className="flex items-center justify-between text-white/40 text-[10px] uppercase font-bold tracking-wider">
                       <span>Proyección Activa</span>
                       <Monitor size={14} className="text-[#3B82F6]" />
@@ -713,7 +687,7 @@ export default function SmartDisplayDashboard() {
                   </div>
 
                   {/* IP Address */}
-                  <div className="p-4 rounded-xl border border-white/5 bg-[#0D1321] flex flex-col justify-between h-28 shadow-lg">
+                  <div className="p-4 rounded-xl border border-white/5 bg-[#0D1321] flex flex-col justify-between h-28 shadow-lg glow-card hover-scale">
                     <div className="flex items-center justify-between text-white/40 text-[10px] uppercase font-bold tracking-wider">
                       <span>Dirección IP Host</span>
                       <Wifi size={14} className="text-amber-400" />
@@ -728,7 +702,7 @@ export default function SmartDisplayDashboard() {
                 </div>
 
                 {/* Session Token Box */}
-                <div className="p-4 rounded-xl border border-white/5 bg-[#0D1321] flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-lg">
+                <div className="p-4 rounded-xl border border-white/5 bg-[#0D1321] flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-lg premium-panel">
                   <div className="space-y-1">
                     <h3 className="text-xs font-bold uppercase tracking-wider text-white/60">Token de Seguridad</h3>
                     <p className="text-[10px] text-white/40">Requerido por los clientes para establecer conexión segura</p>
@@ -1279,12 +1253,12 @@ function NavItem({ icon, label, active, badge, badgeColor, onClick }: {
   return (
     <button
       onClick={onClick}
-      className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all text-left
+      className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all text-left duration-200 active-scale
         ${active
-          ? 'bg-cyan-500/10 border border-cyan-500/20 text-cyan-300'
-          : 'text-white/50 hover:text-white/80 hover:bg-white/[0.04] border border-transparent'}`}
+          ? 'bg-gradient-to-r from-blue-500/10 to-blue-500/0 border-l-4 border-blue-500 text-blue-400 pl-2 rounded-l-none'
+          : 'text-white/50 hover:text-white/80 hover:bg-white/[0.03] border border-transparent'}`}
     >
-      <span className={active ? 'text-cyan-400' : 'text-white/30'}>{icon}</span>
+      <span className={active ? 'text-blue-400' : 'text-white/30'}>{icon}</span>
       <span className="flex-1 leading-none truncate opacity-0 group-hover:opacity-100 transition-opacity duration-200">{label}</span>
       {badge && (
         <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-md border opacity-0 group-hover:opacity-100 transition-opacity duration-200">
