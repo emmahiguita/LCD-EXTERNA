@@ -1907,6 +1907,9 @@ public class Game extends Activity implements SurfaceHolder.Callback,
 
     @Override
     protected void onPause() {
+        if (logicalKeyboard != null) {
+            logicalKeyboard.onInputSuspended();
+        }
         if (isFinishing()) {
             // Stop any further input device notifications before we lose focus (and pointer capture)
             if (controllerHandler != null) {
@@ -3467,6 +3470,9 @@ public class Game extends Activity implements SurfaceHolder.Callback,
 
     @Override
     public void connectionTerminated(final int errorCode) {
+        if (logicalKeyboard != null) {
+            logicalKeyboard.onInputSuspended();
+        }
         // ÔöÇÔöÇ SmartDisplay AI: si estamos relanzando por bitrate adaptativo, ÔöÇÔöÇ
         // la terminaci├│n de la conexi├│n vieja es esperada ÔÇö ignorarla.
         if (adaptiveReconnecting) {

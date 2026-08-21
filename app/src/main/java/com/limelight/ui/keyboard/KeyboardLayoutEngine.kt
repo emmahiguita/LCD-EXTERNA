@@ -1,23 +1,25 @@
 package com.limelight.ui.keyboard
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.content.res.Configuration
+import android.graphics.drawable.GradientDrawable
+import android.graphics.drawable.RippleDrawable
+import android.util.TypedValue
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import com.limelight.R
 
-/**
- * Constructor del layout de teclas.
- *
- * Responsabilidad única: crear filas (LinearLayout) y teclas (TextView)
- * con su estilo, disposición y listeners. No decide qué hacer cuando se
- * pulsa una tecla — delega en [ActionHandler] para eso.
- */
-class KeyboardLayoutEngine(private val context: Context) {
-
-    private enum class KeyStyle { STANDARD, PROFILE }
+class KeyboardLayoutEngine(
+    private val context: Context
+) {
+    private enum class KeyStyle {
+        STANDARD,
+        PROFILE
+    }
 
     private val isPortrait: Boolean
         get() = context.resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT
@@ -28,17 +30,15 @@ class KeyboardLayoutEngine(private val context: Context) {
     private val keyHorizontalMarginDp: Float
         get() = if (isPortrait) 1.5f else 2.0f
 
-    /** Interfaz que define qué hacer cuando se pulsa cada tipo de tecla. */
     interface ActionHandler {
         fun onCharKeyPressed(kd: KeyData)
         fun onSpecialKeyPressed(vkCode: Int)
         fun onModifierToggled(type: String, btn: TextView)
         fun onSpacePressed()
-        fun onMacro(vararg vkCodes: Int)
+        fun onRemoteAction(action: RemoteKeyAction)
         fun animateKeyPress(v: View)
         fun getConnectionStatus(): Boolean
         fun getCurrentTab(): Int
-        fun getTooltip(label: String): String
     }
 
     data class KeyData(
@@ -48,54 +48,50 @@ class KeyboardLayoutEngine(private val context: Context) {
         val vkCode: Int
     )
 
-    // ── Colecciones compartidas ─────────────────────────────────────────
-
     val allKeys = ArrayList<KeyData>()
     val allKeyViews = ArrayList<TextView>()
-    val keyBackgrounds = ArrayList<android.graphics.drawable.GradientDrawable>()
-
+    val keyBackgrounds = ArrayList<GradientDrawable>()
     var handler: ActionHandler? = null
 
-    // ── Constantes de tecla ─────────────────────────────────────────────
-
+    /*
+     * Aliases para no romper código antiguo que todavía referencia KeyboardLayoutEngine.VK_*
+     */
     companion object {
-        const val VK_BACK = 8
-        const val VK_TAB = 9
-        const val VK_RETURN = 13
-        const val VK_SHIFT = 16
-        const val VK_CONTROL = 17
-        const val VK_MENU = 18
-        const val VK_CAPITAL = 20
-        const val VK_ESCAPE = 27
-        const val VK_SPACE = 32
-        const val VK_LEFT = 37
-        const val VK_UP = 38
-        const val VK_RIGHT = 39
-        const val VK_DOWN = 40
-        const val VK_INSERT = 45
-        const val VK_DELETE = 46
-        const val VK_SNAPSHOT = 44
-        const val VK_APPS = 93
-        const val VK_F1 = 112
-        const val VK_F2 = 113
-        const val VK_F3 = 114
-        const val VK_F4 = 115
-        const val VK_F5 = 116
-        const val VK_F6 = 117
-        const val VK_F7 = 118
-        const val VK_F8 = 119
-        const val VK_F9 = 120
-        const val VK_F10 = 121
-        const val VK_F11 = 122
-        const val VK_F12 = 123
-        const val VK_LWIN = 91
-        const val VK_HOME = 36
-        const val VK_END = 35
-        const val VK_PRIOR = 33
-        const val VK_NEXT = 34
+        const val VK_BACK = Win32VirtualKey.VK_BACK
+        const val VK_TAB = Win32VirtualKey.VK_TAB
+        const val VK_RETURN = Win32VirtualKey.VK_RETURN
+        const val VK_SHIFT = Win32VirtualKey.VK_SHIFT
+        const val VK_CONTROL = Win32VirtualKey.VK_CONTROL
+        const val VK_MENU = Win32VirtualKey.VK_MENU
+        const val VK_CAPITAL = Win32VirtualKey.VK_CAPITAL
+        const val VK_ESCAPE = Win32VirtualKey.VK_ESCAPE
+        const val VK_SPACE = Win32VirtualKey.VK_SPACE
+        const val VK_LEFT = Win32VirtualKey.VK_LEFT
+        const val VK_UP = Win32VirtualKey.VK_UP
+        const val VK_RIGHT = Win32VirtualKey.VK_RIGHT
+        const val VK_DOWN = Win32VirtualKey.VK_DOWN
+        const val VK_INSERT = Win32VirtualKey.VK_INSERT
+        const val VK_DELETE = Win32VirtualKey.VK_DELETE
+        const val VK_SNAPSHOT = Win32VirtualKey.VK_SNAPSHOT
+        const val VK_APPS = Win32VirtualKey.VK_APPS
+        const val VK_F1 = Win32VirtualKey.VK_F1
+        const val VK_F2 = Win32VirtualKey.VK_F2
+        const val VK_F3 = Win32VirtualKey.VK_F3
+        const val VK_F4 = Win32VirtualKey.VK_F4
+        const val VK_F5 = Win32VirtualKey.VK_F5
+        const val VK_F6 = Win32VirtualKey.VK_F6
+        const val VK_F7 = Win32VirtualKey.VK_F7
+        const val VK_F8 = Win32VirtualKey.VK_F8
+        const val VK_F9 = Win32VirtualKey.VK_F9
+        const val VK_F10 = Win32VirtualKey.VK_F10
+        const val VK_F11 = Win32VirtualKey.VK_F11
+        const val VK_F12 = Win32VirtualKey.VK_F12
+        const val VK_LWIN = Win32VirtualKey.VK_LWIN
+        const val VK_HOME = Win32VirtualKey.VK_HOME
+        const val VK_END = Win32VirtualKey.VK_END
+        const val VK_PRIOR = Win32VirtualKey.VK_PRIOR
+        const val VK_NEXT = Win32VirtualKey.VK_NEXT
     }
-
-    // ── Construcción pública ────────────────────────────────────────────
 
     fun clearAll() {
         allKeys.clear()
@@ -103,7 +99,9 @@ class KeyboardLayoutEngine(private val context: Context) {
         keyBackgrounds.clear()
     }
 
-    // ── Tecla individual ───────────────────────────────────────────────
+    // ------------------------------------------------------------
+    // VIEW
+    // ------------------------------------------------------------
 
     private fun createKey(
         label: String,
@@ -114,12 +112,13 @@ class KeyboardLayoutEngine(private val context: Context) {
         val key = TextView(context)
         key.text = label
         key.gravity = 17
-        key.setTextColor(androidx.core.content.ContextCompat.getColor(context, R.color.kbd_key_text))
+        key.setTextColor(ContextCompat.getColor(context, R.color.kbd_key_text))
+
         val targetTextSize = when (style) {
             KeyStyle.PROFILE -> 11.5f
             KeyStyle.STANDARD -> if (isSpecial) 13f else 15.5f
         }
-        key.setTextSize(2, targetTextSize)
+        key.setTextSize(TypedValue.COMPLEX_UNIT_SP, targetTextSize)
         key.isSingleLine = style == KeyStyle.STANDARD
         if (style == KeyStyle.PROFILE) {
             key.maxLines = 2
@@ -130,261 +129,362 @@ class KeyboardLayoutEngine(private val context: Context) {
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             key.setAutoSizeTextTypeUniformWithConfiguration(
-                9, targetTextSize.toInt(), 1, android.util.TypedValue.COMPLEX_UNIT_SP)
+                9,
+                targetTextSize.toInt(),
+                1,
+                TypedValue.COMPLEX_UNIT_SP
+            )
         }
 
-        // Layout responsive con pesos y márgenes calibrados
         val params = LinearLayout.LayoutParams(0, dpToPx(keyHeightDp), weight)
-        val m = dpToPx(keyHorizontalMarginDp)
-        params.marginStart = m
-        params.marginEnd = m
+        val margin = dpToPx(keyHorizontalMarginDp)
+        params.marginStart = margin
+        params.marginEnd = margin
         key.layoutParams = params
 
-        // Jerarquía: teclas de función/modificador con fondo más oscuro
-        val fillColor = androidx.core.content.ContextCompat.getColor(
-            context, if (isSpecial) R.color.kbd_key_special_bg else R.color.kbd_key_bg)
-        val strokeColor = androidx.core.content.ContextCompat.getColor(context, R.color.kbd_key_stroke)
-        val rippleColor = androidx.core.content.ContextCompat.getColor(context, R.color.kbd_key_ripple)
-        val gd = android.graphics.drawable.GradientDrawable()
-        gd.setColor(fillColor)
-        gd.cornerRadius = dpToPx(if (isPortrait) 6f else 5f).toFloat()
-        gd.setStroke(dpToPx(1f), strokeColor)
-        val ripple = android.graphics.drawable.RippleDrawable(
-            android.content.res.ColorStateList.valueOf(rippleColor), gd, gd)
-        key.background = ripple
-        keyBackgrounds.add(gd)
+        val fillColor = ContextCompat.getColor(
+            context,
+            if (isSpecial) R.color.kbd_key_special_bg else R.color.kbd_key_bg
+        )
+        val strokeColor = ContextCompat.getColor(context, R.color.kbd_key_stroke)
+        val rippleColor = ContextCompat.getColor(context, R.color.kbd_key_ripple)
+
+        val drawable = GradientDrawable()
+        drawable.setColor(fillColor)
+        drawable.cornerRadius = dpToPx(if (isPortrait) 6f else 5f).toFloat()
+        drawable.setStroke(dpToPx(1f), strokeColor)
+
+        key.background = RippleDrawable(ColorStateList.valueOf(rippleColor), drawable, drawable)
+        keyBackgrounds += drawable
+        allKeyViews += key
+
         key.isClickable = true
         key.isFocusable = true
-        allKeyViews.add(key)
         key.minWidth = 0
         key.minHeight = 0
         return key
     }
 
-    // ── Fábrica de filas ───────────────────────────────────────────────
-
     fun createRow(weightSum: Float): LinearLayout {
-        val row = LinearLayout(context)
-        row.orientation = LinearLayout.HORIZONTAL
-        row.gravity = 16
-        row.weightSum = weightSum
-        val params = LinearLayout.LayoutParams(-1, -2)
-        params.bottomMargin = dpToPx(if (isPortrait) 3.5f else 2.5f)
-        row.layoutParams = params
-        return row
+        return LinearLayout(context).apply {
+            orientation = LinearLayout.HORIZONTAL
+            gravity = 16
+            this.weightSum = weightSum
+            layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            ).apply {
+                bottomMargin = dpToPx(if (isPortrait) 3.5f else 2.5f)
+            }
+        }
     }
 
-    // ── Constructores de teclas ─────────────────────────────────────────
+    // ------------------------------------------------------------
+    // TECLAS BASE
+    // ------------------------------------------------------------
 
-    fun addCharKey(row: LinearLayout, normal: String, shifted: String, vkCode: Int, weight: Float) {
+    fun addCharKey(
+        row: LinearLayout,
+        normal: String,
+        shifted: String,
+        vkCode: Int,
+        weight: Float
+    ) {
         val key = createKey(normal, weight, false)
-        val kd = KeyData(key, normal, shifted, vkCode)
-        allKeys.add(kd)
-        key.setOnClickListener { v ->
+        val data = KeyData(
+            view = key,
+            normalLabel = normal,
+            shiftedLabel = shifted,
+            vkCode = vkCode
+        )
+        allKeys += data
+        key.setOnClickListener { view ->
             handler?.let { h ->
-                h.animateKeyPress(v)
-                h.onCharKeyPressed(kd)
+                h.animateKeyPress(view)
+                h.onCharKeyPressed(data)
             }
         }
         row.addView(key)
     }
 
-    fun addSpecialKey(row: LinearLayout, label: String, vkCode: Int, weight: Float, tooltip: String) {
+    fun addSpecialKey(
+        row: LinearLayout,
+        label: String,
+        vkCode: Int,
+        weight: Float,
+        tooltip: String
+    ) {
         val key = createKey(label, weight, true)
         val isNormalTab = handler?.getCurrentTab() == 1
-        key.setOnClickListener { v ->
+        key.setOnClickListener { view ->
             handler?.let { h ->
-                h.animateKeyPress(v)
+                h.animateKeyPress(view)
                 h.onSpecialKeyPressed(vkCode)
                 if (!isNormalTab) {
-                    android.widget.Toast.makeText(context, tooltip, android.widget.Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, tooltip, Toast.LENGTH_SHORT).show()
                 }
             }
         }
         key.setOnLongClickListener {
-            android.widget.Toast.makeText(context, tooltip, android.widget.Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, tooltip, Toast.LENGTH_SHORT).show()
             true
         }
         row.addView(key)
     }
 
-    fun addModifierKey(row: LinearLayout, label: String, weight: Float, type: String): TextView {
+    fun addModifierKey(
+        row: LinearLayout,
+        label: String,
+        weight: Float,
+        type: String
+    ): TextView {
         val key = createKey(label, weight, true)
-        key.setOnClickListener { v ->
+        key.setOnClickListener { view ->
             handler?.let { h ->
-                h.animateKeyPress(v)
+                h.animateKeyPress(view)
                 h.onModifierToggled(type, key)
             }
         }
         key.setOnLongClickListener {
             val tooltip = when (type) {
-                "ctrl" -> "Ctrl — atajos del sistema (copiar/pegar, VS Code, Android Studio, Explorer)"
-                "shift" -> "Shift — selección múltiple"
-                "alt" -> "Alt — acceso a menús"
+                "ctrl" -> "Ctrl — tap: one-shot; doble tap: lock"
+                "shift" -> "Shift — tap: one-shot; doble tap: lock"
+                "alt" -> "Alt — tap: one-shot; doble tap: lock"
                 else -> type
             }
-            android.widget.Toast.makeText(context, tooltip, android.widget.Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, tooltip, Toast.LENGTH_SHORT).show()
             true
         }
         row.addView(key)
         return key
     }
 
-    /** Tecla de espacio. [weight] permite ajustar su tamaño relativo. */
     fun addSpaceKey(row: LinearLayout, weight: Float = 8.0f) {
         val key = createKey("␣", weight, false)
-        key.setOnClickListener { v ->
+        key.setOnClickListener { view ->
             handler?.let { h ->
-                h.animateKeyPress(v)
+                h.animateKeyPress(view)
                 h.onSpacePressed()
             }
         }
         row.addView(key)
     }
 
-    fun addMacroKey(row: LinearLayout, label: String, weight: Float, vararg vkCodes: Int) {
-        val key = createKey(label, weight, true)
-        key.setOnClickListener { v ->
+    private fun addActionKey(
+        row: LinearLayout,
+        spec: RemoteKeySpec,
+        weight: Float = 1f,
+        style: KeyStyle = KeyStyle.PROFILE
+    ) {
+        val key = createKey(profileDisplayLabel(spec.label), weight, true, style)
+        key.setOnClickListener { view ->
             handler?.let { h ->
-                h.animateKeyPress(v)
-                h.onMacro(*vkCodes)
-                val tip = h.getTooltip(label)
-                android.widget.Toast.makeText(context,
-                    "$label — $tip", android.widget.Toast.LENGTH_SHORT).show()
+                h.animateKeyPress(view)
+                h.onRemoteAction(spec.action)
+                Toast.makeText(context, spec.tooltip, Toast.LENGTH_SHORT).show()
             }
         }
         key.setOnLongClickListener {
-            handler?.let { h ->
-                val tip = h.getTooltip(label)
-                android.widget.Toast.makeText(context,
-                    "$label — $tip", android.widget.Toast.LENGTH_SHORT).show()
-            }
+            Toast.makeText(context, spec.tooltip, Toast.LENGTH_LONG).show()
             true
         }
+        setKeyIcon(key, spec.label)
         row.addView(key)
     }
 
-    // ── Renders de filas (QWERTY) ──────────────────────────────────────
+    // ------------------------------------------------------------
+    // NORMAL — 59 TECLAS
+    // ------------------------------------------------------------
 
-    fun buildNormalKeyboard(container: LinearLayout, btnShiftL: TextView?, btnShiftR: TextView?,
-                            btnCtrl: TextView?, btnAlt: TextView?) {
+    @Suppress("UNUSED_PARAMETER")
+    fun buildNormalKeyboard(
+        container: LinearLayout,
+        btnShiftL: TextView?,
+        btnShiftR: TextView?,
+        btnCtrl: TextView?,
+        btnAlt: TextView?
+    ) {
         container.addView(buildNumberRow())
         container.addView(buildQwertyRow())
         container.addView(buildHomeRow())
-        container.addView(buildShiftRow(btnShiftL, btnShiftR))
-        container.addView(buildSpaceRow(btnCtrl, btnAlt))
+        container.addView(buildShiftRow())
+        container.addView(buildSpaceRow())
     }
 
     /**
-     * Fila 1: backtick, 1-0, guion, igual y ⌫ ancho.
-     * weightSum=15: ` ×1.0 + 12×1.0 + ⌫×2.0
+     * 14 teclas.
+     * weightSum = 15
      */
     private fun buildNumberRow(): View {
-        val row = createRow(15.0f)
-        addCharKey(row, "`", "~", 192, 1.0f)   // VK_OEM_3 — necesario en terminal/regex
-        val n = arrayOf("1","2","3","4","5","6","7","8","9","0","-","=")
-        val s = arrayOf("!","@","#","$","%","^","&","*","(",")", "_","+")
-        val vk = intArrayOf(49,50,51,52,53,54,55,56,57,48,189,187)
-        for (i in n.indices) addCharKey(row, n[i], s[i], vk[i], 1.0f)
-        addSpecialKey(row, "⌫", VK_BACK, 2.0f, "Borrar")
+        val row = createRow(15f)
+        addCharKey(row, "`", "~", Win32VirtualKey.VK_OEM_3, 1f)
+        val normal = arrayOf("1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=")
+        val shifted = arrayOf("!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+")
+        val keys = intArrayOf(
+            Win32VirtualKey.VK_1,
+            Win32VirtualKey.VK_2,
+            Win32VirtualKey.VK_3,
+            Win32VirtualKey.VK_4,
+            Win32VirtualKey.VK_5,
+            Win32VirtualKey.VK_6,
+            Win32VirtualKey.VK_7,
+            Win32VirtualKey.VK_8,
+            Win32VirtualKey.VK_9,
+            Win32VirtualKey.VK_0,
+            Win32VirtualKey.VK_OEM_MINUS,
+            Win32VirtualKey.VK_OEM_PLUS
+        )
+        for (i in normal.indices) {
+            addCharKey(row, normal[i], shifted[i], keys[i], 1f)
+        }
+        addSpecialKey(row, "⌫", Win32VirtualKey.VK_BACK, 2f, "Backspace")
         return row
     }
 
     /**
-     * Fila 2: Tab ancho + Q..P + [ ] + barra invertida.
-     * weightSum=15: Tab×2.0 + 12×1.0 + \×1.0
+     * 14 teclas.
      */
     private fun buildQwertyRow(): View {
-        val row = createRow(15.0f)
-        addSpecialKey(row, "⇥", VK_TAB, 2.0f, "Tab")
-        val n = arrayOf("Q","W","E","R","T","Y","U","I","O","P","[","]")
-        val s = arrayOf("Q","W","E","R","T","Y","U","I","O","P","{","}")
-        val vk = intArrayOf(81,87,69,82,84,89,85,73,79,80,219,221)
-        for (i in n.indices) addCharKey(row, n[i], s[i], vk[i], 1.0f)
-        addCharKey(row, "\\", "|", 220, 1.0f)   // VK_OEM_5 — rutas, pipes
+        val row = createRow(15f)
+        addSpecialKey(row, "⇥", Win32VirtualKey.VK_TAB, 2f, "Tab")
+        val normal = arrayOf("Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "[", "]")
+        val shifted = arrayOf("Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "{", "}")
+        val keys = intArrayOf(
+            Win32VirtualKey.VK_Q,
+            Win32VirtualKey.VK_W,
+            Win32VirtualKey.VK_E,
+            Win32VirtualKey.VK_R,
+            Win32VirtualKey.VK_T,
+            Win32VirtualKey.VK_Y,
+            Win32VirtualKey.VK_U,
+            Win32VirtualKey.VK_I,
+            Win32VirtualKey.VK_O,
+            Win32VirtualKey.VK_P,
+            Win32VirtualKey.VK_OEM_4,
+            Win32VirtualKey.VK_OEM_6
+        )
+        for (i in normal.indices) {
+            addCharKey(row, normal[i], shifted[i], keys[i], 1f)
+        }
+        addCharKey(row, "\\", "|", Win32VirtualKey.VK_OEM_5, 1f)
         return row
     }
 
-    /** Fila 3: A..L + ; ' + ⏎. weightSum=15: 11×1.0 + ⏎×4.0 */
+    /**
+     * 12 teclas.
+     */
     private fun buildHomeRow(): View {
-        val row = createRow(15.0f)
-        val n = arrayOf("A","S","D","F","G","H","J","K","L",";","'")
-        val s = arrayOf("A","S","D","F","G","H","J","K","L",":",'"'.toString())
-        val vk = intArrayOf(65,83,68,70,71,72,74,75,76,186,222)
-        for (i in n.indices) addCharKey(row, n[i], s[i], vk[i], 1.0f)
-        addSpecialKey(row, "⏎", VK_RETURN, 4.0f, "Enter")
+        val row = createRow(15f)
+        val normal = arrayOf("A", "S", "D", "F", "G", "H", "J", "K", "L", ";", "'")
+        val shifted = arrayOf("A", "S", "D", "F", "G", "H", "J", "K", "L", ":", "\"")
+        val keys = intArrayOf(
+            Win32VirtualKey.VK_A,
+            Win32VirtualKey.VK_S,
+            Win32VirtualKey.VK_D,
+            Win32VirtualKey.VK_F,
+            Win32VirtualKey.VK_G,
+            Win32VirtualKey.VK_H,
+            Win32VirtualKey.VK_J,
+            Win32VirtualKey.VK_K,
+            Win32VirtualKey.VK_L,
+            Win32VirtualKey.VK_OEM_1,
+            Win32VirtualKey.VK_OEM_7
+        )
+        for (i in normal.indices) {
+            addCharKey(row, normal[i], shifted[i], keys[i], 1f)
+        }
+        addSpecialKey(row, "⏎", Win32VirtualKey.VK_RETURN, 4f, "Enter")
         return row
     }
 
     /**
-     * Fila 4: Shift amplio a ambos lados, sin spacer vacío a la derecha.
-     * weightSum=15: ⇧×2.5 + 10×1.0 + ⇧×2.5
+     * 12 teclas.
      */
-    private fun buildShiftRow(btnShiftL: TextView?, btnShiftR: TextView?): View {
-        val row = createRow(15.0f)
+    private fun buildShiftRow(): View {
+        val row = createRow(15f)
         addModifierKey(row, "⇧", 2.5f, "shift")
-        val n = arrayOf("Z","X","C","V","B","N","M",",",".","/")
-        val s = arrayOf("Z","X","C","V","B","N","M","<",">","?")
-        val vk = intArrayOf(90,88,67,86,66,78,77,188,190,191)
-        for (i in n.indices) addCharKey(row, n[i], s[i], vk[i], 1.0f)
+        val normal = arrayOf("Z", "X", "C", "V", "B", "N", "M", ",", ".", "/")
+        val shifted = arrayOf("Z", "X", "C", "V", "B", "N", "M", "<", ">", "?")
+        val keys = intArrayOf(
+            Win32VirtualKey.VK_Z,
+            Win32VirtualKey.VK_X,
+            Win32VirtualKey.VK_C,
+            Win32VirtualKey.VK_V,
+            Win32VirtualKey.VK_B,
+            Win32VirtualKey.VK_N,
+            Win32VirtualKey.VK_M,
+            Win32VirtualKey.VK_OEM_COMMA,
+            Win32VirtualKey.VK_OEM_PERIOD,
+            Win32VirtualKey.VK_OEM_2
+        )
+        for (i in normal.indices) {
+            addCharKey(row, normal[i], shifted[i], keys[i], 1f)
+        }
         addModifierKey(row, "⇧", 2.5f, "shift")
         return row
     }
 
     /**
-     * Fila 5: Ctrl y Alt más anchos, espacio generoso, 4 flechas iguales.
-     * Sin Home/End (ya están en tab DEV).
-     * weightSum=15: Ctrl×2.0 + Alt×2.0 + Space×7.0 + 4×1.0
+     * 7 teclas.
      */
-    private fun buildSpaceRow(btnCtrl: TextView?, btnAlt: TextView?): View {
-        val row = createRow(15.0f)
-        addModifierKey(row, "Ctrl", 2.0f, "ctrl")
-        addModifierKey(row, "Alt", 2.0f, "alt")
-        addSpaceKey(row, 7.0f)
-        addSpecialKey(row, "←", VK_LEFT,  1.0f, "Izquierda")
-        addSpecialKey(row, "↑", VK_UP,    1.0f, "Arriba")
-        addSpecialKey(row, "↓", VK_DOWN,  1.0f, "Abajo")
-        addSpecialKey(row, "→", VK_RIGHT, 1.0f, "Derecha")
+    private fun buildSpaceRow(): View {
+        val row = createRow(15f)
+        addModifierKey(row, "Ctrl", 2f, "ctrl")
+        addModifierKey(row, "Alt", 2f, "alt")
+        addSpaceKey(row, 7f)
+        addSpecialKey(row, "←", Win32VirtualKey.VK_LEFT, 1f, "Izquierda")
+        addSpecialKey(row, "↑", Win32VirtualKey.VK_UP, 1f, "Arriba")
+        addSpecialKey(row, "↓", Win32VirtualKey.VK_DOWN, 1f, "Abajo")
+        addSpecialKey(row, "→", Win32VirtualKey.VK_RIGHT, 1f, "Derecha")
         return row
     }
 
-    // ── Renders de pestañas ────────────────────────────────────────────
+    // ------------------------------------------------------------
+    // SHORTCUTS
+    // ------------------------------------------------------------
 
     fun buildShortcutsKeyboard(container: LinearLayout) {
-        val r1 = createRow(4.0f)
-        addMacroKey(r1, "Alt+Tab", 1.0f, VK_MENU, VK_TAB)
-        addMacroKey(r1, "Alt+F4", 1.0f, VK_MENU, VK_F4)
-        addMacroKey(r1, "Win+D", 1.0f, VK_LWIN, 68)
-        addMacroKey(r1, "Win+E", 1.0f, VK_LWIN, 69)
-        container.addView(r1)
-        val r2 = createRow(4.0f)
-        addMacroKey(r2, "Ctrl+C", 1.0f, VK_CONTROL, 67)
-        addMacroKey(r2, "Ctrl+V", 1.0f, VK_CONTROL, 86)
-        addMacroKey(r2, "Ctrl+X", 1.0f, VK_CONTROL, 88)
-        addMacroKey(r2, "Ctrl+Z", 1.0f, VK_CONTROL, 90)
-        container.addView(r2)
-        val r3 = createRow(4.0f)
-        addMacroKey(r3, "Ctrl+Y", 1.0f, VK_CONTROL, 89)
-        addMacroKey(r3, "Ctrl+S", 1.0f, VK_CONTROL, 83)
-        addMacroKey(r3, "Ctrl+F", 1.0f, VK_CONTROL, 70)
-        addMacroKey(r3, "Ctrl+A", 1.0f, VK_CONTROL, 65)
-        container.addView(r3)
-        val r4 = createRow(4.0f)
-        addMacroKey(r4, "Ctrl+Sh+P", 1.0f, VK_CONTROL, VK_SHIFT, 80)
-        addMacroKey(r4, "Ctrl+Alt+L", 1.0f, VK_CONTROL, VK_MENU, 76)
-        addMacroKey(r4, "Shift+F10", 1.0f, VK_SHIFT, VK_F10)
-        addMacroKey(r4, "Ctrl+Sh+Esc", 1.0f, VK_CONTROL, VK_SHIFT, VK_ESCAPE)
-        container.addView(r4)
+        val shortcuts = listOf(
+            RemoteKeySpec("Alt+Tab", RemoteKeyAction.Chord(Win32VirtualKey.VK_TAB, listOf(RemoteModifier.ALT)), "Cambiar ventana"),
+            RemoteKeySpec("Alt+F4", RemoteKeyAction.Chord(Win32VirtualKey.VK_F4, listOf(RemoteModifier.ALT)), "Cerrar ventana"),
+            RemoteKeySpec("Win+D", RemoteKeyAction.Chord(Win32VirtualKey.VK_D, listOf(RemoteModifier.META)), "Mostrar escritorio"),
+            RemoteKeySpec("Win+E", RemoteKeyAction.Chord(Win32VirtualKey.VK_E, listOf(RemoteModifier.META)), "Abrir Explorador"),
+            RemoteKeySpec("Ctrl+C", RemoteKeyAction.Chord(Win32VirtualKey.VK_C, listOf(RemoteModifier.CTRL)), "Copiar"),
+            RemoteKeySpec("Ctrl+V", RemoteKeyAction.Chord(Win32VirtualKey.VK_V, listOf(RemoteModifier.CTRL)), "Pegar"),
+            RemoteKeySpec("Ctrl+X", RemoteKeyAction.Chord(Win32VirtualKey.VK_X, listOf(RemoteModifier.CTRL)), "Cortar"),
+            RemoteKeySpec("Ctrl+Z", RemoteKeyAction.Chord(Win32VirtualKey.VK_Z, listOf(RemoteModifier.CTRL)), "Deshacer"),
+            RemoteKeySpec("Ctrl+Y", RemoteKeyAction.Chord(Win32VirtualKey.VK_Y, listOf(RemoteModifier.CTRL)), "Rehacer"),
+            RemoteKeySpec("Ctrl+S", RemoteKeyAction.Chord(Win32VirtualKey.VK_S, listOf(RemoteModifier.CTRL)), "Guardar"),
+            RemoteKeySpec("Ctrl+F", RemoteKeyAction.Chord(Win32VirtualKey.VK_F, listOf(RemoteModifier.CTRL)), "Buscar"),
+            RemoteKeySpec("Ctrl+A", RemoteKeyAction.Chord(Win32VirtualKey.VK_A, listOf(RemoteModifier.CTRL)), "Seleccionar todo"),
+            RemoteKeySpec("Ctrl+Sh+P", RemoteKeyAction.Chord(Win32VirtualKey.VK_P, listOf(RemoteModifier.CTRL, RemoteModifier.SHIFT)), "Command Palette"),
+            RemoteKeySpec("Ctrl+Alt+L", RemoteKeyAction.Chord(Win32VirtualKey.VK_L, listOf(RemoteModifier.CTRL, RemoteModifier.ALT)), "Reformat Code"),
+            RemoteKeySpec("Shift+F10", RemoteKeyAction.Chord(Win32VirtualKey.VK_F10, listOf(RemoteModifier.SHIFT)), "Shift+F10"),
+            RemoteKeySpec("Ctrl+Sh+Esc", RemoteKeyAction.Chord(Win32VirtualKey.VK_ESCAPE, listOf(RemoteModifier.CTRL, RemoteModifier.SHIFT)), "Administrador de tareas")
+        )
+
+        for (chunk in shortcuts.chunked(4)) {
+            val row = createRow(4f)
+            for (spec in chunk) {
+                addActionKey(row = row, spec = spec, weight = 1f)
+            }
+            container.addView(row)
+        }
     }
 
-    fun buildProfiledDevKeyboard(container: LinearLayout, keys: List<com.limelight.ui.keyboard.DevKey>) {
+    // ------------------------------------------------------------
+    // DEV PROFILE
+    // ------------------------------------------------------------
+
+    fun buildProfiledDevKeyboard(
+        container: LinearLayout,
+        keys: List<DevKey>
+    ) {
         val cols = when {
             isPortrait -> 4
             keys.size <= 8 -> 4
             else -> 6
         }
-        // Antigravity tiene 18 acciones: en vertical 4/4/4/3/3 evita una
-        // última fila de dos teclas desproporcionadamente grandes.
         val rows = if (isPortrait && keys.size % cols == 2 && keys.size > cols) {
             keys.dropLast(6).chunked(cols) + keys.takeLast(6).chunked(3)
         } else {
@@ -392,65 +492,61 @@ class KeyboardLayoutEngine(private val context: Context) {
         }
         for (rowKeys in rows) {
             val row = createRow(rowKeys.size.toFloat())
-            for (dk in rowKeys) {
-                val isMacro = dk.vkCodes.size > 1
-                val key = createKey(profileDisplayLabel(dk.label), 1.0f, true, KeyStyle.PROFILE)
-                key.setOnClickListener { v ->
-                    handler?.let { h ->
-                        h.animateKeyPress(v)
-                        if (isMacro) {
-                            h.onMacro(*dk.vkCodes.toIntArray())
-                        } else if (dk.vkCodes.isNotEmpty()) {
-                            h.onSpecialKeyPressed(dk.vkCodes[0])
-                        }
-                        Toast.makeText(context, dk.tooltip, Toast.LENGTH_SHORT).show()
-                    }
-                }
-                key.setOnLongClickListener {
-                    Toast.makeText(context, dk.tooltip, Toast.LENGTH_SHORT).show()
-                    true
-                }
-                setKeyIcon(key, dk.label)
-                row.addView(key)
+            for (spec in rowKeys) {
+                addActionKey(
+                    row = row,
+                    spec = spec,
+                    weight = 1f,
+                    style = KeyStyle.PROFILE
+                )
             }
             container.addView(row)
         }
     }
 
-    private fun profileDisplayLabel(label: String): String = when (label) {
-        "Quick Open" -> "Quick\nOpen"
-        "AI Chat" -> "AI\nChat"
-        "AI Edit" -> "AI\nEdit"
-        "Close All" -> "Close\nAll"
-        else -> label
+    private fun profileDisplayLabel(label: String): String {
+        return when (label) {
+            "Quick Open" -> "Quick\nOpen"
+            "Search All" -> "Search\nAll"
+            "New Session" -> "New\nSession"
+            "New Conv" -> "New\nConv"
+            "Prev Conv" -> "Prev\nConv"
+            "Next Conv" -> "Next\nConv"
+            "Close All" -> "Close\nAll"
+            "Find Path" -> "Find\nPath"
+            "Smart Comp" -> "Smart\nComp"
+            "Quick Fix" -> "Quick\nFix"
+            "Line Start" -> "Line\nStart"
+            "Line End" -> "Line\nEnd"
+            "Del Word" -> "Del\nWord"
+            else -> label
+        }
     }
 
     private fun setKeyIcon(key: TextView, label: String) {
         val iconRes = when (label) {
-            "AI Chat"    -> R.drawable.ic_antigravity_chat
-            "Search"     -> R.drawable.ic_search
-            "Explorer"   -> R.drawable.ic_files_overlay
-            "Palette"    -> R.drawable.ic_palette
-            "Close All"  -> R.drawable.ic_win_close
-            "Terminal"   -> R.drawable.ic_terminal
-            "Git"        -> R.drawable.ic_github
-            "Run"        -> R.drawable.ic_play
-            else         -> 0
+            "Chat" -> R.drawable.ic_antigravity_chat
+            "Search", "Search All", "Find Path" -> R.drawable.ic_search
+            "Explorer", "Files" -> R.drawable.ic_files_overlay
+            "Palette" -> R.drawable.ic_palette
+            "Close All" -> R.drawable.ic_win_close
+            "Terminal" -> R.drawable.ic_terminal
+            "Git", "VCS" -> R.drawable.ic_github
+            "Run" -> R.drawable.ic_play
+            else -> 0
         }
-        if (iconRes != 0) {
-            val drawable = context.getDrawable(iconRes)
-            if (drawable != null) {
-                val size = dpToPx(18f)
-                drawable.setBounds(0, 0, size, size)
-                key.setCompoundDrawables(null, drawable, null, null)
-                key.compoundDrawablePadding = dpToPx(1f)
-                key.gravity = 17
-            }
+        if (iconRes == 0) {
+            return
         }
+        val drawable = context.getDrawable(iconRes) ?: return
+        val size = dpToPx(18f)
+        drawable.setBounds(0, 0, size, size)
+        key.setCompoundDrawables(null, drawable, null, null)
+        key.compoundDrawablePadding = dpToPx(1f)
+        key.gravity = 17
     }
 
-    // ── Utilidad ───────────────────────────────────────────────────────
-
-    fun dpToPx(dp: Float): Int =
-        Math.round(dp * context.resources.displayMetrics.density)
+    fun dpToPx(dp: Float): Int {
+        return Math.round(dp * context.resources.displayMetrics.density)
+    }
 }

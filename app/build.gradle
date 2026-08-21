@@ -181,11 +181,5 @@ dependencies {
     // (evita conflictos de versiones transitivas 1.7.x). No eliminar.
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0'
 
-    // koog (SDK de agentes IA) queda DESACTIVADO: aún no se cablea en runtime y su
-    // transitivo jackson-module-kotlin usa MethodHandle.invokeExact, que D8 solo
-    // soporta desde API 26 → imposible dexar en minSdk 21. Arrastra ~78 módulos LLM
-    // (Anthropic/OpenAI/Bedrock/Ollama/ktor/redis) sin uso. Reactivar SOLO cuando se
-    // integre de verdad, subiendo minSdk a 26 o aislándolo en un módulo dinámico.
-    // implementation("ai.koog:koog-agents-additions:1.1.1-beta")
-
+    testImplementation 'junit:junit:4.13.2'
 }

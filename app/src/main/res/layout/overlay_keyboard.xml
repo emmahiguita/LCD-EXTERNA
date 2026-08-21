@@ -20,14 +20,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="12dp">
+        android:paddingHorizontal="8dp"
+        android:paddingTop="6dp"
+        android:paddingBottom="8dp">
 
         <!-- HEADER -->
 
         <LinearLayout
             android:id="@+id/keyboardDragHandle"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="42dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -37,15 +39,15 @@
                 android:orientation="vertical">
 
                 <View
-                    android:layout_width="40dp"
-                    android:layout_height="4dp"
-                    android:layout_gravity="center"
+                    android:layout_width="36dp"
+                    android:layout_height="3dp"
+                    android:layout_gravity="center_horizontal"
                     android:background="@drawable/drag_handle_bg"/>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
+                    android:layout_marginTop="3dp"
                     android:orientation="horizontal"
                     android:gravity="center_vertical">
 
@@ -55,14 +57,15 @@
                         android:layout_height="wrap_content"
                         android:text="@string/keyboard_title"
                         android:textAppearance="?attr/textAppearanceTitleSmall"
+                        android:textSize="13sp"
                         android:textColor="@color/hud_text"/>
 
                     <TextView
                         android:id="@+id/stickyKeysStatus"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:textSize="10sp"
+                        android:layout_marginStart="6dp"
+                        android:textSize="9.5sp"
                         android:textStyle="bold"
                         android:textColor="#64B5F6"
                         android:visibility="gone"
@@ -80,24 +83,24 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnRGB"
                 style="@style/Widget.Material3.Button.IconButton"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
                 app:icon="@drawable/ic_palette"
                 app:iconTint="@color/hud_text"/>
 
             <!-- ── Control de opacidad +/- ──────────────────────────── -->
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginStart="6dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="4dp"
                 android:orientation="horizontal"
                 android:gravity="center">
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnAlphaDown"
                     style="@style/Widget.Material3.Button.IconButton"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
                     app:icon="@drawable/ic_remove"
                     app:iconTint="@color/hud_text"
                     android:importantForAccessibility="yes"
@@ -106,8 +109,8 @@
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnAlphaUp"
                     style="@style/Widget.Material3.Button.IconButton"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
                     app:icon="@drawable/ic_add"
                     app:iconTint="@color/hud_text"
                     android:importantForAccessibility="yes"
@@ -118,10 +121,8 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnCloseKeyboard"
                 style="@style/Widget.Material3.Button.IconButton"
-
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-
+                android:layout_width="38dp"
+                android:layout_height="38dp"
                 app:icon="@drawable/ic_close"
                 app:iconTint="@color/hud_text"/>
         </LinearLayout>
@@ -133,20 +134,20 @@
             android:id="@+id/chipModes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:orientation="horizontal"
             android:weightSum="3">
 
             <TextView
                 android:id="@+id/tabNormal"
                 android:layout_width="0dp"
-                android:layout_height="38dp"
+                android:layout_height="32dp"
                 android:layout_weight="1"
-                android:layout_marginEnd="4dp"
+                android:layout_marginEnd="3dp"
                 android:gravity="center"
                 android:text="@string/keyboard_tab_normal"
                 android:textColor="@color/hud_text"
-                android:textSize="13sp"
+                android:textSize="11.5sp"
                 android:textStyle="bold"
                 android:background="@drawable/key_button_bg"
                 android:clickable="true"
@@ -155,14 +156,14 @@
             <TextView
                 android:id="@+id/tabDev"
                 android:layout_width="0dp"
-                android:layout_height="38dp"
+                android:layout_height="32dp"
                 android:layout_weight="1"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="4dp"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="3dp"
                 android:gravity="center"
                 android:text="@string/keyboard_tab_dev"
                 android:textColor="@color/hud_text"
-                android:textSize="13sp"
+                android:textSize="11.5sp"
                 android:textStyle="bold"
                 android:background="@drawable/key_button_bg"
                 android:clickable="true"
@@ -171,13 +172,13 @@
             <TextView
                 android:id="@+id/tabShortcuts"
                 android:layout_width="0dp"
-                android:layout_height="38dp"
+                android:layout_height="32dp"
                 android:layout_weight="1"
-                android:layout_marginStart="4dp"
+                android:layout_marginStart="3dp"
                 android:gravity="center"
                 android:text="@string/keyboard_tab_shortcuts"
                 android:textColor="@color/hud_text"
-                android:textSize="13sp"
+                android:textSize="11.5sp"
                 android:textStyle="bold"
                 android:background="@drawable/key_button_bg"
                 android:clickable="true"
@@ -188,8 +189,8 @@
         <com.google.android.material.divider.MaterialDivider
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"/>
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"/>
 
         <!-- CONTENEDOR DE TECLAS -->
 
