@@ -144,21 +144,21 @@ class KeyboardProfileEngine(
     private fun antigravityKeys(): List<DevKey> {
         return listOf(
             key("Esc", "Esc", "Cancelar / volver", Win32VirtualKey.VK_ESCAPE),
-            chord("Convs", "Ctrl+K", "Abrir Conversation Picker", Win32VirtualKey.VK_K, RemoteModifier.CTRL),
-            chord("Files", "Ctrl+P", "Buscar archivo", Win32VirtualKey.VK_P, RemoteModifier.CTRL),
+            chord("Agent", "Ctrl+Shift+I", "Toggle Agent Chat", Win32VirtualKey.VK_I, RemoteModifier.CTRL, RemoteModifier.SHIFT),
             chord("Focus", "Ctrl+L", "Llevar foco al input del agente", Win32VirtualKey.VK_L, RemoteModifier.CTRL),
+            chord("Explorer", "Ctrl+Shift+E", "Abrir / cerrar Explorer", Win32VirtualKey.VK_E, RemoteModifier.CTRL, RemoteModifier.SHIFT),
+            chord("Files", "Ctrl+P", "Buscar archivo (Quick Open)", Win32VirtualKey.VK_P, RemoteModifier.CTRL),
+            chord("Convs", "Ctrl+K", "Abrir Conversation Picker", Win32VirtualKey.VK_K, RemoteModifier.CTRL),
             chord("New Conv", "Ctrl+N", "Nueva conversación", Win32VirtualKey.VK_N, RemoteModifier.CTRL),
+            chord("Model", "Ctrl+Alt+M", "Cambiar modelo IA", Win32VirtualKey.VK_M, RemoteModifier.CTRL, RemoteModifier.ALT),
             chord("Prev Conv", "Alt+↑", "Conversación anterior", Win32VirtualKey.VK_UP, RemoteModifier.ALT),
             chord("Next Conv", "Alt+↓", "Conversación siguiente", Win32VirtualKey.VK_DOWN, RemoteModifier.ALT),
             chord("Palette", "Ctrl+Shift+P", "Command Palette del editor", Win32VirtualKey.VK_P, RemoteModifier.CTRL, RemoteModifier.SHIFT, source = RemoteKeySource.INHERITED),
             chord("Search", "Ctrl+Shift+F", "Buscar en archivos", Win32VirtualKey.VK_F, RemoteModifier.CTRL, RemoteModifier.SHIFT, source = RemoteKeySource.INHERITED),
-            chord("Git", "Ctrl+Shift+G", "Source Control", Win32VirtualKey.VK_G, RemoteModifier.CTRL, RemoteModifier.SHIFT, source = RemoteKeySource.INHERITED),
             chord("Terminal", "Ctrl+J", "Terminal integrado / Panel", Win32VirtualKey.VK_J, RemoteModifier.CTRL, source = RemoteKeySource.INHERITED),
+            chord("Git", "Ctrl+Shift+G", "Source Control", Win32VirtualKey.VK_G, RemoteModifier.CTRL, RemoteModifier.SHIFT, source = RemoteKeySource.INHERITED),
             chord("Save", "Ctrl+S", "Guardar", Win32VirtualKey.VK_S, RemoteModifier.CTRL, source = RemoteKeySource.INHERITED),
-            key("Go Def", "F12", "Ir a definición", Win32VirtualKey.VK_F12, RemoteKeySource.INHERITED),
-            key("Rename", "F2", "Renombrar símbolo", Win32VirtualKey.VK_F2, RemoteKeySource.INHERITED),
-            chord("Undo", "Ctrl+Z", "Deshacer", Win32VirtualKey.VK_Z, RemoteModifier.CTRL, source = RemoteKeySource.INHERITED),
-            chord("Redo", "Ctrl+Y", "Rehacer", Win32VirtualKey.VK_Y, RemoteModifier.CTRL, source = RemoteKeySource.INHERITED)
+            chord("Undo", "Ctrl+Z", "Deshacer", Win32VirtualKey.VK_Z, RemoteModifier.CTRL, source = RemoteKeySource.INHERITED)
         )
     }
 

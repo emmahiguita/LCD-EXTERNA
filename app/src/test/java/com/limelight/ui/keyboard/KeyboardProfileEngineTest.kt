@@ -116,14 +116,38 @@ class KeyboardProfileEngineTest {
     }
 
     @Test
-    fun vscodeTerminalIsCtrlJ() {
+    fun antigravityAgentIsCtrlShiftI() {
         val action = action(
-            KeyboardProfileEngine.PROFILE_VSCODE,
-            "Terminal"
+            KeyboardProfileEngine.PROFILE_ANTIGRAVITY,
+            "Agent"
         )
         assertTrue(action is RemoteKeyAction.Chord)
         action as RemoteKeyAction.Chord
-        assertEquals(Win32VirtualKey.VK_J, action.vkCode)
-        assertEquals(listOf(RemoteModifier.CTRL), action.modifiers)
+        assertEquals(Win32VirtualKey.VK_I, action.vkCode)
+        assertEquals(listOf(RemoteModifier.CTRL, RemoteModifier.SHIFT), action.modifiers)
+    }
+
+    @Test
+    fun antigravityExplorerIsCtrlShiftE() {
+        val action = action(
+            KeyboardProfileEngine.PROFILE_ANTIGRAVITY,
+            "Explorer"
+        )
+        assertTrue(action is RemoteKeyAction.Chord)
+        action as RemoteKeyAction.Chord
+        assertEquals(Win32VirtualKey.VK_E, action.vkCode)
+        assertEquals(listOf(RemoteModifier.CTRL, RemoteModifier.SHIFT), action.modifiers)
+    }
+
+    @Test
+    fun antigravityModelIsCtrlAltM() {
+        val action = action(
+            KeyboardProfileEngine.PROFILE_ANTIGRAVITY,
+            "Model"
+        )
+        assertTrue(action is RemoteKeyAction.Chord)
+        action as RemoteKeyAction.Chord
+        assertEquals(Win32VirtualKey.VK_M, action.vkCode)
+        assertEquals(listOf(RemoteModifier.CTRL, RemoteModifier.ALT), action.modifiers)
     }
 }

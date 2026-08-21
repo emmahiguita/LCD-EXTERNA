@@ -525,7 +525,8 @@ class KeyboardLayoutEngine(
 
     private fun setKeyIcon(key: TextView, label: String) {
         val iconRes = when (label) {
-            "Chat" -> R.drawable.ic_antigravity_chat
+            "Chat", "Agent" -> R.drawable.ic_antigravity_chat
+            "Model" -> R.drawable.ic_ai_overlay
             "Search", "Search All", "Find Path" -> R.drawable.ic_search
             "Explorer", "Files" -> R.drawable.ic_files_overlay
             "Palette" -> R.drawable.ic_palette
