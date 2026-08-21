@@ -451,6 +451,7 @@ class KeyboardLayoutEngine(
             RemoteKeySpec("Win+E", RemoteKeyAction.Chord(Win32VirtualKey.VK_E, listOf(RemoteModifier.META)), "Abrir Explorador"),
             RemoteKeySpec("Ctrl+C", RemoteKeyAction.Chord(Win32VirtualKey.VK_C, listOf(RemoteModifier.CTRL)), "Copiar"),
             RemoteKeySpec("Ctrl+V", RemoteKeyAction.Chord(Win32VirtualKey.VK_V, listOf(RemoteModifier.CTRL)), "Pegar"),
+            RemoteKeySpec("Terminal", RemoteKeyAction.Chord(Win32VirtualKey.VK_J, listOf(RemoteModifier.CTRL)), "Abrir Terminal / Panel"),
             RemoteKeySpec("Ctrl+X", RemoteKeyAction.Chord(Win32VirtualKey.VK_X, listOf(RemoteModifier.CTRL)), "Cortar"),
             RemoteKeySpec("Ctrl+Z", RemoteKeyAction.Chord(Win32VirtualKey.VK_Z, listOf(RemoteModifier.CTRL)), "Deshacer"),
             RemoteKeySpec("Ctrl+Y", RemoteKeyAction.Chord(Win32VirtualKey.VK_Y, listOf(RemoteModifier.CTRL)), "Rehacer"),
@@ -459,8 +460,7 @@ class KeyboardLayoutEngine(
             RemoteKeySpec("Ctrl+A", RemoteKeyAction.Chord(Win32VirtualKey.VK_A, listOf(RemoteModifier.CTRL)), "Seleccionar todo"),
             RemoteKeySpec("Ctrl+Sh+P", RemoteKeyAction.Chord(Win32VirtualKey.VK_P, listOf(RemoteModifier.CTRL, RemoteModifier.SHIFT)), "Command Palette"),
             RemoteKeySpec("Ctrl+Alt+L", RemoteKeyAction.Chord(Win32VirtualKey.VK_L, listOf(RemoteModifier.CTRL, RemoteModifier.ALT)), "Reformat Code"),
-            RemoteKeySpec("Shift+F10", RemoteKeyAction.Chord(Win32VirtualKey.VK_F10, listOf(RemoteModifier.SHIFT)), "Shift+F10"),
-            RemoteKeySpec("Ctrl+Sh+Esc", RemoteKeyAction.Chord(Win32VirtualKey.VK_ESCAPE, listOf(RemoteModifier.CTRL, RemoteModifier.SHIFT)), "Administrador de tareas")
+            RemoteKeySpec("Shift+F10", RemoteKeyAction.Chord(Win32VirtualKey.VK_F10, listOf(RemoteModifier.SHIFT)), "Shift+F10")
         )
 
         for (chunk in shortcuts.chunked(4)) {

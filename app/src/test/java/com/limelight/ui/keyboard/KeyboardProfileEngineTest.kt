@@ -104,14 +104,26 @@ class KeyboardProfileEngineTest {
     }
 
     @Test
-    fun openCodeCtrlBIsCursorBackNotChat() {
+    fun antigravityTerminalIsCtrlJ() {
         val action = action(
-            KeyboardProfileEngine.PROFILE_OPENCODE,
-            "Cursor ←"
+            KeyboardProfileEngine.PROFILE_ANTIGRAVITY,
+            "Terminal"
         )
         assertTrue(action is RemoteKeyAction.Chord)
         action as RemoteKeyAction.Chord
-        assertEquals(Win32VirtualKey.VK_B, action.vkCode)
+        assertEquals(Win32VirtualKey.VK_J, action.vkCode)
+        assertEquals(listOf(RemoteModifier.CTRL), action.modifiers)
+    }
+
+    @Test
+    fun vscodeTerminalIsCtrlJ() {
+        val action = action(
+            KeyboardProfileEngine.PROFILE_VSCODE,
+            "Terminal"
+        )
+        assertTrue(action is RemoteKeyAction.Chord)
+        action as RemoteKeyAction.Chord
+        assertEquals(Win32VirtualKey.VK_J, action.vkCode)
         assertEquals(listOf(RemoteModifier.CTRL), action.modifiers)
     }
 }
