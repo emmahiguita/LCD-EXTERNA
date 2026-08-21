@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="conn_establishing_title">P┼Öipojov├ín├¡</string>
+    <string name="conn_metered">Varov├ín├¡: Va┼íe aktivn├¡ p┼Öipojen├¡ je m─ø┼Öen├®!</string>
+    <string name="conn_error_msg">Spou┼ít─øn├¡ se nezda┼Öilo</string>
+    <string name="conn_client_latency_hw">zpo┼¥d─øn├¡ hardwarov├®ho dekod├®ru:</string>
+    <string name="conn_terminated_title">Spojen├¡ ukon─ìeno</string>
+    <string name="resolution_prefix_native_fullscreen">Nativn├¡ cel├í obrazovka</string>
+    <string name="summary_checkbox_enable_audiofx">Umo┼¥┼êuje fungov├ín├¡ zvukov├¢ch efekt┼» b─øhem streamov├ín├¡, ale m┼»┼¥e zv├¢┼íit zpo┼¥d─øn├¡ zvuku</string>
+    <string name="early_termination_error">Na hostitelsk├®m PC se n─øco pokazilo p┼Öi spou┼ít─øn├¡ streamu.
+\n
+\nUjist─øte se, ┼¥e na hostitelsk├®m po─ì├¡ta─ìi neb─ø┼¥├¡ ┼¥├ídn├¢ obsah chr├ín─øn├¢ DRM. M┼»┼¥ete tak├® zkusit restartovat hostitelsk├¢ PC.
+\n
+\nPokud probl├®m p┼Öetrv├ív├í, zkuste p┼Öeinstalovat ovlada─ìe GPU a GeForce Experience.</string>
+    <string name="wol_waking_pc">Probouzen├¡ PC…</string>
+    <string name="nettest_text_success">Vypad├í to, ┼¥e va┼íe s├¡┼Ñ SmartDisplay AI neblokuje. Pokud m├íte i tak pot├¡┼¥e s p┼Öipojen├¡m, zkontrolujte nastaven├¡ firewallu va┼íeho PC.
+\n
+\nPokud se pokou┼í├¡te streamovat po internetu, nainstalujte si na sv┼»j po─ì├¡ta─ì SmartDisplay AI Internet Hosting Tool a spus┼Ñte p┼Öilo┼¥en├¢ program Internet Streaming Tester pro kontrolu va┼íeho p┼Öipojen├¡ k Internetu.</string>
+    <string name="error_unknown_host">Nezda┼Öilo se zjistit hostitele</string>
+    <string name="nettest_text_waiting">SmartDisplay AI testuje va┼íe s├¡┼Ñov├® p┼Öipojen├¡, aby zjistil, jestli je NVIDIA GameStream zablokov├ín.
+\n
+\nTo m┼»┼¥e chvilku zabrat…</string>
+    <string name="nettest_title_waiting">Testov├ín├¡ p┼Öipojen├¡ k s├¡ti</string>
+    <string name="pairing">P├írov├ín├¡…</string>
+    <string name="pair_pc_offline">Po─ì├¡ta─ì je offline</string>
+    <string name="unpairing">Ru┼íen├¡ p├írov├ín├¡…</string>
+    <string name="unpair_success">P├írov├ín├¡ ├║sp─ø┼ín─ø zru┼íeno</string>
+    <string name="unpair_error">Za┼Ö├¡zen├¡ nebylo sp├írov├íno</string>
+    <string name="error_manager_not_running">Slu┼¥ba ComputerManager neb─ø┼¥├¡. Vy─ìkejte pros├¡m chv├¡li nebo restartujte aplikaci.</string>
+    <string name="error_pc_offline">Po─ì├¡ta─ì je offline</string>
+    <string name="unpair_fail">Zru┼íen├¡ p├írov├ín├¡ se nezda┼Öilo</string>
+    <string name="error_404">GFE vr├ítilo HTTP chybu 404. Ujist─øte se, ┼¥e va┼íe PC m├í podporovan├® GPU. Tato chyba m┼»┼¥e b├¢t zp┼»sobena i pou┼¥it├¡m softwaru pro vzd├ílenou plochu. Zkuste restartovat po─ì├¡ta─ì, nebo p┼Öeinstalujte GFE.</string>
+    <string name="title_decoding_error">Dekod├®r videa spadnul</string>
+    <string name="error_usb_prohibited">Spr├ívce za┼Ö├¡zen├¡ neumo┼¥┼êuje p┼Ö├¡stup k USB. Zkontrolujte nastaven├¡ Knoxu nebo MDM.</string>
+    <string name="message_decoding_error">SmartDisplay AI spadnul kv┼»li nekompatibiln├¡mu video dekod├®ru na tomto za┼Ö├¡zen├¡. Ujist─øte se, ┼¥e je GeForce Experience na va┼íem PC aktualizov├íno na nejnov─øj┼í├¡ verzi. Zkuste upravit nastaven├¡ streamov├ín├¡, pokud aplikace pad├í opakovan─ø.</string>
+    <string name="message_decoding_reset">Video dekod├®r va┼íeho za┼Ö├¡zen├¡ p┼Öi sou─ìasn├¢ch nastaven├¡ch streamov├ín├¡ pad├í. Va┼íe nastaven├¡ streamov├ín├¡ byla resetov├ína na v├¢choz├¡.</string>
+    <string name="video_decoder_init_failed">Nezda┼Öilo se spustit video dekod├®r. Va┼íe za┼Ö├¡zen├¡ nemus├¡ podporovat zvolen├® rozli┼íen├¡ nebo sn├¡mkovou frekvenci.</string>
+    <string name="no_video_received_error">Od hostitele nebylo p┼Öijato ┼¥├ídn├® video.</string>
+    <string name="no_frame_received_error">Va┼íe p┼Öipojen├¡ k s├¡ti nen├¡ dost rychl├®. Zkuste sn├¡┼¥it datov├¢ tok videa nebo pou┼¥ijte rychlej┼í├¡ p┼Öipojen├¡.</string>
+    <string name="applist_menu_hide_app">Skr├¢t aplikaci</string>
+    <string name="title_add_pc">P┼Öidat PC ru─ìn─ø</string>
+    <string name="title_audio_config_list">Konfigurace prostorov├®ho zvuku</string>
+    <string name="searching_pc">Hled├ín├¡ PC, na kter├¢ch b─ø┼¥├¡ GameStream...
+\n
+\nUjist─øte se, ┼¥e je GameStream povolen v z├ílo┼¥ce SHIELD v nastaven├¡ GeForce Experience.</string>
+    <string name="applist_menu_quit">Ukon─ìit</string>
+    <string name="applist_menu_quit_and_start">Ukon─ìit sou─ìasnou hru a spustit</string>
+    <string name="applist_menu_cancel">Zru┼íit</string>
+    <string name="applist_menu_tv_channel">P┼Öidat do kan├ílu</string>
+    <string name="applist_refresh_title">Seznam aplikac├¡</string>
+    <string name="applist_menu_resume">Pokra─ìovat</string>
+    <string name="applist_menu_details">Zobrazit detaily</string>
+    <string name="applist_menu_scut">Vytvo┼Öit zkratku</string>
+    <string name="addpc_success">Po─ì├¡ta─ì p┼Öid├ín ├║sp─ø┼ín─ø</string>
+    <string name="applist_details_id">ID aplikace:</string>
+    <string name="addpc_fail">K zadan├®mu po─ì├¡ta─ìi se nepoda┼Öilo p┼Öipojit. Ujist─øte se, ┼¥e jsou ve firewallu povoleny nezbytn├® porty.</string>
+    <string name="addpc_enter_ip">Mus├¡te zadat IP adresu</string>
+    <string name="title_native_res_dialog">Varov├ín├¡ pro nativn├¡ rozli┼íen├¡</string>
+    <string name="title_checkbox_vibrate_fallback">Emulovat podporu vibrac├¡</string>
+    <string name="title_seekbar_deadzone">Upravit deadzone analogov├¢ch p├í─ìek</string>
+    <string name="check_ports_msg">Zkontrolujte sv┼»j firewall a pravidla p┼Öesm─ørov├ín├¡ pro tyto porty:</string>
+    <string name="conn_terminated_msg">Spojen├¡ bylo ukon─ìeno</string>
+    <string name="ip_hint">IP adresa GeForce PC</string>
+    <string name="conn_hardware_latency">Pr┼»m─ørn├® zpo┼¥d─øn├¡ hardwarov├®ho dekod├®ru:</string>
+    <string name="conn_client_latency">Pr┼»m─ørn├® zpo┼¥d─øn├¡ p┼Öi dek├│dov├ín├¡ sn├¡mk┼»:</string>
+    <string name="perf_overlay_netlatency">Pr┼»m─ørn├® zpo┼¥d─øn├¡ s├¡t─ø: %1$d ms (odchylka: %2$d ms)</string>
+    <string name="perf_overlay_dectime">Pr┼»m─ørn├¢ ─ìas pro dek├│dov├ín├¡: %1$.2f ms</string>
+    <string name="applist_connect_msg">P┼Öipojov├ín├¡ k PC</string>
+    <string name="title_checkbox_touchscreen_trackpad">Pou┼¥├¡t dotykov├¢ displej jako trackpad</string>
+    <string name="title_checkbox_multi_controller">Automatick├í detekce p┼Öipojen├¡ hern├¡ho ovlada─ìe</string>
+    <string name="summary_checkbox_multi_controller">Od┼íkrtnut├¡ t├®to mo┼¥nosti vynut├¡, aby byl hern├¡ ovlada─ì v┼¥dy p┼Öipojen</string>
+    <string name="summary_checkbox_xb1_driver">Povol├¡ zabudovan├¢ USB ovlada─ì pro za┼Ö├¡zen├¡ bez nativn├¡ podpory pro Xbox ovlada─ì</string>
+    <string name="summary_checkbox_vibrate_fallback">Rozvibruje va┼íe za┼Ö├¡zen├¡ pro emulaci vibrac├¡ ovlada─ìe, pokud je v├í┼í hern├¡ ovlada─ì nepodporuje</string>
+    <string name="suffix_seekbar_deadzone">%</string>
+    <string name="summary_seekbar_deadzone">Pozn├ímka: N─økter├® hry mohou vynutit v─øt┼í├¡ deadzone, ne┼¥ jak├í je nastavena v SmartDisplay AIu.</string>
+    <string name="title_checkbox_xb1_driver">Xbox 360/One USB gamepad ovlada─ì</string>
+    <string name="title_checkbox_usb_bind_all">Vynutit nativn├¡ podporu hern├¡ho ovlada─ìe Xbox</string>
+    <string name="summary_checkbox_mouse_emulation">Dlouh├¢m podr┼¥en├¡m tla─ì├¡tka Start p┼Öepnete hern├¡ ovlada─ì do re┼¥imu my┼íi</string>
+    <string name="summary_checkbox_usb_bind_all">Pou┼¥├¡t USB ovlada─ì SmartDisplay AIu pro v┼íechny podporovan├® gamepady, i kdy┼¥ existuje nativn├¡ podpora pro Xbox ovlada─ì</string>
+    <string name="title_checkbox_mouse_emulation">Emulace my┼íi pomoc├¡ hern├¡ho ovlada─ìe</string>
+    <string name="title_checkbox_flip_face_buttons">P┼Öehodit tla─ì├¡tka A/B, X/Y</string>
+    <string name="title_checkbox_absolute_mouse_mode">Re┼¥im my┼íi pro vzd├ílenou plochu</string>
+    <string name="summary_checkbox_absolute_mouse_mode">T├¡mto zapnete p┼Öirozen─øj┼í├¡ zrychlov├ín├¡ my┼íi pro pou┼¥it├¡ ve vzd├ílen├® plo┼íe, ale mo┼¥nost je nekompatibiln├¡ se spoustou her.</string>
+    <string name="summary_osc_opacity">Zmen┼íete ─ìi zv─øt┼íete pr┼»hlednost ovlada─ìe na obrazovce</string>
+    <string name="summary_only_l3r3">Skryje ve┼íker├í virtu├íln├¡ tla─ì├¡tka krom─ø L3 a R3</string>
+    <string name="category_ui_settings">Nastaven├¡ zobrazen├¡</string>
+    <string name="suffix_osc_opacity">%</string>
+    <string name="title_setup_guide">Pr┼»vodce nastaven├¡m</string>
+    <string name="title_checkbox_disable_warnings">Zak├ízat varovac├¡ zpr├ívy</string>
+    <string name="category_help">N├ípov─øda</string>
+    <string name="summary_checkbox_disable_warnings">Zak├í┼¥e varov├ín├¡ o pomal├®m p┼Öipojen├¡ b─øhem streamov├ín├¡</string>
+    <string name="title_disable_frame_drop">Nezahazovat sn├¡mky</string>
+    <string name="title_enable_perf_overlay">Zobrazit b─øhem streamov├ín├¡ informace o v├¢konu</string>
+    <string name="summary_enable_perf_overlay">Zobrazit realtime informace o v├¢konu streamu b─øhem streamov├ín├¡</string>
+    <string name="resolution_4k">4K</string>
+    <string name="fps_30">30 FPS</string>
+    <string name="title_troubleshooting">Pr┼»vodce ┼Öe┼íen├¡m probl├®m┼»</string>
+    <string name="summary_troubleshooting">Zobrazit tipy pro diagn├│zu a opravu b─ø┼¥n├¢ch probl├®m┼» se streamov├ín├¡m</string>
+    <string name="resolution_720p">720p</string>
+    <string name="resolution_1080p">1080p</string>
+    <string name="resolution_1440p">1440p</string>
+    <string name="videoformat_auto">Automaticky</string>
+    <string name="audioconf_71surround">7.1 prostorov├¢ zvuk</string>
+    <string name="pacing_balanced">Vyv├í┼¥en├®</string>
+    <string name="pacing_smoothness">Preferovat plynulej┼í├¡ video (m┼»┼¥e v├¢razn─ø zv├¢┼íit zpo┼¥d─øn├¡)</string>
+    <string name="resolution_prefix_native_landscape">(na ┼í├¡┼Öku)</string>
+    <string name="resolution_prefix_native_portrait">(na v├¢┼íku)</string>
+    <string name="category_audio_settings">Nastaven├¡ zvuku</string>
+    <string name="title_checkbox_enable_audiofx">Povolit podporu syst├®mov├®ho ekvaliz├®ru</string>
+    <string name="category_input_settings">Nastaven├¡ vstupu</string>
+    <string name="summary_setup_guide">Zobrazit instrukce k nastaven├¡ va┼íeho hern├¡ho PC pro streamov├ín├¡</string>
+    <string name="dialog_title_osc_opacity">Zm─ønit pr┼»hlednost</string>
+    <string name="fps_60">60 FPS</string>
+    <string name="fps_90">90 FPS</string>
+    <string name="fps_120">120 FPS</string>
+    <string name="audioconf_stereo">Stereo</string>
+    <string name="audioconf_51surround">5.1 prostorov├¢ zvuk</string>
+    <string name="help_loading_msg">Na─ì├¡t├ín├¡ str├ínky s n├ípov─ødou…</string>
+    <string name="pcview_menu_header_online">Online</string>
+    <string name="pcview_menu_header_offline">Offline</string>
+    <string name="pcview_menu_header_unknown">Obnovov├ín├¡</string>
+    <string name="pcview_menu_app_list">Zobrazit v┼íechny aplikace</string>
+    <string name="pcview_menu_pair_pc">Sp├írovat s PC</string>
+    <string name="pcview_menu_unpair_pc">Zru┼íit p├írov├ín├¡</string>
+    <string name="pcview_menu_send_wol">Poslat Wake-On-LAN po┼¥adavek</string>
+    <string name="pcview_menu_delete_pc">Smazat PC</string>
+    <string name="pcview_menu_test_network">Otestovat p┼Öipojen├¡ k s├¡ti</string>
+    <string name="pcview_menu_details">Zobrazit detaily</string>
+    <string name="nettest_title_done">Test s├¡t─ø dokon─ìen</string>
+    <string name="nettest_text_inconclusive">Test s├¡t─ø nemohl b├¢t proveden, proto┼¥e se nezda┼Öilo p┼Öipoojen├¡ k ┼¥├ídn├¢m z testovac├¡h server┼» SmartDisplay AI. Zkontrolujte sv├® p┼Öipojen├¡ k Internetu, nebo to zkuste znovu pozd─øji.</string>
+    <string name="nettest_text_failure">Sou─ìasn├í s├¡┼Ñ va┼íeho po─ì├¡ta─ìe nejsp├¡┼í blokuje SmartDisplay AI. Streamov├ín├¡ p┼Öes Internet nemus├¡ b─øhem p┼Öipojen├¡ k t├®to s├¡ti fungovat.
+\n
+\nN├ísleduj├¡c├¡ porty byly zablokov├íny:
+\n</string>
+    <string name="nettest_text_blocked">Va┼íe sou─ìasn├® p┼Öipojen├¡ k s├¡ti blokuje SmartDisplay AI. Streamov├ín├¡ p┼Öes Internet nemus├¡ fungovat, dokud jste p┼Öipojeni k t├®to s├¡ti.</string>
+    <string name="pair_pc_ingame">Na po─ì├¡ta─ìi moment├íln─ø b─ø┼¥├¡ hra. P┼Öed p├írov├ín├¡m mus├¡te hru zav┼Ö├¡t.</string>
+    <string name="pair_pairing_title">P├írov├ín├¡</string>
+    <string name="pair_pairing_msg">Vlo┼¥te pros├¡m n├ísleduj├¡c├¡ PIN na c├¡lov├®m PC:</string>
+    <string name="pair_incorrect_pin">Nespr├ívn├¢ PIN</string>
+    <string name="pair_fail">P├írov├ín├¡ selhalo</string>
+    <string name="pair_already_in_progress">P├írov├ín├¡ ji┼¥ prob├¡h├í</string>
+    <string name="wol_pc_online">Po─ì├¡ta─ì je online</string>
+    <string name="wol_no_mac">Nezda┼Öilo se probudit PC, proto┼¥e GFE nezaslalo MAC adresu</string>
+    <string name="title_decoding_reset">Reset nastaven├¡ videa</string>
+    <string name="unable_to_pin_shortcut">V├í┼í sou─ìasn├¢ launcher neumo┼¥┼êuje vytv├í┼Öen├¡ z├ístupc┼».</string>
+    <string name="conn_establishing_msg">P┼Öipojov├ín├¡</string>
+    <string name="conn_starting">Spou┼ít─øn├¡</string>
+    <string name="conn_error_title">Chyba p┼Öipojen├¡</string>
+    <string name="frame_conversion_error">Hostitelsk├¢ po─ì├¡ta─ì hl├ís├¡ fat├íln├¡ chybu enk├│dov├ín├¡ videa.
+\n
+\nZkuste vypnout HDR, zm─ø┼ête rozli┼íen├¡ streamu nebo rozli┼íen├¡ displeje hostitelsk├®ho PC.</string>
+    <string name="yes">Ano</string>
+    <string name="no">Ne</string>
+    <string name="lost_connection">P┼Öipojen├¡ k PC bylo ztraceno</string>
+    <string name="title_details">Detaily</string>
+    <string name="perf_overlay_renderingfps">Vykreslovac├¡ sn├¡mkov├í frekvence: %1$.2f FPS</string>
+    <string name="perf_overlay_netdrops">Sn├¡mky zahozeny va┼íim p┼Öipojen├¡m: %1$.2f%%</string>
+    <string name="applist_refresh_msg">Obnovov├ín├¡ aplikac├¡</string>
+    <string name="applist_refresh_error_title">Chyba</string>
+    <string name="applist_refresh_error_msg">Nezda┼Öilo se z├¡skat seznam aplikac├¡</string>
+    <string name="applist_quit_app">Ukon─ìov├ín├¡</string>
+    <string name="applist_quit_success">├Üsp─ø┼ín─ø ukon─ìeno</string>
+    <string name="applist_quit_fail">Ukon─ìen├¡ se nezda┼Öilo</string>
+    <string name="applist_quit_confirmation">Ur─ìit─ø chcete ukon─ìit b─ø┼¥├¡c├¡ aplikaci\? Neulo┼¥en├í data budou ztracena.</string>
+    <string name="msg_add_pc">P┼Öipojov├ín├¡ k PC</string>
+    <string name="addpc_unknown_host">Nezda┼Öilo se p┼Öipojit k adrese PC. Ujist─øte se, ┼¥e v adrese nen├¡ p┼Öeklep.</string>
+    <string name="addpc_wrong_sitelocal">Tahle adresa nevypad├í spr├ívn─ø. Mus├¡te zadat ve┼Öejnou IP va┼íeho routeru, pokud chcete streamovat p┼Öes Internet.</string>
+    <string name="category_basic_settings">Z├íkladn├¡ nastaven├¡</string>
+    <string name="title_resolution_list">Rozli┼íen├¡ videa</string>
+    <string name="summary_resolution_list">Zvy┼íte p┼Öo zlep┼íen├¡ ostrosti obrazu. Sni┼¥te pro lep┼í├¡ v├¢kon na levn─øj┼í├¡ch za┼Ö├¡zen├¡ch nebo pomalej┼í├¡ch s├¡t├¡ch.</string>
+    <string name="summary_audio_config_list">Povolit 5.1 nebo 7.1 prostorov├¢ zvuk pro syst├®my dom├íc├¡ho kina</string>
+    <string name="summary_checkbox_touchscreen_trackpad">Pokud je povoleno, dotykov├¢ displej funguje jako trackpad. Pokud je zak├íz├íno, dotykov├¢ displej ovl├íd├í kurzor my┼íi p┼Ö├¡mo.</string>
+    <string name="title_reset_osc">Vymazat ulo┼¥en├® rozlo┼¥en├¡ ovlada─ìe na obrazovce</string>
+    <string name="summary_reset_osc">Resetuje v┼íechna nastaven├¡ ovlada─ìe na obrazovce na jejich v├¢choz├¡ velikost a pozici</string>
+    <string name="title_osc_opacity">Zm─ønit pr┼»hlednost ovlada─ìe na obrazovce</string>
+    <string name="category_advanced_settings">Pokro─ìil├í nastaven├¡</string>
+    <string name="title_unlock_fps">Odemknout v┼íechny mo┼¥n├® sn├¡mkov├® frekvence</string>
+    <string name="title_checkbox_reduce_refresh_rate">Povolit sn├¡┼¥en├¡ obnovovac├¡ frekvence</string>
+    <string name="summary_checkbox_reduce_refresh_rate">Men┼í├¡ obnovovac├¡ frekvence displeje m┼»┼¥e ┼íet┼Öit energii v├¢m─ønou za zv├¢┼íen├¡ zpo┼¥d─øn├¡ videa</string>
+    <string name="title_checkbox_mouse_nav_buttons">Povolit tla─ì├¡tka my┼íi zp─øt a vp┼Öed</string>
+    <string name="summary_checkbox_mouse_nav_buttons">Povolen├¡ t├®to mo┼¥nosti m┼»┼¥e na n─økter├¢ch pochybn├¢ch za┼Ö├¡zen├¡ch rozb├¡t klik├ín├¡ prav├¢m tla─ì├¡tkem</string>
+    <string name="summary_checkbox_flip_face_buttons">P┼Öehod├¡ tla─ì├¡tka A/B a X/Y na hern├¡m ovlada─ìi a instrukc├¡ch na obrazovce</string>
+    <string name="toast_reset_osc_success">Ovlada─ì na obrazovce resetov├ín</string>
+    <string name="dialog_title_reset_osc">Reset rozlo┼¥en├¡</string>
+    <string name="dialog_text_reset_osc">Jste si jisti, ┼¥e chcete smazat va┼íe ulo┼¥en├® rozlo┼¥en├¡ ovlada─ìe\?</string>
+    <string name="title_checkbox_enable_pip">Povolit sledovac├¡ rezim obraz-v-obraze</string>
+    <string name="summary_checkbox_enable_sops">Povolit GFE m─ønit hern├¡ nastaven├¡ pro optim├íln├¡ streamov├ín├¡</string>
+    <string name="title_checkbox_host_audio">P┼Öehr├ívat zvuk na PC</string>
+    <string name="summary_checkbox_host_audio">P┼Öehraje zvuk z po─ì├¡ta─ìe a tohoto za┼Ö├¡zen├¡</string>
+    <string name="summary_unlock_fps">Streamov├ín├¡ v 90 nebo 120 FPS m┼»┼¥e sn├¡┼¥it zpo┼¥d─øn├¡ na dra┼¥┼í├¡ch za┼Ö├¡zen├¡ch, ale m┼»┼¥e zp┼»sobit zasek├ív├ín├¡ nebo nestabilitu na za┼Ö├¡zen├¡ch, kter├® je nepodporuj├¡</string>
+    <string name="title_enable_post_stream_toast">Zobrazit informace o zpo┼¥d─øn├¡ po streamov├ín├¡</string>
+    <string name="summary_enable_post_stream_toast">Zobrazit informace o zpo┼¥d─øn├¡ po skon─ìen├¡ streamov├ín├¡</string>
+    <string name="title_privacy_policy">Z├ísady ochrany osobn├¡ch ├║daj┼»</string>
+    <string name="summary_privacy_policy">Zobrazit z├ísady ochrany osobn├¡ch ├║daj┼» SmartDisplay AIu</string>
+    <string name="resolution_360p">360p</string>
+    <string name="resolution_480p">480p</string>
+    <string name="pacing_balanced_alt">Vyv├í┼¥en├® s limitem FPS</string>
+    <string name="scut_deleted_pc">PC smaz├ín</string>
+    <string name="scut_not_paired">PC nesp├írov├ín</string>
+    <string name="scut_pc_not_found">PC nenalezen</string>
+    <string name="scut_invalid_uuid">Zadan├¢ po─ì├¡ta─ì nen├¡ platn├¢</string>
+    <string name="scut_invalid_app_id">Zadan├í aplikace nen├¡ platn├í</string>
+    <string name="help_loading_title">Zobrazen├¡ n├ípov─ødy</string>
+    <string name="wol_waking_msg">M┼»┼¥e trvat p├ír sekund, ne┼¥ se v├í┼í po─ì├¡ta─ì probud├¡. Pokud se tak nestane, ujist─øte se, ┼¥e m├íte spr├ívn─ø nastaveno Wake-On-LAN.</string>
+    <string name="wol_fail">Nezda┼Öilo se odeslat Wake-On-LAN pakety</string>
+    <string name="help">N├ípov─øda</string>
+    <string name="delete_pc_msg">Ur─ìit─ø chcete smazat tento PC\?</string>
+    <string name="slow_connection_msg">Pomal├® p┼Öipojen├¡ k PC
+\nSni┼¥te datov├¢ tok</string>
+    <string name="poor_connection_msg">┼ápatn├® p┼Öipojen├¡ k PC</string>
+    <string name="perf_overlay_streamdetails">Video stream: %1$s %2$.2f FPS</string>
+    <string name="perf_overlay_decoder">Dekod├®r: %1$s</string>
+    <string name="perf_overlay_incomingfps">P┼Ö├¡choz├¡ sn├¡mkov├í frekvence po s├¡ti: %1$.2f FPS</string>
+    <string name="text_native_res_dialog">GeForce Experience ofici├íln─ø nepodporuje nativn├¡ rozli┼íen├¡ a proto nenastav├¡ rozli┼íen├¡ displeje va┼íeho hostitelsk├®ho PC. Mus├¡te jej nastavit ru─ìn─ø ve h┼Öe.
+\n
+\nPokud v NVIDIA Control Panelu vytvo┼Ö├¡te vlastn├¡ rozli┼íen├¡ pro va┼íe za┼Ö├¡zen├¡, pros├¡m ujist─øte se, ┼¥e jste si p┼Öe─ìetli a ┼¥e ch├ípete varov├ín├¡ od NVIDIE ohledn─ø mo┼¥n├®ho po┼íkozen├¡ monitoru, nestability PC a dal┼í├¡ch mo┼¥n├¢ch probl├®m┼».
+\n
+\nNejsme zodpov─ødni za ┼¥├ídn├® probl├®my, kter├® vzniknou pou┼¥├¡v├ín├¡m vlastn├¡ho rozli┼íen├¡ na va┼íem PC.
+\n
+\nA nakonec, va┼íe za┼Ö├¡zen├¡ nebo hostitelsk├¢ po─ì├¡ta─ì nemus├¡ podporovat streamov├ín├¡ v nativn├¡m rozli┼íen├¡. Pokud v├ím to nefunguje, bohu┼¥el se s t├¡m ned├í nic d─ølat.</string>
+    <string name="title_fps_list">Sn├¡mkov├í frekvence videa</string>
+    <string name="summary_fps_list">Zvy┼íte pro plynulej┼í├¡ video stream. Sni┼¥te pro lep┼í├¡ v├¢kon na levn─øj┼í├¡ch za┼Ö├¡zen├¡ch.</string>
+    <string name="title_seekbar_bitrate">Datov├¢ tok videa</string>
+    <string name="summary_seekbar_bitrate">Zvy┼íte pro lep┼í├¡ kvalitu obrazu. Sni┼¥te pro zlep┼íen├¡ v├¢konu u pomal├¢ch p┼Öipojen├¡.</string>
+    <string name="suffix_seekbar_bitrate_mbps">Mbps</string>
+    <string name="title_checkbox_stretch_video">Nat├íhnout video na celou obrazovku</string>
+    <string name="resolution_prefix_native">Nativn├¡</string>
+    <string name="category_on_screen_controls_settings">Nastaven├¡ ovl├íd├ín├¡ na obrazovce</string>
+    <string name="title_checkbox_show_onscreen_controls">Zobrazovat ovl├íd├ín├¡ na obrazovce</string>
+    <string name="summary_checkbox_show_onscreen_controls">Zobrazit p┼Öekryt├¡ virtu├íln├¡ho ovlada─ìe na dotykov├®m displeji</string>
+    <string name="title_checkbox_vibrate_osc">Povolit vibrace</string>
+    <string name="summary_checkbox_vibrate_osc">Vibruje va┼íim za┼Ö├¡zen├¡m pro emulaci vibrac├¡ ovlada─ìe p┼Öi pou┼¥it├¡ ovlada─ìe na obrazovce</string>
+    <string name="title_only_l3r3">Zobrazit pouze L3 a R3</string>
+    <string name="summary_checkbox_enable_pip">Umo┼¥n├¡, aby byl stream sledov├ín (ale ne ovl├íd├í) b─øhem multitaskingu</string>
+    <string name="title_language_list">Jazyk</string>
+    <string name="summary_language_list">Jazyk, kter├¢ bude SmartDisplay AI pou┼¥├¡vat</string>
+    <string name="title_checkbox_small_icon_mode">Pou┼¥├¡t mal├¢ box art</string>
+    <string name="summary_checkbox_small_icon_mode">D├¡ky men┼í├¡mu box artu v seznamu aplikac├¡ uvid├¡te na obrazovce v├¡ce aplikac├¡ nar├íz</string>
+    <string name="category_host_settings">Nastaven├¡ hostitele</string>
+    <string name="title_checkbox_enable_sops">Optimalizovat hern├¡ nastaven├¡</string>
+    <string name="summary_disable_frame_drop">M┼»┼¥e na n─økter├¢ch za┼Ö├¡zen├¡ch sn├¡┼¥it mikroz├ídrhy, ale m┼»┼¥e zv├¢┼íit zpo┼¥d─øn├¡</string>
+    <string name="title_video_format">Zm─ønit nastaven├¡ HEVC</string>
+    <string name="summary_video_format">HEVC sn├¡┼¥├¡ datov├¢ p┼Öenos, ale vy┼¥aduje nov─øj┼í├¡ za┼Ö├¡zen├¡</string>
+    <string name="title_enable_hdr">Povolit HDR (experiment├íln├¡)</string>
+    <string name="summary_enable_hdr">Streamovat v HDR, pokud jej hra a GPU po─ì├¡ta─ìe podporuj├¡. HDR vy┼¥aduje GPU GTX 1000 nebo nov─øj┼í├¡.</string>
+    <string name="videoformat_hevcalways">V┼¥dy pou┼¥├¡t HEVC (m┼»┼¥e padat)</string>
+    <string name="title_frame_pacing">Frame pacing videa</string>
+    <string name="summary_frame_pacing">Zvolte, jak vyv├í┼¥it zpo┼¥d─øn├¡ videa a jeho plynulost</string>
+    <string name="pacing_latency">Preferovat nejni┼¥┼í├¡ zpo┼¥d─øn├¡</string>
+</resources>

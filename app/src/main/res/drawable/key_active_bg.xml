@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  key_active_bg.xml — Diseño Profesional Modo Oscuro (Teclas Activas)
+-->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="#40FFFFFF">
+
+    <!-- Máscara de recorte -->
+    <item android:id="@android:id/mask">
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/white" />
+            <corners android:radius="@dimen/neon_radius_sm" />
+        </shape>
+    </item>
+
+    <!-- Fondo y contornos para tecla activa -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#13283A" />
+            <corners android:radius="@dimen/neon_radius_sm" />
+            <stroke android:width="@dimen/neon_stroke_active" android:color="@color/neon_cyan" />
+        </shape>
+    </item>
+
+</ripple>

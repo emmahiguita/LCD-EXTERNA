@@ -1,0 +1,33 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- Arch of the letter A with a rainbow gradient -->
+    <path
+        android:strokeWidth="3.5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M 5,20 C 5,14 6,5 12,5 C 18,5 19,14 19,20">
+        <aapt:attr name="android:strokeColor">
+            <gradient
+                android:startX="5"
+                android:startY="20"
+                android:endX="19"
+                android:endY="5"
+                android:type="linear">
+                <item android:color="#2196F3" android:offset="0.0" />
+                <item android:color="#00E676" android:offset="0.4" />
+                <item android:color="#FFD600" android:offset="0.7" />
+                <item android:color="#FF3D00" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <!-- Crossbar of the letter A -->
+    <path
+        android:strokeWidth="3.2"
+        android:strokeLineCap="round"
+        android:strokeColor="#2196F3"
+        android:pathData="M 9,14 H 15" />
+</vector>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SmartDisplay · Overlays remasterizados (Material 3 · glass 3D)</title>
+<style>
+  /* Render fiel del XML. 1dp = 1.6px para apreciarlo en monitor. */
+  :root { --u: 1.6px; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Roboto", "Segoe UI", system-ui, sans-serif;
+    background: radial-gradient(1200px 700px at 70% 15%, #26324d 0%, #0d1220 60%, #05070d 100%);
+    min-height: 100vh; color: #fff; padding: 40px 24px 80px;
+  }
+  h1 { font-size: 18px; font-weight: 600; opacity: .9; }
+  .sub { font-size: 13px; opacity: .55; margin: 4px 0 28px; max-width: 640px; }
+  .label { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; opacity: .5; margin: 34px 0 12px; }
+  .stage { display:flex; align-items:flex-start; gap: 28px; flex-wrap: wrap; }
+
+  /* ── glass3d_panel_bg.xml: base translúcida + sheen superior (3D) + borde vidrio ── */
+  .glass {
+    position: relative;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.15) 0%, rgba(255,255,255,.05) 22%, rgba(255,255,255,0) 45%),
+      linear-gradient(180deg, #CC1E1D28 0%, #B315141C 100%);
+    border: 1px solid #2EFFFFFF;
+    border-radius: calc(24 * var(--u));
+    box-shadow: 0 calc(18*var(--u)) calc(38*var(--u)) rgba(0,0,0,.55),
+                inset 0 1px 0 rgba(255,255,255,.14);
+    backdrop-filter: blur(14px) saturate(120%);
+    -webkit-backdrop-filter: blur(14px) saturate(120%);
+  }
+
+  /* Cabecera común */
+  .header { display:flex; align-items:center; padding: calc(6*var(--u)) calc(4*var(--u)); }
+  .grip { width: calc(30*var(--u)); height: calc(34*var(--u)); display:flex; align-items:center; justify-content:center; cursor:grab; flex:none; }
+  .grip svg { width: calc(16*var(--u)); height: calc(22*var(--u)); }
+  .title { flex:1; margin-left: calc(6*var(--u)); font-size: calc(13*var(--u)); font-weight:700; color:#EAF0FF; }
+  .title.wide { letter-spacing:.08em; }
+  .hbtn { width: calc(32*var(--u)); height: calc(32*var(--u)); display:flex; align-items:center; justify-content:center; border-radius:50%; flex:none; cursor:pointer; }
+  .hbtn:hover { background: rgba(255,255,255,.10); }
+  .hbtn svg { width: calc(18*var(--u)); height: calc(18*var(--u)); }
+
+  /* ── BARRA PC ── */
+  .taskbar { display:inline-block; max-width: calc(640*var(--u)); padding: calc(6*var(--u)) calc(8*var(--u)); }
+  .tbody { display:flex; align-items:center; gap: calc(8*var(--u)); margin-top: calc(4*var(--u)); padding: 0 calc(2*var(--u)) calc(2*var(--u)); overflow-x:auto; }
+  .tbody::-webkit-scrollbar{display:none;}
+  /* taskbar_chip_bg: translúcido, radius 14dp, borde acento */
+  .chip {
+    background: rgba(255,255,255,.09);
+    border: 1px solid #4022D3EE;
+    border-radius: calc(14*var(--u));
+    padding: calc(8*var(--u)) calc(12*var(--u));
+    color:#fff; font-size: calc(13*var(--u)); white-space:nowrap; flex:none;
+  }
+  .chip.min { opacity:.45; }
+  .empty { padding: calc(8*var(--u)) calc(6*var(--u)); color:#8FA0BF; font-size: calc(13*var(--u)); }
+
+  /* ── PANEL DEV ── */
+  .dev { display:inline-block; padding: calc(8*var(--u)) calc(10*var(--u)); min-width: calc(300*var(--u)); }
+  .dev-row { display:flex; gap: calc(6*var(--u)); margin-top: calc(8*var(--u)); }
+  .m-btn { flex:1; height: calc(46*var(--u)); border-radius: calc(23*var(--u)); border:none; cursor:pointer; font-size: calc(13*var(--u)); font-weight:500; display:flex; align-items:center; justify-content:center; gap: calc(6*var(--u)); }
+  .m-btn svg { width: calc(18*var(--u)); height: calc(18*var(--u)); }
+  /* Material 3 TonalButton (secondaryContainer) — uniforme para las 3 acciones */
+  .m-btn.tonal  { background: rgba(139,92,246,.26); color:#E7DEFF; }
+  .dev-status { margin-top: calc(8*var(--u)); font-family: ui-monospace,"Cascadia Code",monospace; font-size: calc(11*var(--u)); color:#9FB4D6; line-height:1.55; }
+
+  /* Estado minimizado (solo cabecera) */
+  .mini .tbody, .mini .dev-row, .mini .dev-status { display:none; }
+</style>
+</head>
+<body>
+  <h1>Overlays remasterizados · Material 3 glass 3D</h1>
+  <div class="sub">Translúcidos con profundidad (sheen + blur), minimalistas, minimizables (cabecera con — / ▾), arrastrables por el grip y con posición persistente. Ocultos hasta abrirlos desde el FAB → Herramientas.</div>
+
+  <!-- iconos SVG reutilizables -->
+  <svg style="display:none">
+    <symbol id="grip" viewBox="0 0 16 22">
+      <circle cx="4" cy="4"  r="1.5" fill="#8FA0BF"/><circle cx="12" cy="4"  r="1.5" fill="#8FA0BF"/>
+      <circle cx="4" cy="11" r="1.5" fill="#8FA0BF"/><circle cx="12" cy="11" r="1.5" fill="#8FA0BF"/>
+      <circle cx="4" cy="18" r="1.5" fill="#8FA0BF"/><circle cx="12" cy="18" r="1.5" fill="#8FA0BF"/>
+    </symbol>
+    <symbol id="min" viewBox="0 0 18 18"><rect x="3" y="8" width="12" height="2.4" rx="1.2" fill="#C2CCE0"/></symbol>
+    <symbol id="close" viewBox="0 0 18 18"><path d="M4 4l10 10M14 4L4 14" stroke="#C2CCE0" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  </svg>
+
+  <div class="label">Barra PC · overlay_smart_taskbar.xml</div>
+  <div class="stage">
+    <!-- Con ventanas reales -->
+    <div class="taskbar glass">
+      <div class="header">
+        <div class="grip"><svg><use href="#grip"/></svg></div>
+        <div class="title">Ventanas del PC</div>
+        <div class="hbtn"><svg><use href="#min"/></svg></div>
+        <div class="hbtn"><svg><use href="#close"/></svg></div>
+      </div>
+      <div class="tbody">
+        <div class="chip">Visual Studio Code</div>
+        <div class="chip">Chrome — SmartDisplay</div>
+        <div class="chip min">Explorador de archiv…</div>
+        <div class="chip">Sunshine</div>
+        <div class="chip">Spotify</div>
+      </div>
+    </div>
+
+    <!-- Minimizada (solo cabecera) -->
+    <div class="taskbar glass mini">
+      <div class="header">
+        <div class="grip"><svg><use href="#grip"/></svg></div>
+        <div class="title">Ventanas del PC</div>
+        <div class="hbtn"><svg viewBox="0 0 18 18"><path d="M4 7l5 5 5-5" stroke="#C2CCE0" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="hbtn"><svg><use href="#close"/></svg></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="label">Panel Dev · overlay_dev_panel.xml</div>
+  <div class="stage">
+    <div class="dev glass">
+      <div class="header">
+        <div class="grip"><svg><use href="#grip"/></svg></div>
+        <div class="title wide">DEV</div>
+        <div class="hbtn"><svg><use href="#min"/></svg></div>
+        <div class="hbtn"><svg><use href="#close"/></svg></div>
+      </div>
+      <div class="dev-row">
+        <button class="m-btn tonal">
+          <svg viewBox="0 0 24 24" fill="#78909C"><path d="M15,16h4v2h-4zM15,8h7v2h-7zM15,12h6v2h-6zM3,18c0,1.1 0.9,2 2,2h6c1.1,0 2,-0.9 2,-2V8H3v10zM14,5h-3l-1,-1H6L5,5H2v2h12V5z"/></svg>Limpiar</button>
+        <button class="m-btn tonal">
+          <svg viewBox="0 0 24 24" fill="#FFB300"><path d="M22.7,19l-9.1,-9.1c0.9,-2.3 0.4,-5 -1.5,-6.9 -2,-2 -5,-2.4 -7.4,-1.3L9,6 6,9 1.6,4.7C0.4,7.1 0.9,10.1 2.9,12.1c1.9,1.9 4.6,2.4 6.9,1.5l9.1,9.1c0.4,0.4 1,0.4 1.4,0l2.3,-2.3c0.5,-0.4 0.5,-1.1 0.1,-1.5z"/></svg>Compilar</button>
+        <button class="m-btn tonal">
+          <svg viewBox="0 0 24 24" fill="#4CAF50"><path d="M8,5v14l11,-7z"/></svg>Ejecutar</button>
+      </div>
+      <div class="dev-status">✓ build OK<br>BUILD SUCCESSFUL in 12s<br>34 actionable tasks: 34 executed</div>
+    </div>
+
+    <!-- Minimizado -->
+    <div class="dev glass mini">
+      <div class="header">
+        <div class="grip"><svg><use href="#grip"/></svg></div>
+        <div class="title wide">DEV</div>
+        <div class="hbtn"><svg viewBox="0 0 18 18"><path d="M4 7l5 5 5-5" stroke="#C2CCE0" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="hbtn"><svg><use href="#close"/></svg></div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

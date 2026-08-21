@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Efecto "respiración" para el indicador de estado Online (FASE 2).
+     View animation ligera: escala + alpha en bucle, sin coste de layout. -->
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:interpolator="@android:anim/accelerate_decelerate_interpolator">
+
+    <scale
+        android:fromXScale="1.0"
+        android:toXScale="1.6"
+        android:fromYScale="1.0"
+        android:toYScale="1.6"
+        android:pivotX="50%"
+        android:pivotY="50%"
+        android:duration="950"
+        android:repeatCount="infinite"
+        android:repeatMode="reverse" />
+
+    <alpha
+        android:fromAlpha="1.0"
+        android:toAlpha="0.45"
+        android:duration="950"
+        android:repeatCount="infinite"
+        android:repeatMode="reverse" />
+</set>

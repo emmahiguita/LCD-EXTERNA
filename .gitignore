@@ -1,34 +1,58 @@
-# Dependencies
-node_modules/
-
-# Build output
-.next/
+# built application files
+*.apk
+*.ap_
+*.aab
+output.json
+output-metadata.json
 out/
 
-# Environment files (NEVER commit secrets)
-.env
-.env.local
-.env.*.local
+# files for the dex VM
+*.dex
 
-# IDE
-.idea/
-.vscode/
+# Java class files
+*.class
 
-# OS
+# generated files
+bin/
+gen/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Windows thumbnail db
 Thumbs.db
+
+# OSX files
 .DS_Store
 
-# Temp
-temp/
-*.tsbuildinfo
+# Eclipse project files
+.classpath
+.project
 
-# SmartDisplay session token (generated at runtime — never commit)
-.smartdisplay-token
-.smartdisplay-token-expiry
+# Android Studio
+.idea
+#.idea/workspace.xml - remove # and delete .idea if it better suit your needs.
+.gradle
+build/
+*.iml
 
-# Large files & Binaries
-*.txt
-*.apk
-*.zip
+# Compiled JNI libraries folder
+**/jniLibs
+app/.externalNativeBuild/
+
+# NDK stuff
+.cxx/
+
+# Logs, crash dumps y salidas de build ad-hoc (no versionar)
+log.txt
+crash*.txt
+build_output*.log
+decoder-errata.txt
 *.log
-temp_extract/
+
+# Python / Companion Server build artifacts
+companion_server/build/
+companion_server/dist/
+__pycache__/
+*.pyc
+graphify-out/

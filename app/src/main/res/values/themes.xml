@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.SmartDisplayAI" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- ── PRIMARY ──────────────────────────────────────────────── -->
+        <item name="colorPrimary">@color/md_theme_primary</item>
+        <item name="colorOnPrimary">@color/md_theme_on_primary</item>
+        <item name="colorPrimaryContainer">@color/md_theme_primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/md_theme_on_primary_container</item>
+
+        <!-- ── SECONDARY ────────────────────────────────────────────── -->
+        <item name="colorSecondary">@color/md_theme_secondary</item>
+        <item name="colorOnSecondary">@color/md_theme_on_secondary</item>
+        <item name="colorSecondaryContainer">@color/md_theme_secondary_container</item>
+        <item name="colorOnSecondaryContainer">@color/md_theme_on_secondary_container</item>
+
+        <!-- ── TERTIARY ─────────────────────────────────────────────── -->
+        <item name="colorTertiary">@color/md_theme_tertiary</item>
+        <item name="colorOnTertiary">@color/md_theme_on_tertiary</item>
+        <item name="colorTertiaryContainer">@color/md_theme_tertiary_container</item>
+        <item name="colorOnTertiaryContainer">@color/md_theme_on_tertiary_container</item>
+
+        <!-- ── ERROR ────────────────────────────────────────────────── -->
+        <item name="colorError">@color/md_theme_error</item>
+        <item name="colorOnError">@color/md_theme_on_error</item>
+        <item name="colorErrorContainer">@color/md_theme_error_container</item>
+        <item name="colorOnErrorContainer">@color/md_theme_on_error_container</item>
+
+        <!-- ── BACKGROUND / SURFACE + jerarquía tonal de contenedores ── -->
+        <item name="android:colorBackground">@color/md_theme_background</item>
+        <item name="colorOnBackground">@color/md_theme_on_background</item>
+        <item name="colorSurface">@color/md_theme_surface</item>
+        <item name="colorOnSurface">@color/md_theme_on_surface</item>
+        <item name="colorSurfaceVariant">@color/md_theme_surface_variant</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_on_surface_variant</item>
+        <item name="colorSurfaceContainerLowest">@color/md_theme_surface_container_lowest</item>
+        <item name="colorSurfaceContainerLow">@color/md_theme_surface_container_low</item>
+        <item name="colorSurfaceContainer">@color/md_theme_surface_container</item>
+        <item name="colorSurfaceContainerHigh">@color/md_theme_surface_container_high</item>
+        <item name="colorSurfaceContainerHighest">@color/md_theme_surface_container_highest</item>
+
+        <!-- ── OUTLINE ──────────────────────────────────────────────── -->
+        <item name="colorOutline">@color/md_theme_outline</item>
+        <item name="colorOutlineVariant">@color/md_theme_outline_variant</item>
+
+        <!-- ── TIPOGRAFÍA (escala Material 3) ───────────────────────── -->
+        <!-- Fuente de marca empaquetada (Roboto variable). Evita que una
+             fuente serif del sistema (p. ej. Noto Serif de ColorOS) se
+             filtre en títulos y textos: la app siempre usa Roboto. -->
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="fontFamily">@font/roboto</item>
+        <!-- Roles de la escala tipográfica M3 forzados a Roboto (solo fuente). -->
+        <item name="textAppearanceDisplayLarge">@style/TextAppearance.SD.DisplayLarge</item>
+        <item name="textAppearanceDisplayMedium">@style/TextAppearance.SD.DisplayMedium</item>
+        <item name="textAppearanceDisplaySmall">@style/TextAppearance.SD.DisplaySmall</item>
+        <item name="textAppearanceHeadlineLarge">@style/TextAppearance.SD.HeadlineLarge</item>
+        <item name="textAppearanceHeadlineMedium">@style/TextAppearance.SD.HeadlineMedium</item>
+        <item name="textAppearanceHeadlineSmall">@style/TextAppearance.SD.HeadlineSmall</item>
+        <item name="textAppearanceTitleLarge">@style/TextAppearance.SD.TitleLarge</item>
+        <item name="textAppearanceTitleMedium">@style/TextAppearance.SD.TitleMedium</item>
+        <item name="textAppearanceTitleSmall">@style/TextAppearance.SD.TitleSmall</item>
+        <item name="textAppearanceBodyLarge">@style/TextAppearance.SD.BodyLarge</item>
+        <item name="textAppearanceBodyMedium">@style/TextAppearance.SD.BodyMedium</item>
+        <item name="textAppearanceBodySmall">@style/TextAppearance.SD.BodySmall</item>
+        <item name="textAppearanceLabelLarge">@style/TextAppearance.SD.LabelLarge</item>
+        <item name="textAppearanceLabelMedium">@style/TextAppearance.SD.LabelMedium</item>
+        <item name="textAppearanceLabelSmall">@style/TextAppearance.SD.LabelSmall</item>
+
+        <!-- ── FORMAS ───────────────────────────────────────────────── -->
+        <item name="shapeAppearanceCornerSmall">@style/ShapeAppearance.SmartDisplay.Small</item>
+        <item name="shapeAppearanceCornerMedium">@style/ShapeAppearance.SmartDisplay.Medium</item>
+        <item name="shapeAppearanceCornerLarge">@style/ShapeAppearance.SmartDisplay.Large</item>
+
+        <!-- ── EFECTOS M3 (overlay tonal de elevación activo) ───────── -->
+        <item name="elevationOverlayEnabled">true</item>
+
+        <!-- Colores de texto del framework (usados por android.preference.* y
+             widgets legacy) mapeados al esquema del tema para que Ajustes y
+             cualquier pantalla legacy sean legibles en TODOS los temas. -->
+        <item name="android:textColorPrimary">?attr/colorOnSurface</item>
+        <item name="android:textColorSecondary">?attr/colorOnSurfaceVariant</item>
+        <item name="android:textColorTertiary">?attr/colorOnSurfaceVariant</item>
+        <item name="android:textColorHint">?attr/colorOnSurfaceVariant</item>
+        <!-- Los encabezados de categoría de android.preference.* usan colorAccent.
+             Sin esto quedan casi invisibles sobre fondo oscuro. Se mapea al color
+             primario del tema para que Ajustes sea legible en TODOS los temas. -->
+        <item name="colorAccent">?attr/colorPrimary</item>
+        <item name="android:colorAccent">?attr/colorPrimary</item>
+        <item name="colorControlNormal">?attr/colorOnSurfaceVariant</item>
+        <item name="android:colorControlNormal">?attr/colorOnSurfaceVariant</item>
+
+        <!-- ── BARRAS DE SISTEMA edge-to-edge ───────────────────────── -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">@bool/window_light_status_bar</item>
+
+        <!-- ── TRANSICIONES (shared element / contenido) ────────────── -->
+        <item name="android:windowActivityTransitions">true</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowAnimationStyle">@style/Animation.SmartDisplay.Activity</item>
+
+        <!-- ── DIÁLOGOS Y ALERTAS GLASS OBSIDIAN ────────────────────── -->
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.SmartDisplay.MaterialAlertDialog</item>
+        <item name="alertDialogTheme">@style/ThemeOverlay.SmartDisplay.MaterialAlertDialog</item>
+    </style>
+
+    <!-- Tema Universo (Espacial/Neon - Material 3 Dark/Neon Mode) -->
+    <style name="Theme.SmartDisplayAI.Universe" parent="Theme.SmartDisplayAI">
+        <!-- Colores Primario y Secundario (Neon Violeta y Cian) -->
+        <item name="colorPrimary">#9D4EDD</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorPrimaryContainer">#240046</item>
+        <item name="colorOnPrimaryContainer">#E0AAFF</item>
+        <item name="colorSecondary">#00F5FF</item>
+        <item name="colorOnSecondary">#0B0914</item>
+        <item name="colorSecondaryContainer">#003566</item>
+        <item name="colorOnSecondaryContainer">#90E0EF</item>
+        <item name="colorTertiary">#FF007F</item>
+        <item name="colorOnTertiary">#FFFFFF</item>
+
+        <!-- Fondos y Superficies (Gris Espacial muy Oscuro / Casi Negro) -->
+        <item name="android:colorBackground">#050409</item>
+        <item name="colorOnBackground">#E2E1E6</item>
+        <item name="colorSurface">#0B0914</item>
+        <item name="colorOnSurface">#F0EEF5</item>
+        <item name="colorSurfaceVariant">#181528</item>
+        <item name="colorOnSurfaceVariant">#CBC6D7</item>
+
+        <!-- Tonalidades de Contenedores de Elevación de M3 -->
+        <item name="colorSurfaceContainerLowest">#020104</item>
+        <item name="colorSurfaceContainerLow">#08060E</item>
+        <item name="colorSurfaceContainer">#0F0C1D</item>
+        <item name="colorSurfaceContainerHigh">#17132B</item>
+        <item name="colorSurfaceContainerHighest">#211B3B</item>
+
+        <!-- Bordes y Separadores en Modo Oscuro -->
+        <item name="colorOutline">#494554</item>
+        <item name="colorOutlineVariant">#302C3D</item>
+
+        <!-- Configuración de contraste en Barra de Estado (Modo Oscuro -> Íconos Claros) -->
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+
+    <!-- Tema Pixel (Azul Google · Material 3 Dark) -->
+    <style name="Theme.SmartDisplayAI.Pixel" parent="Theme.SmartDisplayAI.Universe">
+        <item name="colorPrimary">#A8C7FA</item>
+        <item name="colorOnPrimary">#062E6F</item>
+        <item name="colorPrimaryContainer">#0842A0</item>
+        <item name="colorOnPrimaryContainer">#D3E3FD</item>
+        <item name="colorSecondary">#7FCFFF</item>
+        <item name="colorOnSecondary">#00344D</item>
+        <item name="colorSecondaryContainer">#004C6D</item>
+        <item name="colorOnSecondaryContainer">#C2E7FF</item>
+        <item name="android:colorBackground">#0B0E14</item>
+        <item name="colorOnBackground">#E2E2E9</item>
+        <item name="colorSurface">#10131A</item>
+        <item name="colorOnSurface">#E2E2E9</item>
+        <item name="colorSurfaceVariant">#1C212B</item>
+        <item name="colorOnSurfaceVariant">#C4C7D0</item>
+        <item name="colorSurfaceContainerLowest">#06080D</item>
+        <item name="colorSurfaceContainerLow">#0D1017</item>
+        <item name="colorSurfaceContainer">#131720</item>
+        <item name="colorSurfaceContainerHigh">#1B202B</item>
+        <item name="colorSurfaceContainerHighest">#242B38</item>
+        <item name="colorOutline">#44474F</item>
+        <item name="colorOutlineVariant">#292E38</item>
+    </style>
+
+    <!-- Tema Esmeralda (Verde Pro · oscuro) -->
+    <style name="Theme.SmartDisplayAI.Emerald" parent="Theme.SmartDisplayAI.Universe">
+        <item name="colorPrimary">#34D399</item>
+        <item name="colorOnPrimary">#00382A</item>
+        <item name="colorPrimaryContainer">#00513C</item>
+        <item name="colorOnPrimaryContainer">#A7F3D0</item>
+        <item name="colorSecondary">#5EEAD4</item>
+        <item name="colorOnSecondary">#00332B</item>
+        <item name="colorSecondaryContainer">#004D42</item>
+        <item name="colorOnSecondaryContainer">#99F6E4</item>
+        <item name="android:colorBackground">#04110C</item>
+        <item name="colorOnBackground">#DEE9E2</item>
+        <item name="colorSurface">#071A12</item>
+        <item name="colorOnSurface">#EAF5EF</item>
+        <item name="colorSurfaceVariant">#14241C</item>
+        <item name="colorOnSurfaceVariant">#BFD3C8</item>
+        <item name="colorSurfaceContainerLowest">#02100A</item>
+        <item name="colorSurfaceContainerLow">#06170F</item>
+        <item name="colorSurfaceContainer">#0B1F16</item>
+        <item name="colorSurfaceContainerHigh">#12291D</item>
+        <item name="colorSurfaceContainerHighest">#1B3527</item>
+        <item name="colorOutline">#3E5C50</item>
+        <item name="colorOutlineVariant">#24362E</item>
+    </style>
+
+    <!-- Tema Ámbar (Atardecer · oscuro cálido) -->
+    <style name="Theme.SmartDisplayAI.Amber" parent="Theme.SmartDisplayAI.Universe">
+        <item name="colorPrimary">#FBBF24</item>
+        <item name="colorOnPrimary">#402D00</item>
+        <item name="colorPrimaryContainer">#5C4300</item>
+        <item name="colorOnPrimaryContainer">#FFE7A6</item>
+        <item name="colorSecondary">#FB923C</item>
+        <item name="colorOnSecondary">#4A2500</item>
+        <item name="colorSecondaryContainer">#6B3A00</item>
+        <item name="colorOnSecondaryContainer">#FFDCC2</item>
+        <item name="android:colorBackground">#14100A</item>
+        <item name="colorOnBackground">#EDE6DA</item>
+        <item name="colorSurface">#1B160E</item>
+        <item name="colorOnSurface">#F5EEE2</item>
+        <item name="colorSurfaceVariant">#2A2418</item>
+        <item name="colorOnSurfaceVariant">#D6C9B4</item>
+        <item name="colorSurfaceContainerLowest">#0F0C06</item>
+        <item name="colorSurfaceContainerLow">#18130B</item>
+        <item name="colorSurfaceContainer">#1F1910</item>
+        <item name="colorSurfaceContainerHigh">#2A2417</item>
+        <item name="colorSurfaceContainerHighest">#362E1E</item>
+        <item name="colorOutline">#5C5238</item>
+        <item name="colorOutlineVariant">#37311F</item>
+    </style>
+
+    <!-- Tema Grafito (Slate Neutro · oscuro elegante) -->
+    <style name="Theme.SmartDisplayAI.Graphite" parent="Theme.SmartDisplayAI.Universe">
+        <item name="colorPrimary">#A5B4FC</item>
+        <item name="colorOnPrimary">#1E1B4B</item>
+        <item name="colorPrimaryContainer">#312E81</item>
+        <item name="colorOnPrimaryContainer">#E0E7FF</item>
+        <item name="colorSecondary">#CBD5E1</item>
+        <item name="colorOnSecondary">#1E293B</item>
+        <item name="colorSecondaryContainer">#334155</item>
+        <item name="colorOnSecondaryContainer">#E2E8F0</item>
+        <item name="android:colorBackground">#0B0E13</item>
+        <item name="colorOnBackground">#E4E7EC</item>
+        <item name="colorSurface">#10141B</item>
+        <item name="colorOnSurface">#EDEFF3</item>
+        <item name="colorSurfaceVariant">#232A34</item>
+        <item name="colorOnSurfaceVariant">#C3CAD6</item>
+        <item name="colorSurfaceContainerLowest">#070A0F</item>
+        <item name="colorSurfaceContainerLow">#12161D</item>
+        <item name="colorSurfaceContainer">#171C24</item>
+        <item name="colorSurfaceContainerHigh">#1F252F</item>
+        <item name="colorSurfaceContainerHighest">#29303B</item>
+        <item name="colorOutline">#48505C</item>
+        <item name="colorOutlineVariant">#2B323C</item>
+    </style>
+
+    <!-- Tema Cristal (Glassmorphism · superficies translúcidas heladas) -->
+    <style name="Theme.SmartDisplayAI.Glass" parent="Theme.SmartDisplayAI.Universe">
+        <item name="colorPrimary">#C4B5FD</item>
+        <item name="colorOnPrimary">#2E1065</item>
+        <item name="colorPrimaryContainer">#5B21B6</item>
+        <item name="colorOnPrimaryContainer">#EDE9FE</item>
+        <item name="colorSecondary">#A5F3FC</item>
+        <item name="colorOnSecondary">#083344</item>
+        <item name="colorSecondaryContainer">#155E75</item>
+        <item name="colorOnSecondaryContainer">#CFFAFE</item>
+        <item name="android:colorBackground">#0A0E17</item>
+        <item name="colorOnBackground">#F5F6FB</item>
+        <item name="colorSurface">#12131C</item>
+        <item name="colorOnSurface">#FFFFFF</item>
+        <item name="colorSurfaceVariant">#26FFFFFF</item>
+        <item name="colorOnSurfaceVariant">#E4E6F0</item>
+        <!-- Superficies "cristal": blanco translúcido para efecto helado -->
+        <item name="colorSurfaceContainerLowest">#0DFFFFFF</item>
+        <item name="colorSurfaceContainerLow">#14FFFFFF</item>
+        <item name="colorSurfaceContainer">#1AFFFFFF</item>
+        <item name="colorSurfaceContainerHigh">#24FFFFFF</item>
+        <item name="colorSurfaceContainerHighest">#30FFFFFF</item>
+        <item name="colorOutline">#66FFFFFF</item>
+        <item name="colorOutlineVariant">#40FFFFFF</item>
+    </style>
+
+    <!-- Tema Lluvia (tormenta nocturna · azul pizarra). La animación de lluvia
+         se dibuja como overlay cuando este tema está activo. -->
+    <style name="Theme.SmartDisplayAI.Rain" parent="Theme.SmartDisplayAI.Universe">
+        <item name="colorPrimary">#7DD3FC</item>
+        <item name="colorOnPrimary">#082F49</item>
+        <item name="colorPrimaryContainer">#0C4A6E</item>
+        <item name="colorOnPrimaryContainer">#E0F2FE</item>
+        <item name="colorSecondary">#94A3B8</item>
+        <item name="colorOnSecondary">#0F172A</item>
+        <item name="colorSecondaryContainer">#1E293B</item>
+        <item name="colorOnSecondaryContainer">#E2E8F0</item>
+        <item name="android:colorBackground">#070C16</item>
+        <item name="colorOnBackground">#DCE6F2</item>
+        <item name="colorSurface">#0B1220</item>
+        <item name="colorOnSurface">#EAF1FA</item>
+        <item name="colorSurfaceVariant">#1B2637</item>
+        <item name="colorOnSurfaceVariant">#B6C4D6</item>
+        <item name="colorSurfaceContainerLowest">#050A12</item>
+        <item name="colorSurfaceContainerLow">#0A1120</item>
+        <item name="colorSurfaceContainer">#0F1829</item>
+        <item name="colorSurfaceContainerHigh">#162134</item>
+        <item name="colorSurfaceContainerHighest">#1F2C42</item>
+        <item name="colorOutline">#3E4C63</item>
+        <item name="colorOutlineVariant">#26313F</item>
+    </style>
+
+</resources>
+

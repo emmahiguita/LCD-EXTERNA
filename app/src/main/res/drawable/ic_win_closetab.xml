@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Cerrar pestaña (Ctrl+W): pestaña con X encima -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="960"
+    android:viewportHeight="960">
+  <group android:translateY="960">
+    <!-- Pestaña / documento base -->
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M200-200v-560 560Zm0 80q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h240q14 0 26 5t21 15l94 100h179q33 0 56.5 23.5T840-640v160q0 17-11.5 28.5T800-440q-17 0-28.5-11.5T760-480v-160H561q-14 0-26-5t-21-15L420-760H200v560h280q17 0 28.5 11.5T520-160q0 17-11.5 28.5T480-120H200Z"/>
+    <!-- X pequeña arriba a la derecha (dentro del área de pestaña) -->
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M720-280 652-348q-8-8-8-20t8-20q8-8 20-8t20 8l68 68 68-68q8-8 20-8t20 8q8 8 8 20t-8 20L800-280l68 68q8 8 8 20t-8 20q-8 8-20 8t-20-8L760-240l-68 68q-8 8-20 8t-20-8q-8-8-8-20t8-20L720-280Z"/>
+  </group>
+</vector>

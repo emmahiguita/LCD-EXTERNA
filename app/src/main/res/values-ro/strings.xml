@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Shortcut strings -->
+    <string name="scut_deleted_pc">PC ╚Öters</string>
+    <string name="scut_not_paired">PC ne├«mperecheat</string>
+    <string name="scut_pc_not_found">PC neg─âsit</string>
+    <string name="scut_invalid_uuid">PC-ul este invalid</string>
+    <string name="scut_invalid_app_id">Aplica╚øia este invalid─â</string>
+    <!-- Help strings -->
+    <string name="help_loading_title">Ajutor</string>
+    <string name="help_loading_msg">Se ├«ncarc─â pagina de ajutor…</string>
+    <!-- PC view menu entries -->
+    <string name="pcview_menu_app_list">Vezi lista de jocuri</string>
+    <string name="pcview_menu_pair_pc">├Ämperecheaz─â PC-ul</string>
+    <string name="pcview_menu_unpair_pc">Desperecheaz─â</string>
+    <string name="pcview_menu_send_wol">Trimite o cerere Wake-On-LAN</string>
+    <string name="pcview_menu_delete_pc">╚ÿterge PC</string>
+    <string name="pcview_menu_details">Vezi detalii</string>
+    <!-- Pair messages -->
+    <string name="pairing">Se ├«mperecheaz─â…</string>
+    <string name="pair_pc_offline">PC-ul nu este accesibil</string>
+    <string name="pair_pc_ingame">PC-ul ruleaz─â un joc acum. Trebuie s─â ├«nchizi jocul pentru a-l putea ├«mperechea.</string>
+    <string name="pair_pairing_title">Se ├«mperecheaz─â</string>
+    <string name="pair_pairing_msg">Te rug─âm s─â introduci urmatorul PIN ├«n PC-ul pe care ├«l ├«mperechezi:</string>
+    <string name="pair_incorrect_pin">PIN-ul este gre╚Öit</string>
+    <string name="pair_fail">├Ämperecherea a e╚Öuat</string>
+    <string name="pair_already_in_progress">├Ämperecherea este deja ├«n curs</string>
+    <!-- WOL messages -->
+    <string name="wol_pc_online">PC-ul este accesibil</string>
+    <string name="wol_no_mac">Nu s-a putut porni PC-ul deoarece GFE nu a comunicat o adresa MAC</string>
+    <string name="wol_waking_pc">Se porne╚Öte PC-ul…</string>
+    <string name="wol_waking_msg">Poate dura pu╚øin p├ón─â PC-ul porne╚Öte. Dac─â nu porne╚Öte, verific─â dac─â este configurat corect pentru Wake-On-LAN.</string>
+    <string name="wol_fail">Nu s-au putut trimite pachetele Wake-On-LAN</string>
+    <!-- Unpair messages -->
+    <string name="unpairing">Desperecherechere…</string>
+    <string name="unpair_success">Desperecherechere efectuat─â cu succes</string>
+    <string name="unpair_fail">Desperecherea a e╚Öuat</string>
+    <string name="unpair_error">Dispozitivul nu este ├«mperecheat</string>
+    <!-- Errors -->
+    <string name="error_pc_offline">PC-ul este inaccesibil</string>
+    <string name="error_manager_not_running">Serviciul ComputerManager nu este pornit. Te rug─âm s─â a╚Ötep╚øi c├óteva secunde sau s─â reporne╚Öti aplica╚øia.</string>
+    <string name="error_unknown_host">Nu am putut identifica hostul</string>
+    <string name="error_404">GFE a returnat un cod de eroare HTTP 404. Asigur─â-te ca PC-ul are o placa video suportat─â.
+	Este posibil sa apar─â aceast─â eroare daca folose╚Öti o alta aplica╚øie de remote desktop. ├Äncearc─â s─â reporne╚Öti PC-ul sau s─â reinstalezi GFE.
+   </string>
+    <string name="title_decoding_error">Decodorul video s-a ├«nchis ├«n mod nea╚Öteptat</string>
+    <string name="message_decoding_error">SmartDisplay AI s-a ├«nchis ├«n mod nea╚Öteptat datorit─â unei incompatibilit─â╚øi cu decodorul video al acestui dispozitiv. Asigur─â-te ca folose╚Öti ultima versiune de GFE. Dac─â problema persist─â, ajusteaz─â set─ârile de streaming.</string>
+    <string name="title_decoding_reset">Reseteaz─â set─ârile video</string>
+    <string name="message_decoding_reset">Decodorul video al acestui dispozitiv continu─â s─â se blocheze folosind set─ârile video curente. Au fost resetate cele implicite.</string>
+    <string name="error_usb_prohibited">Accesul USB este interzis de c─âtre administratorul dispozitivului. Verific─â setarile Knox sau MDM.</string>
+    <string name="unable_to_pin_shortcut">Launcher-ul t─âu curent nu permite crearea de scurt─âturi fixate.</string>
+    <string name="video_decoder_init_failed">Ini╚øializarea decodorului video a e╚Öuat. Este posibil ca acest dispozitiv s─â nu suporte rezolu╚øia sau rata cadrelor selectat─â.</string>
+    <!-- Start application messages -->
+    <string name="conn_establishing_title">Se stabile╚Öte conexiunea</string>
+    <string name="conn_establishing_msg">Se porne╚Öte conexiunea</string>
+    <string name="conn_metered">Aten╚øie: Conexiunea ta curent─â este contorizat─â!</string>
+    <string name="conn_client_latency">Laten╚øa medie a decod─ârii cadrelor:</string>
+    <string name="conn_client_latency_hw">laten╚øa decodorului hardware:</string>
+    <string name="conn_hardware_latency">Laten╚øa medie a decod─ârii cadrelor (hardware):</string>
+    <string name="conn_starting">Se porne╚Öte</string>
+    <string name="conn_error_title">Eroare la conectare</string>
+    <string name="conn_error_msg">Pornirea a e╚Öuat</string>
+    <string name="conn_terminated_title">Conexiunea ├«nchis─â</string>
+    <string name="conn_terminated_msg">Conexiunea a fost terminat─â</string>
+    <!-- General strings -->
+    <string name="ip_hint">Adresa IP a PC-ului cu GFE</string>
+    <string name="searching_pc">Se caut─â PC-uri cu GameStream activat\n\n
+        Asigur─â-te ca GameStream este activat ├«n set─ârile Geforce Experience SHIELD.</string>
+    <string name="yes">Da</string>
+    <string name="no">Nu</string>
+    <string name="lost_connection">S-a pierdut conexiunea catre PC</string>
+    <string name="title_details">Detalii</string>
+    <string name="help">Ajutor</string>
+    <string name="delete_pc_msg">Sigur dore╚Öti s─â ╚Ötergi acest PC?</string>
+    <string name="slow_connection_msg">Conexiune inceat─â catre PC\nRedu rata de bi╚øi</string>
+    <string name="poor_connection_msg">Conexiune slab─â catre PC</string>
+    <string name="perf_overlay_decoder">Decodor: %1$s</string>
+    <string name="perf_overlay_incomingfps">Rata cadrelor primite din re╚øea: %1$.2f FPS</string>
+    <string name="perf_overlay_renderingfps">Rata de afisare a cadrelor: %1$.2f FPS</string>
+    <string name="perf_overlay_netdrops">Cadre pierdute de re╚øea: %1$.2f%%</string>
+    <string name="perf_overlay_dectime">Timpul mediu de decodare: %1$.2f ms</string>
+    <!-- AppList activity -->
+    <string name="applist_connect_msg">Se conecteaz─â la PC</string>
+    <string name="applist_menu_resume">Continu─â Sesiunea</string>
+    <string name="applist_menu_quit">├Änchide Sesiunea</string>
+    <string name="applist_menu_quit_and_start">├Änchide Jocul Curent si Porne╚Öte</string>
+    <string name="applist_menu_cancel">Anuleaz─â</string>
+    <string name="applist_menu_details">Vezi detalii</string>
+    <string name="applist_menu_scut">Creeaz─â o scurt─âtur─â</string>
+    <string name="applist_menu_tv_channel">Adaug─â la canal</string>
+    <string name="applist_refresh_title">Lista de aplica╚øii</string>
+    <string name="applist_refresh_msg">Re├«mprosp─âtare aplica╚øii</string>
+    <string name="applist_refresh_error_title">Eroare</string>
+    <string name="applist_refresh_error_msg">Nu s-a putut ob╚øine lista de aplica╚øii</string>
+    <string name="applist_quit_app">├Änchidere ├«n curs</string>
+    <string name="applist_quit_success">├Änchis cu succes</string>
+    <string name="applist_quit_fail">Nu s-a putut ├«nchide lista</string>
+    <string name="applist_quit_confirmation">Sigur dore╚Öti s─â ├«nchizi aplica╚øia curent─â? Toate datele nesalvate vor fi pierdute.</string>
+    <string name="applist_details_id">ID-ul aplica╚øiei:</string>
+    <!-- Add computer manually activity -->
+    <string name="title_add_pc">Adaug─â PC manual</string>
+    <string name="msg_add_pc">Conectare ├«n curs</string>
+    <string name="addpc_fail">Nu s-a putut efectua conectarea la adresa introdus─â. Asigur─âte ca porturile nu sunt blocate in firewall.</string>
+    <string name="addpc_success">PC ad─âugat cu succes</string>
+    <string name="addpc_unknown_host">Nu am putut identifica adresa PC-ului. Asigur─â-te c─â ai introdus-o corect.</string>
+    <string name="addpc_enter_ip">Trebuie s─â introduci o adresa IP</string>
+    <string name="addpc_wrong_sitelocal">Adresa introdus─â nu pare corect─â. Pentru conectare prin Internet, este nevoie de adresa public─â a routerului.</string>
+    <!-- Preferences -->
+    <string name="category_basic_settings">Set─âri de baz─â</string>
+    <string name="title_resolution_list">Rezolutia video</string>
+    <string name="summary_resolution_list">Cre╚Öte-o pentru a ├«mbun─ât─â╚øi claritatea imaginii. Descre╚Öte-o pentru dispozitive neperformante sau conexiune slab─â.</string>
+    <string name="title_fps_list">Rata cadrelor</string>
+    <string name="summary_fps_list">Cre╚Öte-o pentru a ├«mbun─ât─â╚øi fluiditatea imaginilor. Descre╚Öte-o pentru dispozitive neperformante sau conexiune slab─â.</string>
+    <string name="title_seekbar_bitrate">Rata de bi╚øi</string>
+    <string name="summary_seekbar_bitrate">Cre╚Öte-o pentru a ├«mbun─ât─â╚øi calitatea imaginilor. Descre╚Öte-o pentru dispozitive neperformante sau conexiune slab─â.</string>
+    <string name="title_unlock_fps">Deblocheaz─â toate ratele de cadre posibile</string>
+    <string name="summary_unlock_fps">Fluxul video de rate mai mari poate reduce laten╚øa folosind dispozitive performante, dar poate introduce erori daca nu sunt suportate.</string>
+    <string name="title_checkbox_stretch_video">├Äntinde╚øi video pe ecranul complet</string>
+    <string name="title_checkbox_disable_warnings">Dezactiveaz─â mesajele de avertizare</string>
+    <string name="summary_checkbox_disable_warnings">Dezactiveaz─â mesajele de avertizare privind re╚øeaua ├«n timpul conexiunii</string>
+    <string name="title_checkbox_enable_pip">Activeaz─â modul Picture-In-Picture</string>
+    <string name="summary_checkbox_enable_pip">Permite vizualizarea (dar nu ╚Öi controlul) c├ónd efectuezi multitasking</string>
+    <string name="category_audio_settings">Set─âri Audio</string>
+    <string name="title_audio_config_list">Configurarea sunetului surround</string>
+    <string name="summary_audio_config_list">Activeaza sunetul 5.1 sau 7.1 pentru sisteme home-theater</string>
+    <string name="category_input_settings">Set─âri de control</string>
+    <string name="title_checkbox_multi_controller">Detecteaz─â automat prezen╚øa controllerelor.</string>
+    <string name="summary_checkbox_multi_controller">Dezactivarea acestei op╚øiuni implic─â prezen╚øa constant─â a unui controller</string>
+    <string name="title_checkbox_vibrate_fallback">Simuleaza efectul de vibratie</string>
+    <string name="summary_checkbox_vibrate_fallback">Dac─â controllerul nu suport─â vibra╚øii, va vibra dispozitivul ├«n schimb.</string>
+    <string name="title_seekbar_deadzone">Zona moart─â a stickului analogic</string>
+    <string name="suffix_seekbar_deadzone">%</string>
+    <string name="title_checkbox_xb1_driver">Driver pentru controllerele de Xbox 360/One</string>
+    <string name="summary_checkbox_xb1_driver">Activeaz─â un driver USB pentru dispozitivele f─âr─â suport nativ pentru controllere Xbox</string>
+    <string name="title_checkbox_usb_bind_all">Inlocuie╚Öte driverul implicit pentru controllere</string>
+    <string name="summary_checkbox_usb_bind_all">For╚øeaz─â driverul USB SmartDisplay AI s─â preia toate controllerele Xbox suportate</string>
+    <string name="title_checkbox_mouse_emulation">Simuleaz─â mouse cu controllerul</string>
+    <string name="summary_checkbox_mouse_emulation">Ap─âsarea lung─â pe butonul Start schimba modul de operare a controllerului ├«n modul mouse.</string>
+    <string name="title_checkbox_mouse_nav_buttons">Activeaz─â butoanele de ├«nainte ╚Öi ├«napoi ale mousului</string>
+    <string name="summary_checkbox_mouse_nav_buttons">Aceast─â op╚øiune poate afecta click dreapta pentru unele dispozitive problematice.</string>
+    <string name="category_on_screen_controls_settings">Set─âri ale controalelor pe ecran</string>
+    <string name="title_checkbox_show_onscreen_controls">Afi╚Öeaz─â controale pe ecran</string>
+    <string name="summary_checkbox_show_onscreen_controls">Afi╚Öeaz─â un controller virtual pe ecran</string>
+    <string name="title_checkbox_vibrate_osc">Activeaz─â vibra╚øiile</string>
+    <string name="summary_checkbox_vibrate_osc">Dispozitivul va vibra asem─ân─âtor unui controller</string>
+    <string name="title_only_l3r3">Afi╚Öeaz─â doar L3 si R3</string>
+    <string name="summary_only_l3r3">Ascunde toate butoanele ├«n afar─â de L3 and R3</string>
+    <string name="title_reset_osc">╚ÿterge schema salvat─â a controalelor</string>
+    <string name="summary_reset_osc">Reseteaz─â toate controalele de pe ecran la pozi╚øia ╚Öi dimensiunea implicit─â</string>
+    <string name="dialog_title_reset_osc">Resetarea schemei de controale</string>
+    <string name="dialog_text_reset_osc">Sigur dore╚Öti s─â ╚Ötergi schema salvat─â a controalelor de pe ecran?</string>
+    <string name="toast_reset_osc_success">Controalele de pe ecran au fost resetate la setarile implicite</string>
+    <string name="title_osc_opacity">Modific─â opacitatea controalelor de pe ecran</string>
+    <string name="summary_osc_opacity">Ajusteaz─â gradul de transparen╚ø─â al controalelor de pe ecran</string>
+    <string name="dialog_title_osc_opacity">Modific─â opacitatea</string>
+    <string name="suffix_osc_opacity">%</string>
+    <string name="category_ui_settings">Setari UI</string>
+    <string name="title_language_list">Limba (Language)</string>
+    <string name="summary_language_list">Limba folosit─â de c─âtre SmartDisplay AI</string>
+    <string name="title_checkbox_small_icon_mode">Folose╚Öte iconi╚øe mici</string>
+    <string name="summary_checkbox_small_icon_mode">Iconi╚øele folosite ├«n grile vor fi mici pentru a ├«nc─âpea mai multe odata</string>
+    <string name="category_host_settings">Set─ârile PC-ului gazd─â</string>
+    <string name="title_checkbox_enable_sops">Optimizarea set─ârilor de joc</string>
+    <string name="summary_checkbox_enable_sops">Permite GFE s─â modifice set─ârile jocurilor pentru experien╚øa optim─â</string>
+    <string name="title_checkbox_host_audio">Red─â audio si pe PC</string>
+    <string name="summary_checkbox_host_audio">Sunetul se va auzi atat pe acest dispozitiv c├ót ╚Öi pe PC</string>
+    <string name="category_advanced_settings">Set─âri avansate</string>
+    <string name="title_disable_frame_drop">Nu pierde cadre inten╚øionat</string>
+    <string name="summary_disable_frame_drop">Poate s─â reduc─â micro-stuttering pe anumite device-uri, dar s-ar putea s─â creasc─â laten╚øa</string>
+    <string name="title_video_format">Modifica set─ârile HEVC</string>
+    <string name="summary_video_format">HEVC func╚øioneaz─â cu o conexiune mai slaba, dar necesit─â un dispozitiv recent, performant</string>
+    <string name="title_enable_hdr">Activeaz─â HDR (Experimental)</string>
+    <string name="summary_enable_hdr">Folose╚Öte HDR daca aplica╚øia si placa video suport─â. Necesit─â o placa video seria GTX 1000 sau mai nou─â.</string>
+    <string name="title_enable_perf_overlay">Activeaz─â statisticile de performan╚ø─â</string>
+    <string name="summary_enable_perf_overlay">Afi╚Öeaz─â ├«n timp real statisticile de performan╚ø─â ale conexiunii.</string>
+    <!-- Array strings -->
+    <string name="audioconf_stereo">Stereo</string>
+    <string name="audioconf_51surround">Sunet Surround 5.1</string>
+    <string name="audioconf_71surround">Sunet Surround 7.1</string>
+    <string name="videoformat_hevcalways">Folose╚Öte HEVC mereu (se poate bloca)</string>
+</resources>

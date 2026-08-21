@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  fab_radial_item_bg.xml — Glassmorphism premium v3.
+  Diseño refinado de 48dp con un aspecto ultra-limpio (Fluent/Linear):
+    1. Halo ambiental morado exterior de baja opacidad
+    2. Disco glassmorphism oscuro azul medianoche (44dp)
+    3. Stroke fino interior (42dp)
+-->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Capa 1: Aura exterior difusa morado eléctrico (muy sutil) -->
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#1F8B5CF6"/>
+            <size android:width="48dp" android:height="48dp"/>
+        </shape>
+    </item>
+
+    <!-- Capa 2: Disco glassmorphism — fondo oscuro semitransparente -->
+    <item android:left="2dp" android:top="2dp" android:right="2dp" android:bottom="2dp">
+        <shape android:shape="oval">
+            <solid android:color="#F20D1525"/>
+            <stroke android:width="1dp" android:color="#33FFFFFF"/>
+            <size android:width="44dp" android:height="44dp"/>
+        </shape>
+    </item>
+
+    <!-- Capa 3: Anillo interior neon cian sutil para el brillo de cristal -->
+    <item android:left="3dp" android:top="3dp" android:right="3dp" android:bottom="3dp">
+        <shape android:shape="oval">
+            <solid android:color="#00000000"/>
+            <stroke android:width="0.5dp" android:color="#2200D4FF"/>
+            <size android:width="42dp" android:height="42dp"/>
+        </shape>
+    </item>
+
+</layer-list>

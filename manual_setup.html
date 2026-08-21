@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía de Conexión: SmartDisplay AI & Sunshine (con Tailscale)</title>
+    <!-- Google Fonts: Outfit for premium typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-primary: #0a0b10;
+            --bg-secondary: #12131c;
+            --accent-purple: #8b5cf6;
+            --accent-blue: #3b82f6;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --success-color: #10b981;
+            --card-border: rgba(255, 255, 255, 0.08);
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --glass-blur: blur(20px);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: radial-gradient(circle at 50% 0%, #1c133a 0%, var(--bg-primary) 70%);
+            color: var(--text-main);
+            min-height: 100vh;
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Header Premium */
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .logo-container {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 1.5rem;
+            position: relative;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+            border-radius: 50%;
+            padding: 3px;
+            box-shadow: 0 0 40px rgba(139, 92, 246, 0.4);
+            animation: pulse-glow 3s infinite alternate;
+        }
+
+        .logo-inner {
+            width: 100%;
+            height: 100%;
+            background: #11121b;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #fff;
+        }
+
+        .logo-inner span {
+            font-size: 3.5rem;
+            filter: drop-shadow(0 0 10px rgba(139, 92, 246, 0.6));
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            background: linear-gradient(to right, #ffffff, #a78bfa, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        /* Tarjeta de Resumen Rápido */
+        .summary-card {
+            background: var(--card-bg);
+            backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .summary-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .summary-title::before {
+            content: '⚡';
+            font-size: 1.5rem;
+        }
+
+        .quick-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+        }
+
+        .quick-step-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 1.2rem 1rem;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .quick-step-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--accent-purple);
+        }
+
+        .quick-step-number {
+            width: 32px;
+            height: 32px;
+            background: rgba(139, 92, 246, 0.15);
+            color: var(--accent-purple);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin: 0 auto 0.75rem;
+            font-size: 0.9rem;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+        }
+
+        .quick-step-text {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        /* Pasos Principales */
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+            position: relative;
+            padding-left: 1rem;
+            margin-top: 3rem;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 15%;
+            height: 70%;
+            width: 4px;
+            background: var(--accent-purple);
+            border-radius: 2px;
+        }
+
+        .step-timeline {
+            position: relative;
+            margin-bottom: 4rem;
+        }
+
+        .step-card {
+            background: var(--card-bg);
+            backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .step-card:hover {
+            border-color: rgba(139, 92, 246, 0.3);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.05);
+        }
+
+        .step-badge {
+            position: absolute;
+            top: -15px;
+            left: 25px;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+            color: #fff;
+            padding: 0.4rem 1.2rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+        }
+
+        .step-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .step-content p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Botones de Descargas Directas */
+        .download-box {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: #fff;
+            text-decoration: none;
+            padding: 0.9rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-download:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+        }
+
+        .btn-download.tailscale {
+            background: linear-gradient(135deg, #e11d48, #be123c);
+            box-shadow: 0 4px 15px rgba(225, 29, 72, 0.2);
+        }
+
+        .btn-download.tailscale:hover {
+            background: linear-gradient(135deg, #f43f5e, #e11d48);
+            box-shadow: 0 6px 20px rgba(225, 29, 72, 0.4);
+        }
+
+        .code-box {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 1rem;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.1rem;
+            color: var(--accent-purple);
+            margin: 1rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .code-copy-btn {
+            background: rgba(255, 255, 255, 0.08);
+            border: none;
+            color: var(--text-main);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: background 0.3s;
+        }
+
+        .code-copy-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Mockup de SmartDisplay UI */
+        .mockup-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (min-width: 768px) {
+            .mockup-container {
+                grid-template-columns: 1.2fr 1fr;
+            }
+        }
+
+        .phone-frame {
+            background: #161722;
+            border: 8px solid #2d2f45;
+            border-radius: 40px;
+            padding: 1.5rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 9/16;
+            max-width: 320px;
+            margin: 0 auto;
+        }
+
+        .phone-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            padding: 0 0.5rem;
+        }
+
+        .camera-notch {
+            width: 60px;
+            height: 18px;
+            background: #2d2f45;
+            border-radius: 0 0 10px 10px;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+        .pc-card-mock {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 1.25rem;
+            backdrop-filter: blur(10px);
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .pc-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .pc-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success-color);
+            padding: 0.25rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--success-color);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--success-color);
+            animation: pulse-dot 1.5s infinite;
+        }
+
+        .pc-stat-item {
+            margin-bottom: 0.8rem;
+        }
+
+        .pc-stat-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 0.25rem;
+        }
+
+        .progress-bar-bg {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(to right, var(--accent-purple), var(--accent-blue));
+            border-radius: 3px;
+            width: 0%;
+            transition: width 2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .pc-actions-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.75rem;
+            margin-top: 1.25rem;
+        }
+
+        .btn-connect-mock {
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+            border: none;
+            color: #fff;
+            padding: 0.75rem;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .btn-connect-mock:hover {
+            opacity: 0.95;
+            transform: scale(0.98);
+        }
+
+        .phone-buttons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .btn-control-mock {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: var(--text-muted);
+            padding: 0.5rem;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-control-mock:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border-color: var(--accent-purple);
+        }
+
+        /* Panel de Información Lateral */
+        .info-panel {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .info-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        .info-desc {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .info-pill {
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-pill-title {
+            font-weight: 600;
+            color: var(--accent-purple);
+            margin-bottom: 0.25rem;
+        }
+
+        .info-pill-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Panel de Troubleshooting */
+        .troubleshoot-card {
+            margin-top: 4rem;
+            background: rgba(239, 68, 68, 0.03);
+            border: 1px solid rgba(239, 68, 68, 0.15);
+            border-radius: 24px;
+            padding: 2.5rem;
+        }
+
+        .troubleshoot-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #f87171;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .troubleshoot-list {
+            list-style: none;
+        }
+
+        .troubleshoot-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            color: var(--text-muted);
+        }
+
+        .troubleshoot-icon {
+            color: #ef4444;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 6rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Animaciones */
+        @keyframes pulse-glow {
+            from {
+                box-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+            }
+            to {
+                box-shadow: 0 0 50px rgba(139, 92, 246, 0.6);
+            }
+        }
+
+        @keyframes pulse-dot {
+            0% {
+                transform: scale(0.9);
+                opacity: 0.8;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(0.9);
+                opacity: 0.8;
+            }
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(17, 18, 27, 0.9);
+            border: 1px solid var(--accent-purple);
+            color: #fff;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            transform: translateY(150%);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 100;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- Header Premium -->
+        <header>
+            <div class="logo-container">
+                <div class="logo-inner">
+                    <span>🐙</span>
+                </div>
+            </div>
+            <h1>SmartDisplay AI</h1>
+            <p>Guía definitiva de conexión rápida local y remota con Sunshine y Tailscale</p>
+        </header>
+
+        <!-- Descargas Directas Obligatorias -->
+        <div class="summary-card" style="border-color: rgba(59, 130, 246, 0.2); background: rgba(59, 130, 246, 0.02);">
+            <div class="summary-title" style="color: var(--accent-blue);">Enlaces de Descarga Directa</div>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem;">
+                Consigue el software necesario directamente desde las fuentes oficiales:
+            </p>
+            <div class="download-box">
+                <a href="https://github.com/LizardByte/Sunshine/releases/latest/download/sunshine-windows-x64-setup.exe" target="_blank" class="btn-download">
+                    📥 Descargar Sunshine (PC - .exe)
+                </a>
+                <a href="https://pkgs.tailscale.com/stable/tailscale-setup-latest.exe" target="_blank" class="btn-download tailscale">
+                    🔒 Tailscale para Windows (.exe)
+                </a>
+                <a href="https://tailscale.com/download/android" target="_blank" class="btn-download tailscale">
+                    📱 Tailscale para Android
+                </a>
+            </div>
+        </div>
+
+        <!-- Resumen Rápido -->
+        <div class="summary-card">
+            <div class="summary-title">Resumen de Conexión en 5 Pasos</div>
+            <div class="quick-steps">
+                <div class="quick-step-item">
+                    <div class="quick-step-number">1</div>
+                    <div class="quick-step-text">Instalar Sunshine</div>
+                </div>
+                <div class="quick-step-item">
+                    <div class="quick-step-number">2</div>
+                    <div class="quick-step-text">Abrir App Móvil</div>
+                </div>
+                <div class="quick-step-item">
+                    <div class="quick-step-number">3</div>
+                    <div class="quick-step-text">Agregar Equipo</div>
+                </div>
+                <div class="quick-step-item">
+                    <div class="quick-step-number">4</div>
+                    <div class="quick-step-text">Ingresar PIN</div>
+                </div>
+                <div class="quick-step-item">
+                    <div class="quick-step-number">5</div>
+                    <div class="quick-step-text">¡Conectar!</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Título Guía Detallada -->
+        <h2 class="section-title">Instrucciones de Configuración Paso a Paso</h2>
+
+        <!-- Línea de tiempo de pasos -->
+        <div class="step-timeline">
+            
+            <!-- Paso 1 -->
+            <div class="step-card">
+                <div class="step-badge">Paso 1</div>
+                <div class="step-header">
+                    <h3 class="step-title">Instala Sunshine en tu PC</h3>
+                </div>
+                                  <p>Sunshine es el programa que transmite la pantalla de tu computadora. Descarga e instala la versión más reciente.</p>
+                </div>
+            </div>
+
+            <!-- Paso 2 -->
+            <div class="step-card">
+                <div class="step-badge">Paso 2</div>
+                <div class="step-header">
+                    <h3 class="step-title">Abre y Configura Sunshine</h3>
+                </div>
+                <div class="step-content">
+                    <p>Una vez completada la instalación, abre el panel de control en tu PC escribiendo la siguiente dirección en tu navegador de internet:</p>
+                    <div class="code-box">
+                        <span id="sunshine-url">http://localhost:47990</span>
+                        <button class="code-copy-btn" onclick="copyToClipboard('sunshine-url')">Copiar</button>
+                    </div>
+                    <p>Crea una cuenta escribiendo el <strong>Nombre de Usuario</strong> y la <strong>Contraseña</strong> que tú quieras. Apúntalos bien, ya que los usarás para conectar tu celular.</p>
+                </div>
+            </div>
+
+            <!-- Paso 2.1 -->
+            <div class="step-card">
+                <div class="step-badge" style="background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));">Opcional</div>
+                <div class="step-header">
+                    <h3 class="step-title">¿Cómo Agregar Nuevos Juegos?</h3>
+                </div>
+                <div class="step-content" style="margin-top: 1rem;">
+                    <p>Para añadir otros juegos instalados en tu computadora y verlos en tu celular:</p>
+                    <ul style="color: var(--text-muted); margin-left: 1.5rem; margin-bottom: 1.2rem;">
+                        <li style="margin-bottom: 0.5rem;">Haz clic en la pestaña <strong>Applications</strong> y luego en <strong>+ Add New</strong>.</li>
+                        <li style="margin-bottom: 0.5rem;">Ingresa el <strong>Application Name</strong> (el nombre de tu juego, ej. <i>Minecraft</i>).</li>
+                        <li style="margin-bottom: 0.5rem;">En <strong>Command</strong>, escribe la ruta completa del archivo de inicio del juego (el que termina en <code>.exe</code>).</li>
+                        <li style="margin-bottom: 0.5rem;">En <strong>Working Directory</strong>, copia la carpeta de instalación que contiene ese archivo.</li>
+                        <li style="margin-bottom: 0.5rem;">Guarda los cambios con <strong>Save</strong> y presiona el botón flotante <strong>Apply</strong> en la esquina superior derecha de la pantalla para activarlo.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Paso 3 -->
+            <div class="step-card">
+                <div class="step-badge">Paso 3</div>
+                <div class="step-header">
+                    <h3 class="step-title">Abre SmartDisplay AI</h3>
+                </div>
+                <div class="step-content">
+                    <p>Inicia la aplicación <strong>SmartDisplay AI</strong> en tu teléfono celular y presiona la opción de <strong>"Agregar equipo"</strong>.</p>
+                </div>
+            </div>
+
+            <!-- Paso 4 -->
+            <div class="step-card">
+                <div class="step-badge">Paso 4</div>
+                <div class="step-header">
+                    <h3 class="step-title">Busca tu Computadora</h3>
+                </div>
+                <div class="step-content">
+                    <p>La aplicación en tu celular buscará en tu red automáticamente y te mostrará el nombre de tu computadora en pantalla. (Asegúrate de que tu celular esté en el mismo Wi-Fi de tu casa, o que ambos tengan Tailscale encendido).</p>
+                </div>
+            </div>
+
+            <!-- Paso 5 -->
+            <div class="step-card">
+                <div class="step-badge">Paso 5</div>
+                <div class="step-header">
+                    <h3 class="step-title">Emparejar Dispositivos</h3>
+                </div>
+                <div class="step-content">
+                    <p>La aplicación en tu celular mostrará un código PIN de 4 números en la pantalla. Ingresa el usuario y contraseña que creaste en el <strong>Paso 2</strong> dentro de los Ajustes de la aplicación de tu celular, ¡y la aplicación registrará el código PIN automáticamente en tu PC por ti! Si prefieres hacerlo a mano, puedes escribir ese PIN en la pestaña <i>PIN</i> de la web de Sunshine en tu PC y hacer clic en <i>Pair</i>.</p>
+                </div>
+            </div>
+
+            <!-- Paso 6 -->
+            <div class="step-card">
+                <div class="step-badge">Paso 6</div>
+                <div class="step-header">
+                    <h3 class="step-title">Conectar y Jugar</h3>
+                </div>
+                <div class="step-content">
+                    <p>¡Listo! Elige tu computadora en la pantalla del celular y presiona el botón <strong>"Conectar"</strong> para ver tu escritorio, abrir tus juegos favoritos y controlar tu computadora a distancia.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Seccion Tailscale (Conexión Remota / WAN) -->
+        <h2 class="section-title">🔒 Conexión Fuera de Casa con Tailscale</h2>
+        <div class="step-card" style="border-color: rgba(225, 29, 72, 0.2); background: rgba(225, 29, 72, 0.01);">
+            <div class="step-badge" style="background: linear-gradient(135deg, #e11d48, #be123c);">Remoto</div>
+            <div class="step-content" style="margin-top: 1rem;">
+                <p>
+                    Si quieres usar **SmartDisplay AI** en tu celular usando tus datos móviles (4G/5G) o conectado al Wi-Fi de cualquier otro lugar (como la escuela o la oficina), necesitas una herramienta llamada **Tailscale**.
+                </p>
+                <p>
+                    <strong>¿Cómo funciona?</strong> Tailscale crea un camino virtual súper seguro entre tu celular y tu PC. Ambos dispositivos se verán y conectarán entre sí sin importar la distancia y sin configurar cosas difíciles en tu módem.
+                </p>
+                <h4 style="color: #fff; margin-bottom: 0.5rem; font-size: 1.1rem;">Pasos para configurarlo:</h4>
+                <ol style="color: var(--text-muted); margin-left: 1.5rem; margin-bottom: 1.5rem;">
+                    <li style="margin-bottom: 0.5rem;">
+                        Descarga e instala **Tailscale** en tu PC y en tu celular usando los botones de descarga de arriba.
+                    </li>
+                    <li style="margin-bottom: 0.5rem;">
+                        Inicia sesión con la **misma cuenta** de Tailscale en ambos dispositivos.
+                    </li>
+                    <li style="margin-bottom: 0.5rem;">
+                        Enciende Tailscale en tu computadora y en tu celular. Ambos se conectarán de forma directa y segura.
+                    </li>
+                    <li style="margin-bottom: 0.5rem;">
+                        ¡Y listo! Abre SmartDisplay AI en tu teléfono y detectará tu PC automáticamente a través de la conexión segura de Tailscale sin importar dónde estés.
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Seccion Mockup Interactivo -->
+        <h2 class="section-title">Vista Previa del Dispositivo</h2>
+        
+        <div class="mockup-container">
+            <!-- Columna Celular Mockup -->
+            <div>
+                <div class="phone-frame">
+                    <div class="camera-notch"></div>
+                    <div class="phone-header">
+                        <span>12:00</span>
+                        <span>📶 🔋 100%</span>
+                    </div>
+                    
+                    <!-- Tarjeta de PC en SmartDisplay -->
+                    <div class="pc-card-mock">
+                        <div class="pc-card-header">
+                            <div class="pc-name" id="pc-name-display">Emma PC</div>
+                            <div class="status-badge">
+                                <div class="status-dot"></div>
+                                <span>Conectado</span>
+                            </div>
+                        </div>
+                        
+                        <!-- CPU Stat -->
+                        <div class="pc-stat-item">
+                            <div class="pc-stat-labels">
+                                <span>CPU</span>
+                                <span id="cpu-value">32%</span>
+                            </div>
+                            <div class="progress-bar-bg">
+                                <div class="progress-bar-fill" id="cpu-bar" style="width: 32%;"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- RAM Stat -->
+                        <div class="pc-stat-item">
+                            <div class="pc-stat-labels">
+                                <span>RAM</span>
+                                <span id="ram-value">45%</span>
+                            </div>
+                            <div class="progress-bar-bg">
+                                <div class="progress-bar-fill" id="ram-bar" style="width: 45%;"></div>
+                            </div>
+                        </div>
+
+                        <!-- Ping Stat -->
+                        <div class="pc-stat-labels" style="margin-top: 1rem;">
+                            <span>Latencia (Ping)</span>
+                            <span id="ping-value" style="color: var(--accent-blue); font-weight: bold;">18 ms</span>
+                        </div>
+                        
+                        <div class="pc-actions-grid">
+                            <button class="btn-connect-mock" onclick="showToast('Conectando al stream en tiempo real...')">Conectar</button>
+                        </div>
+                    </div>
+
+                    <!-- Controles Rápidos -->
+                    <div class="phone-buttons-grid">
+                        <button class="btn-control-mock" onclick="showToast('Enviando comando Encender (WOL)...')" title="Encender PC (WOL)">⏻</button>
+                        <button class="btn-control-mock" onclick="showToast('Enviando comando de Reinicio...')" title="Reiniciar">🔄</button>
+                        <button class="btn-control-mock" onclick="showToast('Enviando comando de Suspensión...')" title="Suspender">🌙</button>
+                        <button class="btn-control-mock" onclick="showToast('Enviando comando de Apagado...')" title="Apagar">⛔</button>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Columna Información Técnica Interesante -->
+            <div class="info-panel">
+                <div class="info-title">Automatización Absoluta</div>
+                <p class="info-desc">SmartDisplay AI ha sido diseñado para eliminar la complejidad de red. No necesitas recordar ni teclear direcciones IP complejas o mapeos de puertos manualmente.</p>
+                
+                <div class="info-pill">
+                    <div class="info-pill-title">Descubrimiento Automático</div>
+                    <div class="info-pill-desc">Utiliza protocolos de difusión local (mDNS y SSDP) para localizar el servidor Sunshine de tu PC al instante.</div>
+                </div>
+
+                <div class="info-pill">
+                    <div class="info-pill-title">Ajuste Dinámico de Bitrate</div>
+                    <div class="info-pill-desc">Mide continuamente la latencia del canal (Ping) para optimizar la compresión de vídeo sobre la marcha.</div>
+                </div>
+
+                <div class="info-pill">
+                    <div class="info-pill-title">Comandos Wake-On-LAN</div>
+                    <div class="info-pill-desc">Envía el paquete mágico de encendido remotamente a la tarjeta de red de tu PC con un solo toque.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjeta Troubleshooting -->
+        <div class="troubleshoot-card">
+            <div class="troubleshoot-title">⚠️ ¿No encuentras tu PC?</div>
+            <ul class="troubleshoot-list">
+                <li class="troubleshoot-item">
+                    <span class="troubleshoot-icon">✓</span>
+                    <span><strong>Mismo Wi-Fi o Tailscale Activo:</strong> Confirma que tu teléfono celular y tu PC estén en la misma red Wi-Fi o que la VPN de Tailscale esté activa en ambos dispositivos con la misma cuenta.</span>
+                </li>
+                <li class="troubleshoot-item">
+                    <span class="troubleshoot-icon">✓</span>
+                    <span><strong>Sunshine Abierto:</strong> Asegúrate de que Sunshine esté ejecutándose en la bandeja del sistema de Windows.</span>
+                </li>
+                <li class="troubleshoot-item">
+                    <span class="troubleshoot-icon">✓</span>
+                    <span><strong>Permisos del Firewall:</strong> El firewall de Windows debe tener habilitadas las reglas para Sunshine.exe (puertos 47998-48010).</span>
+                </li>
+                <li class="troubleshoot-item">
+                    <span class="troubleshoot-icon">✓</span>
+                    <span><strong>PC Encendido:</strong> Verifica que la PC host no esté suspendida si aún no has configurado la tarjeta de red para soportar WOL.</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2026 SmartDisplay AI. Diseñado para una experiencia de juego y control fluidos.</p>
+        </footer>
+
+    </div>
+
+    <!-- Toast Notification Element -->
+    <div id="toast" class="toast">Acción ejecutada</div>
+
+    <!-- JS de simulación en vivo de estadísticas -->
+    <script>
+        function copyToClipboard(elementId) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                showToast("¡Copiado al portapapeles!");
+            });
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById("toast");
+            toast.innerText = message;
+            toast.classList.add("show");
+            setTimeout(() => {
+                toast.classList.remove("show");
+            }, 3000);
+        }
+
+        // Simulación en tiempo real de estadísticas de rendimiento del PC
+        function simulateStats() {
+            const cpuVal = Math.floor(20 + Math.random() * 25); // 20% - 45%
+            const ramVal = Math.floor(40 + Math.random() * 10); // 40% - 50%
+            const pingVal = Math.floor(12 + Math.random() * 10); // 12ms - 22ms
+
+            document.getElementById("cpu-value").innerText = cpuVal + "%";
+            document.getElementById("cpu-bar").style.width = cpuVal + "%";
+
+            document.getElementById("ram-value").innerText = ramVal + "%";
+            document.getElementById("ram-bar").style.width = ramVal + "%";
+
+            document.getElementById("ping-value").innerText = pingVal + " ms";
+        }
+
+        // Iniciar simulación e intervalos
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                simulateStats();
+            }, 500);
+            
+            setInterval(simulateStats, 3000);
+        });
+    </script>
+</body>
+</html>

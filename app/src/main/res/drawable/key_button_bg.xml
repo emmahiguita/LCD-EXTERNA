@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  key_button_bg.xml — Diseño Profesional Modo Oscuro (Teclas Altamente Visibles)
+-->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="#40FFFFFF">
+
+    <!-- Máscara de recorte -->
+    <item android:id="@android:id/mask">
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/white" />
+            <corners android:radius="@dimen/neon_radius_sm" />
+        </shape>
+    </item>
+
+    <!-- Fondo y contornos -->
+    <item>
+        <selector>
+            <!-- Estado enfocado (TalkBack/navegación) -->
+            <item android:state_focused="true">
+                <shape android:shape="rectangle">
+                    <solid android:color="#2D2D2D" />
+                    <corners android:radius="@dimen/neon_radius_sm" />
+                    <stroke android:width="@dimen/neon_stroke_active" android:color="@color/neon_cyan" />
+                </shape>
+            </item>
+            <!-- Estado normal -->
+            <item>
+                <shape android:shape="rectangle">
+                    <solid android:color="#222222" />
+                    <corners android:radius="@dimen/neon_radius_sm" />
+                    <stroke android:width="@dimen/neon_stroke" android:color="@color/neon_stroke_idle" />
+                </shape>
+            </item>
+        </selector>
+    </item>
+
+</ripple>

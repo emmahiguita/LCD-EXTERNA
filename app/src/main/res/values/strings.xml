@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_label">SmartDisplay AI</string>
+    <string name="mouse_mode_circle_description">Trackpad circular. Toque para clic izquierdo; la mitad derecha hace clic derecho.</string>
+
+    <!-- Cadenas de accesos directos -->
+    <string name="scut_deleted_pc">PC eliminado</string>
+    <string name="scut_not_paired">PC no emparejado</string>
+    <string name="scut_pc_not_found">PC no encontrado</string>
+    <string name="scut_invalid_uuid">El PC proporcionado no es válido</string>
+    <string name="scut_invalid_app_id">La App proporcionada no es válida</string>
+
+    <!-- Cadenas de ayuda -->
+    <string name="help_loading_title">Visor de ayuda</string>
+    <string name="help_loading_msg">Cargando página de ayuda…</string>
+
+    <!-- Entradas del menú de PC -->
+    <string name="pcview_menu_header_online">En línea</string>
+    <string name="pcview_menu_header_offline">Desconectado</string>
+    <string name="pcview_menu_header_unknown">Actualizando</string>
+    <string name="pcview_menu_app_list">Ver todas las aplicaciones</string>
+    <string name="pcview_menu_pair_pc">Emparejar con PC</string>
+    <string name="pcview_menu_unpair_pc">Desemparejar</string>
+    <string name="pcview_menu_send_wol">Enviar petición Wake-On-LAN</string>
+    <string name="pcview_menu_delete_pc">Eliminar PC</string>
+    <string name="pcview_menu_test_network">Probar conexión de red</string>
+    <string name="pcview_menu_details">Ver detalles</string>
+
+    <!-- Cadenas de prueba de red -->
+    <string name="nettest_title_waiting">Probando conexión de red</string>
+    <string name="nettest_text_waiting">SmartDisplay AI está probando tu conexión de red para determinar si algún puerto necesario está bloqueado.\n\nEsto puede tardar unos segundos…</string>
+    <string name="nettest_title_done">Prueba de red completada</string>
+    <string name="nettest_text_success">Tu red no parece estar bloqueando SmartDisplay AI. Si aún tienes problemas de conexión, comprueba la configuración del cortafuegos de tu PC.\n\nSi estás intentando transmitir por Internet, asegúrate de que los puertos requeridos estén abiertos en tu router.</string>
+    <string name="nettest_text_inconclusive">La prueba de red no pudo ejecutarse debido a que no se pudo alcanzar ningún servidor de diagnóstico. Revisa tu conexión a Internet o prueba más tarde.</string>
+    <string name="nettest_text_failure">La conexión actual de red de tu dispositivo parece estar bloqueando SmartDisplay AI. El streaming por Internet puede no funcionar mientras estés en esta red.\n\nPuertos bloqueados:\n</string>
+    <string name="nettest_text_blocked">La conexión de red actual de tu dispositivo está bloqueando SmartDisplay AI. El streaming por Internet puede no funcionar mientras estés en esta red.</string>
+
+    <!-- Mensajes de emparejamiento -->
+    <string name="pairing">Emparejando…</string>
+    <string name="pair_pc_offline">El equipo está desconectado</string>
+    <string name="pair_pc_ingame">El equipo está en un juego actualmente. Debes cerrar el juego antes de emparejar.</string>
+    <string name="pair_pairing_title">Emparejamiento</string>
+    <string name="pair_pairing_msg">Por favor, introduce el siguiente PIN en el PC objetivo:</string>
+    <string name="pair_pairing_help">Si tu PC anfitrión ejecuta Sunshine, ve a la interfaz web de Sunshine para ingresar el PIN.</string>
+    <string name="pair_incorrect_pin">PIN incorrecto</string>
+    <string name="pair_fail">Error al emparejar</string>
+    <string name="pair_already_in_progress">Ya hay un emparejamiento en curso</string>
+
+    <!-- Mensajes WOL -->
+    <string name="wol_pc_online">Equipo en línea</string>
+    <string name="wol_no_mac">No se puede encender el PC porque no hay ninguna dirección MAC almacenada</string>
+    <string name="wol_waking_pc">Encendiendo PC…</string>
+    <string name="wol_waking_msg">El PC puede tardar unos segundos en encenderse.\nSi no lo hace, asegúrate de que esté configurado correctamente para Wake-On-LAN.</string>
+    <string name="wol_fail">Error al enviar paquetes Wake-On-LAN</string>
+
+    <!-- Mensajes de desemparejamiento -->
+    <string name="unpairing">Desemparejando…</string>
+    <string name="unpair_success">Desemparejado con éxito</string>
+    <string name="unpair_fail">Error al desemparejar</string>
+    <string name="unpair_error">El dispositivo no estaba emparejado</string>
+
+    <!-- Errores -->
+    <string name="error_pc_offline">El equipo está desconectado</string>
+    <string name="error_manager_not_running">El servicio ComputerManager no está en ejecución. Espera unos segundos o reinicia la app.</string>
+    <string name="error_unknown_host">No se pudo resolver la dirección del host</string>
+    <string name="error_404">El servidor retornó un error HTTP 404. Asegúrate de que Sunshine esté ejecutándose en tu PC.</string>
+    <string name="title_decoding_error">Error en el decodificador de video</string>
+    <string name="message_decoding_error">SmartDisplay AI se detuvo debido a una incompatibilidad con el decodificador de video de este dispositivo. Prueba ajustando los parámetros de streaming.</string>
+    <string name="title_decoding_reset">Ajustes de video restablecidos</string>
+    <string name="message_decoding_reset">El decodificador continúa fallando con la configuración seleccionada. Se han restablecido los ajustes por defecto.</string>
+    <string name="error_usb_prohibited">El acceso USB está restringido por las directivas del dispositivo.</string>
+    <string name="unable_to_pin_shortcut">Tu lanzador actual no admite la creación de accesos directos fijados.</string>
+    <string name="video_decoder_init_failed">Error al inicializar el decodificador de video. Es posible que el dispositivo no admita la resolución o tasa de cuadros elegida.</string>
+    <string name="no_video_received_error">No se recibió video del anfitrión.</string>
+    <string name="no_frame_received_error">La conexión de red es lenta o inestable. Reduce la tasa de bits de video o usa una red más rápida.</string>
+    <string name="early_termination_error">Ocurrió un problema en el PC anfitrión al iniciar la transmisión.\n\nAsegúrate de que no haya aplicaciones con contenido protegido por DRM abiertas en el PC o reinicia Sunshine.</string>
+    <string name="frame_conversion_error">El PC anfitrión reportó un error fatal de codificación de video.\n\nPrueba desactivando HDR o cambiando la resolución de transmisión.</string>
+    <string name="check_ports_msg">Verifica tu cortafuegos y las reglas de reenvío de puertos:</string>
+
+    <!-- Mensajes de inicio de aplicación -->
+    <string name="conn_establishing_title">Estableciendo conexión</string>
+    <string name="conn_establishing_msg">Iniciando conexión</string>
+    <string name="conn_metered">Aviso: ¡Tu conexión activa es de uso medido!</string>
+    <string name="conn_client_latency">Latencia media de decodificación:</string>
+    <string name="conn_client_latency_hw">Latencia de decodificador hardware:</string>
+    <string name="conn_hardware_latency">Latencia media de decodificación por hardware:</string>
+    <string name="conn_starting">Iniciando</string>
+    <string name="conn_error_title">Error de conexión</string>
+    <string name="conn_error_msg">Error al iniciar</string>
+    <string name="conn_terminated_title">Conexión finalizada</string>
+    <string name="conn_terminated_msg">La conexión ha finalizado.</string>
+    <string name="error_code_prefix">Código de error:</string>
+
+    <!-- Cadenas generales -->
+    <string name="ip_hint">Dirección IP o nombre del PC</string>
+    <string name="searching_pc">Buscando equipos en la red local…\n\nAsegúrate de que Sunshine esté ejecutándose en tu PC.</string>
+    <string name="yes">Sí</string>
+    <string name="no">No</string>
+    <string name="lost_connection">Se perdió la conexión con el PC</string>
+    <string name="title_details">Detalles</string>
+    <string name="help">Ayuda</string>
+    <string name="add_computer">Agregar equipo</string>
+    <string name="settings">Ajustes</string>
+
+    <!-- SmartDisplay UX Layer (FASE 2) -->
+    <string name="menu_open">Abrir menú</string>
+    <string name="nav_app_subtitle">Streaming remoto inteligente</string>
+    <string name="nav_logs">Registros</string>
+    <string name="nav_diagnostics">Diagnóstico</string>
+    <string name="nav_donate">Apoyar SmartDisplay AI</string>
+    <string name="nav_about">Acerca de</string>
+    <!-- Drawer rediseñado: acciones y secciones -->
+    <string name="nav_add_pc">Agregar equipo</string>
+    <string name="nav_devices">Dispositivos</string>
+    <string name="nav_settings">Ajustes</string>
+    <string name="nav_help">Guía de uso</string>
+    <string name="nav_theme">Diseño y temas</string>
+    <string name="nav_section_connection">Conexión</string>
+    <string name="nav_section_tools">Herramientas</string>
+    <string name="nav_section_help">Ayuda</string>
+    <string name="nav_section_project">Proyecto</string>
+    <string name="nav_manual">Manual de uso</string>
+
+    <!-- Pantalla de Ajustes -->
+    <string name="settings_title">Ajustes</string>
+    <string name="settings_back">Volver</string>
+
+    <!-- Pantalla de detalle por PC -->
+    <string name="detail_desktop_title">Escritorio</string>
+    <string name="detail_desktop_subtitle">Control remoto</string>
+    <string name="detail_steam_title">Steam</string>
+    <string name="detail_steam_subtitle">Abrir aplicación</string>
+    <string name="detail_power_on_hint">(WOL)</string>
+    <string name="detail_quickstatus">Estado rápido</string>
+    <string name="detail_stat_ping">Ping</string>
+    <string name="detail_stat_cpu">CPU</string>
+    <string name="detail_stat_ram">RAM</string>
+    <string name="detail_stat_empty">—</string>
+    <string name="detail_power">Control de energía</string>
+    <string name="detail_power_on">Encender</string>
+    <string name="detail_power_suspend">Suspender</string>
+    <string name="detail_power_restart">Reiniciar</string>
+    <string name="detail_power_off">Apagar</string>
+    <string name="detail_status_connected">Conectado</string>
+    <string name="detail_status_offline">Desconectado</string>
+    <string name="detail_status_pairing">Requiere emparejamiento</string>
+    <string name="detail_power_suspending">Suspendiendo el equipo…</string>
+    <string name="detail_power_restarting">Reiniciando el equipo…</string>
+    <string name="detail_power_shutting">Apagando el equipo…</string>
+    <string name="detail_power_confirm_restart">¿Reiniciar %1$s?</string>
+    <string name="detail_power_confirm_shutdown">¿Apagar %1$s?</string>
+    <string name="detail_power_confirm_ok">Sí, continuar</string>
+    <string name="detail_power_cancel">Cancelar</string>
+    <string name="detail_power_offline">El PC no está en línea</string>
+    <string name="detail_wol_sent">Encendiendo el equipo…</string>
+    <string name="detail_connecting">Conectando…</string>
+    <string name="detail_app_not_found">No se encontró «%1$s»; abriendo la lista de apps</string>
+    <string name="detail_nav_home">Inicio</string>
+    <string name="detail_nav_settings">Ajustes</string>
+
+    <!-- Notificaciones de estado -->
+    <string name="notif_channel_status">Estado de SmartDisplay</string>
+    <string name="notif_channel_status_desc">Avisos de conexión, emparejamiento y transferencias.</string>
+    <string name="notif_pc_online_title">Equipo disponible</string>
+    <string name="notif_pc_online_text">%1$s está en línea y listo para conectar.</string>
+    <string name="notif_pairing_title">Emparejamiento requerido</string>
+    <string name="notif_pairing_text">%1$s necesita emparejarse. Introduce el PIN para conectar.</string>
+    <string name="notif_lost_title">Conexión perdida</string>
+    <string name="notif_lost_text">Se perdió la conexión con %1$s.</string>
+    <string name="notif_file_sent_title">Archivo enviado</string>
+    <string name="notif_file_recv_title">Archivo recibido</string>
+    <string name="notif_file_text">%1$s</string>
+
+    <!-- Pantalla de donaciones premium -->
+    <string name="donate_title">Apoyar SmartDisplay AI</string>
+    <string name="donate_desc">Tu apoyo ayuda a mantener el proyecto:</string>
+    <string name="donate_bullets">•  Servidores\n•  Desarrollo\n•  Nuevas funciones\n•  Corrección de errores</string>
+    <string name="donate_name">AIemmaDev</string>
+    <string name="donate_scan">Escanear para donar a AIemmaDev</string>
+    <string name="donate_amount_hint">El monto lo eliges tú en PayPal al escanear o tocar «Donar».</string>
+    <string name="donate_paypal">Donar con PayPal</string>
+    <string name="donate_share">Compartir</string>
+    <string name="donate_copy">Copiar enlace</string>
+    <string name="donate_copied">✓ Enlace copiado</string>
+    <string name="donate_shared">✓ Compartido</string>
+    <string name="donate_offline">⚠ Sin conexión a Internet</string>
+    <string name="donate_opening">Abriendo PayPal…</string>
+    <string name="donate_no_paypal">PayPal no está instalado. Se abrirá el navegador.</string>
+    <string name="donate_thanks">🎉 Gracias por apoyar SmartDisplay AI</string>
+    <string name="donate_info_version">Versión</string>
+    <string name="donate_info_status">Estado</string>
+    <string name="donate_status_active">Activo</string>
+    <string name="donate_paypal_url">https://www.paypal.com/qrcodes/p2pqrc/DFNUQZZAYZT8U</string>
+    <string name="nav_version">Versión %1$s</string>
+
+    <!-- Pantalla Agregar PC -->
+    <string name="addpc_title">Agregar PC</string>
+    <string name="addpc_desc">Conéctate por IP o nombre de equipo, o descubre dispositivos en tu red.</string>
+    <string name="addpc_hint">Dirección IP o nombre</string>
+    <string name="addpc_connect">Conectar</string>
+    <string name="addpc_discover">Buscar en la red</string>
+    <string name="addpc_waiting">Esperando conexión…</string>
+    <string name="mascot_desc">Mascota SmartDisplay</string>
+
+    <!-- Smart Taskbar (barra viva de ventanas del PC) -->
+    <string name="taskbar_title">Ventanas del PC</string>
+    <string name="taskbar_empty">Sin ventanas abiertas</string>
+    <string name="taskbar_minimize">Minimizar</string>
+    <string name="taskbar_close_win">Cerrar</string>
+
+    <string name="net_wifi">Wi-Fi conectado</string>
+    <string name="net_ethernet">Ethernet conectado</string>
+    <string name="net_cellular">Datos móviles</string>
+    <string name="net_online">Conectado</string>
+    <string name="net_offline">Sin conexión</string>
+    <string name="about_title">Acerca de SmartDisplay AI</string>
+    <string name="logs_title">Diagnóstico del sistema</string>
+
+    <!-- Transferencia de archivos (WiFi) -->
+    <string name="nav_files">Archivos</string>
+    <string name="ft_title">Transferir archivos</string>
+    <string name="ft_share_section">Enviar del móvil al laptop</string>
+    <string name="ft_share_action">Compartir archivos del móvil</string>
+    <string name="ft_received_section">Recibir del laptop</string>
+    <string name="ft_received_refresh">Actualizar recibidos</string>
+
+    <!-- Reanudar sesión (FASE 4) -->
+    <string name="resume_session_title">Sesión interrumpida</string>
+    <string name="resume_session_msg">Tu sesión en %1$s sigue disponible. ¿Quieres reanudarla?</string>
+    <string name="resume_action">Reanudar</string>
+    <string name="discard_action">Descartar</string>
+    <string name="last_session_label">Reanudar última sesión</string>
+    <string name="last_session_unavailable">Ese equipo no está disponible ahora</string>
+
+    <string name="delete_pc_msg">¿Estás seguro de eliminar este PC?</string>
+    <string name="slow_connection_msg">Conexión lenta al PC\nReduce la tasa de bits</string>
+    <string name="poor_connection_msg">Conexión inestable al PC</string>
+    <string name="perf_overlay_streamdetails">Video stream: %1$s %2$.2f FPS</string>
+    <string name="perf_overlay_decoder">Decodificador: %1$s</string>
+    <string name="perf_overlay_incomingfps">FPS de red: %1$.2f FPS</string>
+    <string name="perf_overlay_renderingfps">FPS de renderizado: %1$.2f FPS</string>
+    <string name="perf_overlay_hostprocessinglatency">Latencia host min/max/media: %1$.1f/%2$.1f/%3$.1f ms</string>
+    <string name="perf_overlay_netdrops">Cuadros perdidos por red: %1$.2f%%</string>
+    <string name="perf_overlay_netlatency">Latencia media de red: %1$d ms (varianza: %2$d ms)</string>
+    <string name="perf_overlay_dectime">Tiempo medio de decodificación: %1$.2f ms</string>
+
+    <!-- AppList activity -->
+    <string name="applist_connect_msg">Conectando al PC…</string>
+    <string name="applist_menu_resume">Reanudar sesión</string>
+    <string name="applist_menu_quit">Cerrar sesión</string>
+    <string name="applist_menu_quit_and_start">Cerrar juego actual e iniciar</string>
+    <string name="applist_menu_cancel">Cancelar</string>
+    <string name="applist_menu_details">Ver detalles</string>
+    <string name="applist_menu_scut">Crear acceso directo</string>
+    <string name="applist_menu_tv_channel">Agregar al canal</string>
+    <string name="applist_menu_hide_app">Ocultar aplicación</string>
+    <string name="applist_refresh_title">Lista de aplicaciones</string>
+    <string name="applist_refresh_msg">Actualizando aplicaciones…</string>
+    <string name="applist_refresh_error_title">Error</string>
+    <string name="applist_refresh_error_msg">Error al cargar la lista de aplicaciones</string>
+    <string name="applist_quit_app">Cerrando</string>
+    <string name="applist_quit_success">Cerrado correctamente</string>
+    <string name="applist_quit_fail">Error al cerrar</string>
+    <string name="applist_quit_confirmation">¿Seguro que deseas cerrar la aplicación activa? Se perderán los datos no guardados.</string>
+    <string name="applist_details_id">ID de aplicación:</string>
+
+    <!-- Add computer manually activity -->
+    <string name="title_add_pc">Agregar PC manualmente</string>
+    <string name="msg_add_pc">Conectando al PC…</string>
+    <string name="addpc_fail">No se pudo conectar al equipo especificado. Asegúrate de que los puertos requeridos estén permitidos en el cortafuegos.</string>
+    <string name="addpc_success">Equipo agregado correctamente</string>
+    <string name="addpc_unknown_host">No se pudo resolver la dirección del PC. Asegúrate de que no haya errores de escritura.</string>
+    <string name="addpc_enter_ip">Debes ingresar una dirección IP o nombre de equipo</string>
+    <string name="addpc_wrong_sitelocal">La dirección no parece correcta. Usa la dirección IP pública de tu router para transmitir por Internet.</string>
+
+    <!-- Preferences -->
+    <string name="category_basic_settings">Ajustes básicos</string>
+    <string name="title_resolution_list">Resolución de video</string>
+    <string name="summary_resolution_list">Aumenta para mayor nitidez. Reduce para mejor rendimiento en dispositivos modestos o redes lentas.</string>
+    <string name="title_native_res_dialog">Advertencia de resolución nativa</string>
+    <string name="text_native_res_dialog">Es posible que la resolución nativa y/o los FPS no sean compatibles con el servidor de streaming. Si configuras modos personalizados en tu GPU, asegúrate de verificar la compatibilidad de tu monitor.</string>
+    <string name="title_fps_list">Tasa de cuadros (FPS)</string>
+    <string name="summary_fps_list">Aumenta para mayor fluidez. Reduce para menor consumo y rendimiento óptimo.</string>
+    <string name="title_seekbar_bitrate">Tasa de bits de video</string>
+    <string name="summary_seekbar_bitrate">Aumenta para mayor calidad de imagen. Reduce para conexiones lentas.</string>
+    <string name="suffix_seekbar_bitrate_mbps">Mbps</string>
+    <string name="title_checkbox_stretch_video">Estirar video a pantalla completa</string>
+    <string name="resolution_prefix_native">Nativa</string>
+    <string name="resolution_prefix_native_fullscreen">Pantalla completa nativa</string>
+    <string name="resolution_prefix_native_landscape">(Horizontal)</string>
+    <string name="resolution_prefix_native_portrait">(Vertical)</string>
+    <string name="fps_suffix_fps">FPS</string>
+    <string name="title_native_fps_dialog">Advertencia de FPS nativos</string>
+
+    <string name="category_audio_settings">Ajustes de audio</string>
+    <string name="title_audio_config_list">Configuración de sonido envolvente</string>
+    <string name="summary_audio_config_list">Activa sonido 5.1 o 7.1 para sistemas de cine en casa</string>
+    <string name="title_checkbox_enable_audiofx">Activar ecualizador del sistema</string>
+    <string name="summary_checkbox_enable_audiofx">Permite efectos de audio durante la transmisión, aunque puede incrementar ligeramente la latencia</string>
+
+    <string name="category_gamepad_settings">Ajustes de mando</string>
+    <string name="title_checkbox_multi_controller">Detección automática de múltiples mandos</string>
+    <string name="summary_checkbox_multi_controller">Si no está marcado, todos los mandos se agrupan en uno solo</string>
+    <string name="title_checkbox_vibrate_fallback">Emular vibración con respuesta háptica</string>
+    <string name="summary_checkbox_vibrate_fallback">Hace vibrar el dispositivo si tu mando no dispone de motores de vibración</string>
+    <string name="title_seekbar_vibrate_fallback_strength">Intensidad de vibración emulada</string>
+    <string name="summary_seekbar_vibrate_fallback_strength">Ajusta la fuerza de vibración en el dispositivo</string>
+    <string name="suffix_seekbar_vibrate_fallback_strength">%</string>
+    <string name="title_seekbar_deadzone">Zona muerta de sticks analógicos</string>
+    <string name="summary_seekbar_deadzone">Nota: Algunos juegos pueden aplicar una zona muerta mayor a la configurada.</string>
+    <string name="suffix_seekbar_deadzone">%</string>
+    <string name="title_checkbox_xb1_driver">Driver para mando Xbox 360/One</string>
+    <string name="summary_checkbox_xb1_driver">Activa el driver USB para dispositivos sin soporte nativo para mandos Xbox</string>
+    <string name="title_checkbox_usb_bind_all">Sobrescribir soporte nativo de mandos</string>
+    <string name="summary_checkbox_usb_bind_all">Usar el driver USB de SmartDisplay AI para todos los mandos compatibles</string>
+    <string name="title_checkbox_mouse_emulation">Emulación de ratón mediante mando</string>
+    <string name="summary_checkbox_mouse_emulation">Mantener pulsado Start cambia el mando al modo ratón</string>
+    <string name="title_checkbox_flip_face_buttons">Invertir botones frontales</string>
+    <string name="summary_checkbox_flip_face_buttons">Intercambia botones A/B y X/Y para mandos y controles virtuales</string>
+    <string name="title_checkbox_gamepad_touchpad_as_mouse">Controlar ratón siempre con el touchpad</string>
+    <string name="summary_checkbox_gamepad_touchpad_as_mouse">Fuerza la entrada del touchpad para controlar el cursor del PC anfitrión</string>
+    <string name="title_checkbox_gamepad_motion_sensors">Permitir sensores de movimiento del mando</string>
+    <string name="summary_checkbox_gamepad_motion_sensors">Permite enviar datos giroscópicos y de movimiento al PC anfitrión</string>
+    <string name="title_checkbox_gamepad_motion_fallback">Emular sensores de movimiento con el móvil</string>
+    <string name="summary_checkbox_gamepad_motion_fallback">Usa el giroscopio integrado de tu móvil si el mando no dispone de sensores</string>
+
+    <string name="category_input_settings">Ajustes de entrada</string>
+    <string name="title_checkbox_touchscreen_trackpad">Usar pantalla táctil como trackpad</string>
+    <string name="summary_checkbox_touchscreen_trackpad">Si está activo, actúa como trackpad. Si está desactivado, control táctil directo del cursor.</string>
+    <string name="title_checkbox_absolute_mouse_mode">Modo de ratón de escritorio remoto</string>
+    <string name="summary_checkbox_absolute_mouse_mode">Mejora el comportamiento del cursor en escritorio remoto</string>
+    <string name="title_checkbox_mouse_nav_buttons">Activar botones de navegación de ratón</string>
+    <string name="summary_checkbox_mouse_nav_buttons">Habilita botones atrás y adelante en ratones que dispongan de ellos</string>
+
+    <string name="category_on_screen_controls_settings">Controles en pantalla</string>
+    <string name="title_checkbox_show_onscreen_controls">Mostrar controles virtuales</string>
+    <string name="summary_checkbox_show_onscreen_controls">Muestra el mando virtual táctil en pantalla</string>
+    <string name="title_checkbox_vibrate_osc">Activar vibración háptica</string>
+    <string name="summary_checkbox_vibrate_osc">Vibra al pulsar botones del mando virtual</string>
+    <string name="title_only_l3r3">Mostrar únicamente L3 y R3</string>
+    <string name="summary_only_l3r3">Oculta todos los botones virtuales salvo L3 y R3</string>
+    <string name="title_show_guide_button">Mostrar botón Guía / Home</string>
+    <string name="summary_show_guide_button">Muestra el botón central de guía en pantalla</string>
+    <string name="title_reset_osc">Restablecer controles virtuales</string>
+    <string name="summary_reset_osc">Restablece tamaño y posición por defecto del mando virtual</string>
+    <string name="dialog_title_reset_osc">Restablecer controles</string>
+    <string name="dialog_text_reset_osc">¿Seguro que deseas restablecer la distribución de controles virtuales?</string>
+    <string name="toast_reset_osc_success">Controles virtuales restablecidos</string>
+    <string name="title_osc_opacity">Opacidad de controles virtuales</string>
+    <string name="summary_osc_opacity">Ajusta la transparencia de los botones en pantalla</string>
+    <string name="dialog_title_osc_opacity">Cambiar opacidad</string>
+    <string name="suffix_osc_opacity">%</string>
+
+    <string name="category_ui_settings">Ajustes de interfaz</string>
+    <string name="title_checkbox_enable_pip">Activar modo Picture-in-Picture (PiP)</string>
+    <string name="summary_checkbox_enable_pip">Permite ver la transmisión en miniatura mientras realizas multitarea</string>
+    <string name="title_language_list">Idioma</string>
+    <string name="summary_language_list">Idioma de SmartDisplay AI</string>
+    <string name="title_checkbox_small_icon_mode">Iconos compactos</string>
+    <string name="summary_checkbox_small_icon_mode">Reduce el tamaño de portadas para visualizar más apps en pantalla</string>
+
+    <string name="category_host_settings">Ajustes del anfitrión</string>
+    <string name="title_checkbox_enable_sops">Optimizar ajustes de juegos</string>
+    <string name="summary_checkbox_enable_sops">Permite optimizar ajustes gráficos automáticamente para el streaming</string>
+    <string name="title_checkbox_host_audio">Reproducir audio en PC</string>
+    <string name="summary_checkbox_host_audio">Reproduce audio en el PC anfitrión además de en este dispositivo</string>
+
+    <string name="category_advanced_settings">Ajustes avanzados</string>
+    <string name="title_unlock_fps">Desbloquear tasas de cuadros elevadas</string>
+    <string name="summary_unlock_fps">Transmitir a 90 o 120 FPS reduce la latencia en pantallas de alta frecuencia</string>
+    <string name="title_checkbox_reduce_refresh_rate">Permitir reducción de tasa de refresco</string>
+    <string name="summary_checkbox_reduce_refresh_rate">Reduce la tasa de refresco para ahorrar batería cuando corresponda</string>
+    <string name="title_checkbox_disable_warnings">Desactivar avisos en pantalla</string>
+    <string name="summary_checkbox_disable_warnings">Oculta avisos de red durante la transmisión</string>
+    <string name="title_disable_frame_drop">No descartar cuadros nunca</string>
+    <string name="summary_disable_frame_drop">Puede reducir micro-tirones, pero podría incrementar la latencia</string>
+    <string name="title_video_format">Códec de video</string>
+    <string name="summary_video_format">Permite seleccionar AV1, HEVC o H.264 según compatibilidad</string>
+    <string name="title_enable_hdr">Activar HDR (Experimental)</string>
+    <string name="summary_enable_hdr">Transmite en HDR si el juego y la GPU del PC son compatibles</string>
+    <string name="title_full_range">Forzar video de rango completo</string>
+    <string name="summary_full_range">Mejora el contraste dinámico en pantallas que admiten rango completo 0-255</string>
+    <string name="title_enable_perf_overlay">Mostrar estadísticas de rendimiento</string>
+    <string name="summary_enable_perf_overlay">Muestra FPS, latencia y uso de red en tiempo real</string>
+    <string name="title_enable_post_stream_toast">Mostrar resumen de latencia al terminar</string>
+    <string name="summary_enable_post_stream_toast">Muestra la latencia media alcanzada al cerrar la sesión</string>
+
+    <string name="category_help">Ayuda y soporte</string>
+    <string name="title_setup_guide">Guía de configuración</string>
+    <string name="summary_setup_guide">Instrucciones para configurar tu PC anfitrión con Sunshine</string>
+    <string name="title_troubleshooting">Guía de solución de problemas</string>
+    <string name="summary_troubleshooting">Consejos para diagnosticar y solucionar incidencias comunes</string>
+    <string name="title_privacy_policy">Política de privacidad</string>
+    <string name="summary_privacy_policy">Información sobre privacidad de SmartDisplay AI</string>
+
+    <!-- Toasts -->
+    <string name="toast_controller_type_changed">El tipo de mando puede cambiar al emular sensores de movimiento</string>
+
+    <!-- Array strings -->
+    <string name="resolution_360p">360p</string>
+    <string name="resolution_480p">480p</string>
+    <string name="resolution_720p">720p</string>
+    <string name="resolution_1080p">1080p</string>
+    <string name="resolution_1440p">1440p</string>
+    <string name="resolution_4k">4K</string>
+
+    <string name="fps_30">30 FPS</string>
+    <string name="fps_60">60 FPS</string>
+    <string name="fps_90">90 FPS</string>
+    <string name="fps_120">120 FPS</string>
+
+    <string name="audioconf_stereo">Estéreo</string>
+    <string name="audioconf_51surround">Sonido envolvente 5.1</string>
+    <string name="audioconf_71surround">Sonido envolvente 7.1</string>
+
+    <string name="videoformat_auto">Automático (Recomendado)</string>
+    <string name="videoformat_av1always">Preferir AV1 (Experimental)</string>
+    <string name="videoformat_hevcalways">Preferir HEVC</string>
+    <string name="videoformat_h264always">Preferir H.264</string>
+
+    <string name="title_frame_pacing">Sincronización de cuadros de video</string>
+    <string name="summary_frame_pacing">Equilibrio entre latencia mínima y máxima fluidez</string>
+    <string name="pacing_latency">Priorizar latencia más baja</string>
+    <string name="pacing_balanced">Equilibrado</string>
+    <string name="pacing_balanced_alt">Equilibrado con límite de FPS</string>
+    <string name="pacing_smoothness">Priorizar máxima fluidez</string>
+
+    <string name="title_analog_scrolling">Desplazamiento con stick analógico</string>
+    <string name="summary_analog_scrolling">Usa un stick analógico para hacer scroll en modo ratón</string>
+    <string name="analogscroll_none">Ninguno (ambos mueven el ratón)</string>
+    <string name="analogscroll_right">Stick derecho</string>
+    <string name="analogscroll_left">Stick izquierdo</string>
+
+    <!-- SmartDisplay AI: Voice -->
+    <string name="voice_activated">Voz OOB: Activada</string>
+    <string name="voice_deactivated">Voz OOB: Desactivada</string>
+    <string name="voice_manager_not_ready">Voice Manager no inicializado</string>
+    <string name="voice_permission_needed">Permiso de micrófono requerido. Por favor concede el permiso.</string>
+
+    <!-- SmartDisplay AI: FAB Hub -->
+    <string name="hub_move_mode_on">Modo Mover: ON</string>
+    <string name="hub_move_mode_off">Modo Mover: OFF</string>
+
+    <!-- Accesibilidad -->
+    <string name="device_icon_desc">Icono del dispositivo</string>
+    <string name="online_status_desc">Estado en línea</string>
+    <string name="connect_button_desc">Conectar al dispositivo</string>
+    <string name="options_button_desc">Opciones del dispositivo</string>
+
+    <!-- Reconexión automática -->
+    <string name="reconnect_status">Reconectando… (%1$d/%2$d)</string>
+    <string name="reconnect_verifying">Verificando conexión de red</string>
+    <string name="reconnect_failed">No se pudo reconectar automáticamente. Comprueba la red.</string>
+    <string name="wol_waking_status">Encendiendo PC… (%1$ds / %2$ds)</string>
+    <string name="wol_conn_terminated_title">Conexión terminada</string>
+
+    <!-- Teclado -->
+    <string name="keyboard_no_connection">Sin conexión al PC</string>
+    <string name="keyboard_scale_toast">Escala: %d%%</string>
+    <string name="keyboard_title">Teclado Inteligente</string>
+    <string name="keyboard_tab_normal">Normal</string>
+    <string name="keyboard_tab_dev">DEV</string>
+    <string name="keyboard_tab_shortcuts">Atajos</string>
+
+    <!-- FAB menú radial -->
+    <string name="fab_screen">Pantalla</string>
+    <string name="fab_zoom">Zoom</string>
+    <string name="fab_tools">Herramientas</string>
+    <string name="fab_files">Archivos</string>
+    <string name="fab_voice">Voz</string>
+    <string name="fab_keyboard">Teclado</string>
+    <string name="fab_mouse_mode">Modo Mouse</string>
+    <string name="fab_hud">HUD</string>
+
+    <string name="pcview_your_computers">Tus equipos</string>
+    <string name="reconnect_label">Reconectando…</string>
+    <string name="hud_metric_placeholder" translatable="false">— ms · — fps</string>
+    <string name="fb_mobile_root">📱 Móvil</string>
+    <string name="fb_send_to_pc">Enviar al PC</string>
+
+    <!-- Estado de equipo en la grilla -->
+    <string name="pcgrid_app_active">%1$s · activo</string>
+    <string name="pcgrid_session_active">Sesión activa</string>
+    <string name="pcview_menu_eol">NVIDIA GameStream End-of-Service</string>
+</resources>

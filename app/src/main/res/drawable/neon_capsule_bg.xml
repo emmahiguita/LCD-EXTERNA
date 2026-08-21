@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  neon_capsule_bg.xml — Cápsula de control de ventanas con borde neón.
+  Capas: fondo oscuro degradado → borde neón morado → brillo superior (sheen).
+  El elevation=12dp del contenedor añade la sombra de profundidad.
+-->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Fondo: degradado oscuro profundo con vidrio -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#E01A1A2E"
+                android:endColor="#C0101020"
+                android:angle="270" />
+            <corners android:radius="16dp" />
+        </shape>
+    </item>
+
+    <!-- Borde neón: morado + trazo interior tenue para glow simulado -->
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="16dp" />
+            <stroke
+                android:width="2dp"
+                android:color="#8B5CF6" />
+        </shape>
+    </item>
+
+    <!-- Brillo superior tipo glassmorphism -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#2AFFFFFF"
+                android:centerColor="#0DFFFFFF"
+                android:endColor="#00FFFFFF"
+                android:angle="270" />
+            <corners android:radius="16dp" />
+        </shape>
+    </item>
+
+</layer-list>

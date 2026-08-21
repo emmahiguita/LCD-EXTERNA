@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="summary_enable_post_stream_toast">Hiß╗ân thß╗ï mß╗Öt th├┤ng b├ío th├┤ng tin ─æß╗Ö trß╗à sau khi kß║┐t th├║c stream</string>
+    <string name="title_enable_post_stream_toast">Hiß╗çn th├┤ng b├ío ─æß╗Ö trß╗à sau khi stream</string>
+    <string name="summary_enable_perf_overlay">Hiß╗ân thß╗ï th├┤ng tin hiß╗çu n─âng stream theo thß╗Øi gian thß╗▒c trong khi stream</string>
+    <string name="title_enable_perf_overlay">Hiß╗çn thß╗æng k├¬ hiß╗çu n─âng trong khi stream</string>
+    <string name="summary_enable_hdr">Stream HDR khi tr├▓ chãíi v├á GPU cß╗ºa PC hß╗ù trß╗ú n├│. HDR y├¬u cß║ºu GPU GTX series 1000 hoß║Àc mß╗øi hãín.</string>
+    <string name="title_enable_hdr">Bß║¡t HDR (Thß╗¡ nghiß╗çm)</string>
+    <string name="summary_video_format">HEVC l├ám giß║úm y├¬u cß║ºu b─âng th├┤ng video nhã░ng y├¬u cß║ºu mß╗Öt thiß║┐t bß╗ï mß╗øi hãín</string>
+    <string name="title_video_format">Thay ─æß╗òi c├ái ─æß║Àt HEVC</string>
+    <string name="summary_disable_frame_drop">C├│ thß╗â l├ám giß║úm sß╗▒ khß╗▒ng nhß╗Å tr├¬n mß╗Öt sß╗æ thiß║┐t bß╗ï, nhã░ng c├│ thß╗â l├ám t─âng ─æß╗Ö trß╗à</string>
+    <string name="title_disable_frame_drop">Kh├┤ng bao giß╗Ø giß║úm khung h├¼nh</string>
+    <string name="summary_checkbox_disable_warnings">Tß║»t c├íc th├┤ng b├ío cß║únh b├ío kß║┐t nß╗æi tr├¬n m├án h├¼nh trong khi stream</string>
+    <string name="title_checkbox_disable_warnings">Tß║»t c├íc th├┤ng b├ío cß║únh b├ío</string>
+    <string name="summary_unlock_fps">Viß╗çc stream tß║íi 90 hoß║Àc 120 FPS c├│ thß╗â sß║¢ giß║úm ─æß╗Ö trß╗à tr├¬n c├íc thiß║┐t bß╗ï tß║ºm cao nhã░ng c├│ thß╗â sß║¢ g├óy ra lag hoß║Àc mß║Ñt ß╗òn ─æß╗ïnh tr├¬n c├íc thiß║┐t bß╗ï kh├┤ng thß╗â hß╗ù trß╗ú viß╗çc ─æ├│</string>
+    <string name="title_unlock_fps">Mß╗ƒ kho├í tß║Ñt cß║ú tß╗æc ─æß╗Ö khung h├¼nh c├│ thß╗â c├│</string>
+    <string name="category_advanced_settings">C├ái ─æß║Àt n├óng cao</string>
+    <string name="summary_checkbox_host_audio">Ph├ít ├óm thanh tß╗½ m├íy t├¡nh v├á thiß║┐t bß╗ï n├áy</string>
+    <string name="title_checkbox_host_audio">Ph├ít ├óm thanh tr├¬n PC</string>
+    <string name="summary_checkbox_small_icon_mode">B├¼a nhß╗Å trong lã░ß╗øi ß╗®ng dß╗Ñng cho ph├®p hiß╗ân thß╗ï nhiß╗üu ß╗®ng dß╗Ñng hãín tr├¬n m├án h├¼nh</string>
+    <string name="title_checkbox_small_icon_mode">Sß╗¡ dß╗Ñng b├¼a nhß╗Å</string>
+    <string name="summary_language_list">Ng├┤n ngß╗» ─æß╗â sß╗¡ dß╗Ñng cho SmartDisplay AI</string>
+    <string name="title_language_list">Ng├┤n ngß╗»</string>
+    <string name="summary_checkbox_enable_pip">Cho ph├®p stream ─æã░ß╗úc xem (nhã░ng kh├┤ng ─æã░ß╗úc ─æiß╗üu khiß╗ân) trong khi ─æa nhiß╗çm</string>
+    <string name="title_checkbox_enable_pip">Bß║¡t chß║┐ ─æß╗Ö quan s├ít H├¼nh-trong-H├¼nh</string>
+    <string name="category_ui_settings">C├ái ─æß║Àt giao diß╗çn</string>
+    <string name="suffix_osc_opacity">%</string>
+    <string name="dialog_title_osc_opacity">Thay ─æß╗òi ─æß╗Ö trong suß╗æt</string>
+    <string name="summary_osc_opacity">L├ám cho ─æiß╗üu khiß╗ân tr├¬n m├án h├¼nh (├¡t) trong suß╗æt hãín</string>
+    <string name="title_osc_opacity">Thay ─æß╗òi ─æß╗Ö trong suß╗æt cß╗ºa ─æiß╗üu khiß╗ân tr├¬n m├án h├¼nh</string>
+    <string name="toast_reset_osc_success">─É├ú ─æß║Àt lß║íi ─æiß╗üu khiß╗ân tr├¬n m├án h├¼nh vß╗ü mß║Àc ─æß╗ïnh</string>
+    <string name="dialog_text_reset_osc">Bß║ín c├│ chß║»c bß║ín muß╗æn xo├í bß╗æ cß╗Ñc ─æiß╗üu khiß╗ân tr├¬n m├án h├¼nh ─æ├ú lã░u cß╗ºa bß║ín kh├┤ng\?</string>
+    <string name="dialog_title_reset_osc">─Éß║Àt lß║íi bß╗æ cß╗Ñc</string>
+    <string name="summary_reset_osc">─Éß║Àt lß║íi tß║Ñt cß║ú ─æiß╗üu khiß╗ân tr├¬n m├án h├¼nh vß╗ü k├¡ch thã░ß╗øc v├á vß╗ï tr├¡ mß║Àc ─æß╗ïnh</string>
+    <string name="title_reset_osc">Xo├í bß╗Ö cß╗Ñc ─æiß╗üu khiß╗ân tr├¬n m├án h├¼nh ─æ├ú lã░u</string>
+    <string name="summary_only_l3r3">ß║¿n tß║Ñt cß║ú n├║t ß║úo trß╗½ L3 v├á R3</string>
+    <string name="title_only_l3r3">Chß╗ë hiß╗çn L3 v├á R3</string>
+    <string name="summary_checkbox_vibrate_osc">L├ám thiß║┐t bß╗ï rung ─æß╗â giß║ú lß║¡p rumble ─æß╗æi vß╗øi ─æiß╗üu khiß╗ân tr├¬n m├án h├¼nh</string>
+    <string name="title_checkbox_vibrate_osc">Bß║¡t rung</string>
+    <string name="summary_checkbox_show_onscreen_controls">Hiß╗çn bß╗Ö ─æiß╗üu khiß╗ân ß║úo tr├¬n m├án h├¼nh cß║úm ß╗®ng</string>
+    <string name="title_checkbox_show_onscreen_controls">Hiß╗çn ─æiß╗üu khiß╗ân tr├¬n m├án h├¼nh</string>
+    <string name="category_on_screen_controls_settings">C├ái ─æß║Àt ─æiß╗üu khiß╗ân tr├¬n m├án h├¼nh</string>
+    <string name="summary_checkbox_flip_face_buttons">Chuyß╗ân c├íc n├║t ß╗ƒ mß║Àt A/B v├á X/Y ─æß╗æi vß╗øi tay cß║ºm ─æiß╗üu khiß╗ân v├á ─æiß╗üu khiß╗ân tr├¬n m├án h├¼nh</string>
+    <string name="title_checkbox_flip_face_buttons">─Éß║úo c├íc n├║t ß╗ƒ mß║Àt</string>
+    <string name="summary_checkbox_mouse_nav_buttons">Viß╗çc bß║¡t tuß╗│ chß╗ìn n├áy c├│ thß╗â sß║¢ l├ám hß╗Ång viß╗çc nhß║Ñn chuß╗Öt phß║úi tr├¬n mß╗Öt sß╗æ thiß║┐t bß╗ï c├│ lß╗ùi</string>
+    <string name="title_checkbox_mouse_nav_buttons">Bß║¡t c├íc n├║t quay lß║íi v├á ─æi trã░ß╗øc cß╗ºa chuß╗Öt</string>
+    <string name="summary_checkbox_mouse_emulation">Viß╗çc nhß║Ñn giß╗» n├║t Start sß║¢ chuyß╗ân tay cß║ºm ─æiß╗üu khiß╗ân v├áo chß║┐ ─æß╗Ö chuß╗Öt</string>
+    <string name="title_checkbox_mouse_emulation">Giß║ú lß║¡p chuß╗Öt qua tay cß║ºm ─æiß╗üu khiß╗ân</string>
+    <string name="summary_checkbox_usb_bind_all">Sß╗¡ dß╗Ñng driver USB cß╗ºa SmartDisplay AI cho tß║Ñt cß║ú tay cß║ºm ─æiß╗üu khiß╗ân ─æã░ß╗úc hß╗ù trß╗ú, kß╗â cß║ú nß║┐u c├│ hß╗ù trß╗ú tay cß║ºm ─æiß╗üu khiß╗ân Xbox</string>
+    <string name="title_checkbox_usb_bind_all">Ghi ─æ├¿ l├¬n sß╗▒ hß╗ù trß╗ú tay cß║ºm ─æiß╗üu khiß╗ân Xbox</string>
+    <string name="summary_checkbox_xb1_driver">Bß║¡t mß╗Öt driver USB ─æã░ß╗úc t├¡ch hß╗úp cho c├íc thiß║┐t bß╗ï kh├┤ng hß╗ù trß╗ú tay cß║ºm ─æiß╗üu khiß╗ân Xbox</string>
+    <string name="title_checkbox_xb1_driver">Driver tay cß║ºm ─æiß╗üu khiß╗ân USB Xbox 360/One</string>
+    <string name="suffix_seekbar_deadzone">%</string>
+    <string name="title_seekbar_deadzone">─Éiß╗üu chß╗ënh v├╣ng chß║┐t cß╗ºa cß║ºn analog</string>
+    <string name="summary_checkbox_vibrate_fallback">L├ám thiß║┐t bß╗ï cß╗ºa bß║ín rung ─æß╗â giß║ú lß║¡p rumble nß║┐u tay cß║ºm ─æiß╗üu khiß╗ân cß╗ºa bß║ín kh├┤ng hß╗ù trß╗ú n├│</string>
+    <string name="title_checkbox_vibrate_fallback">Giß║ú lß║¡p hß╗ù trß╗ú rumble bß║▒ng rung</string>
+    <string name="summary_checkbox_multi_controller">Viß╗çc kh├┤ng ─æ├ính dß║Ñu sß║¢ buß╗Öc mß╗Öt tay cß║ºm ─æiß╗üu khiß╗ân lu├┤n c├│ mß║Àt</string>
+    <string name="title_checkbox_multi_controller">Tß╗▒ ─æß╗Öng ph├ít hiß╗çn sß╗▒ c├│ mß║Àt cß╗ºa tay cß║ºm ─æiß╗üu khiß╗ân</string>
+    <string name="summary_checkbox_touchscreen_trackpad">Nß║┐u bß║¡t, m├án h├¼nh cß║úm ß╗®ng hoß║ít ─æß╗Öng nhã░ mß╗Öt trackpad. Nß║┐u tß║»t, m├án h├¼nh cß║úm ß╗®ng trß╗▒c tiß║┐p ─æiß╗üu khiß╗ân con trß╗Å chuß╗Öt.</string>
+    <string name="title_checkbox_touchscreen_trackpad">Sß╗¡ dß╗Ñng m├án h├¼nh cß║úm ß╗®ng l├ám trackpad</string>
+    <string name="category_input_settings">C├ái ─æß║Àt ─æß║ºu v├áo</string>
+    <string name="summary_audio_config_list">Bß║¡t ├óm thanh bao quanh 5.1 hoß║Àc 7.1 cho c├íc hß╗ç thß╗æng rß║íp phim tß║íi nh├á</string>
+    <string name="title_audio_config_list">Thiß║┐t lß║¡p ├óm thanh bao quanh</string>
+    <string name="category_audio_settings">C├ái ─æß║Àt ├óm thanh</string>
+    <string name="resolution_prefix_native">Gß╗æc</string>
+    <string name="title_checkbox_stretch_video">K├®o gi├ún video ra to├án m├án h├¼nh</string>
+    <string name="suffix_seekbar_bitrate_mbps">Mbps</string>
+    <string name="summary_seekbar_bitrate">T─âng ─æß╗â c├│ chß║Ñt lã░ß╗úng h├¼nh ß║únh tß╗æt hãín. Giß║úm ─æß╗â cß║úi thiß╗çn hiß╗çu n─âng tr├¬n c├íc kß║┐t nß╗æi chß║¡m hãín.</string>
+    <string name="title_seekbar_bitrate">Tß╗æc ─æß╗Ö bit video</string>
+    <string name="summary_fps_list">T─âng ─æß╗â stream video mã░ß╗út m├á hãín. Giß║úm ─æß╗â c├│ hiß╗çu n─âng tß╗æt hãín tr├¬n c├íc thiß║┐t bß╗ï tß║ºm thß║Ñp hãín.</string>
+    <string name="title_fps_list">Tß╗æc ─æß╗Ö khung h├¼nh video</string>
+    <string name="text_native_res_dialog">C├íc chß║┐ ─æß╗Ö ─æß╗Ö ph├ón giß║úi gß╗æc kh├┤ng ─æã░ß╗úc GeForce Experience hß╗ù trß╗ú ch├¡nh thß╗®c, n├¬n n├│ sß║¢ kh├┤ng tß╗▒ ─æß║Àt ─æß╗Ö ph├ón giß║úi hiß╗ân thß╗ï cß╗ºa m├íy chß╗º. Bß║ín sß║¢ cß║ºn phß║úi ─æß║Àt n├│ theo c├ích thß╗º c├┤ng trong khi ─æang trong tr├▓ chãíi.
+\n
+\nNß║┐u bß║ín chß╗ìn viß╗çc tß║ío mß╗Öt ─æß╗Ö ph├ón giß║úi tuß╗│ chß╗ënh trong Bß║úng ─æiß╗üu khiß╗ân NVIDIA ─æß╗â khß╗øp vß╗øi ─æß╗Ö ph├ón giß║úi thiß║┐t bß╗ï, vui l├▓ng chß║»c chß║»n l├á bß║ín ─æ├ú ─æß╗ìc v├á hiß╗âu cß║únh b├ío cß╗ºa NVIDIA vß╗ü hã░ hß║íi m├án h├¼nh c├│ thß╗â c├│, sß╗▒ bß║Ñt ß╗òn cß╗ºa PC, v├á c├íc vß║Ñn ─æß╗ü tiß╗üm n─âng kh├íc.
+\n
+\nCh├║ng t├┤i kh├┤ng chß╗ïu tr├ích nhiß╗çm cho bß║Ñt kß╗│ vß║Ñn ─æß╗ü n├áo g├óy ra tß╗½ viß╗çc tß║ío ─æß╗Ö ph├ón giß║úi tuß╗│ chß╗ënh tr├¬n PC.
+\n
+\nCuß╗æi c├╣ng, thiß║┐t bß╗ï hoß║Àc PC chß╗º c├│ thß╗â kh├┤ng hß╗ù trß╗ú viß╗çc stream tß║íi ─æß╗Ö ph├ón giß║úi gß╗æc. Nß║┐u viß╗çc n├áy kh├┤ng hoß║ít ─æß╗Öng tr├¬n thiß║┐t bß╗ï, kh├┤ng may mß║»n l├á bß║ín kh├┤ng thß╗â l├ám g├¼ ─æã░ß╗úc.</string>
+    <string name="title_native_res_dialog">Cß║únh b├ío ─æß╗Ö ph├ón giß║úi gß╗æc</string>
+    <string name="summary_resolution_list">T─âng ─æß╗â cß║úi thiß╗çn ─æß╗Ö r├Á cß╗ºa h├¼nh ß║únh. Giß║úm ─æß╗â c├│ hiß╗çu n─âng tß╗æt hãín tr├¬n c├íc thiß║┐t bß╗ï tß║ºm thß║Ñp hãín v├á c├íc mß║íng chß║¡m hãín.</string>
+    <string name="title_resolution_list">─Éß╗Ö ph├ón giß║úi video</string>
+    <string name="category_basic_settings">C├ái ─æß║Àt cãí bß║ún</string>
+    <string name="addpc_wrong_sitelocal">─Éß╗ïa chß╗ë ─æ├│ tr├┤ng kh├┤ng ─æ├║ng. Bß║ín phß║úi sß╗¡ dß╗Ñng ─æß╗ïa chß╗ë IP c├┤ng khai cß╗ºa router ─æß╗â stream qua Internet.</string>
+    <string name="addpc_enter_ip">Bß║ín phß║úi nhß║¡p mß╗Öt ─æß╗ïa chß╗ë IP</string>
+    <string name="addpc_unknown_host">Kh├┤ng thß╗â xß╗¡ l├¢ ─æß╗ïa chß╗ë PC. H├úy chß║»c chß║»n l├á bß║ín kh├┤ng mß║»c lß╗ùi ch├¡nh tß║ú trong ─æß╗ïa chß╗ë.</string>
+    <string name="addpc_success">Th├¬m m├íy t├¡nh th├ánh c├┤ng</string>
+    <string name="addpc_fail">Kh├┤ng thß╗â kß║┐t nß╗æi ─æß║┐n m├íy t├¡nh ─æã░ß╗úc chß╗ë ─æß╗ïnh. H├úy chß║»c chß║»n l├á c├íc cß╗òng ─æã░ß╗úc y├¬u cß║ºu ─æã░ß╗úc cho ph├®p qua tã░ß╗Øng lß╗¡a.</string>
+    <string name="msg_add_pc">─Éang kß║┐t nß╗æi ─æß║┐n PC</string>
+    <string name="title_add_pc">Th├¬m PC thß╗º c├┤ng</string>
+    <string name="applist_details_id">ID ß╗®ng dß╗Ñng:</string>
+    <string name="applist_quit_confirmation">Bß║ín c├│ chß║»c bß║ín muß╗æn tho├ít ß╗®ng dß╗Ñng ─æang chß║íy kh├┤ng\? Tß║Ñt cß║ú dß╗» liß╗çu chã░a ─æã░ß╗úc lã░u sß║¢ bß╗ï mß║Ñt.</string>
+    <string name="applist_quit_fail">Tho├ít thß║Ñt bß║íi</string>
+    <string name="applist_quit_success">Tho├ít th├ánh c├┤ng</string>
+    <string name="applist_quit_app">─Éang tho├ít</string>
+    <string name="applist_refresh_error_msg">Lß║Ñy danh s├ích ß╗®ng dß╗Ñng thß║Ñt bß║íi</string>
+    <string name="applist_refresh_error_title">Lß╗ùi</string>
+    <string name="applist_refresh_msg">─Éang l├ám mß╗øi c├íc ß╗®ng dß╗Ñng</string>
+    <string name="applist_refresh_title">Danh s├ích ß╗®ng dß╗Ñng</string>
+    <string name="applist_menu_hide_app">ß║¿n ß╗®ng dß╗Ñng</string>
+    <string name="applist_menu_tv_channel">Th├¬m v├áo k├¬nh</string>
+    <string name="applist_menu_scut">Tß║ío lß╗æi tß║»t</string>
+    <string name="applist_menu_details">Xem chi tiß║┐t</string>
+    <string name="applist_menu_cancel">Huß╗À</string>
+    <string name="applist_menu_quit_and_start">Tho├ít tr├▓ chãíi hiß╗çn tß║íi v├á bß║»t ─æß║ºu</string>
+    <string name="applist_menu_quit">Tho├ít phi├¬n l├ám viß╗çc</string>
+    <string name="applist_menu_resume">Tiß║┐p tß╗Ñc phi├¬n l├ám viß╗çc</string>
+    <string name="applist_connect_msg">─Éang kß║┐t nß╗æi ─æß║┐n PC</string>
+    <string name="perf_overlay_decoder">Tr├¼nh giß║úi m├ú: %1$s</string>
+    <string name="perf_overlay_incomingfps">Tß╗æc ─æß╗Ö khung h├¼nh ─æang ─æß║┐n tß╗½ mß║íng: %1$.2f FPS</string>
+    <string name="perf_overlay_renderingfps">Tß╗æc ─æß╗Ö khung h├¼nh kß║┐t xuß║Ñt: %1$.2f FPS</string>
+    <string name="perf_overlay_netdrops">Khung h├¼nh bß╗ï giß║úm bß╗ƒi kß║┐t nß╗æi mß║íng: %1$.2f%%</string>
+    <string name="perf_overlay_dectime">Thß╗Øi gian giß║úi m├ú trung b├¼nh: %1$.2f ms</string>
+    <string name="poor_connection_msg">Kß║┐t nß╗æi ─æß║┐n PC bß╗ï k├®m</string>
+    <string name="slow_connection_msg">Kß║┐t nß╗æi ─æß║┐n PC bß╗ï chß║¡m.
+\nH├úy giß║úm tß╗æc ─æß╗Ö bit</string>
+    <string name="delete_pc_msg">Bß║ín c├│ chß║»c bß║ín muß╗æn xo├í PC n├áy kh├┤ng\?</string>
+    <string name="yes">C├│</string>
+    <string name="searching_pc">─Éang t├¼m c├íc PC c├│ GameStream ─æang chß║íy
+\n
+\nH├úy chß║»c chß║»n l├á GameStream ─æã░ß╗úc bß║¡t trong c├ái ─æß║Àt GeForce Experience SHIELD.</string>
+    <string name="ip_hint">─Éß╗ïa chß╗ë IP cß╗ºa PC GeForce</string>
+    <string name="conn_terminated_msg">Kß║┐t nß╗æi ─æ├ú bß╗ï chß║Ñm dß╗®t</string>
+    <string name="conn_terminated_title">Kß║┐t nß╗æi bß╗ï chß║Ñm dß╗®t</string>
+    <string name="conn_error_msg">Bß║»t ─æß║ºu thß║Ñt bß║íi</string>
+    <string name="conn_error_title">Lß╗ùi kß║┐t nß╗æi</string>
+    <string name="conn_starting">─Éang bß║»t ─æß║ºu</string>
+    <string name="conn_hardware_latency">─Éß╗Ö trß╗à giß║úi m├ú phß║ºn cß╗®ng trung b├¼nh:</string>
+    <string name="conn_client_latency_hw">─æß╗Ö trß╗à tr├¼nh giß║úi m├ú phß║ºn cß╗®ng:</string>
+    <string name="conn_client_latency">─Éß╗Ö trß╗à giß║úi m├ú khung h├¼nh trung b├¼nh:</string>
+    <string name="conn_metered">Cß║únh b├ío: Kß║┐t nß╗æi mß║íng ─æang hoß║ít ─æß╗Öng l├á c├│ trß║ú ph├¡!</string>
+    <string name="conn_establishing_title">─Éang lß║¡p kß║┐t nß╗æi</string>
+    <string name="check_ports_msg">H├úy kiß╗âm tra tã░ß╗Øng lß╗¡a v├á c├íc quy tß║»c chuyß╗ân tiß║┐p cß╗òng ─æß╗â t├¼m (c├íc) cß╗òng:</string>
+    <string name="early_termination_error">C├│ g├¼ ─æ├│ sai ─æ├ú xß║úy ra tr├¬n PC chß╗º cß╗ºa bß║ín khi bß║»t ─æß║ºu stream.
+\n
+\nH├úy chß║»c chß║»n l├á bß║ín kh├┤ng mß╗ƒ bß║Ñt kß╗│ nß╗Öi dung ─æã░ß╗úc DRM bß║úo vß╗ç n├áo tr├¬n PC chß╗º. Bß║ín c┼®ng c├│ thß╗â thß╗¡ khß╗ƒi ─æß╗Öng lß║íi PC chß╗º.
+\n
+\nNß║┐u vß║Ñn ─æß╗ü vß║½n tiß║┐p diß╗àn, h├úy thß╗¡ c├ái ─æß║Àt lß║íi driver GPU v├á GeForce Experience.</string>
+    <string name="no_frame_received_error">Kß║┐t nß╗æi mß║íng cß╗ºa bß║ín ─æang kh├┤ng hoß║ít ─æß╗Öng tß╗æt. H├úy giß║úm c├ái ─æß║Àt tß╗æc ─æß╗Ö bit hoß║Àc thß╗¡ mß╗Öt kß║┐t nß╗æi nhanh hãín.</string>
+    <string name="no_video_received_error">Kh├┤ng nhß║¡n ─æã░ß╗úc video tß╗½ chß╗º.</string>
+    <string name="video_decoder_init_failed">Khß╗ƒi tß║ío tr├¼nh giß║úi m├ú video thß║Ñt bß║íi. Thiß║┐t bß╗ï c├│ thß╗â kh├┤ng hß╗ù trß╗ú ─æß╗Ö ph├ón giß║úi hoß║Àc tß╗æc ─æß╗Ö khung h├¼nh ─æ├ú chß╗ìn.</string>
+    <string name="unable_to_pin_shortcut">Launcher hiß╗çn tß║íi kh├┤ng hß╗ù trß╗ú viß╗çc tß║ío c├íc lß╗æi tß║»t ─æã░ß╗úc ghim.</string>
+    <string name="error_usb_prohibited">Quyß╗ün truy cß║¡p USB bß╗ï cß║Ñm bß╗ƒi quß║ún trß╗ï vi├¬n thiß║┐t bß╗ï. H├úy kiß╗âm tra c├ái ─æß║Àt Knox hoß║Àc MDM.</string>
+    <string name="message_decoding_reset">Tr├¼nh giß║úi m├ú video cß╗ºa thiß║┐t bß╗ï vß║½n tiß║┐p tß╗Ñc dß╗½ng ─æß╗Öt ngß╗Öt tß║íi c├íc c├ái ─æß║Àt stream ─æ├ú chß╗ìn. C├íc c├ái ─æß║Àt stream ─æ├ú ─æã░ß╗úc ─æß║Àt lß║íi vß╗ü mß║Àc ─æß╗ïnh.</string>
+    <string name="title_decoding_reset">─É├ú ─æß║Àt lß║íi c├ái ─æß║Àt video</string>
+    <string name="message_decoding_error">SmartDisplay AI ─æ├ú bß╗ï dß╗½ng ─æß╗Öt ngß╗Öt v├¼ mß╗Öt sß╗▒ kh├┤ng tã░ãíng th├¡ch vß╗øi tr├¼nh giß║úi m├ú video cß╗ºa thiß║┐t bß╗ï n├áy. H├úy chß║»c chß║»n l├á GeForce Experience ─æã░ß╗úc cß║¡p nhß║¡t l├¬n phi├¬n bß║ún mß╗øi nhß║Ñt tr├¬n PC. H├úy thß╗¡ ─æiß╗üu chß╗ënh c├ái ─æß║Àt stream nß║┐u viß╗çc dß╗½ng ─æß╗Öt ngß╗Öt vß║½n tiß║┐p tß╗Ñc.</string>
+    <string name="title_decoding_error">Tr├¼nh giß║úi m├ú video bß╗ï dß╗½ng ─æß╗Öt ngß╗Öt</string>
+    <string name="error_404">GFE ─æ├ú trß║ú lß╗Øi bß║▒ng lß╗ùi HTTP 404. H├úy chß║»c chß║»n rß║▒ng PC cß╗ºa bß║ín ─æang chß║íy mß╗Öt GPU ─æã░ß╗úc hß╗ù trß╗ú. Viß╗çc sß╗¡ dß╗Ñng phß║ºn mß╗üm m├íy t├¡nh tß╗½ xa c┼®ng c├│ thß╗â g├óy ra lß╗ùi n├áy. H├úy thß╗¡ khß╗ƒi ─æß╗Öng lß║íi m├íy hoß║Àc c├ái ─æß║Àt lß║íi GFE.</string>
+    <string name="error_unknown_host">Xß╗¡ l├¢ m├íy chß╗º thß║Ñt bß║íi</string>
+    <string name="error_manager_not_running">Dß╗ïch vß╗Ñ ComputerManager ─æang kh├┤ng chß║íy. Vui l├▓ng ─æß╗úi mß╗Öt v├ái gi├óy hoß║Àc khß╗ƒi ─æß╗Öng lß║íi ß╗®ng dß╗Ñng.</string>
+    <string name="error_pc_offline">M├íy t├¡nh ─æang ngoß║íi tuyß║┐n</string>
+    <string name="summary_checkbox_enable_sops">Cho ph├®p GFE sß╗¡a ─æß╗òi c├ái ─æß║Àt tr├▓ chãíi ─æß╗â stream tß╗æi ã░u</string>
+    <string name="title_checkbox_enable_sops">Tß╗æi ã░u ho├í c├ái ─æß║Àt tr├▓ chãíi</string>
+    <string name="category_host_settings">C├ái ─æß║Àt chß╗º</string>
+    <string name="help">Trß╗ú gi├║p</string>
+    <string name="title_details">Chi tiß║┐t</string>
+    <string name="lost_connection">─É├ú mß║Ñt kß║┐t nß╗æi ─æß║┐n PC</string>
+    <string name="no">Kh├┤ng</string>
+    <string name="conn_establishing_msg">─Éang bß║»t ─æß║ºu kß║┐t nß╗æi</string>
+    <string name="unpair_error">Thiß║┐t bß╗ï ─æ├ú kh├┤ng ─æã░ß╗úc gh├®p ─æ├┤i</string>
+    <string name="unpair_fail">Huß╗À gh├®p ─æ├┤i thß║Ñt bß║íi</string>
+    <string name="unpair_success">Huß╗À gh├®p ─æ├┤i th├ánh c├┤ng</string>
+    <string name="unpairing">─Éang huß╗À gh├®p ─æ├┤i…</string>
+    <string name="wol_fail">Gß╗¡i c├íc g├│i Wake-On-LAN thß║Ñt bß║íi</string>
+    <string name="wol_waking_msg">PC cß╗ºa bß║ín c├│ thß╗â sß║¢ mß║Ñt mß╗Öt v├ái gi├óy ─æß╗â thß╗®c giß║Ñc. Nß║┐u n├│ kh├┤ng thß╗®c giß║Ñc, h├úy chß║»c chß║»n l├á n├│ ─æã░ß╗úc thiß║┐t lß║¡p ─æ├║ng cho Wake-On-LAN.</string>
+    <string name="wol_waking_pc">─Éang ─æ├ính thß╗®c PC…</string>
+    <string name="wol_no_mac">Kh├┤ng thß╗â ─æ├ính thß╗®c PC v├¼ GFE ─æ├ú kh├┤ng gß╗¡i mß╗Öt ─æß╗ïa chß╗ë MAC</string>
+    <string name="wol_pc_online">M├íy t├¡nh ─æang trß╗▒c tuyß║┐n</string>
+    <string name="pair_already_in_progress">Viß╗çc gh├®p ─æ├┤i ─æang ─æã░ß╗úc thß╗▒c hiß╗çn rß╗ôi</string>
+    <string name="pair_fail">Gh├®p ─æ├┤i thß║Ñt bß║íi</string>
+    <string name="pair_incorrect_pin">PIN kh├┤ng ch├¡nh x├íc</string>
+    <string name="pair_pairing_msg">Vui l├▓ng nhß║¡p m├ú PIN sau tr├¬n PC mß╗Ñc ti├¬u:</string>
+    <string name="pair_pairing_title">─Éang gh├®p ─æ├┤i</string>
+    <string name="pair_pc_ingame">M├íy t├¡nh hiß╗çn ─æang trong mß╗Öt tr├▓ chãíi. Bß║ín phß║úi ─æ├│ng tr├▓ chãíi trã░ß╗øc khi gh├®p ─æ├┤i.</string>
+    <string name="pair_pc_offline">M├íy t├¡nh ─æang ngoß║íi tuyß║┐n</string>
+    <string name="pairing">─Éang gh├®p ─æ├┤i…</string>
+    <string name="nettest_text_blocked">Kß║┐t nß╗æi mß║íng hiß╗çn tß║íi cß╗ºa thiß║┐t bß╗ï ─æang chß║Àn SmartDisplay AI. Viß╗çc stream qua Internet c├│ thß╗â sß║¢ kh├┤ng ─æã░ß╗úc khi ─æang kß║┐t nß╗æi ─æß║┐n mß║íng n├áy.</string>
+    <string name="nettest_text_failure">Kß║┐t nß╗æi mß║íng hiß╗çn tß║íi cß╗ºa thiß║┐t bß╗ï c├│ vß║╗ l├á ─æang chß║Àn SmartDisplay AI. Viß╗çc stream qua Internet c├│ thß╗â sß║¢ kh├┤ng ─æã░ß╗úc khi ─æang kß║┐t nß╗æi ─æß║┐n mß║íng n├áy.
+\n
+\nC├íc cß╗òng mß║íng sau bß╗ï chß║Àn:
+\n</string>
+    <string name="nettest_text_inconclusive">Viß╗çc thß╗¡ nghiß╗çm mß║íng kh├┤ng thß╗â ─æã░ß╗úc thß╗▒c hiß╗çn v├¼ kh├┤ng c├│ m├íy chß╗º thß╗¡ nghiß╗çm kß║┐t nß╗æi n├áo cß╗ºa SmartDisplay AI c├│ thß╗â ─æã░ß╗úc kß║┐t nß╗æi ─æß║┐n. H├úy kiß╗âm tra kß║┐t nß╗æi Internet cß╗ºa bß║ín hoß║Àc thß╗¡ lß║íi sau.</string>
+    <string name="nettest_text_success">Mß║íng cß╗ºa bß║ín c├│ vß║╗ l├á kh├┤ng chß║Àn SmartDisplay AI. Nß║┐u bß║ín vß║½n gß║Àp rß║»c rß╗æi trong viß╗çc kß║┐t nß╗æi, h├úy kiß╗âm tra c├ái ─æß║Àt tã░ß╗Øng lß╗¡a cß╗ºa PC.
+\n
+\nNß║┐u bß║ín ─æang cß╗æ stream qua Internet, h├úy c├ái ─æß║Àt SmartDisplay AI Internet Hosting Tool tr├¬n PC v├á chß║íy Internet Streaming Tester ─æã░ß╗úc bao gß╗ôm trong ─æ├│ ─æß╗â kiß╗âm tra kß║┐t nß╗æi Internet cß╗ºa PC.</string>
+    <string name="nettest_title_done">Thß╗¡ nghiß╗çm mß║íng ho├án tß║Ñt</string>
+    <string name="nettest_text_waiting">SmartDisplay AI ─æang thß╗¡ nghiß╗çm kß║┐t nß╗æi mß║íng cß╗ºa bß║ín ─æß╗â x├íc ─æß╗ïnh xem NVIDIA GameStream c├│ bß╗ï chß║Àn kh├┤ng.
+\n
+\nViß╗çc n├áy c├│ thß╗â sß║¢ mß║Ñt mß╗Öt v├ái gi├óy…</string>
+    <string name="nettest_title_waiting">─Éang thß╗¡ nghiß╗çm kß║┐t nß╗æi mß║íng</string>
+    <string name="pcview_menu_details">Xem chi tiß║┐t</string>
+    <string name="pcview_menu_test_network">Thß╗¡ nghiß╗çm kß║┐t nß╗æi mß║íng</string>
+    <string name="pcview_menu_delete_pc">Xo├í PC</string>
+    <string name="pcview_menu_send_wol">Gß╗¡i y├¬u cß║ºu Wake-On-LAN</string>
+    <string name="pcview_menu_unpair_pc">Huß╗À gh├®p ─æ├┤i</string>
+    <string name="pcview_menu_pair_pc">Gh├®p ─æ├┤i vß╗øi PC</string>
+    <string name="pcview_menu_app_list">Xem tß║Ñt cß║ú ß╗®ng dß╗Ñng</string>
+    <string name="pcview_menu_header_unknown">─Éang l├ám mß╗øi</string>
+    <string name="pcview_menu_header_offline">Ngoß║íi tuyß║┐n</string>
+    <string name="pcview_menu_header_online">Trß╗▒c tuyß║┐n</string>
+    <string name="help_loading_msg">─Éang tß║úi trang trß╗ú gi├║p…</string>
+    <string name="help_loading_title">Tr├¼nh xem trß╗ú gi├║p</string>
+    <string name="scut_invalid_app_id">ß╗¿ng dß╗Ñng ─æã░ß╗úc cung cß║Ñp kh├┤ng hß╗úp lß╗ç</string>
+    <string name="scut_invalid_uuid">PC ─æã░ß╗úc cung cß║Ñp kh├┤ng hß╗úp lß╗ç</string>
+    <string name="scut_pc_not_found">Kh├┤ng t├¼m thß║Ñy PC</string>
+    <string name="scut_not_paired">PC chã░a ─æã░ß╗úc gh├®p ─æ├┤i</string>
+    <string name="scut_deleted_pc">PC ─æ├ú bß╗ï xo├í</string>
+    <string name="perf_overlay_netlatency">─Éß╗Ö trß╗à mß║íng trung b├¼nh: %1$d ms (sai sß╗æ: %2$d ms)</string>
+    <string name="perf_overlay_streamdetails">Tß╗æc ─æß╗Ö khung h├¼nh: %1$s %2$.2f FPS</string>
+    <string name="resolution_prefix_native_fullscreen">To├án m├án h├¼nh theo hß╗ç thß╗æng</string>
+    <string name="title_frame_pacing">Nhß╗ïp ─æß╗Ö khung h├¼nh video</string>
+    <string name="summary_frame_pacing">Chß╗ë ra c├ích c├ón bß║▒ng giß╗»a ─æß╗Ö trß╗à video v├á ─æß╗Ö mã░ß╗út m├á</string>
+    <string name="pacing_latency">ã»u ti├¬n ─æß╗Ö trß╗à thß║Ñp nhß║Ñt</string>
+    <string name="pacing_balanced">C├ón bß║▒ng</string>
+    <string name="pacing_smoothness">ã»u ti├¬n video mã░ß╗út nhß║Ñt (c├│ thß╗â t─âng ─æß╗Ö trß╗à ─æ├íng kß╗â)</string>
+    <string name="resolution_480p">480p</string>
+    <string name="fps_120">120 FPS</string>
+    <string name="resolution_360p">360p</string>
+    <string name="resolution_720p">720p</string>
+    <string name="resolution_1080p">1080p</string>
+    <string name="resolution_1440p">1440p</string>
+    <string name="resolution_4k">4K</string>
+    <string name="fps_30">30 FPS</string>
+    <string name="fps_60">60 FPS</string>
+    <string name="fps_90">90 FPS</string>
+    <string name="audioconf_stereo">Stereo</string>
+    <string name="audioconf_51surround">├ém thanh v├▓m 5.1</string>
+    <string name="audioconf_71surround">├ém thanh v├▓m 7.1</string>
+    <string name="videoformat_hevcalways">Lu├┤n sß╗¡ dß╗Ñng HEVC (c├│ thß╗â g├óy crash)</string>
+    <string name="resolution_prefix_native_landscape">(Ngang)</string>
+    <string name="frame_conversion_error">PC chß╗º ─æ├ú gß║Àp lß╗ùi m├ú ho├í video nghi├¬m trß╗ìng.
+\n
+\nH├úy thß╗¡ tß║»t chß║┐ ─æß╗Ö HDR, ─æß╗òi ─æß╗Ö ph├ón giß║úi stream, hoß║Àc ─æß╗òi ─æß╗Ö ph├ón giß║úi m├án h├¼nh PC chß╗º.</string>
+    <string name="title_checkbox_enable_audiofx">Hß╗ù trß╗ú bß╗Ö c├ón bß║▒ng cß╗ºa hß╗ç thß╗æng</string>
+    <string name="summary_checkbox_enable_audiofx">Cho ph├®p hiß╗çu ß╗®ng ├óm thanh hoß║ít ─æß╗Öng khi stream, nhã░ng c├│ thß╗â t─âng ─æß╗Ö trß╗à ├óm thanh</string>
+    <string name="resolution_prefix_native_portrait">(Dß╗ìc)</string>
+</resources>

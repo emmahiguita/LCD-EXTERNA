@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/addPcRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#030711"
+    android:fitsSystemWindows="true">
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- HEADER: Botón Cerrar/Volver + Título Superior                  -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="8dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.limelight.ui.glass.LiquidGlassCircleLayout
+            android:id="@+id/btnClose"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:contentDescription="@string/settings_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_gravity="center"
+                android:contentDescription="@string/settings_back"
+                android:src="@drawable/ic_back_arrow"
+                app:tint="#F8FAFC" />
+        </com.limelight.ui.glass.LiquidGlassCircleLayout>
+
+        <TextView
+            android:id="@+id/headerTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:includeFontPadding="false"
+            android:text="@string/addpc_title"
+            android:textColor="#F8FAFC"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Añadir Equipo" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- CONTENIDO: Hero Orb · Formulario Glass · Botón Conectar         -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/addPcScroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingHorizontal="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="28dp"
+                app:layout_constraintWidth_max="400dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <!-- 1. HERO ORB (Esfera Liquid Glass 3D con Respiración) -->
+                <com.limelight.ui.glass.LiquidGlassCircleLayout
+                    android:id="@+id/heroAddPcOrb"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="4dp"
+                    android:contentDescription="@string/device_icon_desc">
+
+                    <ImageView
+                        android:id="@+id/heroAddPcIcon"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/device_icon_desc"
+                        android:src="@drawable/ic_computer"
+                        app:tint="#7DDAFF" />
+                </com.limelight.ui.glass.LiquidGlassCircleLayout>
+
+                <!-- Título & Subtítulo explicativo -->
+                <TextView
+                    android:id="@+id/txtAddPcTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:fontFamily="@font/roboto"
+                    android:includeFontPadding="false"
+                    android:text="Conexión Directa"
+                    android:textColor="#F8FAFC"
+                    android:textSize="19sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtAddPcDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/roboto"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:lineSpacingExtra="2dp"
+                    android:paddingHorizontal="8dp"
+                    android:text="@string/addpc_desc"
+                    android:textColor="#94A3B8"
+                    android:textSize="12sp"
+                    tools:text="Introduce la dirección IP o nombre de host de tu PC local o remoto para vincularlo." />
+
+                <!-- 2. CAMPO INPUT DE CRISTAL LÍQUIDO (Glass Input Capsule) -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardInputContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    app:cardBackgroundColor="#0F1826"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="2dp"
+                    app:strokeColor="#3378A6D8"
+                    app:strokeWidth="1.2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="14dp"
+                        android:paddingVertical="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto"
+                            android:includeFontPadding="false"
+                            android:text="DIRECCIÓN DEL SERVIDOR"
+                            android:textColor="#7DDAFF"
+                            android:textSize="10.5sp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                android:contentDescription="@null"
+                                android:src="@drawable/ic_lan"
+                                app:tint="#64748B" />
+
+                            <!-- Input Nativo para IP o Hostname -->
+                            <EditText
+                                android:id="@+id/hostTextView"
+                                android:layout_width="match_parent"
+                                android:layout_height="38dp"
+                                android:layout_marginStart="10dp"
+                                android:background="@null"
+                                android:fontFamily="@font/roboto"
+                                android:hint="@string/addpc_hint"
+                                android:imeOptions="actionDone"
+                                android:importantForAutofill="no"
+                                android:includeFontPadding="false"
+                                android:inputType="textUri"
+                                android:singleLine="true"
+                                android:textColor="#F8FAFC"
+                                android:textColorHint="#475569"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- 3. BOTÓN VINCULAR / CONECTAR (Liquid Glass Circle Button) -->
+                <LinearLayout
+                    android:id="@+id/actionContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <com.limelight.ui.glass.LiquidGlassCircleLayout
+                        android:id="@+id/btnConnect"
+                        android:layout_width="92dp"
+                        android:layout_height="92dp"
+                        android:contentDescription="@string/addpc_connect">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="10dp">
+
+                            <ImageView
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:contentDescription="@string/addpc_connect"
+                                android:src="@drawable/ic_add"
+                                app:tint="#7DDAFF" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:fontFamily="@font/roboto"
+                                android:includeFontPadding="false"
+                                android:singleLine="true"
+                                android:text="@string/addpc_connect"
+                                android:textColor="#F8FAFC"
+                                android:textSize="12.5sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="1dp"
+                                android:fontFamily="@font/roboto"
+                                android:includeFontPadding="false"
+                                android:singleLine="true"
+                                android:text="Vincular"
+                                android:textColor="#94A3B8"
+                                android:textSize="10sp" />
+                        </LinearLayout>
+                    </com.limelight.ui.glass.LiquidGlassCircleLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

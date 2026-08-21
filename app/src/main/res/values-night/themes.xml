@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+        El tema oscuro reutiliza íntegramente Theme.SmartDisplayAI definido en
+        values/themes.xml. Los colores se resuelven automáticamente desde
+        values-night/colors.xml y el flag de la status bar desde
+        values-night/bools.xml, por lo que NO hace falta redefinir el estilo aquí.
+        Mantener este archivo vacío evita que una copia desactualizada del tema
+        pise la versión completa (tipografía, formas, transiciones).
+    -->
+</resources>

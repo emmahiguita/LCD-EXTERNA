@@ -1,0 +1,10 @@
+﻿websockets>=11.0
+pywin32>=306
+psutil>=5.9
+comtypes>=1.2
+# Voz móvil→PC (reproducir el micrófono del móvil en el PC). Opcional:
+# si no están instaladas, el resto del companion sigue funcionando.
+sounddevice>=0.4
+numpy>=1.24
+# Silenciar el altavoz del PC mientras hay sesión móvil (audio solo en el móvil).
+pycaw>=20230407

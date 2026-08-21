@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Barra Lateral Delgada con Iconos (Slim Icon Navigation Rail Obsidian Glass - Scrollable & Responsive) -->
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/slim_nav_rail"
+    android:layout_width="72dp"
+    android:layout_height="match_parent"
+    android:layout_gravity="start"
+    android:background="#F2070D18"
+    android:elevation="16dp"
+    android:fillViewport="true"
+    android:fitsSystemWindows="true"
+    android:overScrollMode="never"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingVertical="8dp">
+
+        <!-- Logo / Marca superior con Badge Glass -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="8dp"
+            app:cardBackgroundColor="#1A2740"
+            app:cardCornerRadius="14dp"
+            app:cardElevation="0dp"
+            app:strokeColor="#3378A6D8"
+            app:strokeWidth="1dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/app_label"
+                android:padding="6dp"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/ic_launcher" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <View
+            android:layout_width="32dp"
+            android:layout_height="1dp"
+            android:layout_marginBottom="6dp"
+            android:background="#2078A6D8" />
+
+        <!-- 1. Agregar PC -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/rail_nav_add_pc"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginVertical="2dp"
+            android:background="@drawable/bg_liquid_glass_button"
+            android:contentDescription="@string/nav_add_pc"
+            android:stateListAnimator="@animator/card_press_scale"
+            android:tooltipText="@string/nav_add_pc"
+            app:backgroundTint="@null"
+            app:cornerRadius="14dp"
+            app:icon="@drawable/ic_add"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconSize="22dp"
+            app:iconTint="?attr/colorPrimary" />
+
+        <!-- 2. Archivos -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/rail_nav_files"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginVertical="2dp"
+            android:contentDescription="@string/nav_files"
+            android:stateListAnimator="@animator/card_press_scale"
+            android:tooltipText="@string/nav_files"
+            app:cornerRadius="14dp"
+            app:icon="@drawable/ic_files_overlay"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconSize="20dp"
+            app:iconTint="?attr/colorOnSurfaceVariant" />
+
+        <!-- 3. Temas & Apariencia -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/rail_nav_theme"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginVertical="2dp"
+            android:contentDescription="@string/nav_theme"
+            android:stateListAnimator="@animator/card_press_scale"
+            android:tooltipText="@string/nav_theme"
+            app:cornerRadius="14dp"
+            app:icon="@drawable/ic_palette"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconSize="20dp"
+            app:iconTint="?attr/colorOnSurfaceVariant" />
+
+        <!-- 4. Ajustes / Configuración -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/rail_nav_settings"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginVertical="2dp"
+            android:contentDescription="@string/nav_settings"
+            android:stateListAnimator="@animator/card_press_scale"
+            android:tooltipText="@string/nav_settings"
+            app:cornerRadius="14dp"
+            app:icon="@drawable/ic_settings"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconSize="20dp"
+            app:iconTint="?attr/colorOnSurfaceVariant" />
+
+        <!-- 5. Diagnóstico de Red -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/rail_nav_diagnostics"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginVertical="2dp"
+            android:contentDescription="@string/nav_diagnostics"
+            android:stateListAnimator="@animator/card_press_scale"
+            android:tooltipText="@string/nav_diagnostics"
+            app:cornerRadius="14dp"
+            app:icon="@drawable/ic_diagnostics"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconSize="20dp"
+            app:iconTint="?attr/colorOnSurfaceVariant" />
+
+        <!-- 6. Registros / Logs -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/rail_nav_logs"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginVertical="2dp"
+            android:contentDescription="@string/nav_logs"
+            android:stateListAnimator="@animator/card_press_scale"
+            android:tooltipText="@string/nav_logs"
+            app:cornerRadius="14dp"
+            app:icon="@drawable/ic_logs"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconSize="20dp"
+            app:iconTint="?attr/colorOnSurfaceVariant" />
+
+        <View
+            android:layout_width="28dp"
+            android:layout_height="1dp"
+            android:layout_marginVertical="4dp"
+            android:background="#1878A6D8" />
+
+        <!-- 7. Ayuda -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/rail_nav_help"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginVertical="2dp"
+            android:contentDescription="@string/nav_help"
+            android:stateListAnimator="@animator/card_press_scale"
+            android:tooltipText="@string/nav_help"
+            app:cornerRadius="14dp"
+            app:icon="@drawable/ic_help"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconSize="20dp"
+            app:iconTint="?attr/colorOnSurfaceVariant" />
+
+        <!-- 8. Donar -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/rail_nav_donate"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginVertical="2dp"
+            android:contentDescription="@string/nav_donate"
+            android:stateListAnimator="@animator/card_press_scale"
+            android:tooltipText="@string/nav_donate"
+            app:cornerRadius="14dp"
+            app:icon="@drawable/ic_donate"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconSize="20dp"
+            app:iconTint="?attr/colorOnSurfaceVariant" />
+
+        <!-- 9. Acerca de -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/rail_nav_about"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginVertical="2dp"
+            android:layout_marginBottom="12dp"
+            android:contentDescription="@string/nav_about"
+            android:stateListAnimator="@animator/card_press_scale"
+            android:tooltipText="@string/nav_about"
+            app:cornerRadius="14dp"
+            app:icon="@drawable/ic_about"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconSize="20dp"
+            app:iconTint="?attr/colorOnSurfaceVariant" />
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

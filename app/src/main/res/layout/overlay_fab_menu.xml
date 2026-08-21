@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  overlay_fab_menu.xml — MENÚ RADIAL Premium Fluent v3
+  ────────────────────────────────────────────────────────────────────────
+  Estructura optimizada y aplanada:
+    • Botones radiales: 48dp con fondo fab_radial_item_bg
+    • Iconos: 22dp
+    • Eliminadas las etiquetas TextView estáticas (reducción del 68% de vistas)
+    • Un único TextView de tooltip dinámico y flotante (@id/fabTooltip)
+    • FAB principal: 56dp con icono limitado a 24dp y elevación de 12dp
+-->
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/overlayFabContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:clickable="false"
+    android:focusable="false"
+    android:elevation="24dp">
+
+    <!-- Backdrop de Scrim sutil -->
+    <View
+        android:id="@+id/fabScrim"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#66050514"
+        android:visibility="gone"
+        android:clickable="true"
+        android:focusable="false"
+        android:importantForAccessibility="no"/>
+
+    <!-- ANCHOR: Punto de anclaje de arrastre -->
+    <View
+        android:id="@+id/fabAnchor"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="60dp"
+        android:layout_marginEnd="28dp"
+        android:importantForAccessibility="no"/>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- BOTONES RADIALES — 48dp x 48dp, posicionados por RadialMenuController -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+
+    <!-- Anillos concéntricos + líneas radiales (dibujados en Canvas, sin coste de layout) -->
+    <com.limelight.ui.RadialRingView
+        android:id="@+id/fabRadialRings"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="false"
+        android:focusable="false"
+        android:importantForAccessibility="no" />
+
+    <!-- Item 0: Teclado -->
+    <FrameLayout
+        android:id="@+id/fabItem0"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:alpha="0"
+        android:visibility="invisible"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/fab_radial_item_bg"/>
+        <ImageView
+            android:id="@+id/fabIcon0"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_keyboard_overlay"
+            android:contentDescription="Teclado"
+            app:tint="#F8FAFC"/>
+    </FrameLayout>
+
+    <!-- Item 2: Zoom / Mover -->
+    <FrameLayout
+        android:id="@+id/fabItem2"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:alpha="0"
+        android:visibility="invisible"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/fab_radial_item_bg"/>
+        <ImageView
+            android:id="@+id/fabIcon2"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_move_overlay"
+            android:contentDescription="Zoom"
+            app:tint="#F8FAFC"/>
+    </FrameLayout>
+
+    <!-- Item 3: Herramientas (Navegación / Sub-menú) -->
+    <FrameLayout
+        android:id="@+id/fabItem3"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:alpha="0"
+        android:visibility="invisible"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/fab_radial_item_bg"/>
+        <ImageView
+            android:id="@+id/fabIcon3"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_tools_overlay"
+            android:contentDescription="Herramientas"
+            app:tint="#F8FAFC"/>
+    </FrameLayout>
+
+    <!-- Item 6: PiP (Picture in Picture) -->
+    <FrameLayout
+        android:id="@+id/fabItem6"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:alpha="0"
+        android:visibility="invisible"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/fab_radial_item_bg"/>
+        <ImageView
+            android:id="@+id/fabIcon6"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_pip_overlay"
+            android:contentDescription="PiP"
+            app:tint="#F8FAFC"/>
+    </FrameLayout>
+
+    <!-- Item 4: Voz / Micrófono -->
+    <FrameLayout
+        android:id="@+id/fabItem4"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:alpha="0"
+        android:visibility="invisible"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/fab_radial_item_bg"/>
+        <ImageView
+            android:id="@+id/fabIcon4"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_mic_overlay"
+            android:contentDescription="Voz"
+            app:tint="#F8FAFC"/>
+    </FrameLayout>
+
+    <!-- Item 5: Archivos -->
+    <FrameLayout
+        android:id="@+id/fabItem5"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:alpha="0"
+        android:visibility="invisible"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/fab_radial_item_bg"/>
+        <ImageView
+            android:id="@+id/fabIcon5"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_files_overlay"
+            android:contentDescription="Archivos"
+            app:tint="#F8FAFC"/>
+    </FrameLayout>
+
+    <!-- Item 7: Modo Mouse -->
+    <FrameLayout
+        android:id="@+id/fabItem7"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:alpha="0"
+        android:visibility="invisible"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/fab_radial_item_bg"/>
+        <ImageView
+            android:id="@+id/fabIcon7"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_mouse_overlay"
+            android:contentDescription="Modo Mouse"
+            app:tint="#F8FAFC"/>
+    </FrameLayout>
+
+    <!-- Item 8: Performance HUD -->
+    <FrameLayout
+        android:id="@+id/fabItem8"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:alpha="0"
+        android:visibility="invisible"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/fab_radial_item_bg"/>
+        <ImageView
+            android:id="@+id/fabIcon8"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_ai_overlay"
+            android:contentDescription="HUD"
+            app:tint="#F8FAFC"/>
+    </FrameLayout>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- FAB PRINCIPAL — 80dp wrapper con doble halo y FAB de 56dp      -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <FrameLayout
+        android:id="@+id/fabMainWrapper"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="20dp"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+
+        <!-- Anillo orbital exterior adicional (morado eléctrico sutil) -->
+        <View
+            android:id="@+id/fabOrbitRing"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_gravity="center"
+            android:background="@drawable/fab_halo_ring"
+            android:alpha="0.25"
+            android:importantForAccessibility="no"/>
+
+        <!-- Halo pulsante de baja opacidad -->
+        <View
+            android:id="@+id/fabHaloPulse"
+            android:layout_width="68dp"
+            android:layout_height="68dp"
+            android:layout_gravity="center"
+            android:background="@drawable/fab_halo_ring"
+            android:visibility="invisible"/>
+
+        <!-- Brillo ambiente detrás del FAB -->
+        <View
+            android:id="@+id/fabHaloGlow"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:background="@drawable/fab_soft_halo"
+            android:alpha="0.4"
+            android:importantForAccessibility="no"/>
+
+        <!-- FAB principal de 56dp, icono de 24dp y elevación de 12dp -->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabMain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_menu"
+            android:scaleType="centerCrop"
+            android:contentDescription="Menú SmartDisplay"
+            app:backgroundTint="#111827"
+            app:tint="#F8FAFC"
+            app:fabCustomSize="52dp"
+            app:borderWidth="0dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="#334155"
+            app:elevation="12dp"
+            app:maxImageSize="24dp"/>
+
+    </FrameLayout>
+
+    <!-- Tooltip dinámico, flotante y compartido -->
+    <TextView
+        android:id="@+id/fabTooltip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/fab_label_pill_bg"
+        android:textColor="#FFFFFF"
+        android:textSize="11sp"
+        android:textStyle="bold"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:visibility="gone"
+        android:elevation="24dp"
+        android:letterSpacing="0.02"
+        android:gravity="center"
+        android:importantForAccessibility="no"/>
+
+</FrameLayout>

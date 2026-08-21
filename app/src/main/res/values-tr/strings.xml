@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="summary_reset_osc">B├╝t├╝n ekran kontrollerini varsay─▒lan boyutu ve pozisyonuna s─▒f─▒rlar</string>
+    <string name="title_checkbox_touchscreen_trackpad">Dokunmatik ekran─▒ trackpad olarak kullan</string>
+    <string name="category_input_settings">Girdi Ayarlar─▒</string>
+    <string name="summary_language_list">SmartDisplay AI i├ºin kullan─▒lacak olan dil</string>
+    <string name="ip_hint">GeForce PC\'nin IP adresi</string>
+    <string name="title_details">Detaylar</string>
+    <string name="dialog_title_osc_opacity">Opakl─▒─ƒ─▒ de─ƒi┼ƒtir</string>
+    <string name="conn_error_title">Ba─ƒlant─▒ Hatas─▒</string>
+    <string name="conn_starting">Ba┼ƒlat─▒l─▒yor</string>
+    <string name="conn_error_msg">Ba┼ƒlatma ba┼ƒar─▒s─▒z</string>
+    <string name="summary_audio_config_list">Ev-sinema sistemleri i├ºin 5.1 yada 7.1 surround sesi etkinle┼ƒtir</string>
+    <string name="title_checkbox_host_audio">Sesleri bilgisayarda ├ºal</string>
+    <string name="suffix_seekbar_bitrate_mbps">Mbps</string>
+    <string name="error_pc_offline">Bilgisayar ├ºevrimd─▒┼ƒ─▒</string>
+    <string name="unpair_success">E┼ƒle┼ƒtirme ba┼ƒar─▒yla kald─▒r─▒ld─▒</string>
+    <string name="unpairing">E┼ƒle┼ƒtirme kald─▒r─▒l─▒yor…</string>
+    <string name="pair_fail">E┼ƒle┼ƒtirme ba┼ƒar─▒s─▒z</string>
+    <string name="pair_incorrect_pin">Yanl─▒┼ƒ PIN</string>
+    <string name="pair_pairing_title">E┼ƒle┼ƒtiriliyor</string>
+    <string name="pair_pc_offline">Bilgisayar ├ºevrimd─▒┼ƒ─▒</string>
+    <string name="pairing">E┼ƒle┼ƒtiriliyor…</string>
+    <string name="nettest_title_waiting">A─ƒ Ba─ƒlant─▒s─▒ Test Ediliyor</string>
+    <string name="pcview_menu_details">Detaylar─▒ G├Âr├╝nt├╝le</string>
+    <string name="pcview_menu_test_network">A─ƒ Ba─ƒlant─▒s─▒n─▒ Test Et</string>
+    <string name="pcview_menu_delete_pc">PC\'yi sil</string>
+    <string name="pcview_menu_unpair_pc">E┼ƒle┼ƒtirmeyi kald─▒r</string>
+    <string name="pcview_menu_pair_pc">PC ile e┼ƒle</string>
+    <string name="pcview_menu_app_list">B├╝t├╝n Uygulamalar─▒ G├Âster</string>
+    <string name="pcview_menu_header_unknown">Yenileniyor</string>
+    <string name="pcview_menu_header_offline">├çevrimd─▒┼ƒ─▒</string>
+    <string name="pcview_menu_header_online">├çevrimi├ºi</string>
+    <string name="scut_pc_not_found">PC bulunamad─▒</string>
+    <string name="scut_not_paired">PC e┼ƒle┼ƒtirilmedi</string>
+    <string name="scut_deleted_pc">PC silindi</string>
+    <string name="help_loading_msg">Yard─▒m sayfas─▒ y├╝kleniyor…</string>
+    <string name="help_loading_title">Yard─▒m</string>
+    <string name="scut_invalid_app_id">Tan─▒mlanm─▒┼ƒ uygulama ge├ºerli de─ƒil</string>
+    <string name="scut_invalid_uuid">Tan─▒mlanm─▒┼ƒ bilgisayar ge├ºerli de─ƒil</string>
+    <string name="nettest_text_waiting">SmartDisplay AI, NVIDIA GameStream\'in engellenip engellenmedi─ƒini belirlemek i├ºin a─ƒ ba─ƒlant─▒n─▒z─▒ test ediyor.
+\n
+\nBu birka├º saniye s├╝rebilir…</string>
+    <string name="nettest_title_done">A─ƒ Testi Tamamland─▒</string>
+    <string name="nettest_text_inconclusive">SmartDisplay AI\'─▒n ba─ƒlant─▒ testi sunucular─▒ndan hi├ºbirine eri┼ƒilemedi─ƒi i├ºin a─ƒ testi ger├ºekle┼ƒtirilemedi. ─░nternet ba─ƒlant─▒n─▒z─▒ kontrol edin veya daha sonra tekrar deneyin.</string>
+    <string name="nettest_text_failure">Cihaz─▒n─▒z─▒n mevcut a─ƒ ba─ƒlant─▒s─▒ SmartDisplay AI\'─▒ engelliyor gibi g├Âr├╝n├╝yor. Bu a─ƒa ba─ƒl─▒yken ─░nternet ├╝zerinden yay─▒n ak─▒┼ƒ─▒ ├ºal─▒┼ƒmayabilir.
+\n
+\nA┼ƒa─ƒ─▒daki a─ƒ ba─ƒlant─▒ noktalar─▒ engellenmi┼ƒ:
+\n</string>
+    <string name="nettest_text_blocked">Cihaz─▒n─▒z─▒n mevcut a─ƒ ba─ƒlant─▒s─▒ SmartDisplay AI\'─▒ engelliyor. Bu a─ƒa ba─ƒl─▒yken internet ├╝zerinden yay─▒n ak─▒┼ƒ─▒ ├ºal─▒┼ƒmayabilir.</string>
+    <string name="pair_pc_ingame">Bilgisayar ┼ƒu anda bir oyunda. E┼ƒle┼ƒtirmeden ├Ânce oyunu kapatmal─▒s─▒n─▒z.</string>
+    <string name="pair_pairing_msg">L├╝tfen hedef bilgisayarda a┼ƒa─ƒ─▒daki PIN kodunu girin:</string>
+    <string name="pair_already_in_progress">E┼ƒle┼ƒtirme zaten devam ediyor</string>
+    <string name="wol_pc_online">Bilgisayar ├ºevrimi├ºi</string>
+    <string name="wol_no_mac">GFE bir MAC adresi g├Ândermedi─ƒi i├ºin bilgisayar uyand─▒r─▒lam─▒yor</string>
+    <string name="wol_waking_pc">Bilgisayar uyand─▒r─▒l─▒yor…</string>
+    <string name="wol_fail">Yerel A─ƒda Uyand─▒rma paketleri g├Ânderilemedi</string>
+    <string name="wol_waking_msg">Bilgisayar─▒n─▒z─▒n uyanmas─▒ birka├º saniye s├╝rebilir. E─ƒer uyanmazsa, Yerel A─ƒda Uyand─▒rma i├ºin do─ƒru ┼ƒekilde yap─▒land─▒r─▒ld─▒─ƒ─▒ndan emin olun.</string>
+    <string name="unpair_fail">E┼ƒle┼ƒme kald─▒r─▒lamad─▒</string>
+    <string name="unpair_error">Cihaz e┼ƒle┼ƒtirilmedi</string>
+    <string name="nettest_text_success">A─ƒ─▒n─▒z SmartDisplay AI\'─▒ engelliyor gibi g├Âr├╝nm├╝yor. Ba─ƒlanmakta hala sorun ya┼ƒ─▒yorsan─▒z, bilgisayar─▒n─▒z─▒n g├╝venlik duvar─▒ ayarlar─▒n─▒ kontrol edin.
+\n
+\n─░nternet ├╝zerinden yay─▒n yapmaya ├ºal─▒┼ƒ─▒yorsan─▒z, SmartDisplay AI ─░nternet Bar─▒nd─▒rma Arac─▒n─▒ bilgisayar─▒n─▒za y├╝kleyin ve bilgisayar─▒n─▒z─▒n internet ba─ƒlant─▒s─▒n─▒ kontrol etmek i├ºin birlikte verilen ─░nternet Ak─▒┼ƒ Test Cihaz─▒n─▒ ├ºal─▒┼ƒt─▒r─▒n.</string>
+    <string name="title_checkbox_multi_controller">Otomatik oyun kumandas─▒ varl─▒─ƒ─▒ alg─▒lama</string>
+    <string name="summary_checkbox_multi_controller">Bu se├ºene─ƒin i┼ƒaretinin kald─▒r─▒lmas─▒ bir oyun kumandas─▒n─▒n her zaman mevcut olmas─▒n─▒ zorlar</string>
+    <string name="summary_checkbox_vibrate_fallback">Oyun kumandan─▒z desteklemiyorsa, g├╝r├╝lt├╝y├╝ taklit etmek i├ºin cihaz─▒n─▒z─▒ titre┼ƒtirir</string>
+    <string name="title_seekbar_deadzone">Analog ├ºubuk ├Âl├╝ b├Âlgesini ayarlama</string>
+    <string name="summary_checkbox_xb1_driver">Yerel Xbox oyun kumandas─▒ deste─ƒi olmayan cihazlar i├ºin yerle┼ƒik USB s├╝r├╝c├╝s├╝n├╝ etkinle┼ƒtirir</string>
+    <string name="title_checkbox_mouse_emulation">Oyun kumandas─▒ ├╝zerinden fare em├╝lasyonu</string>
+    <string name="title_checkbox_mouse_nav_buttons">Geri ve ileri fare d├╝─ƒmelerini etkinle┼ƒtirme</string>
+    <string name="category_on_screen_controls_settings">Ekran Kontrolleri Ayarlar─▒</string>
+    <string name="title_checkbox_show_onscreen_controls">Ekran kontrollerini g├Âster</string>
+    <string name="error_manager_not_running">ComputerManager hizmeti ├ºal─▒┼ƒm─▒yor. L├╝tfen birka├º saniye bekleyin veya uygulamay─▒ yeniden ba┼ƒlat─▒n.</string>
+    <string name="error_unknown_host">Ana bilgisayar ├º├Âz├╝mlenemedi</string>
+    <string name="title_decoding_error">Video Kod ├ç├Âz├╝c├╝ ├ç├Âkt├╝</string>
+    <string name="message_decoding_reset">Cihaz─▒n─▒z─▒n video kod ├º├Âz├╝c├╝s├╝, se├ºti─ƒiniz ak─▒┼ƒ ayarlar─▒nda ├º├Âkmeye devam ediyor. Ak─▒┼ƒ ayarlar─▒n─▒z varsay─▒lana s─▒f─▒rland─▒.</string>
+    <string name="error_usb_prohibited">USB eri┼ƒimi cihaz y├Âneticiniz taraf─▒ndan yasaklanm─▒┼ƒt─▒r. Knox veya MDM ayarlar─▒n─▒z─▒ kontrol edin.</string>
+    <string name="unable_to_pin_shortcut">Mevcut ba┼ƒlat─▒c─▒n─▒z sabitlenmi┼ƒ k─▒sayollar olu┼ƒturmaya izin vermiyor.</string>
+    <string name="video_decoder_init_failed">Video kod ├º├Âz├╝c├╝ ba┼ƒlat─▒lamad─▒. Cihaz─▒n─▒z se├ºilen ├º├Âz├╝n├╝rl├╝─ƒ├╝ veya kare h─▒z─▒n─▒ desteklemiyor olabilir.</string>
+    <string name="no_video_received_error">Ana bilgisayardan video al─▒nmad─▒.</string>
+    <string name="no_frame_received_error">A─ƒ ba─ƒlant─▒n─▒z iyi performans g├Âstermiyor. Video bit h─▒z─▒ ayar─▒n─▒z─▒ d├╝┼ƒ├╝r├╝n veya daha h─▒zl─▒ bir ba─ƒlant─▒ deneyin.</string>
+    <string name="early_termination_error">Yay─▒n─▒ ba┼ƒlat─▒rken ana bilgisayarda bir ┼ƒeyler ters gitti.
+\n
+\nAna bilgisayar─▒n─▒zda DRM korumal─▒ herhangi bir i├ºeri─ƒin a├º─▒k olmad─▒─ƒ─▒ndan emin olun. Ana bilgisayar─▒n─▒z─▒ yeniden ba┼ƒlatmay─▒ da deneyebilirsiniz.
+\n
+\nSorun devam ederse GPU s├╝r├╝c├╝lerinizi ve GeForce Experience\'─▒ yeniden y├╝klemeyi deneyin.</string>
+    <string name="check_ports_msg">Ba─ƒlant─▒ noktalar─▒ i├ºin g├╝venlik duvar─▒n─▒z─▒ ve ba─ƒlant─▒ noktas─▒ y├Ânlendirme kurallar─▒n─▒z─▒ kontrol edin:</string>
+    <string name="conn_establishing_title">Ba─ƒlant─▒ kuruluyor</string>
+    <string name="conn_terminated_title">Ba─ƒlant─▒ sonland─▒r─▒ld─▒</string>
+    <string name="conn_terminated_msg">Ba─ƒlant─▒ sonland─▒r─▒ld─▒</string>
+    <string name="yes">Evet</string>
+    <string name="lost_connection">Bilgisayar ile ba─ƒlant─▒ kesildi</string>
+    <string name="help">Yard─▒m</string>
+    <string name="delete_pc_msg">Bu bilgisayar─▒ silmek istedi─ƒinizden emin misiniz\?</string>
+    <string name="slow_connection_msg">Bilgisayara yava┼ƒ ba─ƒlant─▒
+\nBit h─▒z─▒n─▒z─▒ d├╝┼ƒ├╝r├╝n</string>
+    <string name="poor_connection_msg">Bilgisayar ile zay─▒f ba─ƒlant─▒</string>
+    <string name="perf_overlay_streamdetails">Video ak─▒┼ƒ─▒: %1$s %2$.2f FPS</string>
+    <string name="perf_overlay_decoder">Kod ├º├Âz├╝c├╝: %1$s</string>
+    <string name="perf_overlay_incomingfps">A─ƒdan gelen kare h─▒z─▒: %1$.2f FPS</string>
+    <string name="perf_overlay_renderingfps">─░┼ƒleme kare h─▒z─▒: %1$.2f FPS</string>
+    <string name="perf_overlay_netdrops">A─ƒ ba─ƒlant─▒n─▒z taraf─▒ndan d├╝┼ƒen kare say─▒s─▒: %1$.2f%%</string>
+    <string name="perf_overlay_dectime">Ortalama kod ├º├Âzme s├╝resi: %1$.2f ms</string>
+    <string name="applist_menu_resume">Oturumu s├╝rd├╝r</string>
+    <string name="applist_menu_quit">Oturumu sonland─▒r</string>
+    <string name="applist_menu_quit_and_start">Mevcut oyundan ├º─▒k ve ba┼ƒla</string>
+    <string name="applist_menu_cancel">─░ptal</string>
+    <string name="applist_menu_details">Detaylar─▒ g├Âster</string>
+    <string name="applist_menu_scut">K─▒sayol olu┼ƒtur</string>
+    <string name="applist_menu_tv_channel">Kanala ekle</string>
+    <string name="applist_menu_hide_app">Uygulamay─▒ gizle</string>
+    <string name="applist_refresh_title">Uygulama listesi</string>
+    <string name="applist_quit_success">Ba┼ƒar─▒yla ├º─▒k─▒ld─▒</string>
+    <string name="applist_refresh_error_msg">Uygulama listesi al─▒namad─▒</string>
+    <string name="applist_quit_app">├ç─▒k─▒l─▒yor</string>
+    <string name="applist_quit_fail">├ç─▒k─▒lamad─▒</string>
+    <string name="applist_quit_confirmation">├çal─▒┼ƒan uygulamadan ├º─▒kmak istedi─ƒinizden emin misiniz\? Kaydedilmemi┼ƒ t├╝m veriler kaybolacakt─▒r.</string>
+    <string name="applist_details_id">Uygulama kimli─ƒi:</string>
+    <string name="msg_add_pc">Bilgisayara ba─ƒlan─▒yor</string>
+    <string name="addpc_success">Bilgisayar ba┼ƒar─▒yla eklendi</string>
+    <string name="addpc_fail">Belirtilen bilgisayara ba─ƒlan─▒lam─▒yor. Gerekli ba─ƒlant─▒ noktalar─▒na g├╝venlik duvar─▒ ├╝zerinden izin verildi─ƒinden emin olun.</string>
+    <string name="addpc_unknown_host">Bilgisayar adresi ├º├Âz├╝mlenemiyor. Adreste yaz─▒m hatas─▒ yapmad─▒─ƒ─▒n─▒zdan emin olun.</string>
+    <string name="addpc_enter_ip">Bir IP adresi girmelisiniz</string>
+    <string name="category_basic_settings">Temel Ayarlar</string>
+    <string name="summary_resolution_list">G├Âr├╝nt├╝ netli─ƒini art─▒rmak i├ºin art─▒r─▒n. D├╝┼ƒ├╝k u├ºlu cihazlarda ve daha yava┼ƒ a─ƒlarda daha iyi performans i├ºin azalt─▒n.</string>
+    <string name="title_native_res_dialog">Yerel ├º├Âz├╝n├╝rl├╝k uyar─▒s─▒</string>
+    <string name="title_fps_list">Video kare h─▒z─▒</string>
+    <string name="title_seekbar_bitrate">Video bit h─▒z─▒</string>
+    <string name="summary_checkbox_touchscreen_trackpad">Etkinle┼ƒtirilirse, dokunmatik ekran bir dokunmatik fare gibi davran─▒r. Devre d─▒┼ƒ─▒ b─▒rak─▒l─▒rsa, dokunmatik ekran do─ƒrudan fare imlecini kontrol eder.</string>
+    <string name="conn_establishing_msg">Ba─ƒlant─▒ ba┼ƒlat─▒l─▒yor</string>
+    <string name="conn_metered">Uyar─▒: Aktif a─ƒ ba─ƒlant─▒n─▒z ├Âl├º├╝l├╝d├╝r!</string>
+    <string name="conn_client_latency">Ortalama kare kod ├º├Âzme gecikmesi:</string>
+    <string name="conn_client_latency_hw">donan─▒m kod ├º├Âz├╝c├╝ gecikmesi:</string>
+    <string name="pcview_menu_send_wol">Yerel A─ƒda Uyand─▒rma iste─ƒi g├Ânder</string>
+    <string name="applist_refresh_msg">Uygulamalar yenileniyor</string>
+    <string name="applist_refresh_error_title">Hata</string>
+    <string name="title_add_pc">Bilgisayar─▒ manuel olarak Ekle</string>
+    <string name="title_resolution_list">Video ├º├Âz├╝n├╝rl├╝─ƒ├╝</string>
+    <string name="summary_fps_list">Daha ak─▒c─▒ bir video ak─▒┼ƒ─▒ i├ºin art─▒r─▒n. D├╝┼ƒ├╝k u├ºlu cihazlarda daha iyi performans i├ºin azalt─▒n.</string>
+    <string name="resolution_prefix_native">Yerel</string>
+    <string name="resolution_prefix_native_fullscreen">Yerel tam ekran</string>
+    <string name="category_audio_settings">Ses Ayarlar─▒</string>
+    <string name="title_audio_config_list">├çevresel ses yap─▒land─▒rmas─▒</string>
+    <string name="summary_seekbar_deadzone">Not: Baz─▒ oyunlar SmartDisplay AI\'─▒n kullanmak ├╝zere yap─▒land─▒r─▒ld─▒─ƒ─▒ndan daha b├╝y├╝k bir ├Âl├╝ b├Âlge uygulayabilir.</string>
+    <string name="suffix_seekbar_deadzone">%</string>
+    <string name="title_checkbox_xb1_driver">Xbox 360/One USB oyun kumandas─▒ s├╝r├╝c├╝s├╝</string>
+    <string name="title_checkbox_usb_bind_all">Yerel Xbox oyun kumandas─▒ deste─ƒini ge├ºersiz k─▒lma</string>
+    <string name="summary_checkbox_mouse_emulation">Ba┼ƒlat d├╝─ƒmesine uzun s├╝re basmak oyun kumandas─▒n─▒ fare moduna ge├ºirir</string>
+    <string name="summary_checkbox_mouse_nav_buttons">Bu se├ºene─ƒi etkinle┼ƒtirmek baz─▒ hatal─▒ cihazlarda sa─ƒ t─▒klamay─▒ bozabilir</string>
+    <string name="title_checkbox_flip_face_buttons">Y├╝z d├╝─ƒmelerini ├ºevirme</string>
+    <string name="title_checkbox_absolute_mouse_mode">Uzak masa├╝st├╝ fare modu</string>
+    <string name="error_404">GFE bir HTTP 404 hatas─▒ bildirdi. Bilgisayar─▒n─▒z─▒n desteklenen bir GPU ├ºal─▒┼ƒt─▒rd─▒─ƒ─▒ndan emin olun. Uzak masa├╝st├╝ yaz─▒l─▒m─▒ kullanmak da bu hataya neden olabilir. Cihaz─▒n─▒z─▒ yeniden ba┼ƒlatmay─▒ veya GFE\'yi yeniden y├╝klemeyi deneyin.</string>
+    <string name="message_decoding_error">SmartDisplay AI, bu cihaz─▒n video kod ├º├Âz├╝c├╝s├╝ ile uyumsuzluk nedeniyle ├º├Âkt├╝. GeForce Experience\'─▒n bilgisayar─▒n─▒zdaki en son s├╝r├╝me g├╝ncellendi─ƒinden emin olun. ├ç├Âkmeler devam ederse ak─▒┼ƒ ayarlar─▒n─▒ de─ƒi┼ƒtirmeyi deneyin.</string>
+    <string name="conn_hardware_latency">Ortalama donan─▒m kod ├º├Âzme gecikmesi:</string>
+    <string name="title_decoding_reset">Video Ayarlar─▒n─▒ S─▒f─▒rla</string>
+    <string name="searching_pc">GameStream\'in ├ºal─▒┼ƒt─▒─ƒ─▒ bilgisayarlar aran─▒yor...
+\n
+\n GeForce Experience SHIELD ayarlar─▒nda GameStream\'in etkinle┼ƒtirildi─ƒinden emin olun.</string>
+    <string name="applist_connect_msg">Bilgisayara ba─ƒlan─▒yor</string>
+    <string name="no">Hay─▒r</string>
+    <string name="perf_overlay_netlatency">Ortalama a─ƒ gecikmesi: %1$d ms (varyans: %2$d ms)</string>
+    <string name="addpc_wrong_sitelocal">Bu adres do─ƒru g├Âr├╝nm├╝yor. ─░nternet ├╝zerinden ak─▒┼ƒ i├ºin y├Ânlendiricinizin genel IP adresini kullanman─▒z gerekir.</string>
+    <string name="text_native_res_dialog">Yerel ├º├Âz├╝n├╝rl├╝k modlar─▒ GeForce Experience taraf─▒ndan resmi olarak desteklenmez, bu nedenle ana ekran ├º├Âz├╝n├╝rl├╝─ƒ├╝n├╝z├╝ kendisi ayarlamaz. Oyun i├ºindeyken manuel olarak ayarlaman─▒z gerekecektir.
+\n
+\nCihaz─▒n─▒z─▒n ├º├Âz├╝n├╝rl├╝─ƒ├╝ne uymas─▒ i├ºin NVIDIA Denetim Masas─▒\'nda ├Âzel bir ├º├Âz├╝n├╝rl├╝k olu┼ƒturmay─▒ se├ºerseniz, l├╝tfen NVIDIA\'n─▒n olas─▒ monit├Âr hasar─▒, bilgisayar karars─▒zl─▒─ƒ─▒ ve di─ƒer olas─▒ sorunlarla ilgili uyar─▒s─▒n─▒ okuyup anlad─▒─ƒ─▒n─▒zdan emin olun.
+\n
+\nBilgisayar─▒n─▒zda ├Âzel bir ├º├Âz├╝n├╝rl├╝k olu┼ƒturulmas─▒ndan kaynaklanan herhangi bir sorundan sorumlu de─ƒiliz.
+\n
+\nSon olarak, cihaz─▒n─▒z veya bilgisayar─▒n─▒z do─ƒal ├º├Âz├╝n├╝rl├╝kte ak─▒┼ƒ─▒ desteklemiyor olabilir. E─ƒer cihaz─▒n─▒zda ├ºal─▒┼ƒm─▒yorsa, ne yaz─▒k ki ┼ƒans─▒n─▒z yok demektir.</string>
+    <string name="summary_seekbar_bitrate">Daha iyi g├Âr├╝nt├╝ kalitesi i├ºin art─▒r─▒n. Daha yava┼ƒ ba─ƒlant─▒larda performans─▒ art─▒rmak i├ºin azalt─▒n.</string>
+    <string name="title_checkbox_stretch_video">Videoyu tam ekrana geni┼ƒlet</string>
+    <string name="title_checkbox_vibrate_fallback">Titre┼ƒim ile g├╝r├╝lt├╝ deste─ƒini taklit etme</string>
+    <string name="summary_checkbox_usb_bind_all">Yerel Xbox oyun kumandas─▒ deste─ƒi mevcut olsa bile desteklenen t├╝m oyun kumandalar─▒ i├ºin SmartDisplay AI\'─▒n USB s├╝r├╝c├╝s├╝n├╝ kullan</string>
+    <string name="summary_checkbox_flip_face_buttons">Oyun kumandalar─▒ ve ekran kontrolleri i├ºin A/B ve X/Y y├╝z d├╝─ƒmelerini de─ƒi┼ƒtirir</string>
+    <string name="summary_checkbox_absolute_mouse_mode">Bu fare h─▒zland─▒rman─▒n uzak masa├╝st├╝ kullan─▒m─▒ i├ºin daha do─ƒal davranmas─▒n─▒ sa─ƒlayabilir, ancak bir├ºok oyunla uyumsuzdur.</string>
+</resources>

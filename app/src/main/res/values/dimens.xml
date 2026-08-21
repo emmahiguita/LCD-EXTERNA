@@ -1,0 +1,90 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="tv_channel_logo_width">80dp</dimen>
+    <dimen name="tv_channel_logo_height">80dp</dimen>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- SmartDisplay AI — Design System Tokens (2026+)               -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+
+    <!-- 1. Spacing Scale (4dp/8dp grid) -->
+    <dimen name="sd_space_2">2dp</dimen>
+    <dimen name="sd_space_4">4dp</dimen>
+    <dimen name="sd_space_6">6dp</dimen>
+    <dimen name="sd_space_8">8dp</dimen>
+    <dimen name="sd_space_10">10dp</dimen>
+    <dimen name="sd_space_12">12dp</dimen>
+    <dimen name="sd_space_14">14dp</dimen>
+    <dimen name="sd_space_16">16dp</dimen>
+    <dimen name="sd_space_20">20dp</dimen>
+    <dimen name="sd_space_24">24dp</dimen>
+    <dimen name="sd_space_28">28dp</dimen>
+    <dimen name="sd_space_32">32dp</dimen>
+    <dimen name="sd_space_40">40dp</dimen>
+    <dimen name="sd_space_48">48dp</dimen>
+
+    <!-- 2. Corner Radii Hierarchy -->
+    <dimen name="sd_corner_xs">6dp</dimen>
+    <dimen name="sd_corner_sm">10dp</dimen>
+    <dimen name="sd_corner_md">14dp</dimen>
+    <dimen name="sd_corner_lg">18dp</dimen>
+    <dimen name="sd_corner_xl">22dp</dimen>
+    <dimen name="sd_corner_hero">28dp</dimen>
+    <dimen name="sd_corner_pill">999dp</dimen>
+
+    <!-- 3. Elevation & Depth Layers -->
+    <dimen name="sd_elevation_none">0dp</dimen>
+    <dimen name="sd_elevation_low">2dp</dimen>
+    <dimen name="sd_elevation_card">4dp</dimen>
+    <dimen name="sd_elevation_panel">8dp</dimen>
+    <dimen name="sd_elevation_floating">12dp</dimen>
+    <dimen name="sd_elevation_dock">18dp</dimen>
+    <dimen name="sd_elevation_modal">24dp</dimen>
+    <dimen name="sd_elevation_overlay">99dp</dimen>
+
+    <!-- 4. Responsive Viewport Constraints -->
+    <dimen name="sd_dialog_min_width">280dp</dimen>
+    <dimen name="sd_dialog_max_width">480dp</dimen>
+    <dimen name="sd_taskbar_max_width">640dp</dimen>
+    <dimen name="sd_card_min_width">320dp</dimen>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- Keyboard Overlay — design tokens                           -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+
+    <!-- Panel externo -->
+    <dimen name="keyboard_panel_margin_horizontal">6dp</dimen>
+    <dimen name="keyboard_panel_margin_bottom">8dp</dimen>
+    <dimen name="keyboard_panel_corner_radius">16dp</dimen>
+    <dimen name="keyboard_panel_elevation">24dp</dimen>
+
+    <!-- Header / drag handle -->
+    <dimen name="keyboard_header_height">48dp</dimen>
+
+    <!-- Teclas -->
+    <dimen name="keyboard_key_height">44dp</dimen>
+    <dimen name="keyboard_key_margin_h">2dp</dimen>
+    <dimen name="keyboard_key_margin_v">3dp</dimen>
+    <dimen name="keyboard_key_corner_radius">7dp</dimen>
+    <dimen name="keyboard_key_text_size">13sp</dimen>
+    <dimen name="keyboard_key_special_text_size">11sp</dimen>
+
+    <!-- Botones de header -->
+    <dimen name="keyboard_header_btn_min">44dp</dimen>
+    <dimen name="keyboard_header_btn_size">36dp</dimen>
+
+    <!-- Contenedor -->
+    <dimen name="keyboard_container_padding_h">8dp</dimen>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- Tokens "Cyber Neon": radios y grosores unificados            -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <dimen name="neon_radius">12dp</dimen>
+    <dimen name="neon_radius_sm">8dp</dimen>
+    <dimen name="neon_stroke">1dp</dimen>
+    <dimen name="neon_stroke_active">1.5dp</dimen>
+
+</resources>

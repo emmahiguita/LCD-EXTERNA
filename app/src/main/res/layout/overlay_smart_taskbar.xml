@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  overlay_smart_taskbar.xml — Barra PC (Smart Taskbar) · Material 3 glass 3D.
+  Réplica VIVA de las ventanas del PC (get_windows). Cabecera con arrastre, minimizar
+  y cerrar; cuerpo con chips colapsable. Cada chip = una ventana real:
+  tap = traer al frente · mantener pulsado = minimizar/cerrar.
+  Oculta por defecto; se abre desde el FAB → Herramientas → Barra PC.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/smartTaskbarRoot"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:maxWidth="640dp"
+    android:orientation="vertical"
+    android:background="@drawable/glass3d_panel_bg"
+    android:paddingHorizontal="8dp"
+    android:paddingVertical="6dp"
+    android:elevation="18dp"
+    android:visibility="gone"
+    tools:visibility="visible"
+    android:clickable="true"
+    android:focusable="true">
+
+    <!-- Cabecera: grip · título · minimizar · cerrar -->
+    <LinearLayout
+        android:id="@+id/taskbarHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/taskbarGrip"
+            android:layout_width="30dp"
+            android:layout_height="34dp"
+            android:padding="7dp"
+            android:src="@drawable/ic_win_grip"
+            android:scaleType="centerInside"
+            android:contentDescription="@string/settings_back"
+            app:tint="#8FA0BF"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="6dp"
+            android:text="@string/taskbar_title"
+            android:textColor="#EAF0FF"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.02"
+            android:singleLine="true"
+            android:ellipsize="end" />
+
+        <ImageView
+            android:id="@+id/taskbarMinimize"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:padding="7dp"
+            android:src="@drawable/ic_minimize"
+            android:scaleType="centerInside"
+            android:contentDescription="@string/taskbar_title"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:tint="#C2CCE0"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <ImageView
+            android:id="@+id/taskbarClose"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:padding="8dp"
+            android:src="@drawable/ic_close"
+            android:scaleType="centerInside"
+            android:contentDescription="@string/settings_back"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:tint="#C2CCE0"
+            android:clickable="true"
+            android:focusable="true" />
+    </LinearLayout>
+
+    <!-- Cuerpo colapsable: chips de ventanas reales -->
+    <FrameLayout
+        android:id="@+id/taskbarBody"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:paddingHorizontal="2dp"
+        android:paddingBottom="2dp">
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            android:overScrollMode="never"
+            android:fillViewport="false">
+
+            <LinearLayout
+                android:id="@+id/taskbarChips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical" />
+        </HorizontalScrollView>
+
+        <TextView
+            android:id="@+id/taskbarEmpty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:paddingHorizontal="6dp"
+            android:paddingVertical="8dp"
+            android:text="@string/taskbar_empty"
+            android:textColor="#8FA0BF"
+            android:textSize="13sp"
+            android:visibility="gone" />
+    </FrameLayout>
+
+</LinearLayout>

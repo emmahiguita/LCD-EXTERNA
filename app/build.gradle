@@ -1,0 +1,191 @@
+apply plugin: 'com.android.application'
+
+android {
+    ndkVersion "27.0.12077973"
+    compileSdk 36
+
+    namespace 'com.limelight'
+
+    defaultConfig {
+        minSdk 24
+        targetSdk 36
+
+        versionName "12.1"
+        versionCode = 314
+
+        // Generate native debug symbols to allow Google Play to symbolicate our native crashes
+        ndk.debugSymbolLevel = 'FULL'
+    }
+
+    flavorDimensions.add("root")
+
+    buildFeatures {
+        buildConfig = true
+        resValues = true
+    }
+
+    productFlavors {
+        root {
+            // Android O has native mouse capture, so don't show the rooted
+            // version to devices running O on the Play Store.
+            maxSdk 25
+
+            externalNativeBuild {
+                ndkBuild {
+                    arguments "PRODUCT_FLAVOR=root"
+                }
+            }
+
+            applicationId "com.limelight.root"
+            dimension "root"
+            buildConfigField "boolean", "ROOT_BUILD", "true"
+        }
+
+        nonRoot {
+            externalNativeBuild {
+                ndkBuild {
+                    arguments "PRODUCT_FLAVOR=nonRoot"
+                }
+            }
+
+            applicationId "com.limelight.smartdisplay"
+            dimension "root"
+            buildConfigField "boolean", "ROOT_BUILD", "false"
+        }
+    }
+
+    packagingOptions {
+        jniLibs {
+            useLegacyPackaging = true
+        }
+    }
+
+    compileOptions {
+        encoding "UTF-8"
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    sourceSets {
+        main {
+            java {
+                // AdaptiveCursorView migrado a .kt — excluir el stub .java vacío
+                exclude '**/AdaptiveCursorView.java'
+            }
+        }
+    }
+
+    lint {
+        disable 'MissingTranslation'
+        lintConfig file('lint.xml')
+    }
+
+    bundle {
+        language {
+            // Avoid splitting by language, since we allow users
+            // to manually switch language in settings.
+            enableSplit = false
+        }
+        density {
+            // FIXME: This should not be necessary but we get
+            // weird crashes due to missing drawable resources
+            // when this split is enabled.
+            enableSplit = false
+        }
+    }
+
+    buildTypes {
+        debug {
+            applicationIdSuffix ".debug"
+            resValue "string", "app_label", "SmartDisplay AI"
+            resValue "string", "app_label_root", "SmartDisplay AI (Root)"
+
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        release {
+            // To whomever is releasing/using an APK in release mode with
+            // Moonlight's official application ID, please stop. I see every
+            // single one of your crashes in my Play Console and it makes
+            // Moonlight's reliability look worse and makes it more difficult
+            // to distinguish real crashes from your crashy VR app. Seriously,
+            // 44 of the *same* native crash in 72 hours and a few each of
+            // several other crashes.
+            //
+            // This is technically not your fault. I would have hoped Google
+            // would validate the signature of the APK before attributing
+            // the crash to it. I asked their Play Store support about this
+            // and they said they don't and don't have plans to, so that sucks.
+            //
+            // In any case, it's bad form to release an APK using someone
+            // else's application ID. There is no legitimate reason, that
+            // anyone would need to comment out the following line, except me
+            // when I release an official signed Moonlight build. If you feel
+            // like doing so would solve something, I can tell you it will not.
+            // You can't upgrade an app while retaining data without having the
+            // same signature as the official version. Nor can you post it on
+            // the Play Store, since that application ID is already taken.
+            // Reputable APK hosting websites similarly validate the signature
+            // is consistent with the Play Store and won't allow an APK that
+            // isn't signed the same as the original.
+            //
+            // I wish any and all people using Moonlight as the basis of other
+            // cool projects the best of luck with their efforts. All I ask
+            // is to please change the applicationId before you publish.
+            //
+            // TL;DR: Leave the following line alone!
+            applicationIdSuffix ".unofficial"
+            resValue "string", "app_label", "SmartDisplay AI"
+            resValue "string", "app_label_root", "SmartDisplay AI (Root)"
+
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    externalNativeBuild {
+        ndkBuild {
+            path "src/main/jni/Android.mk"
+        }
+    }
+    packaging {
+        jniLibs {
+            pickFirsts.add("**/libcrypto.so")
+        }
+    }
+}
+
+dependencies {
+    implementation 'org.bouncycastle:bcprov-jdk18on:1.77'
+    implementation 'org.bouncycastle:bcpkix-jdk18on:1.77'
+    implementation 'org.jcodec:jcodec:0.2.5'
+    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+    implementation 'org.jmdns:jmdns:3.5.9'
+    implementation 'com.github.cgutman:ShieldControllerExtensions:1.0.1'
+
+    // UI Foundation (Material 3 & ConstraintLayout)
+    implementation 'com.google.android.material:material:1.13.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
+    implementation 'androidx.recyclerview:recyclerview:1.4.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation("io.coil-kt:coil:2.6.0")
+    
+    // Transitions & Physics-based Motion
+    implementation 'androidx.transition:transition:1.5.1'
+    implementation 'androidx.dynamicanimation:dynamicanimation:1.0.0'
+    
+    // Kotlin
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:2.0.0'
+    // No se usa directamente en el código, pero coil y material/lifecycle la
+    // requieren de forma transitiva; esta declaración FIJA la versión a una única
+    // (evita conflictos de versiones transitivas 1.7.x). No eliminar.
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0'
+
+    // koog (SDK de agentes IA) queda DESACTIVADO: aún no se cablea en runtime y su
+    // transitivo jackson-module-kotlin usa MethodHandle.invokeExact, que D8 solo
+    // soporta desde API 26 → imposible dexar en minSdk 21. Arrastra ~78 módulos LLM
+    // (Anthropic/OpenAI/Bedrock/Ollama/ktor/redis) sin uso. Reactivar SOLO cuando se
+    // integre de verdad, subiendo minSdk a 26 o aislándolo en un módulo dinámico.
+    // implementation("ai.koog:koog-agents-additions:1.1.1-beta")
+
+}

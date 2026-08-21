@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Grupo Principal: Acciones y Herramientas -->
+    <group android:id="@+id/nav_group_main">
+        <item
+            android:id="@+id/nav_add_pc"
+            android:icon="@drawable/ic_add"
+            android:title="@string/nav_add_pc" />
+        <item
+            android:id="@+id/nav_files"
+            android:icon="@drawable/ic_files_overlay"
+            android:title="@string/nav_files" />
+        <item
+            android:id="@+id/nav_theme"
+            android:icon="@drawable/ic_palette"
+            android:title="@string/nav_theme" />
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_settings"
+            android:title="@string/nav_settings" />
+        <item
+            android:id="@+id/nav_diagnostics"
+            android:icon="@drawable/ic_diagnostics"
+            android:title="@string/nav_diagnostics" />
+        <item
+            android:id="@+id/nav_logs"
+            android:icon="@drawable/ic_logs"
+            android:title="@string/nav_logs" />
+    </group>
+
+    <!-- Grupo Secundario: Ayuda e Información -->
+    <item android:title="@string/nav_section_help">
+        <menu>
+            <item
+                android:id="@+id/nav_help"
+                android:icon="@drawable/ic_help"
+                android:title="@string/nav_help" />
+            <item
+                android:id="@+id/nav_donate"
+                android:icon="@drawable/ic_donate"
+                android:title="@string/nav_donate" />
+            <item
+                android:id="@+id/nav_about"
+                android:icon="@drawable/ic_about"
+                android:title="@string/nav_about" />
+        </menu>
+    </item>
+
+</menu>

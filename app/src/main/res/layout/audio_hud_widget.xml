@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/audioHudRoot"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:clipChildren="false">
+
+    <!-- Background Pill -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="24dp"
+        app:cardBackgroundColor="#80000000"
+        app:cardElevation="8dp"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingVertical="12dp"
+            android:paddingHorizontal="8dp"
+            android:gravity="center">
+
+            <!-- Drag Handle -->
+            <View
+                android:id="@+id/audioHudHandle"
+                android:layout_width="24dp"
+                android:layout_height="4dp"
+                android:layout_marginBottom="12dp"
+                android:background="#60FFFFFF"
+                android:layout_gravity="center_horizontal" />
+
+            <!-- Mic Toggle -->
+            <ImageButton
+                android:id="@+id/btnHudMic"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@android:drawable/ic_btn_speak_now"
+                android:contentDescription="Micrófono"
+                app:tint="#FFFFFF"
+                android:scaleType="centerInside"
+                android:padding="8dp" />
+
+            <!-- Spacer -->
+            <View android:layout_width="match_parent" android:layout_height="8dp"/>
+
+            <!-- Volume Up -->
+            <ImageButton
+                android:id="@+id/btnHudVolUp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@android:drawable/ic_media_ff"
+                android:contentDescription="Subir Volumen"
+                app:tint="#FFFFFF"
+                android:scaleType="centerInside"
+                android:padding="8dp" />
+
+            <!-- Spacer -->
+            <View android:layout_width="match_parent" android:layout_height="8dp"/>
+
+            <!-- Volume Down -->
+            <ImageButton
+                android:id="@+id/btnHudVolDown"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@android:drawable/ic_media_rew"
+                android:contentDescription="Bajar Volumen"
+                app:tint="#FFFFFF"
+                android:scaleType="centerInside"
+                android:padding="8dp" />
+
+            <!-- Spacer -->
+            <View android:layout_width="match_parent" android:layout_height="8dp"/>
+
+            <!-- Mute Speaker -->
+            <ImageButton
+                android:id="@+id/btnHudMute"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@android:drawable/ic_lock_silent_mode"
+                android:contentDescription="Silenciar PC"
+                app:tint="#FFFFFF"
+                android:scaleType="centerInside"
+                android:padding="8dp" />
+
+            <!-- Spacer -->
+            <View android:layout_width="match_parent" android:layout_height="8dp"/>
+
+            <View
+                android:layout_width="32dp"
+                android:layout_height="1dp"
+                android:layout_marginBottom="8dp"
+                android:background="#40FFFFFF" />
+
+            <!-- Accept Call -->
+            <ImageButton
+                android:id="@+id/btnHudCall"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/fab_radial_item_bg"
+                android:src="@android:drawable/ic_media_play"
+                android:contentDescription="Aceptar Llamada"
+                app:tint="#00E5FF"
+                android:scaleType="centerInside"
+                android:padding="12dp" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</FrameLayout>

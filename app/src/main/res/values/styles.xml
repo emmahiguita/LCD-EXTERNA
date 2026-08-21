@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+
+    -->
+    <style name="AppBaseTheme" parent="Theme.SmartDisplayAI">
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <!-- Transiciones de actividad sutiles (fade + slide). Solo pantallas
+             estándar; StreamTheme NO las hereda para no afectar el streaming. -->
+        <item name="android:windowAnimationStyle">@style/Animation.SmartDisplay.Activity</item>
+    </style>
+
+    <!-- Transición de actividad Material 3: entra con slide suave + fade, sale con micro-desplazamiento. -->
+    <style name="Animation.SmartDisplay.Activity" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/activity_slide_in_right</item>
+        <item name="android:activityOpenExitAnimation">@anim/activity_slide_out_left</item>
+        <item name="android:activityCloseEnterAnimation">@anim/activity_slide_in_left</item>
+        <item name="android:activityCloseExitAnimation">@anim/activity_slide_out_right</item>
+    </style>
+
+    <style name="StreamBaseTheme" parent="AppBaseTheme">
+        <!-- Transparent streaming background to avoid extra overdraw -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <!-- Stream activity theme -->
+    <style name="StreamTheme" parent="StreamBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!--  TIPOGRAFÍA · escala Material 3 (Roboto del sistema, pesos limpios)  -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <style name="TextAppearance.SmartDisplay.Title" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="fontFamily">@font/roboto</item>
+        <item name="android:letterSpacing">0.0</item>
+    </style>
+
+    <style name="TextAppearance.SmartDisplay.Label" parent="TextAppearance.Material3.LabelMedium">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="fontFamily">@font/roboto</item>
+        <item name="android:letterSpacing">0.01</item>
+    </style>
+
+    <style name="TextAppearance.SmartDisplay.Headline" parent="TextAppearance.Material3.HeadlineSmall">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="fontFamily">@font/roboto</item>
+    </style>
+
+    <!-- Set completo de roles Material3 que solo sobrescriben la fuente a
+         @font/roboto (conservan tamaño, peso y tracking del padre). Se mapean
+         en el tema para forzar Roboto en TODOS los componentes (toolbar, chips,
+         drawer, etc.) sin romper métricas. -->
+    <style name="TextAppearance.SD.DisplayLarge" parent="TextAppearance.Material3.DisplayLarge">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="fontFamily">@font/roboto</item>
+    </style>
+    <style name="TextAppearance.SD.DisplayMedium" parent="TextAppearance.Material3.DisplayMedium">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="fontFamily">@font/roboto</item>
+    </style>
+    <style name="TextAppearance.SD.DisplaySmall" parent="TextAppearance.Material3.DisplaySmall">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="fontFamily">@font/roboto</item>
+    </style>
+    <style name="TextAppearance.SD.HeadlineLarge" parent="TextAppearance.Material3.HeadlineLarge">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="fontFamily">@font/roboto</item>
+    </style>
+    <style name="TextAppearance.SD.HeadlineMedium" parent="TextAppearance.Material3.HeadlineMedium">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="fontFamily">@font/roboto</item>
+    </style>
+    <style name="TextAppearance.SD.HeadlineSmall" parent="TextAppearance.Material3.HeadlineSmall">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="fontFamily">@font/roboto</item>
+    </style>
+    <style name="TextAppearance.SD.TitleLarge" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="fontFamily">@font/roboto</item>
+    </style>
+    <style name="TextAppearance.SD.TitleMedium" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="fontFamily">@font/roboto</item>
+    </style>
+    <style name="TextAppearance.SD.TitleSmall" parent="TextAppearance.Material3.TitleSmall">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="fontFamily">@font/roboto</item>
+    </style>
+    <style name="TextAppearance.SD.BodyLarge" parent="TextAppearance.Material3.BodyLarge">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="fontFamily">@font/roboto</item>
+    </style>
+    <style name="TextAppearance.SD.BodyMedium" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="fontFamily">@font/roboto</item>
+    </style>
+    <style name="TextAppearance.SD.BodySmall" parent="TextAppearance.Material3.BodySmall">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="fontFamily">@font/roboto</item>
+    </style>
+    <style name="TextAppearance.SD.LabelLarge" parent="TextAppearance.Material3.LabelLarge">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="fontFamily">@font/roboto</item>
+    </style>
+    <style name="TextAppearance.SD.LabelMedium" parent="TextAppearance.Material3.LabelMedium">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="fontFamily">@font/roboto</item>
+    </style>
+    <style name="TextAppearance.SD.LabelSmall" parent="TextAppearance.Material3.LabelSmall">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="fontFamily">@font/roboto</item>
+    </style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!--  SHAPE SYSTEM · jerarquía de esquinas Material 3 (Tokens 2026+)      -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <style name="ShapeAppearance.SmartDisplay.ExtraSmall" parent="ShapeAppearance.Material3.Corner.ExtraSmall">
+        <item name="cornerSize">@dimen/sd_corner_xs</item>
+    </style>
+    <style name="ShapeAppearance.SmartDisplay.Small" parent="ShapeAppearance.Material3.Corner.Small">
+        <item name="cornerSize">@dimen/sd_corner_sm</item>
+    </style>
+    <style name="ShapeAppearance.SmartDisplay.Medium" parent="ShapeAppearance.Material3.Corner.Medium">
+        <item name="cornerSize">@dimen/sd_corner_md</item>
+    </style>
+    <style name="ShapeAppearance.SmartDisplay.Large" parent="ShapeAppearance.Material3.Corner.Large">
+        <item name="cornerSize">@dimen/sd_corner_lg</item>
+    </style>
+    <style name="ShapeAppearance.SmartDisplay.ExtraLarge" parent="ShapeAppearance.Material3.Corner.ExtraLarge">
+        <item name="cornerSize">@dimen/sd_corner_xl</item>
+    </style>
+    <style name="ShapeAppearance.SmartDisplay.Hero" parent="ShapeAppearance.Material3.Corner.ExtraLarge">
+        <item name="cornerSize">@dimen/sd_corner_hero</item>
+    </style>
+    <style name="ShapeAppearance.SmartDisplay.Pill" parent="ShapeAppearance.Material3.Corner.Full">
+        <item name="cornerSize">@dimen/sd_corner_pill</item>
+    </style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!--  COMPONENTES reutilizables · tarjetas y badge de estado             -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <style name="Widget.SmartDisplay.Card" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardCornerRadius">@dimen/sd_corner_hero</item>
+        <item name="cardElevation">@dimen/sd_elevation_card</item>
+        <item name="rippleColor">?attr/colorPrimary</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.SmartDisplay.Large</item>
+    </style>
+
+    <style name="Widget.SmartDisplay.StatusBadge" parent="">
+        <item name="android:padding">12dp</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.SmartDisplay.Pill</item>
+    </style>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!--  ESTILOS NEON GLOBALES (Cyber Productivity)                         -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <style name="Widget.SmartDisplay.Card.Neon" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardCornerRadius">@dimen/neon_radius</item>
+        <item name="cardElevation">8dp</item>
+        <item name="rippleColor">?attr/colorPrimary</item>
+        <!-- Borde activo que simula la luz de neón -->
+        <item name="strokeColor">?attr/colorPrimary</item>
+        <item name="strokeWidth">@dimen/neon_stroke</item>
+        <item name="cardBackgroundColor">?attr/colorSurfaceContainerHigh</item>
+    </style>
+
+    <style name="Widget.SmartDisplay.Button.Neon" parent="Widget.Material3.Button">
+        <item name="cornerRadius">@dimen/neon_radius</item>
+        <!-- Brillo de neón al botón -->
+        <item name="strokeColor">?attr/colorPrimary</item>
+        <item name="strokeWidth">@dimen/neon_stroke_active</item>
+        <item name="backgroundTint">#20000000</item> <!-- Transparente cristal -->
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
+    <style name="DetailPowerLabel">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">6dp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textAppearance">?attr/textAppearanceLabelSmall</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
+    <!-- Control de energía: tarjeta por acción (altura fija = fila pareja) -->
+    <style name="DetailPowerCard" parent="Widget.Material3.CardView.Filled">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">96dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:stateListAnimator">@animator/card_press_scale</item>
+        <item name="cardCornerRadius">18dp</item>
+        <item name="cardBackgroundColor">?attr/colorSurfaceContainer</item>
+        <item name="strokeColor">?attr/colorOutlineVariant</item>
+        <item name="strokeWidth">1.2dp</item>
+    </style>
+
+    <style name="DetailPowerInner">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingLeft">2dp</item>
+        <item name="android:paddingRight">2dp</item>
+    </style>
+
+    <style name="DetailPowerIcon">
+        <item name="android:layout_width">24dp</item>
+        <item name="android:layout_height">24dp</item>
+    </style>
+
+    <!-- Estado rápido: columna de métrica -->
+    <style name="DetailStatItem">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingLeft">4dp</item>
+        <item name="android:paddingRight">4dp</item>
+    </style>
+
+    <style name="DetailStatIcon">
+        <item name="android:layout_width">22dp</item>
+        <item name="android:layout_height">22dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:tint">?attr/colorOnSurfaceVariant</item>
+    </style>
+
+    <style name="DetailStatValue">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textAppearance">?attr/textAppearanceTitleMedium</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="DetailStatLabel">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:textAppearance">?attr/textAppearanceBodySmall</item>
+        <item name="android:textColor">?attr/colorOnSurfaceVariant</item>
+    </style>
+
+    <!-- Tarjetas hero (Escritorio/Steam): texto adaptativo y legible en todos los temas -->
+    <style name="HeroCardTitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textAppearance">?attr/textAppearanceTitleSmall</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="HeroCardSubtitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textAppearance">?attr/textAppearanceBodySmall</item>
+        <item name="android:textColor">?attr/colorOnSurfaceVariant</item>
+    </style>
+
+    <style name="DetailStatDivider">
+        <item name="android:layout_width">1dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:background">?attr/colorOutlineVariant</item>
+    </style>
+
+    <!-- ── DIÁLOGOS Y MENSAJES DE ALERTA GLASS OBSIDIAN ────────────── -->
+    <style name="ShapeAppearance.SmartDisplay.Dialog" parent="ShapeAppearance.Material3.Corner.Large">
+        <item name="cornerSize">24dp</item>
+    </style>
+
+    <style name="TextAppearance.SD.DialogTitle" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textColor">#F8FAFC</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="TextAppearance.SD.DialogBody" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textColor">#CBD5E1</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">3dp</item>
+    </style>
+
+    <style name="Widget.SmartDisplay.DialogButton" parent="Widget.Material3.Button.TonalButton">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textStyle">bold</item>
+        <item name="cornerRadius">14dp</item>
+        <item name="backgroundTint">?attr/colorPrimary</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="Widget.SmartDisplay.DialogButton.Text" parent="Widget.Material3.Button.TextButton">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="cornerRadius">14dp</item>
+        <item name="android:textColor">#94A3B8</item>
+    </style>
+
+    <style name="ThemeOverlay.SmartDisplay.MaterialAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="android:background">@drawable/bg_dialog_glass</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.SmartDisplay.Dialog</item>
+        <item name="materialAlertDialogTitleTextStyle">@style/TextAppearance.SD.DialogTitle</item>
+        <item name="materialAlertDialogBodyTextStyle">@style/TextAppearance.SD.DialogBody</item>
+        <item name="colorSurface">#0A101C</item>
+        <item name="colorOnSurface">#F8FAFC</item>
+        <item name="colorOnSurfaceVariant">#94A3B8</item>
+        <item name="buttonBarPositiveButtonStyle">@style/Widget.SmartDisplay.DialogButton</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Widget.SmartDisplay.DialogButton.Text</item>
+        <item name="buttonBarNeutralButtonStyle">@style/Widget.SmartDisplay.DialogButton.Text</item>
+    </style>
+
+</resources>

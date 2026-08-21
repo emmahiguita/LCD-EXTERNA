@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!--  ESQUEMA MATERIAL 3 · TEMA CLARO (Sobrio, Elegante, Máxima Legibilidad) -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+
+    <!-- PRIMARY — Azul Índigo Pro -->
+    <color name="md_theme_primary">#2563EB</color>
+    <color name="md_theme_on_primary">#FFFFFF</color>
+    <color name="md_theme_primary_container">#DBEAFE</color>
+    <color name="md_theme_on_primary_container">#1E3A8A</color>
+
+    <!-- SECONDARY — Cian / Slate Neutro -->
+    <color name="md_theme_secondary">#0284C7</color>
+    <color name="md_theme_on_secondary">#FFFFFF</color>
+    <color name="md_theme_secondary_container">#E0F2FE</color>
+    <color name="md_theme_on_secondary_container">#0369A1</color>
+
+    <!-- TERTIARY -->
+    <color name="md_theme_tertiary">#D97706</color>
+    <color name="md_theme_on_tertiary">#FFFFFF</color>
+    <color name="md_theme_tertiary_container">#FEF3C7</color>
+    <color name="md_theme_on_tertiary_container">#78350F</color>
+
+    <!-- ERROR -->
+    <color name="md_theme_error">#DC2626</color>
+    <color name="md_theme_on_error">#FFFFFF</color>
+    <color name="md_theme_error_container">#FEE2E2</color>
+    <color name="md_theme_on_error_container">#7F1D1D</color>
+
+    <!-- SURFACE / BACKGROUND (Jerarquía M3 Modo Claro) -->
+    <color name="md_theme_background">#F8FAFC</color>
+    <color name="md_theme_on_background">#0F172A</color>
+    <color name="md_theme_surface">#FFFFFF</color>
+    <color name="md_theme_on_surface">#0F172A</color>
+    <color name="md_theme_surface_variant">#F1F5F9</color>
+    <color name="md_theme_on_surface_variant">#475569</color>
+    <color name="md_theme_surface_container_lowest">#FFFFFF</color>
+    <color name="md_theme_surface_container_low">#F8FAFC</color>
+    <color name="md_theme_surface_container">#FFFFFF</color>
+    <color name="md_theme_surface_container_high">#F1F5F9</color>
+    <color name="md_theme_surface_container_highest">#E2E8F0</color>
+
+    <!-- OUTLINE -->
+    <color name="md_theme_outline">#94A3B8</color>
+    <color name="md_theme_outline_variant">#E2E8F0</color>
+
+    <!-- ESTADOS SEMÁNTICOS -->
+    <color name="status_online">#16A34A</color>
+    <color name="status_online_container">#DCFCE7</color>
+    <color name="status_on_online_container">#14532D</color>
+
+    <color name="status_offline">#DC2626</color>
+    <color name="status_offline_container">#FEE2E2</color>
+    <color name="status_on_offline_container">#7F1D1D</color>
+
+    <color name="status_pairing">#D97706</color>
+    <color name="status_pairing_container">#FEF3C7</color>
+    <color name="status_on_pairing_container">#78350F</color>
+
+    <color name="status_unknown">#64748B</color>
+    <color name="status_unknown_container">#F1F5F9</color>
+    <color name="status_on_unknown_container">#334155</color>
+
+    <!-- SUPERPOSICIONES -->
+    <color name="hud_background">#E60F172A</color>
+    <color name="hud_text">#F8FAFC</color>
+    <color name="scrim_artwork">#66000000</color>
+    <color name="glow_online">#3316A34A</color>
+
+    <!-- TOKENS ADAPTATIVOS SMARTDISPLAY (MODO CLARO) -->
+    <color name="background">#F8FAFC</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="surface_high">#F1F5F9</color>
+    <color name="surface_border">#E2E8F0</color>
+
+    <color name="green">#16A34A</color>
+    <color name="green_soft">#22C55E</color>
+    <color name="green_dark">#15803D</color>
+    <color name="cyan">#0284C7</color>
+
+    <color name="text_primary">#0F172A</color>
+    <color name="text_secondary">#475569</color>
+    <color name="text_muted">#94A3B8</color>
+
+    <color name="warning">#D97706</color>
+    <color name="offline">#DC2626</color>
+
+    <!-- TOKENS DE TECLADO / COMPATIBILIDAD -->
+    <color name="kbd_key_bg">#FFFFFF</color>
+    <color name="kbd_key_special_bg">#E2E8F0</color>
+    <color name="kbd_key_stroke">#CBD5E1</color>
+    <color name="kbd_key_text">#0F172A</color>
+    <color name="kbd_key_ripple">#1A000000</color>
+
+    <color name="neon_cyan">#0284C7</color>
+    <color name="neon_purple">#7C3AED</color>
+    <color name="neon_stroke_idle">#CBD5E1</color>
+</resources>

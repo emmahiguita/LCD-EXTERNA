@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  fab_soft_halo.xml — Brillo ambiente radial (Glow circular renderizado correctamente)
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <gradient
+        android:type="radial"
+        android:gradientRadius="54dp"
+        android:startColor="#333B82F6"
+        android:centerColor="#1A3B82F6"
+        android:endColor="#00000000" />
+</shape>

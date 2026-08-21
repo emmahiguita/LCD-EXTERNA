@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Salida de actividad (al cerrar): fade + leve deslizamiento hacia abajo. -->
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:interpolator="@android:interpolator/accelerate_quint">
+    <alpha
+        android:fromAlpha="1.0"
+        android:toAlpha="0.0"
+        android:duration="180" />
+    <translate
+        android:fromYDelta="0"
+        android:toYDelta="6%p"
+        android:duration="200" />
+</set>

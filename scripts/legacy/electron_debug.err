@@ -1,1 +1,0 @@
-[Agent] Error compilando el agente con csc.exe: Command failed: "C:\WINDOWS\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /out:"C:\Users\emman\Desktop\Proyectos\LCD EXTERNA\electron\input_agent.exe" /target:exe /optimize+ /r:UIAutomationClient.dll /r:UIAutomationTypes.dll "C:\Users\emman\Desktop\Proyectos\LCD EXTERNA\electron\input_agent.cs"

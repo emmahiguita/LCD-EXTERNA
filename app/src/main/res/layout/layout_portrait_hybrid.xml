@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  layout_portrait_hybrid.xml — SmartDisplay AI Premium · Componente 4
+  ─────────────────────────────────────────────────────────────────────
+  Modo Vertical Híbrido: el stream ocupa toda la pantalla con soporte
+  de toque directo, eliminando paneles de atajos y touchpads redundantes.
+-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/portraitHybridRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#08090F">
+
+    <FrameLayout
+        android:id="@+id/hybridStreamContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#08090F"
+        android:clipChildren="false">
+
+        <!-- Gradiente inferior sutil para separación visual -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:layout_gravity="bottom"
+            android:background="@drawable/scrim_artwork_bottom"/>
+
+        <!-- Badge de info de conexión (esquina superior derecha) -->
+        <LinearLayout
+            android:id="@+id/hybridConnectionBadge"
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:layout_gravity="top|end"
+            android:layout_margin="8dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:background="@drawable/bg_status_badge">
+
+            <View
+                android:id="@+id/hybridStatusDot"
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:background="@drawable/online_dot"
+                android:layout_marginEnd="5dp"/>
+
+            <TextView
+                android:id="@+id/hybridConnectionInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hud_metric_placeholder"
+                android:textColor="#B9C0D4"
+                android:textSize="12sp"
+                android:fontFamily="@font/roboto"/>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</LinearLayout>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scut_deleted_pc">Î×ÎùÎ®Îæ ÎáÎ×ÎùÎº</string>
+    <string name="scut_not_paired">Î×ÎùÎ®Îæ Î£ÎÉ Î×ÎªÎòÎ¿Îú</string>
+    <string name="help_loading_msg">ÎÿÎòÎóÎƒ ÎóÎ×ÎòÎô ÎóÎûÎ¿Îö…</string>
+    <string name="pcview_menu_header_online">ÎñÎóÎÖÎ£</string>
+    <string name="pcview_menu_unpair_pc">ÎöÎíÎ¿ ÎÉÎÖÎ×ÎòÎ¬</string>
+    <string name="pcview_menu_details">ÎöÎ¿ÎÉÎö ÎñÎ¿ÎÿÎÖÎØ</string>
+    <string name="nettest_text_waiting">Î×ÎòÎáÎ£ÎÖÎÖÎÿ ÎæÎòÎôÎº ÎÉÎ¬ ÎöÎ¿Î®Î¬ Î®Î£ÎÜ ÎòÎæÎòÎôÎº ÎÉÎØ ÎÖÎ®ÎáÎØ ÎñÎòÎ¿ÎÿÎÖÎØ ÎöÎøÎ¿ÎùÎÖÎÖÎØ ÎùÎíÎòÎ×ÎÖÎØ
+\n
+\nÎöÎ×Î¬Îƒ ÎøÎ×Îö Î®ÎáÎÖÎòÎ¬…</string>
+    <string name="wol_no_mac">Î£ÎÉ Î×ÎªÎ£ÎÖÎù Î£ÎöÎóÎÖÎ¿ ÎÉÎ¬ ÎöÎ×ÎùÎ®Îæ, ÎÉÎÖÎƒ ÎøÎ¬ÎòÎæÎ¬ MAC</string>
+    <string name="scut_pc_not_found">Î×ÎùÎ®Îæ Î£ÎÉ ÎáÎ×ÎªÎÉ</string>
+    <string name="help_loading_title">ÎóÎûÎ¿Îö</string>
+    <string name="scut_invalid_uuid">ÎöÎ×ÎùÎ®Îæ ÎÉÎÖÎáÎò Î¬ÎòÎÉÎØ</string>
+    <string name="scut_invalid_app_id">ÎöÎÉÎñÎ£ÎÖÎºÎªÎÖÎö ÎÉÎÖÎáÎö Î×Î¬ÎÉÎÖÎ×Îö</string>
+    <string name="pcview_menu_header_offline">ÎøÎæÎòÎÖ</string>
+    <string name="pcview_menu_header_unknown">Î×Î¿ÎóÎáÎƒ</string>
+    <string name="pcview_menu_app_list">ÎöÎ¿ÎÉÎö ÎÉÎ¬ ÎøÎ£ ÎöÎÉÎñÎ£ÎÖÎºÎªÎÖÎòÎ¬</string>
+    <string name="pcview_menu_pair_pc">ÎÉÎ×Î¬ Î×ÎùÎ®Îæ</string>
+    <string name="pcview_menu_send_wol">Î®Î£Îù ÎñÎºÎòÎôÎ¬ \"Wake-On-LAN\"</string>
+    <string name="pcview_menu_delete_pc">Î×ÎùÎº Î×ÎùÎ®Îæ</string>
+    <string name="pcview_menu_test_network">ÎæÎôÎòÎº ÎùÎÖÎæÎòÎ¿ Î¿Î®Î¬</string>
+    <string name="pcview_menu_eol">ÎíÎòÎú ÎñÎóÎÖÎ£ÎòÎ¬ Î®ÎÖÎ¿ÎòÎ¬ NVIDIA GameStream</string>
+    <string name="nettest_title_waiting">ÎæÎòÎôÎº ÎùÎÖÎæÎòÎ¿ Î¿Î®Î¬</string>
+    <string name="nettest_title_done">ÎæÎôÎÖÎºÎ¬ Î¿Î®Î¬ ÎöÎòÎ®Î£Î×Îö</string>
+    <string name="nettest_text_inconclusive">ÎæÎôÎÖÎºÎ¬ ÎöÎ¿Î®Î¬ Î£ÎÉ ÎöÎ¬ÎæÎªÎóÎö ÎæÎÆÎ£Î£ Î®ÎÉÎÖÎƒ ÎºÎÖÎ®ÎòÎ¿ÎÖÎòÎ¬ Î£Î®Î¿Î¬ÎÖ ÎöÎæÎôÎÖÎºÎö Î®Î£ Î×ÎòÎáÎ£ÎÖÎÖÎÿ. ÎæÎæÎºÎ®Îö ÎæÎôÎòÎº ÎÉÎ¬ ÎöÎùÎÖÎæÎòÎ¿ Î£ÎÉÎÖÎáÎÿÎ¿ÎáÎÿ ÎÉÎò ÎáÎíÎö Î®ÎòÎæ Î×ÎÉÎòÎùÎ¿ ÎÖÎòÎ¬Î¿.</string>
+    <string name="nettest_text_failure">ÎÆÎÖÎ®Îö Î®Î£ Î×ÎòÎáÎ£ÎÖÎÖÎÿ Î£Î¿Î®Î¬ ÎùÎíÎòÎ×Îö ÎæÎ×ÎøÎ®ÎÖÎ¿ ÎöÎáÎòÎøÎùÎÖ. ÎöÎûÎ¿Î×Îö ÎóÎ£ ÎÆÎæÎÖ ÎöÎÉÎÖÎáÎÿÎ¿ÎáÎÿ Î£ÎÉ ÎÖÎøÎòÎö Î£ÎóÎæÎòÎô ÎøÎ£ ÎóÎòÎô Î×ÎòÎáÎ£ÎÖÎÖÎÿ Î×ÎùÎòÎæÎ¿ Î£Î¿Î®Î¬ ÎöÎáÎòÎøÎùÎÖÎ¬.
+\n
+\nÎöÎñÎòÎ¿ÎÿÎÖÎØ ÎöÎæÎÉÎÖÎØ ÎùÎíÎòÎ×ÎÖÎØ:
+\n</string>
+    <string name="nettest_text_blocked">ÎùÎÖÎæÎòÎ¿ ÎöÎ¿Î®Î¬ ÎöÎáÎòÎøÎùÎÖ ÎùÎòÎíÎØ ÎÉÎ¬ Î×ÎòÎáÎ£ÎÖÎÖÎÿ. ÎöÎûÎ¿Î×Îö ÎóÎ£ ÎÆÎæÎÖ ÎöÎÉÎÖÎáÎÿÎ¿ÎáÎÿ ÎÉÎÖÎáÎö ÎÉÎñÎ®Î¿ÎÖÎ¬ ÎøÎ£ ÎóÎòÎô Î×ÎòÎáÎ£ÎÖÎÖÎÿ Î×ÎùÎòÎæÎ¿ Î£Î¿Î®Î¬ ÎöÎáÎòÎøÎùÎÖÎ¬.</string>
+    <string name="pair_pc_offline">Î×ÎùÎ®Îæ Î£ÎÉ ÎñÎóÎÖÎ£</string>
+    <string name="pair_pairing_title">Î×ÎùÎæÎ¿</string>
+    <string name="pair_pairing_msg">ÎÉÎáÎÉ ÎöÎûÎƒ ÎÉÎ¬ ÎöÎºÎòÎô PIN ÎöÎæÎÉ ÎæÎ×ÎùÎ®Îæ ÎöÎ×ÎÉÎ¿Îù:</string>
+    <string name="pair_pairing_help">ÎÉÎØ ÎöÎ×ÎùÎ®Îæ ÎöÎ×ÎÉÎ¿Îù ÎñÎòÎóÎ£ ÎóÎ£ Sunshine, ÎáÎòÎòÎÿ ÎÉÎ£ ÎôÎú ÎöÎáÎÖÎöÎòÎ£ ÎóÎ£ Î×ÎáÎ¬ Î£ÎöÎûÎÖÎƒ ÎºÎòÎô PIN.</string>
+    <string name="pair_incorrect_pin">ÎºÎòÎô PIN Î®ÎÆÎòÎÖ</string>
+    <string name="pair_fail">ÎùÎÖÎæÎòÎ¿ ÎáÎøÎ®Î£</string>
+    <string name="wol_pc_online">Î×ÎùÎ®Îæ ÎñÎóÎÖÎ£</string>
+    <string name="wol_fail">ÎáÎøÎ®Î£ Î£Î®Î£ÎòÎù ÎñÎºÎòÎôÎ¬ Wake-On-LAN</string>
+    <string name="unpairing">Î×ÎáÎ¬Îº ÎùÎÖÎæÎòÎ¿…</string>
+    <string name="unpair_success">ÎáÎÖÎ¬ÎòÎº ÎöÎòÎ®Î£ÎØ</string>
+    <string name="unpair_fail">ÎáÎÖÎ¬ÎòÎº ÎáÎøÎ®Î£</string>
+    <string name="unpair_error">ÎöÎ×ÎùÎ®Îæ Î£ÎÉ ÎùÎòÎæÎ¿</string>
+    <string name="error_pc_offline">ÎöÎ×ÎùÎ®Îæ Î£ÎÉ ÎñÎóÎÖÎ£</string>
+    <string name="error_unknown_host">ÎáÎøÎ®Î£ Î£ÎÉÎ¬Î¿ ÎÉÎ¬ ÎöÎ×ÎÉÎ¿Îù</string>
+    <string name="title_decoding_error">Î×ÎñÎóÎáÎù ÎòÎÖÎôÎÖÎÉÎò ÎºÎ¿Îí</string>
+    <string name="unable_to_pin_shortcut">ÎöÎÉÎñÎ£ÎÖÎºÎªÎÖÎö ÎÉÎÖÎáÎö Î×Î¿Î®Îö ÎÖÎªÎÖÎ¿Î¬ ÎºÎÖÎªÎòÎ¿ÎÖ ÎôÎ¿ÎÜ ÎáÎóÎòÎªÎÖÎØ.</string>
+    <string name="no_video_received_error">Î£ÎÉ ÎöÎ¬ÎºÎæÎ£ ÎÉÎòÎ¬ ÎòÎÖÎôÎÖÎÉÎò Î×ÎöÎ×ÎÉÎ¿Îù.</string>
+    <string name="conn_client_latency">Î×ÎöÎÖÎ¿ÎòÎ¬ ÎñÎÖÎóÎáÎòÎù ÎñÎ¿ÎÖÎÖÎØ Î×Î×ÎòÎªÎóÎ¬:</string>
+    <string name="conn_error_title">Î®ÎÆÎÖÎÉÎ¬ ÎùÎÖÎæÎòÎ¿</string>
+    <string name="conn_terminated_msg">ÎöÎùÎÖÎæÎòÎ¿ ÎöÎòÎñÎíÎº</string>
+    <string name="ip_hint">ÎøÎ¬ÎòÎæÎ¬ IP Î®Î£ ÎöÎ×ÎùÎ®Îæ ÎöÎ×ÎÉÎ¿Îù</string>
+    <string name="title_details">ÎñÎ¿ÎÿÎÖÎØ</string>
+    <string name="poor_connection_msg">ÎùÎÖÎæÎòÎ¿ ÎùÎ£Î® Î£Î×ÎùÎ®Îæ</string>
+    <string name="perf_overlay_decoder">Î×ÎñÎóÎáÎù: %1$s</string>
+    <string name="perf_overlay_incomingfps">ÎñÎ¿ÎÖÎÖÎ×ÎÖÎØ Î£Î®ÎáÎÖÎö Î×ÎöÎ¿Î®Î¬: %1$.2f FPS</string>
+    <string name="perf_overlay_netdrops">ÎñÎ¿ÎÖÎÖÎ×ÎÖÎØ Î®ÎáÎñÎ£Îò ÎæÎùÎÖÎæÎòÎ¿ Î¿Î®Î¬: %1$.2f%%</string>
+    <string name="perf_overlay_dectime">ÎûÎ×Îƒ ÎñÎóÎáÎòÎù Î×Î×ÎòÎªÎó: %1$.2f ms</string>
+    <string name="applist_connect_msg">Î×Î¬ÎùÎæÎ¿ Î£Î×ÎùÎ®Îæ</string>
+    <string name="applist_menu_resume">ÎùÎûÎòÎ¿ Î£Î®ÎÖÎôÎòÎ¿</string>
+    <string name="applist_menu_quit_and_start">ÎíÎÆÎòÎ¿ Î×Î®ÎùÎº ÎáÎòÎøÎùÎÖ ÎòÎöÎ¬ÎùÎ£</string>
+    <string name="applist_menu_details">ÎöÎ¿ÎÉÎö ÎñÎ¿ÎÿÎÖÎØ</string>
+    <string name="applist_menu_scut">ÎªÎòÎ¿ ÎºÎÖÎªÎòÎ¿ ÎôÎ¿ÎÜ</string>
+    <string name="applist_quit_app">ÎÖÎòÎªÎÉ</string>
+    <string name="applist_quit_success">ÎÖÎªÎÖÎÉÎö ÎöÎòÎ®Î£Î×Îö ÎæÎöÎªÎ£ÎùÎö</string>
+    <string name="applist_details_id">Î×ÎíÎñÎ¿ ÎÉÎñÎ£ÎÖÎºÎªÎÖÎö:</string>
+    <string name="title_add_pc">ÎöÎòÎíÎñÎ¬ Î×ÎùÎ®Îæ ÎÖÎôÎáÎÖÎ¬</string>
+    <string name="addpc_enter_ip">ÎùÎÖÎÖÎæ Î£ÎöÎøÎáÎÖÎí ÎøÎ¬ÎòÎæÎ¬ IP</string>
+    <string name="category_basic_settings">ÎöÎÆÎôÎ¿ÎòÎ¬ ÎæÎíÎÖÎíÎÖÎòÎ¬</string>
+    <string name="title_resolution_list">Î¿ÎûÎòÎ£ÎòÎªÎÖÎÖÎ¬ ÎòÎÖÎôÎÖÎÉÎò</string>
+    <string name="title_native_res_dialog">ÎÉÎûÎöÎ¿Î¬ Î¿ÎûÎòÎ£ÎòÎªÎÖÎÖÎö ÎÿÎæÎóÎÖÎ¬</string>
+    <string name="title_fps_list">ÎñÎ¿ÎÖÎÖÎ×ÎÖÎØ Î£Î®ÎáÎÖÎö</string>
+    <string name="wol_waking_msg">ÎÖÎÖÎºÎùÎò ÎøÎ×Îö Î®ÎáÎÖÎòÎ¬ Î£ÎöÎñÎóÎÖÎ£ ÎÉÎ¬ ÎöÎ×ÎùÎ®Îæ. ÎÉÎØ ÎöÎòÎÉ Î£ÎÉ, ÎÉÎáÎÉ ÎòÎòÎôÎÉ Î®ÎöÎòÎÉ Î×ÎòÎÆÎôÎ¿ ÎáÎøÎòÎƒ Î£ÎñÎòÎáÎºÎªÎÖÎÖÎ¬ Wake-On-LAN.</string>
+    <string name="nettest_text_success">ÎöÎ¿Î®Î¬ Î®Î£ÎÜ ÎÉÎÖÎáÎáÎö ÎùÎòÎíÎ×Î¬ ÎÉÎ¬ Î×ÎòÎáÎ£ÎÖÎÖÎÿ, ÎæÎæÎºÎ®Îö ÎæÎôÎòÎº ÎÉÎ¬ ÎöÎÆÎôÎ¿ÎòÎ¬ ÎùÎòÎ×Î¬ ÎöÎÉÎ® ÎæÎ×ÎùÎ®Îæ ÎöÎ×ÎÉÎ¿Îù.
+\n
+\nÎÉÎØ ÎÉÎ¬Îö Î×ÎáÎíÎö Î£ÎöÎûÎ¿ÎÖÎØ ÎôÎ¿ÎÜ ÎöÎÉÎÖÎáÎÿÎ¿ÎáÎÿ, ÎÉÎáÎÉ ÎöÎ¬ÎºÎƒ ÎÉÎ¬ ÎöÎøÎ£ SmartDisplay AI Internet Hosting Tool ÎóÎ£ ÎöÎ×ÎùÎ®Îæ ÎòÎöÎñÎóÎ£ ÎÉÎ¬ ÎøÎ£ÎÖ ÎöÎæÎôÎÖÎºÎö ÎöÎ×ÎªÎòÎ¿Îú ÎæÎøÎôÎÖ Î£ÎæÎôÎòÎº ÎÉÎ¬ ÎùÎÖÎæÎòÎ¿ ÎöÎÉÎÖÎáÎÿÎ¿ÎáÎÿ.</string>
+    <string name="pairing">Î×ÎÉÎ×Î¬…</string>
+    <string name="pair_pc_ingame">Î×ÎùÎ®Îæ ÎæÎÉÎ×ÎªÎó Î×Î®ÎùÎº. ÎáÎÉ Î£ÎªÎÉÎ¬ Î×ÎöÎ×Î®ÎùÎº Î£ÎñÎáÎÖ ÎæÎÖÎªÎòÎó ÎùÎÖÎæÎòÎ¿.</string>
+    <string name="pair_already_in_progress">ÎñÎóÎòÎ£Î¬ ÎöÎùÎÖÎæÎòÎ¿ Î×Î¬ÎæÎªÎóÎ¬</string>
+    <string name="wol_waking_pc">Î×ÎóÎÖÎ¿ Î×ÎùÎ®Îæ…</string>
+    <string name="error_manager_not_running">Î®ÎÖÎ¿ÎòÎ¬ \"ÎáÎÖÎöÎòÎ£-Î×ÎùÎ®Îæ\" Î£ÎÉ ÎñÎóÎÖÎ£. ÎÉÎáÎÉ ÎùÎøÎö ÎøÎ×Îö Î®ÎáÎÖÎòÎ¬ Î£ÎöÎñÎóÎ£Îö Î×ÎùÎôÎ® Î®Î£ ÎöÎÉÎñÎ£ÎÖÎºÎªÎÖÎö.</string>
+    <string name="title_decoding_reset">ÎöÎÆÎôÎ¿ÎòÎ¬ ÎòÎÖÎôÎÖÎÉÎò ÎÉÎòÎñÎíÎò</string>
+    <string name="error_404">GFE ÎöÎùÎûÎÖÎ¿ Î®ÎÆÎÖÎÉÎ¬ 404. ÎÉÎáÎÉ ÎòÎòÎôÎÉ Î®ÎöÎ×ÎùÎ®Îæ ÎóÎØ ÎøÎ¿ÎÿÎÖÎí Î×ÎíÎÜ ÎáÎ¬Î×ÎÜ. Î®ÎÖÎ×ÎòÎ® ÎæÎ¬ÎòÎøÎáÎ¬ ÎùÎÖÎæÎòÎ¿ Î×Î¿ÎòÎùÎº ÎÖÎøÎòÎ£Îö Î£ÎÆÎ¿ÎòÎØ Î£Î®ÎÆÎÖÎÉÎö ÎûÎò. ÎáÎíÎö Î£ÎöÎñÎóÎÖÎ£ Î×ÎùÎôÎ® ÎÉÎ¬ ÎöÎ×ÎùÎ®Îæ ÎÉÎò Î£ÎöÎ¬ÎºÎÖÎƒ GFE.</string>
+    <string name="error_usb_prohibited">ÎÆÎÖÎ®Îö Î£Î×ÎøÎ®ÎÖÎ¿ÎÖ USB ÎáÎóÎòÎ£Îö ÎóÎ£ ÎÖÎôÎÖ Î×ÎáÎöÎ£ ÎöÎ×ÎùÎ®Îæ. ÎæÎôÎòÎº ÎöÎÆÎôÎ¿ÎòÎ¬ knox ÎÉÎò MDM.</string>
+    <string name="message_decoding_error">Î×ÎòÎáÎ£ÎÖÎÖÎÿ ÎºÎ¿Îí ÎóÎºÎæ ÎÉÎÖ-Î¬ÎÉÎÖÎ×ÎòÎ¬ ÎóÎØ ÎöÎ×ÎñÎóÎáÎù. ÎáÎíÎö Î£Î®ÎáÎòÎ¬ ÎÉÎ¬ ÎöÎÆÎôÎ¿ÎòÎ¬ ÎöÎöÎûÎ¿Î×Îö ÎÉÎØ ÎöÎºÎ¿ÎÖÎíÎòÎ¬ ÎáÎ×Î®ÎøÎòÎ¬.</string>
+    <string name="message_decoding_reset">ÎöÎ×ÎñÎóÎáÎù Î×Î×Î®ÎÖÎÜ Î£ÎºÎ¿ÎòÎí ÎæÎöÎÆÎôÎ¿ÎòÎ¬ ÎöÎáÎòÎøÎùÎÖÎòÎ¬. ÎöÎÆÎôÎ¿ÎòÎ¬ ÎöÎöÎûÎ¿Î×Îö ÎÉÎòÎñÎíÎò Î£ÎæÎ¿ÎÖÎ¿Î¬ ÎöÎ×ÎùÎôÎ£.</string>
+    <string name="video_decoder_init_failed">ÎáÎøÎ®Î£Îö ÎÿÎóÎÖÎáÎ¬ Î×ÎñÎóÎáÎù ÎöÎòÎÖÎôÎÖÎÉÎò. ÎöÎ×ÎøÎ®ÎÖÎ¿ Î®Î£ÎÜ ÎøÎáÎ¿ÎÉÎö ÎÉÎÖÎáÎò Î¬ÎòÎ×ÎÜ ÎæÎ¿ÎûÎòÎ£ÎòÎªÎÖÎö ÎÉÎò ÎñÎ¿ÎÖÎÖÎ×ÎÖÎØ Î£Î®ÎáÎÖÎö Î®ÎáÎæÎùÎ¿Îò.</string>
+    <string name="no_frame_received_error">ÎùÎÖÎæÎòÎ¿ ÎöÎ¿Î®Î¬ Î®Î£ ÎÉÎÖÎáÎò Î×Î¬ÎñÎºÎô ÎøÎ¿ÎÉÎòÎÖ. ÎöÎòÎ¿Îô ÎÉÎ¬ ÎöÎÆÎôÎ¿ÎòÎ¬ Îö-Bitrate ÎÉÎò ÎáÎíÎö ÎùÎÖÎæÎòÎ¿ Î×ÎöÎÖÎ¿ ÎÖÎòÎ¬Î¿.</string>
+    <string name="check_ports_msg">ÎæÎôÎòÎº ÎÉÎ¬ ÎùÎòÎ×Î¬ ÎöÎÉÎ® ÎòÎáÎÖÎöÎòÎ£ ÎñÎòÎ¿ÎÿÎÖÎØ ÎóÎæÎòÎ¿ ÎöÎñÎòÎ¿ÎÿÎÖÎØ ÎöÎæÎÉÎÖÎØ:</string>
+    <string name="conn_establishing_title">Î×Î¬ÎùÎÖÎ£ ÎùÎÖÎæÎòÎ¿</string>
+    <string name="addpc_success">Î×ÎùÎ®Îæ ÎáÎòÎíÎú ÎæÎöÎªÎ£ÎùÎö</string>
+    <string name="early_termination_error">Î×Î®Î®ÎöÎò ÎºÎ¿Îö ÎæÎ×ÎùÎ®Îæ ÎöÎ×ÎÉÎ¿Îù ÎøÎ®ÎöÎùÎ£Îö ÎöÎûÎ¿Î×Îö.
+\n
+\nÎÉÎáÎÉ ÎòÎòÎôÎÉ Î®ÎÉÎÖÎƒ Î¬ÎòÎøÎƒ Î×ÎòÎÆÎƒ DRM ÎñÎ¬ÎòÎù ÎæÎ×ÎùÎ®Îæ. ÎÉÎñÎ®Î¿ Î£ÎáÎíÎòÎ¬ Î£ÎöÎñÎóÎÖÎ£ Î×ÎùÎôÎ® ÎÉÎ¬ ÎöÎ×ÎùÎ®Îæ.</string>
+    <string name="slow_connection_msg">ÎùÎÖÎæÎòÎ¿ ÎÉÎÖÎÿÎÖ Î£Î×ÎùÎ®Îæ
+\nÎöÎòÎ¿Îô Bitrate</string>
+    <string name="frame_conversion_error">ÎöÎ×ÎùÎ®Îæ ÎöÎ×ÎÉÎ¿Îù ÎôÎÖÎòÎòÎù ÎóÎ£ Î®ÎÆÎÖÎÉÎ¬ ÎöÎªÎñÎáÎ¬ ÎòÎÖÎôÎÖÎÉÎò.
+\n
+\nÎáÎíÎö Î£ÎæÎÿÎ£ ÎöÎÆÎôÎ¿Î¬ HDR, ÎöÎùÎ£ÎñÎ¬ Î¿ÎûÎòÎ£ÎòÎªÎÖÎÖÎ¬ ÎöÎûÎ¿Î×Îö ÎÉÎò Î£Î®ÎáÎòÎ¬ ÎÉÎ¬ Î¿ÎûÎòÎ£ÎòÎªÎÖÎÖÎ¬ ÎöÎ×ÎùÎ®Îæ ÎöÎ×ÎÉÎ¿Îù.</string>
+    <string name="conn_establishing_msg">Î×Î¬ÎùÎæÎ¿</string>
+    <string name="conn_starting">Î×Î¬ÎùÎÖÎ£</string>
+    <string name="conn_metered">ÎÉÎûÎöÎ¿Îö: ÎöÎùÎÖÎæÎòÎ¿ ÎöÎáÎòÎøÎùÎÖ ÎöÎòÎÉ ÎáÎ×ÎôÎô!</string>
+    <string name="conn_terminated_title">ÎöÎùÎÖÎæÎòÎ¿ ÎöÎòÎñÎíÎº</string>
+    <string name="lost_connection">ÎáÎÉÎæÎô ÎöÎùÎÖÎæÎòÎ¿ Î£Î×ÎùÎ®Îæ</string>
+    <string name="delete_pc_msg">ÎÉÎ¬Îö ÎæÎÿÎòÎù Î®ÎÉÎ¬Îö Î¿ÎòÎªÎö Î£ÎöÎíÎÖÎ¿ Î×ÎùÎ®Îæ ÎûÎö\?</string>
+    <string name="conn_client_latency_hw">Î×ÎöÎÖÎ¿ÎòÎ¬ ÎñÎóÎáÎòÎù ÎùÎòÎ×Î¿Î¬ÎÖ:</string>
+    <string name="conn_error_msg">ÎáÎøÎ®Î£ Î£ÎöÎñÎóÎÖÎ£</string>
+    <string name="searching_pc">Î×ÎùÎñÎ® Î×ÎùÎ®ÎæÎÖÎØ ÎæÎ¿Î®Î¬ ÎöÎ×ÎºÎòÎ×ÎÖÎ¬ Î®Î£ÎÜ...
+\n
+\nÎòÎòÎôÎÉ Î®ÎíÎÉÎáÎ®ÎÖÎÖÎƒ ÎÉÎò GeForce Experience ÎñÎòÎóÎ£ÎÖÎØ.</string>
+    <string name="yes">ÎøÎƒ</string>
+    <string name="no">Î£ÎÉ</string>
+    <string name="help">ÎóÎûÎ¿Îö</string>
+    <string name="perf_overlay_streamdetails">ÎöÎûÎ¿Î×Î¬ ÎòÎÖÎôÎÖÎÉÎò: %1$s %2$.2f FPS</string>
+    <string name="perf_overlay_renderingfps">ÎñÎ¿ÎÖÎÖÎ×ÎÖÎØ Î×Î¿ÎòÎáÎôÎ¿ÎÖÎØ: %1$.2f FPS</string>
+    <string name="applist_menu_hide_app">ÎöÎíÎ¬Î¿ ÎÉÎñÎ£ÎÖÎºÎªÎÖÎö</string>
+    <string name="perf_overlay_netlatency">Î×ÎöÎÖÎ¿ÎòÎ¬ Î¬ÎÆÎòÎæÎö Î×Î×ÎòÎªÎóÎ¬: %1$d ms (Î®ÎòÎáÎòÎ¬: %2$d ms)</string>
+    <string name="applist_menu_quit">ÎöÎñÎíÎº Î®ÎÖÎôÎòÎ¿</string>
+    <string name="applist_menu_cancel">ÎæÎÿÎ£</string>
+    <string name="applist_refresh_error_msg">ÎáÎøÎ®Î£ Î£ÎöÎ®ÎÖÎÆ Î¿Î®ÎÖÎ×Î¬ ÎÉÎñÎ£ÎÖÎºÎªÎÖÎòÎ¬</string>
+    <string name="applist_quit_fail">ÎÖÎªÎÖÎÉÎö ÎáÎøÎ®Î£Îö</string>
+    <string name="applist_menu_tv_channel">ÎöÎòÎíÎú Î£ÎóÎ¿ÎòÎÑ</string>
+    <string name="applist_refresh_title">Î¿Î®ÎÖÎ×Î¬ ÎÉÎñÎ£ÎÖÎºÎªÎÖÎòÎ¬</string>
+    <string name="applist_refresh_msg">Î×Î¿ÎóÎáÎƒ ÎÉÎñÎ£ÎÖÎºÎªÎÖÎòÎ¬</string>
+    <string name="applist_refresh_error_title">Î®ÎÆÎÖÎÉÎö</string>
+    <string name="applist_quit_confirmation">ÎÉÎ¬Îö ÎæÎÿÎòÎù Î®ÎÉÎ¬Îö Î¿ÎòÎªÎö Î£ÎíÎÆÎòÎ¿ ÎÉÎ¬ ÎöÎÉÎñÎ£ÎÖÎºÎªÎÖÎö ÎöÎáÎòÎøÎùÎÖÎ¬\? Î×ÎÖÎôÎó Î®Î£ÎÉ ÎáÎ®Î×Î¿ ÎÖÎÖÎÉÎæÎô.</string>
+    <string name="msg_add_pc">Î×Î¬ÎùÎæÎ¿ Î£Î×ÎùÎ®Îæ</string>
+    <string name="addpc_unknown_host">ÎáÎøÎ®Î£ Î£ÎÉÎ¬Î¿ ÎøÎ¬ÎòÎæÎ¬ Î×ÎùÎ®Îæ. ÎáÎÉ Î£ÎòÎòÎôÎÉ Î®ÎÉÎÖÎƒ Î®ÎÆÎÖÎÉÎö ÎæÎøÎ¬ÎòÎæÎ¬.</string>
+    <string name="addpc_fail">Î£ÎÉ ÎáÎÖÎ¬Îƒ Î£ÎöÎ¬ÎùÎæÎ¿ Î£Î×ÎùÎ®Îæ Î®ÎáÎæÎùÎ¿. ÎáÎÉ Î£ÎæÎôÎòÎº Î®ÎöÎñÎòÎ¿ÎÿÎÖÎØ ÎöÎáÎùÎòÎªÎÖÎØ ÎñÎ¬ÎòÎùÎÖÎØ ÎæÎùÎòÎ×Î¬ ÎöÎÉÎ®.</string>
+    <string name="addpc_wrong_sitelocal">ÎöÎøÎ¬ÎòÎæÎ¬ Î£ÎÉ ÎáÎ¿ÎÉÎ¬ ÎáÎøÎòÎáÎö. ÎªÎ¿ÎÖÎÜ Î£ÎöÎ®Î¬Î×Î® ÎæÎøÎ¬ÎòÎæÎ¬ IP ÎöÎªÎÖÎæÎòÎ¿ÎÖÎ¬ ÎæÎøÎôÎÖ Î£ÎöÎ¬ÎùÎæÎ¿ ÎôÎ¿ÎÜ ÎöÎÉÎÖÎáÎÿÎ¿ÎáÎÿ.</string>
+    <string name="summary_resolution_list">Î£ÎöÎÆÎæÎÖÎ¿ Î£Î®ÎÖÎñÎòÎ¿ ÎÉÎÖÎøÎòÎ¬ ÎöÎ¬Î×ÎòÎáÎö. Î£ÎöÎòÎ¿ÎÖÎô Î£Î®ÎÖÎñÎòÎ¿ ÎæÎÖÎªÎòÎóÎÖÎØ ÎóÎ£ Î×ÎóÎ¿ÎøÎòÎ¬ ÎÖÎ®ÎáÎòÎ¬ ÎòÎ¿Î®Î¬ÎòÎ¬ ÎÉÎÖÎÿÎÖÎòÎ¬.</string>
+    <string name="text_native_res_dialog">Î¿ÎûÎòÎ£ÎòÎªÎÖÎòÎ¬ ÎÿÎæÎóÎÖÎòÎ¬ ÎÉÎÖÎáÎƒ ÎáÎ¬Î×ÎøÎòÎ¬ Î¿Î®Î×ÎÖÎ¬ ÎôÎ¿ÎÜ Geforce Expereience, ÎöÎ¿ÎûÎòÎ£ÎòÎªÎÖÎö Î£ÎÉ Î×ÎòÎÆÎôÎ¿Î¬ ÎæÎ×ÎíÎÜ ÎöÎ×ÎÉÎ¿Îù. ÎÖÎ® Î£ÎöÎÆÎôÎÖÎ¿Îö ÎÖÎôÎáÎÖÎ¬ ÎæÎûÎ×Îƒ Î×Î®ÎùÎº.
+\n
+\nÎÖÎ® Î£ÎºÎ¿ÎòÎÉ ÎòÎ£ÎöÎæÎÖÎƒ ÎÉÎ¬ ÎöÎöÎáÎùÎÖÎòÎ¬ Î®Î£ NVIDIA Î£ÎÆÎæÎÖ ÎÉÎÖ ÎÖÎªÎÖÎæÎòÎ¬ ÎòÎáÎûÎºÎÖÎØ ÎÉÎØ Î×ÎÆÎôÎÖÎ¿ÎÖÎØ Î¿ÎûÎòÎ£ÎòÎªÎÖÎö Î×ÎòÎ¬ÎÉÎ×Î¬ ÎÉÎÖÎ®ÎÖÎ¬ ÎôÎ¿ÎÜ ÎñÎÉÎáÎ£ ÎöÎáÎÖÎöÎòÎ£.
+\n
+\nÎ×ÎòÎáÎ£ÎÖÎÖÎÿ ÎÉÎÖÎáÎò ÎÉÎùÎ¿ÎÉÎÖ Î£ÎæÎóÎÖÎòÎ¬ ÎÉÎò ÎáÎûÎºÎÖÎØ Î®ÎáÎÆÎ¿Î×ÎÖÎØ ÎøÎ¬ÎòÎªÎÉÎö Î×Î®ÎÖÎ×ÎòÎ® ÎæÎ¿ÎûÎòÎ£ÎòÎªÎÖÎö Î×ÎòÎ¬ÎÉÎ×Î¬ ÎÉÎÖÎ®ÎÖÎ¬.
+\n
+\nÎöÎ×ÎøÎ®ÎÖÎ¿ Î®Î£ÎÜ ÎøÎáÎ¿ÎÉÎö ÎòÎÉÎÖÎáÎò Î¬ÎòÎ×ÎÜ ÎæÎ¿ÎûÎòÎ£ÎòÎªÎÖÎö ÎÿÎæÎóÎÖÎ¬.</string>
+    <string name="summary_seekbar_bitrate">ÎöÎÆÎæÎ¿ Î£Î®ÎÖÎñÎòÎ¿ ÎÉÎÖÎøÎòÎ¬ ÎöÎ¬Î×ÎòÎáÎö. ÎöÎáÎ×ÎÜ ÎæÎøÎôÎÖ Î£Î®ÎñÎ¿ ÎæÎÖÎªÎòÎóÎÖÎØ ÎóÎ£ ÎÆÎæÎÖ ÎùÎÖÎæÎòÎ¿ Î¿Î®Î¬ ÎÉÎÖÎÿÎÖ.</string>
+    <string name="summary_audio_config_list">ÎöÎñÎóÎ£ ÎºÎòÎ£ ÎöÎÖÎºÎñÎÖ ÎæÎöÎÆÎôÎ¿Î¬ 5.1 ÎÉÎò 7.1 ÎóÎæÎòÎ¿ Î×ÎóÎ¿ÎøÎòÎ¬ ÎºÎòÎ£ÎáÎòÎó ÎæÎÖÎ¬ÎÖ</string>
+    <string name="summary_checkbox_enable_audiofx">ÎÉÎñÎ®Î¿ Î£ÎÉÎñÎºÎÿÎÖ ÎíÎÉÎòÎáÎô Î£ÎñÎóÎòÎ£ ÎæÎûÎ×Îƒ ÎöÎûÎ¿Î×Îö, ÎÖÎÆÎ¿ÎòÎØ Î£ÎöÎ®ÎöÎÖÎÖÎ¬ ÎÉÎòÎôÎÖÎò</string>
+    <string name="conn_hardware_latency">ÎûÎ×Îƒ ÎñÎóÎáÎòÎù Î×Î×ÎòÎªÎó:</string>
+    <string name="summary_fps_list">ÎöÎÆÎæÎ¿ Î£ÎöÎûÎ¿Î×Î¬ ÎòÎÖÎôÎÖÎÉÎò ÎùÎ£ÎºÎö ÎÖÎòÎ¬Î¿. ÎöÎáÎ×ÎÜ Î£ÎæÎÖÎªÎòÎóÎÖÎØ ÎòÎÖÎªÎÖÎæÎòÎ¬ ÎæÎ×ÎøÎ®ÎÖÎ¿ÎÖÎØ ÎùÎ£Î®ÎÖÎØ.</string>
+    <string name="title_seekbar_bitrate">ÎòÎÖÎôÎÖÎÉÎò ÎæÎÖÎÿÎ¿ÎÖÎÖÎÿ</string>
+    <string name="suffix_seekbar_bitrate_mbps">Î×ÎÆÎöÎæÎÖÎÿ</string>
+    <string name="title_checkbox_stretch_video">Î×Î¬ÎùÎÖÎ¬ ÎòÎÖÎôÎÖÎÉÎò Î£Î×ÎíÎÜ Î×Î£ÎÉ</string>
+    <string name="resolution_prefix_native">ÎÿÎæÎóÎÖ</string>
+    <string name="resolution_prefix_native_fullscreen">ÎÿÎæÎóÎÖ ÎæÎ×ÎíÎÜ Î×Î£ÎÉ</string>
+    <string name="category_audio_settings">ÎöÎÆÎôÎ¿ÎòÎ¬ ÎÉÎòÎôÎÖÎò</string>
+    <string name="title_audio_config_list">ÎöÎÆÎôÎ¿Î¬ ÎºÎòÎ£ ÎöÎÖÎºÎñÎÖ (Surround sound)</string>
+    <string name="title_checkbox_enable_audiofx">ÎöÎñÎóÎ£ Î¬Î×ÎÖÎøÎö ÎæÎÉÎºÎòÎ£ÎÖÎÖÎûÎ¿</string>
+    <string name="category_input_settings">ÎöÎÆÎôÎ¿ÎòÎ¬ ÎºÎ£Îÿ</string>
+    <string name="title_checkbox_touchscreen_trackpad">ÎöÎ®Î¬Î×Î® ÎæÎ×ÎíÎÜ Î×ÎÆÎó ÎøÎ×Î®ÎÿÎù Î×ÎÆÎó</string>
+</resources>

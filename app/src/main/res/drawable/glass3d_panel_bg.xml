@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  glass3d_panel_bg.xml — Superficie Obsidian Liquid Glass 3D con refracción cáustica.
+  Capa base translúcida obsidiana + sheen superior cian/diamante.
+-->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Capa base: translúcida obsidiana + borde de cristal refractivo -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="270"
+                android:startColor="#E6080E18"
+                android:endColor="#F2030711" />
+            <corners android:radius="24dp" />
+            <stroke
+                android:width="1.2dp"
+                android:color="#3378A6D8" />
+        </shape>
+    </item>
+
+    <!-- Sheen superior: brillo cristalino cian que se desvanece = profundidad 3D -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="270"
+                android:centerColor="#0D7DDAFF"
+                android:endColor="#00000000"
+                android:startColor="#267DDAFF" />
+            <corners android:radius="24dp" />
+        </shape>
+    </item>
+</layer-list>

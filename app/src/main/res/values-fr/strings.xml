@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Shortcut strings -->
+    <string name="scut_deleted_pc">PC supprim├®</string>
+    <string name="scut_not_paired">PC non appair├®</string>
+    <string name="scut_pc_not_found">PC non trouv├®</string>
+    <string name="scut_invalid_uuid">Le PC fourni n\'est pas valide</string>
+    <string name="scut_invalid_app_id">L\'application fournie n\'est pas valide</string>
+    <!-- Help strings -->
+    <string name="help_loading_title">Visionneuse d\'aide</string>
+    <string name="help_loading_msg">Chargement de la page d\'aide…</string>
+    <!-- PC view menu entries -->
+    <string name="pcview_menu_app_list">Afficher toutes les applis</string>
+    <string name="pcview_menu_pair_pc">Appairer avec ce PC</string>
+    <string name="pcview_menu_unpair_pc">D├®sappairer</string>
+    <string name="pcview_menu_send_wol">Envoyer une requ├¬te Wake-On-LAN</string>
+    <string name="pcview_menu_delete_pc">Supprimer le PC</string>
+    <string name="pcview_menu_details">Voir les d├®tails</string>
+    <!-- Network test strings -->
+    <string name="nettest_title_waiting">Test de la connexion r├®seau</string>
+    <string name="nettest_text_waiting">SmartDisplay AI teste votre connexion r├®seau pour d├®terminer si les ports requis sont bloqu├®s.
+\n
+\nCela peut prendre quelques secondes…</string>
+    <string name="nettest_title_done">Test du r├®seau termin├®</string>
+    <string name="nettest_text_success">Votre r├®seau ne semble pas bloquer SmartDisplay AI. Si vous avez encore des difficult├®s ├á vous connecter, v├®rifiez les param├¿tres du pare-feu de votre PC.
+\n
+\nSi vous essayez de streamer depuis Internet, installez l\'outil SmartDisplay AI Internet Hosting Tool sur votre PC et ex├®cutez le testeur de streaming Internet inclus pour v├®rifier la connexion Internet de votre PC.</string>
+    <string name="nettest_text_inconclusive">Le test r├®seau n\'a pas pu ├¬tre effectu├® car aucun des serveurs de test de connexion de SmartDisplay AI n\'├®tait accessible. V├®rifiez votre connexion Internet ou r├®essayez plus tard.</string>
+    <string name="nettest_text_failure">La connexion r├®seau actuelle de votre appareil semble bloquer SmartDisplay AI. Le streaming sur Internet peut ne pas fonctionner lorsque vous ├¬tes connect├® ├á ce r├®seau.
+\n
+\nLes ports r├®seau suivants ont ├®t├® bloqu├®s :
+\n</string>
+    <string name="nettest_text_blocked">La connexion r├®seau actuelle de votre appareil bloque SmartDisplay AI. Le streaming sur Internet peut ne pas fonctionner lorsque vous ├¬tes connect├® ├á ce r├®seau.</string>
+    <!-- Pair messages -->
+    <string name="pairing">Appariement…</string>
+    <string name="pair_pc_offline">L\'ordinateur est hors ligne</string>
+    <string name="pair_pc_ingame">L\'ordinateur est actuellement dans un jeu. Vous devez fermer le jeu avant l’appairage.</string>
+    <string name="pair_pairing_title">Appariement</string>
+    <string name="pair_pairing_msg">Veuillez saisir le code PIN suivant sur le PC cible :</string>
+    <string name="pair_incorrect_pin">Code PIN incorrect</string>
+    <string name="pair_fail">├ëchec de l\'appariement</string>
+    <string name="pair_already_in_progress">Appariement d├®j├á en cours</string>
+    <!-- WOL messages -->
+    <string name="wol_pc_online">L\'ordinateur est en ligne</string>
+    <string name="wol_no_mac">Impossible de r├®veiller le PC car il n\'y a pas d\'addresse MAC enregistr├®e pour ce PC</string>
+    <string name="wol_waking_pc">R├®veil PC…</string>
+    <string name="wol_waking_msg">Votre PC peut prendre quelques secondes pour d├®marrer. S\'il ne d├®marre toujours pas, assurez-vous qu\'il est correctement configur├® pour le Wake-On-LAN.</string>
+    <string name="wol_fail">├ëchec de l\'envoi des paquets Wake-On-LAN</string>
+    <!-- Unpair messages -->
+    <string name="unpairing">D├®sappariage…</string>
+    <string name="unpair_success">D├®sappari├® avec succ├¿s</string>
+    <string name="unpair_fail">├ëchec du d├®sappairage</string>
+    <string name="unpair_error">Le p├®riph├®rique n\'est appareill├®</string>
+    <!-- Errors -->
+    <string name="error_pc_offline">L\'ordinateur est hors ligne</string>
+    <string name="error_manager_not_running">Le service ComputerManager n\'est pas en cours d\'ex├®cution. Veuillez attendre quelques secondes ou red├®marrez l\'application.</string>
+    <string name="error_unknown_host">├ëchec de la r├®solution de l\'h├┤te</string>
+    <string name="error_404">GFE renvoie une erreur HTTP 404. Assurez-vous que votre PC poss├¿de un GPU pris en charge. L\'utilisation d\'un logiciel de bureau ├á distance peut ├®galement provoquer cette erreur. Essayez de red├®marrer votre machine ou de r├®installer GFE.</string>
+    <string name="title_decoding_error">Le d├®codeur vid├®o a plant├®</string>
+    <string name="message_decoding_error">SmartDisplay AI a plant├® en raison d\'une incompatibilit├® avec le d├®codeur vid├®o de cet appareil. Essayez d\'ajuster les param├¿tres de streaming si les plantages continuent.</string>
+    <string name="title_decoding_reset">R├®initialiser les param├¿tres vid├®o</string>
+    <string name="message_decoding_reset">Le d├®codeur vid├®o de votre appareil continue de planter avec les param├¿tres de streaming s├®lectionn├®s. Vos param├¿tres de streaming ont ├®t├® r├®initialis├®s ├á ceux par d├®faut.</string>
+    <string name="error_usb_prohibited">L\'acc├¿s USB est interdit par l\'administrateur de votre appareil. V├®rifiez vos param├¿tres Knox ou MDM.</string>
+    <string name="unable_to_pin_shortcut">Votre launcher actuel ne permet pas de cr├®er des raccourcis ├®pingl├®s.</string>
+    <!-- Start application messages -->
+    <string name="conn_establishing_title">├ëtablissement de la connexion</string>
+    <string name="conn_establishing_msg">D├®marrage de la connection</string>
+    <string name="conn_metered">Attention : Votre connexion r├®seau active est limit├®e !</string>
+    <string name="conn_client_latency">Latence moyenne de d├®codage de trame :</string>
+    <string name="conn_client_latency_hw">Latence du d├®codeur mat├®riel :</string>
+    <string name="conn_hardware_latency">Latence moyenne du d├®codage mat├®riel :</string>
+    <string name="conn_starting">D├®marrage</string>
+    <string name="conn_error_title">Erreur de connexion</string>
+    <string name="conn_error_msg">Impossible de d├®marrer</string>
+    <string name="conn_terminated_title">Connexion interrompue</string>
+    <string name="conn_terminated_msg">La connexion a ├®t├® interrompue.</string>
+    <!-- General strings -->
+    <string name="ip_hint">Adresse IP du PC h├┤te</string>
+    <string name="searching_pc">Recherche de PC h├┤tes sur votre r├®seau local
+\n
+\n Assurez-vous que Sunshine est en cours d\'execution ou que GameStream est activ├® dans les param├¿tres GeForce Experience SHIELD.</string>
+    <string name="yes">Oui</string>
+    <string name="no">Non</string>
+    <string name="lost_connection">Connexion perdue avec le PC</string>
+    <string name="title_details">D├®tails</string>
+    <string name="help">Aide</string>
+    <string name="delete_pc_msg">├ètes-vous s├╗r de vouloir supprimer ce PC \?</string>
+    <string name="slow_connection_msg">Connexion lente au PC\nR├®duisez votre d├®bit</string>
+    <string name="poor_connection_msg">Mauvaise connexion au PC</string>
+    <string name="perf_overlay_decoder">D├®codeur : %1$s</string>
+    <string name="perf_overlay_incomingfps">Fr├®quence d\'images entrantes du r├®seau : %1$.2f FPS</string>
+    <string name="perf_overlay_renderingfps">Fr├®quence d\'images de rendu : %1$.2f FPS</string>
+    <string name="perf_overlay_netdrops">Images perdues par votre connexion r├®seau : %1$.2f%%</string>
+    <string name="perf_overlay_dectime">Temps moyen de d├®codage : %1$.2f ms</string>
+    <!-- AppList activity -->
+    <string name="applist_connect_msg">Connexion au PC</string>
+    <string name="applist_menu_resume">Reprendre la session</string>
+    <string name="applist_menu_quit">Quitter la session</string>
+    <string name="applist_menu_quit_and_start">Quitter le jeu actuel et d├®marrer</string>
+    <string name="applist_menu_cancel">Annuler</string>
+    <string name="applist_menu_details">Voir les d├®tails</string>
+    <string name="applist_menu_scut">Cr├®er un raccourci</string>
+    <string name="applist_menu_tv_channel">Ajouter ├á la liste de cha├«nes</string>
+    <string name="applist_refresh_title">Liste des applications</string>
+    <string name="applist_refresh_msg">Actualisation des applications</string>
+    <string name="applist_refresh_error_title">Erreur</string>
+    <string name="applist_refresh_error_msg">Impossible d\'obtenir la liste des applications</string>
+    <string name="applist_quit_app">Fermeture</string>
+    <string name="applist_quit_success">Application ferm├®e avec succ├¿s</string>
+    <string name="applist_quit_fail">├ëchec de la fermeture</string>
+    <string name="applist_quit_confirmation">Voulez-vous vraiment quitter l\'application en cours d\'ex├®cution \? Toutes les donn├®es non enregistr├®es seront perdues.</string>
+    <string name="applist_details_id">ID de l\'appli :</string>
+    <!-- Add computer manually activity -->
+    <string name="title_add_pc">Ajouter un PC manuellement</string>
+    <string name="msg_add_pc">Connexion au PC</string>
+    <string name="addpc_fail">Impossible de se connecter ├á l\'ordinateur sp├®cifi├®. Assurez-vous que les ports requis sont autoris├®s via le pare-feu.</string>
+    <string name="addpc_success">Ordinateur ajout├® avec succ├¿s</string>
+    <string name="addpc_unknown_host">Impossible de r├®soudre l\'adresse du PC. Assurez-vous que vous n\'avez pas fait de faute de frappe dans l\'adresse.</string>
+    <string name="addpc_enter_ip">Vous devez entrer une adresse IP</string>
+    <string name="addpc_wrong_sitelocal">Cette adresse ne semble pas correcte. Vous devez utiliser l\'adresse IP publique de votre routeur pour le streaming depuis Internet.</string>
+    <!-- Preferences -->
+    <string name="category_basic_settings">Param├¿tres de base</string>
+    <string name="title_resolution_list">R├®solution vid├®o</string>
+    <string name="summary_resolution_list">Augmentez pour une meilleure clart├® de l\'image. R├®duisez pour de meilleures performances sur les appareils bas de gamme et les r├®seaux lents.</string>
+    <string name="title_fps_list">Fr├®quence d\'images vid├®o</string>
+    <string name="summary_fps_list">Augmentez pour un flux vid├®o plus fluide. Diminuez pour de meilleures performances sur les appareils bas de gamme.</string>
+    <string name="title_seekbar_bitrate">Bitrate vid├®o</string>
+    <string name="summary_seekbar_bitrate">Augmentez-le pour une meilleure qualit├® d’image. Diminuez-le pour am├®liorer les performances sur les connexions plus lentes.</string>
+    <string name="title_checkbox_stretch_video">├ëtirer la vid├®o en plein ├®cran</string>
+    <string name="title_checkbox_disable_warnings">D├®sactiver les messages d\'avertissement</string>
+    <string name="title_checkbox_enable_pip">Activer le mode observateur</string>
+    <string name="summary_checkbox_enable_pip">Permet de visualiser le stream (sans le contr├┤ler) tout en utilisant une autre appli</string>
+    <string name="category_audio_settings">Param├¿tres audio</string>
+    <string name="title_audio_config_list">Configuration son surround</string>
+    <string name="summary_audio_config_list">Activer le son surround 5.1 ou 7.1 pour les syst├¿mes home cin├®ma</string>
+    <string name="category_input_settings">Param├¿tres d\'entr├®e</string>
+    <string name="title_checkbox_touchscreen_trackpad">Utiliser l\'├®cran tactile comme trackpad</string>
+    <string name="summary_checkbox_touchscreen_trackpad">Si activ├®, l\'├®cran tactile agit comme un trackpad. Si d├®sactiv├®, l\'├®cran tactile contr├┤le directement le curseur de la souris.</string>
+    <string name="title_checkbox_multi_controller">Forcer la pr├®sence d\'une manette</string>
+    <string name="summary_checkbox_multi_controller">D├®cocher cette option force une manette ├á toujours ├¬tre pr├®sente</string>
+    <string name="title_checkbox_vibrate_fallback">├ëmuler les vibrations de la manette avec l\'appareil</string>
+    <string name="summary_checkbox_vibrate_fallback">Fait vibrer votre appareil pour ├®muler les vibrations de la manette si elle ne le supporte pas</string>
+    <string name="title_seekbar_deadzone">R├®gler la zone morte du stick analogique</string>
+    <string name="suffix_seekbar_deadzone">%</string>
+    <string name="title_checkbox_xb1_driver">Pilote USB pour manette Xbox 360/One</string>
+    <string name="summary_checkbox_xb1_driver">Active un pilote USB int├®gr├® pour les appareils qui ne prennent pas nativement en charge les manettes Xbox</string>
+    <string name="title_checkbox_usb_bind_all">Remplacer le support natif des manettes Xbox</string>
+    <string name="summary_checkbox_usb_bind_all">Utilise le pilote USB de SmartDisplay AI pour toutes les manettes prises en charge, m├¬me si l\'appareil supporte nativement celles-ci</string>
+    <string name="title_checkbox_mouse_emulation">├ëmuler la souris avec la manette</string>
+    <string name="summary_checkbox_mouse_emulation">Appuyez longuement sur le bouton Start pour faire basculer la manette en mode souris</string>
+    <string name="title_checkbox_mouse_nav_buttons">Activer les boutons de la souris arri├¿re et avant</string>
+    <string name="summary_checkbox_mouse_nav_buttons">L\' activation de cette option peut casser le clic droit sur certains appareils bogu├®s</string>
+    <string name="title_checkbox_flip_face_buttons">Inverser les boutons en fa├ºade</string>
+    <string name="summary_checkbox_flip_face_buttons">Commute les boutons de face A/B et X/Y pour les manettes et les commandes ├á l\'├®cran</string>
+    <string name="category_on_screen_controls_settings">Param├¿tres des commandes ├á l\'├®cran</string>
+    <string name="title_checkbox_show_onscreen_controls">Afficher les commandes ├á l\'├®cran</string>
+    <string name="summary_checkbox_show_onscreen_controls">Affiche une manette virtuelle sur l\'├®cran tacile</string>
+    <string name="title_checkbox_vibrate_osc">Activer les vibrations</string>
+    <string name="summary_checkbox_vibrate_osc">Fait vibrer votre appareil pour ├®muler les vibrations des commandes ├á l\'├®cran</string>
+    <string name="title_only_l3r3">Montrer seulement L3 et R3</string>
+    <string name="summary_only_l3r3">Cacher tous les boutons sauf L3 et R3</string>
+    <string name="title_reset_osc">R├®initialiser la disposition des commandes</string>
+    <string name="summary_reset_osc">R├®tablit la taille et la position par d├®faut de tous les contr├┤les ├á l\'├®cran</string>
+    <string name="dialog_title_reset_osc">R├®initialiser la disposition</string>
+    <string name="dialog_text_reset_osc">├ètes-vous s├╗r de vouloir supprimer votre disposition de commandes ├á l\'├®cran ?</string>
+    <string name="toast_reset_osc_success">Les contr├┤les ├á l\'├®cran ont ├®t├® r├®initialis├®s</string>
+    <string name="title_osc_opacity">Modifier l\'opacit├® des contr├┤les ├á l\'├®cran</string>
+    <string name="summary_osc_opacity">Permet de rendre les contr├┤les ├á l\'├®cran plus ou moins transparents</string>
+    <string name="dialog_title_osc_opacity">Modifier l\'opacit├®</string>
+    <string name="suffix_osc_opacity">%</string>
+    <string name="category_ui_settings">Param├¿tres de l\'interface utilisateur</string>
+    <string name="title_language_list">Langue</string>
+    <string name="summary_language_list">Langue ├á utiliser pour SmartDisplay AI</string>
+    <string name="title_checkbox_small_icon_mode">Utiliser des petites ic├┤nes</string>
+    <string name="summary_checkbox_small_icon_mode">Des ic├┤nes plus petites permettent d\'afficher plus d\'applications en m├¬me temps</string>
+    <string name="category_host_settings">Param├¿tres de l\'h├┤te</string>
+    <string name="title_checkbox_enable_sops">Optimiser les param├¿tres du jeu</string>
+    <string name="summary_checkbox_enable_sops">Autoriser GFE ├á modifier les param├¿tres du jeu pour un streaming optimal</string>
+    <string name="title_checkbox_host_audio">Jouer l\'audio sur le PC</string>
+    <string name="summary_checkbox_host_audio">Lire l\'audio sur l\'ordinateur et sur cet appareil</string>
+    <string name="category_advanced_settings">R├®glages avanc├®s</string>
+    <string name="title_unlock_fps">D├®bloquer toutes les fr├®quences d\'images possibles</string>
+    <string name="summary_unlock_fps">Le streaming ├á 90 ou 120 FPS peut r├®duire la latence sur les appareils haut de gamme, mais peut entra├«ner un d├®calage ou une instabilit├® sur les appareils qui ne le supporte pas</string>
+    <string name="summary_checkbox_disable_warnings">D├®sactive les messages d\'avertissement sur la connexion pendant le stream</string>
+    <string name="title_disable_frame_drop">Ne jamais perdre d\'images</string>
+    <string name="summary_disable_frame_drop">Peut r├®duire les micro-saccades sur certains appareils, mais peut augmenter la latence</string>
+    <string name="title_video_format">Modifier les param├¿tres de codec</string>
+    <string name="summary_video_format">Les nouveaux codecs peuvent r├®duire la bande passante vid├®o requise si votre appareil les prend en charge. Les codecs s├®l├®ctionn├®s peuvent ├¬tre ignor├®s si ils ne sont pas prises en charge par le logiciel h├┤te ou le GPU.</string>
+    <string name="title_enable_hdr">Activer le HDR (exp├®rimental)</string>
+    <string name="summary_enable_hdr">Streamer en HDR lorsque le jeu et le GPU du PC le prennent en charge. Le HDR n├®cessite un GPU pouvant encoder en HEVC Main 10.</string>
+    <string name="title_enable_perf_overlay">Afficher les statistiques de peformance lors du stream</string>
+    <string name="summary_enable_perf_overlay">Affiche des informations sur les performances du stream en temps r├®el pendant le stream</string>
+    <string name="title_enable_post_stream_toast">Afficher la latence moyenne apr├¿s un stream</string>
+    <string name="summary_enable_post_stream_toast">Affiche un message d’information sur la latence apr├¿s la fin du stream</string>
+    <string name="no_video_received_error">Aucune vid├®o re├ºue de l\'h├┤te.</string>
+    <string name="video_decoder_init_failed">Le d├®codeur vid├®o n\'a pas pu d├®marrer. V├®rifiez que votre appareil supporte la r├®solution ou la fr├®quence d\'images choisie.</string>
+    <string name="pcview_menu_test_network">Tester la connection r├®seau</string>
+    <string name="pcview_menu_header_unknown">Actualisation</string>
+    <string name="pcview_menu_header_offline">Hors ligne</string>
+    <string name="pcview_menu_header_online">En ligne</string>
+    <string name="resolution_prefix_native">Native</string>
+    <string name="suffix_seekbar_bitrate_mbps">Mbps</string>
+    <string name="text_native_res_dialog">La r├®solution native et/ou le FPS peuvent ne pas ├¬tre pris en charge par le serveur de streaming. Vous devrez probablement configurer manuellement un mode d\'affichage personnalis├® correspondant pour le PC h├┤te.
+\n
+\nSi vous choisissez de cr├®er une r├®solution personnalis├®e dans le panneau de configuration NVIDIA pour correspondre aux param├¿tres de votre ├®cran, assurez-vous d\'avoir lu et compris l\'avertissement de NVIDIA concernant les dommages possibles au moniteur, l\'instabilit├® du PC et d\'autres probl├¿mes potentiels.
+\n
+\nNous ne sommes pas responsables des probl├¿mes r├®sultant de la cr├®ation d\'une r├®solution personnalis├®e sur votre PC.
+\n
+\nIl se peut que votre moniteur ne prenne pas en charge la configuration d\'affichage requise. Si c\'est le cas, vous pouvez essayer de configurer un moniteur virtuel. Enfin, si votre appareil ou votre PC h├┤te ne prend pas en charge le streaming ├á une r├®solution ou ├á un taux de rafra├«chissement sp├®cifique, vous ne pourrez pas y faire grand chose malheureusement.</string>
+    <string name="title_native_res_dialog">Avertissement sur la r├®solution native</string>
+    <string name="applist_menu_hide_app">Cacher l\'application</string>
+    <string name="check_ports_msg">V├®rifiez vos r├¿gles de pare-feu pour les ports suivants :</string>
+    <string name="early_termination_error">Quelque chose s\'est mal pass├® sur votre PC h├┤te en d├®marrant le stream.
+\n
+\nV├®rifiez qu\'aucune application utilisant un DRM n\'est ouverte sur votre PC h├┤te. Vous pouvez aussi essayer de red├®marrer votre PC h├┤te.</string>
+    <string name="no_frame_received_error">Votre connexion r├®seau ne fonctionne pas bien. Baissez votre d├®bit ou utilisez une connexion plus rapide.</string>
+    <string name="resolution_prefix_native_fullscreen">Plein-├®cran natif</string>
+    <string name="perf_overlay_netlatency">Latence r├®seau moyenne : %1$d ms (variance : %2$d ms)</string>
+    <string name="perf_overlay_streamdetails">Stream vid├®o : %1$s %2$.2f FPS</string>
+    <!-- Array strings -->
+    <string name="fps_30">30 IPS</string>
+    <string name="fps_60">60 IPS</string>
+    <string name="fps_90">90 IPS</string>
+    <string name="fps_120">120 IPS</string>
+    <string name="audioconf_stereo">St├®r├®o</string>
+    <string name="audioconf_51surround">Son surround 5.1</string>
+    <string name="audioconf_71surround">Son surround 7.1</string>
+    <string name="videoformat_auto">Automatique (recommand├®)</string>
+    <string name="videoformat_hevcalways">Pr├®f├®rer HEVC</string>
+    <string name="title_frame_pacing">Frame-pacing vid├®o</string>
+    <string name="summary_frame_pacing">Sp├®cifiez comment ├®quilibrer latence et fluidit├® de la vid├®o</string>
+    <string name="pacing_latency">Pr├®f├®rer une latence plus faible</string>
+    <string name="pacing_balanced">├ëquilibr├®</string>
+    <string name="resolution_720p">720p</string>
+    <string name="pacing_smoothness">Pr├®f├®rer la qualit├® vid├®o (risque d\'augmenter la latence)</string>
+    <string name="resolution_360p">360p</string>
+    <string name="resolution_480p">480p</string>
+    <string name="resolution_1440p">1440p</string>
+    <string name="resolution_1080p">1080p</string>
+    <string name="resolution_4k">4K</string>
+    <string name="category_help">Aide</string>
+    <string name="title_setup_guide">Guide de configuration</string>
+    <string name="title_troubleshooting">Guide de d├®pannage</string>
+    <string name="title_privacy_policy">Politique de confidentialit├®</string>
+    <string name="summary_privacy_policy">Voir la politique de confidentialit├® de SmartDisplay AI</string>
+    <string name="summary_setup_guide">Voir les instructions sur la fa├ºon de configurer votre PC de jeu pour le streaming</string>
+    <string name="summary_troubleshooting">Voir des conseils pour diagnostiquer et r├®soudre les probl├¿mes de streaming courants</string>
+    <string name="pacing_balanced_alt">├ëquilibr├® avec limite FPS</string>
+    <string name="title_checkbox_absolute_mouse_mode">Mode souris pour bureau ├á distance</string>
+    <string name="summary_seekbar_deadzone">Remarque┬á: Certains jeux peuvent imposer une zone morte plus grande que celle que SmartDisplay AI est configur├® pour utiliser.</string>
+    <string name="summary_checkbox_absolute_mouse_mode">Cela peut rendre l\'acc├®l├®ration de la souris plus naturelle pour l\'utilisation du bureau ├á distance, mais il est incompatible avec de nombreux jeux.</string>
+    <string name="resolution_prefix_native_landscape">(Paysage)</string>
+    <string name="resolution_prefix_native_portrait">(Portrait)</string>
+    <string name="title_checkbox_reduce_refresh_rate">Autoriser la r├®duction du taux de rafra├«chissement</string>
+    <string name="summary_checkbox_reduce_refresh_rate">Des taux de rafra├«chissement d\'affichage plus bas peuvent ├®conomiser de l\'├®nergie au d├®triment d\'une latence vid├®o plus importante</string>
+    <string name="summary_checkbox_enable_audiofx">Permet aux effets audio de fonctionner lors du streaming, mais peut augmenter la latence</string>
+    <string name="title_checkbox_enable_audiofx">Activer le support de l\'├®galisateur syst├¿me</string>
+    <string name="frame_conversion_error">Le PC h├┤te a signal├® une erreur d\'encodage fatale.
+\n
+\nEssayez de d├®sactiver le mode HDR, de changer la r├®solution du stream ou la r├®solution de votre PC h├┤te.</string>
+    <string name="title_full_range">Forcer la vid├®o sur toute la gamme de couleurs (exp├®rimental)</string>
+    <string name="summary_full_range">Cela causera une perte de d├®tails dans les zones claires et sombres si votre appareil n\'affiche pas correctement la vid├®o avec une gamme de couleurs compl├¿te.</string>
+    <string name="pcview_menu_eol">NVIDIA GameStream : fin de service</string>
+    <string name="pair_pairing_help">Si votre PC h├┤te utilise Sunshine, acc├®dez ├á l\'interface web de Sunshine pour saisir le code PIN.</string>
+    <string name="category_gamepad_settings">Param├¿tres manette</string>
+    <string name="perf_overlay_hostprocessinglatency">Latence de traitement de l\'h├┤te min/max/moyenne : %1$.1f/%2$.1f/%3$.1f ms</string>
+    <string name="fps_suffix_fps">FPS</string>
+    <string name="title_native_fps_dialog">Avertissement sur le FPS natif</string>
+    <string name="title_checkbox_gamepad_motion_sensors">Autoriser l\'utilisation des capteurs de mouvement de la manette</string>
+    <string name="videoformat_av1always">Pr├®f├®rer AV1 (exp├®rimental)</string>
+    <string name="videoformat_h264always">Pr├®f├®rer H.264</string>
+    <string name="title_checkbox_gamepad_touchpad_as_mouse">Toujours controller la souris avec le pav├® tactile</string>
+    <string name="summary_checkbox_gamepad_touchpad_as_mouse">Force le pav├® tactile de la manette ├á contr├┤ler la souris de l\'h├┤te, m├¬me quand une manette avec pav├® tactile est ├®mul├®e.</string>
+    <string name="summary_checkbox_gamepad_motion_sensors">Permet aux h├┤tes pris en charge de demander les donn├®es du capteur de mouvement lors de l\'├®mulation d\'une manette compatible. D├®sactiver ce param├¿tre peut r├®duire l├®g├¿rement l\'utilisation de la batterie et du r├®seau si les capteurs de mouvement ne sont pas utilis├®s en jeu.</string>
+    <string name="toast_controller_type_changed">Le type de manette peut ├¬tre diff├®rent d├╗ ├á l\'├®mulation du capteur de mouvement</string>
+    <string name="summary_checkbox_gamepad_motion_fallback">Utilise les capteurs de mouvement de votre appareil si la manette conn├®ct├®e n\'en a pas, ou qu\'ils ne sont pas pris en charge par votre version d\'Android.
+\nRemarque : activer cette option peut faire appara├«tre votre manette c├┤t├® h├┤te comme une manette PlayStation.</string>
+    <string name="title_checkbox_gamepad_motion_fallback">├ëmuler les capteurs de mouvement de la manette</string>
+    <string name="title_analog_scrolling">Utiliser un stick analogique pour faire d├®filer</string>
+    <string name="summary_analog_scrolling">S├®l├®ctionner un stick analogique ├á utiliser pour faire d├®filer lors de l\'├®mulation de la souris</string>
+    <string name="analogscroll_none">Aucun (les deux sticks d├®placent la souris)</string>
+    <string name="analogscroll_right">Stick analogique droit</string>
+    <string name="analogscroll_left">Stick analogique gauche</string>
+    <string name="error_code_prefix">Code d\'erreur :</string>
+    <string name="title_seekbar_vibrate_fallback_strength">Ajuster l\'intensit├® de la vibration ├®mul├®e</string>
+    <string name="summary_seekbar_vibrate_fallback_strength">Amplifie ou r├®duit l\'intensit├® de la vibration sur votre appareil</string>
+    <string name="suffix_seekbar_vibrate_fallback_strength">%</string>
+</resources>

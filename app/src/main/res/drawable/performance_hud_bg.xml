@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Tarjeta del HUD de rendimiento: fondo oscuro translúcido + borde neón sutil. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="#D90A0E14" />
+    <corners android:radius="@dimen/neon_radius" />
+    <stroke
+        android:width="@dimen/neon_stroke"
+        android:color="#668B5CF6" />
+    <padding
+        android:left="14dp"
+        android:top="12dp"
+        android:right="14dp"
+        android:bottom="12dp" />
+</shape>

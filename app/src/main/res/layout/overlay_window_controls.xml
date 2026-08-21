@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/windowControlsBar"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:clipChildren="false"
+    android:clipToPadding="false">
+
+    <!-- Cápsula flotante con borde neón morado y fondo oscuro -->
+    <LinearLayout
+        android:id="@+id/windowControlsContent"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="6dp"
+        android:paddingEnd="8dp"
+        android:background="@drawable/neon_capsule_bg"
+        android:elevation="12dp">
+
+        <!-- Grip de arrastre: SOLO desde aquí se mueve la barra (no entra en conflicto
+             con el scroll del carrusel de herramientas). -->
+        <ImageView
+            android:id="@+id/windowControlsGrip"
+            android:layout_width="48dp"
+            android:layout_height="match_parent"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:src="@drawable/ic_win_grip"
+            android:scaleType="centerInside"
+            android:padding="8dp"
+            app:tint="#FFFFFF"
+            android:contentDescription="Mover barra"
+            android:clickable="true"
+            android:focusable="true"/>
+
+        <!-- Carrusel de herramientas: desplazable horizontalmente cuando hay más
+             herramientas de las que caben. -->
+        <HorizontalScrollView
+            android:id="@+id/windowControlsScroll"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            android:overScrollMode="never"
+            android:fillViewport="false">
+
+            <LinearLayout
+                android:id="@+id/windowControlsTools"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/btnWinMinimize"
+                    android:layout_width="48dp"
+                    android:layout_height="match_parent"
+                    android:minWidth="48dp"
+                    android:minHeight="48dp"
+                    android:src="@drawable/ic_win_minimize"
+                    android:scaleType="centerInside"
+                    android:padding="12dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    app:tint="#FFFFFF"
+                    android:clickable="true"
+                    android:focusable="true"/>
+
+                <ImageView
+                    android:id="@+id/btnWinMaximize"
+                    android:layout_width="48dp"
+                    android:layout_height="match_parent"
+                    android:minWidth="48dp"
+                    android:minHeight="48dp"
+                    android:src="@drawable/ic_win_maximize"
+                    android:scaleType="centerInside"
+                    android:padding="12dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    app:tint="#FFFFFF"
+                    android:clickable="true"
+                    android:focusable="true"/>
+
+                <ImageView
+                    android:id="@+id/btnWinClose"
+                    android:layout_width="48dp"
+                    android:layout_height="match_parent"
+                    android:minWidth="48dp"
+                    android:minHeight="48dp"
+                    android:src="@drawable/ic_win_close"
+                    android:scaleType="centerInside"
+                    android:padding="12dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    app:tint="#FFFFFF"
+                    android:clickable="true"
+                    android:focusable="true"/>
+
+                <ImageView
+                    android:id="@+id/btnWinAltTab"
+                    android:layout_width="48dp"
+                    android:layout_height="match_parent"
+                    android:minWidth="48dp"
+                    android:minHeight="48dp"
+                    android:src="@drawable/ic_win_alttab"
+                    android:scaleType="centerInside"
+                    android:padding="12dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    app:tint="#FFFFFF"
+                    android:clickable="true"
+                    android:focusable="true"/>
+
+                <ImageView
+                    android:id="@+id/btnWinCtrlTab"
+                    android:layout_width="48dp"
+                    android:layout_height="match_parent"
+                    android:minWidth="48dp"
+                    android:minHeight="48dp"
+                    android:src="@drawable/ic_win_ctrltab"
+                    android:scaleType="centerInside"
+                    android:padding="12dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    app:tint="#FFFFFF"
+                    android:clickable="true"
+                    android:focusable="true"/>
+
+                <!-- Grupo extra (oculto hasta pulsar "+") -->
+                <ImageView
+                    android:id="@+id/btnWinNewTab"
+                    android:layout_width="48dp"
+                    android:layout_height="match_parent"
+                    android:minWidth="48dp"
+                    android:minHeight="48dp"
+                    android:src="@drawable/ic_win_newtab"
+                    android:scaleType="centerInside"
+                    android:padding="12dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    app:tint="#FFFFFF"
+                    android:contentDescription="Nueva pestaña (Ctrl+T)"
+                    android:visibility="gone"
+                    android:clickable="true"
+                    android:focusable="true"/>
+
+                <ImageView
+                    android:id="@+id/btnWinCloseTab"
+                    android:layout_width="48dp"
+                    android:layout_height="match_parent"
+                    android:minWidth="48dp"
+                    android:minHeight="48dp"
+                    android:src="@drawable/ic_win_closetab"
+                    android:scaleType="centerInside"
+                    android:padding="12dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    app:tint="#FFFFFF"
+                    android:contentDescription="Cerrar pestaña (Ctrl+W)"
+                    android:visibility="gone"
+                    android:clickable="true"
+                    android:focusable="true"/>
+
+                <ImageView
+                    android:id="@+id/btnWinDesktop"
+                    android:layout_width="48dp"
+                    android:layout_height="match_parent"
+                    android:minWidth="48dp"
+                    android:minHeight="48dp"
+                    android:src="@drawable/ic_win_desktop"
+                    android:scaleType="centerInside"
+                    android:padding="12dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    app:tint="#FFFFFF"
+                    android:contentDescription="Mostrar escritorio (Win+D)"
+                    android:visibility="gone"
+                    android:clickable="true"
+                    android:focusable="true"/>
+
+                <ImageView
+                    android:id="@+id/btnWinTaskView"
+                    android:layout_width="48dp"
+                    android:layout_height="match_parent"
+                    android:minWidth="48dp"
+                    android:minHeight="48dp"
+                    android:src="@drawable/ic_win_taskview"
+                    android:scaleType="centerInside"
+                    android:padding="12dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    app:tint="#FFFFFF"
+                    android:contentDescription="Vista de tareas (Win+Tab)"
+                    android:visibility="gone"
+                    android:clickable="true"
+                    android:focusable="true"/>
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <!-- "+" : despliega/oculta el grupo de herramientas extra (fuera del scroll,
+             siempre visible a la derecha). -->
+        <ImageView
+            android:id="@+id/btnWinAddTools"
+            android:layout_width="48dp"
+            android:layout_height="match_parent"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:src="@drawable/ic_add"
+            android:scaleType="centerInside"
+            android:padding="10dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:tint="#FFFFFF"
+            android:contentDescription="Más herramientas"
+            android:clickable="true"
+            android:focusable="true"/>
+
+    </LinearLayout>
+</LinearLayout>

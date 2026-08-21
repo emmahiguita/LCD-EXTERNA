@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Carpeta de archivos recibidos (getExternalFilesDir) para compartir/abrir vía FileProvider -->
+    <external-files-path name="sd_files" path="." />
+    <files-path name="sd_internal" path="." />
+</paths>
