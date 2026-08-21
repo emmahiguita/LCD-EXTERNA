@@ -116,15 +116,15 @@ class KeyboardProfileEngineTest {
     }
 
     @Test
-    fun antigravityAgentIsCtrlShiftI() {
+    fun antigravityAgentIsCtrlAltB() {
         val action = action(
             KeyboardProfileEngine.PROFILE_ANTIGRAVITY,
             "Agent"
         )
         assertTrue(action is RemoteKeyAction.Chord)
         action as RemoteKeyAction.Chord
-        assertEquals(Win32VirtualKey.VK_I, action.vkCode)
-        assertEquals(listOf(RemoteModifier.CTRL, RemoteModifier.SHIFT), action.modifiers)
+        assertEquals(Win32VirtualKey.VK_B, action.vkCode)
+        assertEquals(listOf(RemoteModifier.CTRL, RemoteModifier.ALT), action.modifiers)
     }
 
     @Test
@@ -140,14 +140,14 @@ class KeyboardProfileEngineTest {
     }
 
     @Test
-    fun antigravityModelIsCtrlAltM() {
+    fun antigravityModelIsCtrlSlash() {
         val action = action(
             KeyboardProfileEngine.PROFILE_ANTIGRAVITY,
             "Model"
         )
         assertTrue(action is RemoteKeyAction.Chord)
         action as RemoteKeyAction.Chord
-        assertEquals(Win32VirtualKey.VK_M, action.vkCode)
-        assertEquals(listOf(RemoteModifier.CTRL, RemoteModifier.ALT), action.modifiers)
+        assertEquals(Win32VirtualKey.VK_OEM_2, action.vkCode)
+        assertEquals(listOf(RemoteModifier.CTRL), action.modifiers)
     }
 }

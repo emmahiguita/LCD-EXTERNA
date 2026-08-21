@@ -144,13 +144,13 @@ class KeyboardProfileEngine(
     private fun antigravityKeys(): List<DevKey> {
         return listOf(
             key("Esc", "Esc", "Cancelar / volver", Win32VirtualKey.VK_ESCAPE),
-            chord("Agent", "Ctrl+Shift+I", "Toggle Agent Chat", Win32VirtualKey.VK_I, RemoteModifier.CTRL, RemoteModifier.SHIFT),
+            chord("Agent", "Ctrl+Alt+B", "Toggle Agent Chat", Win32VirtualKey.VK_B, RemoteModifier.CTRL, RemoteModifier.ALT),
             chord("Focus", "Ctrl+L", "Llevar foco al input del agente", Win32VirtualKey.VK_L, RemoteModifier.CTRL),
             chord("Explorer", "Ctrl+Shift+E", "Abrir / cerrar Explorer", Win32VirtualKey.VK_E, RemoteModifier.CTRL, RemoteModifier.SHIFT),
             chord("Files", "Ctrl+P", "Buscar archivo (Quick Open)", Win32VirtualKey.VK_P, RemoteModifier.CTRL),
             chord("Convs", "Ctrl+K", "Abrir Conversation Picker", Win32VirtualKey.VK_K, RemoteModifier.CTRL),
             chord("New Conv", "Ctrl+N", "Nueva conversación", Win32VirtualKey.VK_N, RemoteModifier.CTRL),
-            chord("Model", "Ctrl+Alt+M", "Cambiar modelo IA", Win32VirtualKey.VK_M, RemoteModifier.CTRL, RemoteModifier.ALT),
+            chord("Model", "Ctrl+/", "Cambiar modelo IA", Win32VirtualKey.VK_OEM_2, RemoteModifier.CTRL),
             chord("Prev Conv", "Alt+↑", "Conversación anterior", Win32VirtualKey.VK_UP, RemoteModifier.ALT),
             chord("Next Conv", "Alt+↓", "Conversación siguiente", Win32VirtualKey.VK_DOWN, RemoteModifier.ALT),
             chord("Palette", "Ctrl+Shift+P", "Command Palette del editor", Win32VirtualKey.VK_P, RemoteModifier.CTRL, RemoteModifier.SHIFT, source = RemoteKeySource.INHERITED),
