@@ -5,7 +5,7 @@
   <h3>Motor de Streaming de Escritorio y Productividad Remota de Ultra Baja Latencia para Android</h3>
   
   [![Platform](https://img.shields.io/badge/Platform-Android%208.0%2B%20(API%2026%2B)-3DDC84.svg?style=for-the-badge&logo=android)](https://www.android.com/)
-  [![Protocol](https://img.shields.io/badge/Protocol-Sunshine%20%7C%20Moonlight-007ACC.svg?style=for-the-badge&logo=cplusplus)](https://github.com/LizardByte/Sunshine)
+  [![Protocol](https://img.shields.io/badge/Protocol-Sunshine%20%7C%20GameStream-007ACC.svg?style=for-the-badge&logo=cplusplus)](https://github.com/LizardByte/Sunshine)
   [![License](https://img.shields.io/badge/License-GPLv3-blue.svg?style=for-the-badge)](LICENSE.txt)
 </div>
 
@@ -13,7 +13,7 @@
 
 ## 🌟 ¿Qué es SmartDisplay AI?
 
-**SmartDisplay AI (Smart-D)** es una plataforma cliente de alto rendimiento para Android, construida sobre el protocolo de transmisión de ultra baja latencia de Moonlight y Sunshine, rediseñada específicamente para **productividad remota, programación, desarrollo de software y control de escritorio profesional**, además de gaming en streaming.
+**SmartDisplay AI (Smart-D)** es una plataforma cliente de alto rendimiento para Android, diseñada específicamente para **productividad remota, programación, desarrollo de software y control de escritorio profesional**, además de streaming de alta tasa de refresco y ultra baja latencia.
 
 Permite convertir cualquier teléfono o tablet Android en una segunda pantalla interactiva o estación de trabajo móvil remota conectada a tu PC Windows o Linux con latencia mínima, soporte de entrada completo y herramientas para desarrolladores.
 
@@ -65,7 +65,7 @@ SmartDisplay/Android/
 │   │   │   ├── NvConnection.java
 │   │   │   └── jni/MoonBridge.java
 │   │   └── PcView.java             # Pantalla principal del dashboard
-│   ├── src/main/jni/               # Módulos nativos C/C++ (moonlight-core)
+│   ├── src/main/jni/               # Módulos nativos C/C++ de decodificación y protocolo
 │   └── src/main/res/               # Layouts XML, temas, drawables y strings
 ├── companion_server/               # Servidor auxiliar en Python para Windows
 └── docs/                           # Documentación y auditorías de arquitectura
@@ -79,7 +79,7 @@ SmartDisplay/Android/
 - **Android Studio** Ladybug (o superior) / IntelliJ IDEA.
 - **Android SDK** API 35 (Android 15) con NDK instalado.
 - **JDK 17+**.
-- Conexión a un host con **Sunshine** o **NVIDIA GeForce Experience (GameStream)**.
+- Conexión a un host con **Sunshine** o servidor compatible GameStream.
 
 ### Pasos de Compilación:
 
